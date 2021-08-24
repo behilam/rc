@@ -267,8 +267,8 @@ function! InsertPrintFunction(x)
 
     " Rust
     elseif extension ==# "rs"
-        echo "Rust :D"
+        exec "normal! vi" . a:x . "\<ESC>a)\<ESC>biprintln!(\"{}\", \<ESC>f)"
     else
-        echo "###   «Mi ne rekonas ĉi tiun dosiertipon...»   ###"
+        echo "###   « Mi ne rekonas ĉi tiun dosiertipon... »   ###"
     endif
 endfunction
