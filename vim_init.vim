@@ -15,6 +15,10 @@ nnoremap yY ggVGy
 
 inoremap jk <esc>
 
+nnoremap q i_<esc>r
+nnoremap Q q
+nnoremap g: Q
+
 nnoremap <leader>z :noh<CR>
 
 nnoremap <leader>w :w<CR>
