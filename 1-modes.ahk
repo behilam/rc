@@ -66,7 +66,6 @@ Return
 
 ; ==================== SPECIAL CHARACTERS =====================
 ; ---------- First Line ----------
-
 >+1::
 char := Chr(161) ; ¡
 Send, %char%
@@ -160,159 +159,159 @@ Send, %char%
 Return
 
 ; ----------Second line ------------
->+w::
+>+e::
 char := Chr(365) ; ŭ
 Send, %char%
 Return
-<>+w::
+<>+e::
 char := Chr(364) ; Ŭ
 Send, %char%
 Return
 
->+e::
+>+r::
 char := Chr(233) ; é
 Send, %char%
 Return
-<>+e::
+<>+r::
 char := Chr(201) ; É
 Send, %char%
 Return
 
-<>+y::
+<>+u::
 char := Chr(165) ; ¥
 Send, %char%
 Return
 
->+u::
+>+i::
 char := Chr(250) ; ú
 Send, %char%
 Return
-<>+u::
+<>+i::
 char := Chr(218) ; Ú
 Send, %char%
 Return
 
->+i::
+>+o::
 char := Chr(237) ; í
 Send, %char%
 Return
-<>+i::
+<>+o::
 char := Chr(205) ; Í
 Send, %char%
 Return
 
->+o::
+>+p::
 char := Chr(243) ; ó
 Send, %char%
 Return
-<>+o::
+<>+p::
 char := Chr(211) ; Ó
 Send, %char%
 Return
 
 ; ------------ Third Line -------------
->+a::
+>+s::
 char := Chr(225) ; á
 Send, %char%
 Return
-<>+a::
+<>+s::
 char := Chr(193) ; Á
 Send, %char%
 Return
 
->+s::
+>+d::
 char := Chr(349) ; ŝ
 Send, %char%
 Return
-<>+s::
+<>+d::
 char := Chr(348) ; Ŝ
 Send, %char%
 Return
 
->+g::
+>+h::
 char := Chr(285) ; ĝ
 Send, %char%
 Return
-<>+g::
+<>+h::
 char := Chr(284) ; Ĝ
 Send, %char%
 Return
 
->+h::
+>+j::
 char := Chr(293) ; ĥ
 Send, %char%
 Return
-<>+h::
+<>+j::
 char := Chr(292) ; Ĥ
 Send, %char%
 Return
 
->+j::
+>+k::
 char := Chr(309) ; ĵ
 Send, %char%
 Return
-<>+j::
+<>+k::
 char := Chr(308) ; Ĵ
 Send, %char%
 Return
 
->+;::
-char := Chr(241) ; ñ
+>+'::
+char := Chr(241) ; >+; -> ñ
 Send, %char%
 Return
-<>+;::
-char := Chr(209) ; Ñ
-Send, %char%
-Return
-
 <>+'::
-char := Chr(8230) ; …
+char := Chr(209) ; <>+; -> Ñ
 Send, %char%
 Return
 
 <>+\::
-char := Chr(172) ; ¬
+char := Chr(8230) ; <>+' -> …
+Send, %char%
+Return
+
+<>+z::
+char := Chr(172) ; <>+\ -> ¬
 Send, %char%
 Return
 
 ; --------------- Fourth Line --------------
->+c::
+>+v::
 char := Chr(265) ; ĉ
 Send, %char%
 Return
-<>+c::
+<>+v::
 char := Chr(264) ; Ĉ
 Send, %char%
 Return
 
-<>+b::
+<>+n::
 char := Chr(223) ; ß
 Send, %char%
 Return
 
->+,::
+>+.::
 char := Chr(8249) ; ‹
 Send, %char%
 Return
-<>+,::
+<>+.::
 char := Chr(171) ; «
 Send, %char%
 Return
 
->+.::
+>+/::
 char := Chr(8250) ; ›
 Send, %char%
 Return
-<>+.::
+<>+/::
 char := Chr(187) ; »
 Send, %char%
 Return
 
->+/::
+>+a::
 char := Chr(247) ; ÷
 Send, %char%
 Return
-<>+/::
+<>+a::
 char := Chr(191) ; ¿
 Send, %char%
 Return
