@@ -6,14 +6,12 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
 ComfyNumbers := False
 
-SetTimer, InitComfyNumbers, 100
+SetTimer, InitComfyNumbers, 200
 
 InitComfyNumbers:
 if ComfyNumbers
 {
   ComfyNumbers := False
-  Hotkey, *a, Off
-  Hotkey, *a up, Off
   Hotkey, *s, Off
   Hotkey, *s up, Off
   Hotkey, *d, Off
@@ -32,7 +30,9 @@ if ComfyNumbers
   Hotkey, *l up, Off
   Hotkey, *`;, Off
   Hotkey, *`; up, Off
-  Hotkey, Ctrl, Off
+  Hotkey, *', Off
+  Hotkey, *' up, Off
+  Hotkey, LCtrl, Off
   SetTimer, InitComfyNumbers, Delete
 }
 else
@@ -322,25 +322,21 @@ Return
 ; ===================== COMFY NUMBERS ====================
 
 ; Remap numbers into main row
-a::1
-s::2
-d::3
-f::4
-g::5
-h::6
-j::7
-k::8
-l::9
-`;::0
+s::1
+d::2
+f::3
+g::4
+h::5
+j::6
+k::7
+l::8
+`;::9
+'::0
 
-RAlt::
-if WinActive("ahk_exe Code.exe")
-  Send, {Esc}
+LCtrl::
 if ComfyNumbers
 {
   ComfyNumbers := False
-  Hotkey, *a, Off
-  Hotkey, *a up, Off
   Hotkey, *s, Off
   Hotkey, *s up, Off
   Hotkey, *d, Off
@@ -359,62 +355,9 @@ if ComfyNumbers
   Hotkey, *l up, Off
   Hotkey, *`;, Off
   Hotkey, *`; up, Off
-  Hotkey, Ctrl, Off
-}
-Else
-{
-  if WinActive("ahk_exe Code.exe")
-    Send, i
-  ComfyNumbers := True
-  Hotkey, *a, On
-  Hotkey, *a up, On
-  Hotkey, *s, On
-  Hotkey, *s up, On
-  Hotkey, *d, On
-  Hotkey, *d up, On
-  Hotkey, *f, On
-  Hotkey, *f up, On
-  Hotkey, *g, On
-  Hotkey, *g up, On
-  Hotkey, *h, On
-  Hotkey, *h up, On
-  Hotkey, *j, On
-  Hotkey, *j up, On
-  Hotkey, *k, On
-  Hotkey, *k up, On
-  Hotkey, *l, On
-  Hotkey, *l up, On
-  Hotkey, *`;, On
-  Hotkey, *`; up, On
-  Hotkey, Ctrl, On
-}
-Return
-
-Ctrl::
-if ComfyNumbers
-{
-  ComfyNumbers := False
-  Hotkey, *a, Off
-  Hotkey, *a up, Off
-  Hotkey, *s, Off
-  Hotkey, *s up, Off
-  Hotkey, *d, Off
-  Hotkey, *d up, Off
-  Hotkey, *f, Off
-  Hotkey, *f up, Off
-  Hotkey, *g, Off
-  Hotkey, *g up, Off
-  Hotkey, *h, Off
-  Hotkey, *h up, Off
-  Hotkey, *j, Off
-  Hotkey, *j up, Off
-  Hotkey, *k, Off
-  Hotkey, *k up, Off
-  Hotkey, *l, Off
-  Hotkey, *l up, Off
-  Hotkey, *`;, Off
-  Hotkey, *`; up, Off
-  Hotkey, Ctrl, Off
+  Hotkey, *', Off
+  Hotkey, *' up, Off
+  Hotkey, LCtrl, Off
   if WinActive("ahk_exe Code.exe")
     Send, gg
     Send, gM
@@ -426,8 +369,6 @@ Appskey::
 if ComfyNumbers
 {
   ComfyNumbers := False
-  Hotkey, *a, Off
-  Hotkey, *a up, Off
   Hotkey, *s, Off
   Hotkey, *s up, Off
   Hotkey, *d, Off
@@ -446,13 +387,13 @@ if ComfyNumbers
   Hotkey, *l up, Off
   Hotkey, *`;, Off
   Hotkey, *`; up, Off
-  Hotkey, Ctrl, Off
+  Hotkey, *', Off
+  Hotkey, *' up, Off
+  Hotkey, LCtrl, Off
 }
 else
 {
   ComfyNumbers := True
-  Hotkey, *a, On
-  Hotkey, *a up, On
   Hotkey, *s, On
   Hotkey, *s up, On
   Hotkey, *d, On
@@ -471,6 +412,8 @@ else
   Hotkey, *l up, On
   Hotkey, *`;, On
   Hotkey, *`; up, On
-  Hotkey, Ctrl, On
+  Hotkey, *', On
+  Hotkey, *' up, On
+  Hotkey, LCtrl, On
 }
 Return
