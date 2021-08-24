@@ -197,12 +197,9 @@ nnoremap } /}<cr>:noh<cr>
 "	au FileType javascript nnoremap <buffer> <localleader>c iasdfjkl;<ESC>
 "augroup END
 
-nnoremap <localleader><localleader>g :set operatorfunc=GrepOperator<cr>g@
-vnoremap <localleader><localleader>g :<c-u>call GrepOperator(visualmode())<cr>
+nnoremap <localleader><localleader>p :call InsertPrintFunction("w")<cr>
 
-nnoremap <localleader><localleader>f :call Test("w")<cr>
-
-function! Test(x)
+function! InsertPrintFunction(x)
     let extension = expand('%:e')
 
     " Python
