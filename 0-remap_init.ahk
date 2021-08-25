@@ -36,6 +36,9 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 ; │LCtr│Win │LAlt │         └───┘         │RAlt│ Fn │Apps│RCtr│ │ ← │ ↓ │ → │ │   0   │ . │ V │
 ; └────┴────┴─────┴───────────────────────┴────┴────┴────┴────┘ └───┴───┴───┘ └───────┴───┴───┘
 
+; Number row
+`::CapsLock
+
 ; First row
 q::[
 w::q
@@ -50,6 +53,7 @@ p::o
 [::p
 
 ; Second Row
+CapsLock::\
 a::/
 s::a
 d::s
@@ -64,7 +68,7 @@ l::k
 \::'
 
 ; Third Row
-z::\
+z::`
 x::z
 c::x
 v::c
@@ -141,5 +145,3 @@ NumpadAdd::
       Send, │
   return
 
-CapsLock::`
-`::CapsLock
