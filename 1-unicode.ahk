@@ -4,29 +4,6 @@
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
-; ================== Hotkeys ===================
-
-; GetKeyboardLanguage()
-; {
-; 	if !ThreadId := DllCall("user32.dll\GetWindowThreadProcessId", "Ptr", WinActive("A"), "UInt", 0, "UInt")
-; 		return false
-	
-; 	if !KBLayout := DllCall("user32.dll\GetKeyboardLayout", "UInt", ThreadId, "UInt")
-; 		return false
-	
-; 	return KBLayout & 0xFFFF
-; }
-
-#!l::
-Send, ^#{Right}
-Return
-
-#!h::
-Send, ^#{Left}
-Return
-
-
-; ==================== SPECIAL CHARACTERS =====================
 ; ---------- First Line ----------
 >+1::
 char := Chr(161) ; ¡
