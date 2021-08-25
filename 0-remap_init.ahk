@@ -143,18 +143,3 @@ NumpadAdd::
 
 CapsLock::`
 `::CapsLock
-
-; Windows movement
-#!l::
-Send, ^#{Right}
-Return
-
-#!h::
-Send, ^#{Left}
-Return
-
-
-
-
-
-
