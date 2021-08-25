@@ -76,8 +76,9 @@ m::n
 /::.
 
 ; Fourth row
+LCtrl::LAlt
 LWin::LCtrl
-LCtrl::LWin
+LAlt::LWin
 RAlt::LShift
 
 
