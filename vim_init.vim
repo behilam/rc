@@ -97,15 +97,9 @@ nnoremap <leader>i' mqviw<ESC>a'<ESC>bi'<ESC>`ql
 nnoremap <leader><leader>i' mqviW<ESC>a'<ESC>Bi'<ESC>`ql
 vnoremap <leader>i' <ESC>mq`>a'<ESC>`<<ESC>i'<ESC>`><ESC>`ql
 " ┌──➤ "Text"
-nnoremap <leader>i" mqviw<ESC>a"<ESC>bi"<ESC>`ql
-nnoremap <leader>I' mqviw<ESC>a"<ESC>bi"<ESC>`ql
-nnoremap <leader>I" mqviw<ESC>a"<ESC>bi"<ESC>`ql
-nnoremap <leader><leader>i" mqviW<ESC>a"<ESC>Bi"<ESC>`ql
-nnoremap <leader><leader>I' mqviW<ESC>a"<ESC>Bi"<ESC>`ql
-nnoremap <leader><leader>I" mqviW<ESC>a"<ESC>Bi"<ESC>`ql
-vnoremap <leader>i" <ESC>mq`>a"<ESC>`<<ESC>i"<ESC>`><ESC>`ql
-vnoremap <leader>I' <ESC>mq`>a"<ESC>`<<ESC>i"<ESC>`><ESC>`ql
-vnoremap <leader>I" <ESC>mq`>a"<ESC>`<<ESC>i"<ESC>`><ESC>`ql
+nnoremap <leader>i; mqviw<ESC>a"<ESC>bi"<ESC>`ql
+nnoremap <leader><leader>i; mqviW<ESC>a"<ESC>Bi"<ESC>`ql
+vnoremap <leader>i; <ESC>mq`>a"<ESC>`<<ESC>i"<ESC>`><ESC>`ql
 " ┌──➤ `Text`
 nnoremap <leader>i` mqviw<ESC>a`<ESC>bi`<ESC>`ql
 nnoremap <leader><leader>i` mqviW<ESC>a`<ESC>Bi`<ESC>`ql
@@ -127,15 +121,9 @@ nnoremap <leader>i[ mqviw<ESC>a]<ESC>bi[<ESC>`ql
 nnoremap <leader><leader>i[ mqviW<ESC>a]<ESC>Bi[<ESC>`ql
 vnoremap <leader>i[ <ESC>mq`>a]<ESC>`<<ESC>i[<ESC>`><ESC>`ql
 " ┌──➤ {Text}
-nnoremap <leader>i{ mqviw<ESC>a}<ESC>bi{<ESC>`ql
-nnoremap <leader>I[ mqviw<ESC>a}<ESC>bi{<ESC>`ql
-nnoremap <leader>I{ mqviw<ESC>a}<ESC>bi{<ESC>`ql
-nnoremap <leader><leader>i{ mqviW<ESC>a}<ESC>Bi{<ESC>`ql
-nnoremap <leader><leader>I[ mqviW<ESC>a}<ESC>Bi{<ESC>`ql
-nnoremap <leader><leader>I{ mqviW<ESC>a}<ESC>Bi{<ESC>`ql
-vnoremap <leader>i{ <ESC>mq`>a}<ESC>`<<ESC>i{<ESC>`><ESC>`ql
-vnoremap <leader>I[ <ESC>mq`>a}<ESC>`<<ESC>i{<ESC>`><ESC>`ql
-vnoremap <leader>I{ <ESC>mq`>a}<ESC>`<<ESC>i{<ESC>`><ESC>`ql
+nnoremap <leader>i] mqviw<ESC>a}<ESC>bi{<ESC>`ql
+nnoremap <leader><leader>i] mqviW<ESC>a}<ESC>Bi{<ESC>`ql
+vnoremap <leader>i] <ESC>mq`>a}<ESC>`<<ESC>i{<ESC>`><ESC>`ql
 " ┌──➤ { Text }
 nnoremap <leader>i} mqviw<ESC>a }<ESC>bi{ <ESC>`ql
 nnoremap <leader>I] mqviw<ESC>a }<ESC>bi{ <ESC>`ql
@@ -151,35 +139,13 @@ nnoremap <leader>i/ mqviw<ESC>a/<ESC>bi/<ESC>`ql
 nnoremap <leader><leader>i/ mqviW<ESC>a/<ESC>Bi/<ESC>`ql
 vnoremap <leader>i/ <ESC>mq`>a/<ESC>`<<ESC>i/<ESC>`><ESC>`ql
 " ┌──➤ <Text>
-nnoremap <leader>i< mqviw<ESC>a><ESC>bi<<ESC>`ql
-nnoremap <leader>I, mqviw<ESC>a><ESC>bi<<ESC>`ql
-nnoremap <leader>I< mqviw<ESC>a><ESC>bi<<ESC>`ql
-nnoremap <leader><leader>i< mqviW<ESC>a><ESC>Bi<<ESC>`ql
-nnoremap <leader><leader>I, mqviW<ESC>a><ESC>Bi<<ESC>`ql
-nnoremap <leader><leader>I< mqviW<ESC>a><ESC>Bi<<ESC>`ql
-vnoremap <leader>i< <ESC>mq`>a><ESC>`<<ESC>i<<ESC>`><ESC>`ql
-vnoremap <leader>I, <ESC>mq`>a><ESC>`<<ESC>i<<ESC>`><ESC>`ql
-vnoremap <leader>I< <ESC>mq`>a><ESC>`<<ESC>i<<ESC>`><ESC>`ql
+nnoremap <leader>i, mqviw<ESC>a><ESC>bi<<ESC>`ql
+nnoremap <leader><leader>i, mqviW<ESC>a><ESC>Bi<<ESC>`ql
+vnoremap <leader>i, <ESC>mq`>a><ESC>`<<ESC>i<<ESC>`><ESC>`ql
 " ┌──➤ «Text»
-nnoremap <leader>i« mqviw<ESC>a»<ESC>bi«<ESC>`ql
-nnoremap <leader>í« mqviw<ESC>a»<ESC>bi«<ESC>`ql
-nnoremap <leader>I« mqviw<ESC>a»<ESC>bi«<ESC>`ql
-nnoremap <leader>Í« mqviw<ESC>a»<ESC>bi«<ESC>`ql
-nnoremap <leader><leader>i« mqviW<ESC>a»<ESC>Bi«<ESC>`ql
-nnoremap <leader><leader>í« mqviW<ESC>a»<ESC>Bi«<ESC>`ql
-nnoremap <leader><leader>I« mqviW<ESC>a»<ESC>Bi«<ESC>`ql
-nnoremap <leader><leader>Í« mqviW<ESC>a»<ESC>Bi«<ESC>`ql
-vnoremap <leader>i« <ESC>mq`>a»<ESC>`<<ESC>i«<ESC>`><ESC>`ql
-vnoremap <leader>í« <ESC>mq`>a»<ESC>`<<ESC>i«<ESC>`><ESC>`ql
-vnoremap <leader>I« <ESC>mq`>a»<ESC>`<<ESC>i«<ESC>`><ESC>`ql
-vnoremap <leader>Í« <ESC>mq`>a»<ESC>`<<ESC>i«<ESC>`><ESC>`ql
-" ┌──➤ ‹Text›
-nnoremap <leader>i‹ mqviw<ESC>a›<ESC>bi‹<ESC>`ql
-nnoremap <leader>í‹ mqviw<ESC>a›<ESC>bi‹<ESC>`ql
-nnoremap <leader><leader>i‹ mqviW<ESC>a›<ESC>Bi‹<ESC>`ql
-nnoremap <leader><leader>í‹ mqviW<ESC>a›<ESC>Bi‹<ESC>`ql
-vnoremap <leader>i‹ <ESC>mq`>a›<ESC>`<<ESC>i‹<ESC>`><ESC>`ql
-vnoremap <leader>í‹ <ESC>mq`>a›<ESC>`<<ESC>i‹<ESC>`><ESC>`ql
+nnoremap <leader>i. mqviw<ESC>a»<ESC>bi«<ESC>`ql
+nnoremap <leader><leader>i. mqviW<ESC>a»<ESC>Bi«<ESC>`ql
+vnoremap <leader>i. <ESC>mq`>a»<ESC>`<<ESC>i«<ESC>`><ESC>`ql
 " ┌──➤  Text 
 nnoremap <leader>i<leader> mqviw<ESC>a <ESC>bi <ESC>`ql
 nnoremap <leader><leader>i<leader> mqviw<esc>a <esc>bi <esc>`ql
@@ -192,7 +158,7 @@ nnoremap <leader>l $
 nnoremap <leader>h ^
 nnoremap <leader>H 0
 
-" Change inside parens/brackets shortcut
+" Change inside parens/brackets shortcut [EXPERIMENTAL]
 onoremap p :<c-u>normal! t)vi(<cr>
 onoremap P :<c-u>normal! T(vi(<cr>
 onoremap o :<c-u>normal! t]vi[<cr>
