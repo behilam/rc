@@ -81,6 +81,18 @@ LCtrl::LWin
 RAlt::LShift
 
 
+; Special number characters
+>^s::Send, {!}
+>^d::Send, @
+>^f::Send, {#}
+>^g::Send, $
+>^h::Send, `%
+>^j::Send, {^}
+>^k::Send, &
+>^l::Send, *
+>^`;::Send, (
+>^'::Send, )
+
 ; Box drawing
 NumpadEnd::Send, └
 NumpadDown::Send, ┴
