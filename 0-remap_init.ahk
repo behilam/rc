@@ -93,6 +93,18 @@ RAlt::LShift
 >^`;::Send, (
 >^'::Send, )
 
+; Quick numbers
+Appskey & s::Send, 1
+Appskey & d::Send, 2
+Appskey & f::Send, 3
+Appskey & g::Send, 4
+Appskey & h::Send, 5
+Appskey & j::Send, 6
+Appskey & k::Send, 7
+Appskey & l::Send, 8
+Appskey & `;::Send, 9
+Appskey & '::Send, 0
+
 ; Box drawing
 NumpadEnd::Send, └
 NumpadDown::Send, ┴

@@ -4,56 +4,18 @@
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
-ComfyNumbers := False
-
-SetTimer, InitComfyNumbers, 200
-
-InitComfyNumbers:
-if ComfyNumbers
-{
-  ComfyNumbers := False
-  Hotkey, *s, Off
-  Hotkey, *s up, Off
-  Hotkey, *d, Off
-  Hotkey, *d up, Off
-  Hotkey, *f, Off
-  Hotkey, *f up, Off
-  Hotkey, *g, Off
-  Hotkey, *g up, Off
-  Hotkey, *h, Off
-  Hotkey, *h up, Off
-  Hotkey, *j, Off
-  Hotkey, *j up, Off
-  Hotkey, *k, Off
-  Hotkey, *k up, Off
-  Hotkey, *l, Off
-  Hotkey, *l up, Off
-  Hotkey, *`;, Off
-  Hotkey, *`; up, Off
-  Hotkey, *', Off
-  Hotkey, *' up, Off
-  Hotkey, LCtrl, Off
-  SetTimer, InitComfyNumbers, Delete
-}
-else
-{
-  ComfyNumbers := True
-}
-
 ; ================== Hotkeys ===================
 
-GetKeyboardLanguage()
-{
-	if !ThreadId := DllCall("user32.dll\GetWindowThreadProcessId", "Ptr", WinActive("A"), "UInt", 0, "UInt")
-		return false
+; GetKeyboardLanguage()
+; {
+; 	if !ThreadId := DllCall("user32.dll\GetWindowThreadProcessId", "Ptr", WinActive("A"), "UInt", 0, "UInt")
+; 		return false
 	
-	if !KBLayout := DllCall("user32.dll\GetKeyboardLayout", "UInt", ThreadId, "UInt")
-		return false
+; 	if !KBLayout := DllCall("user32.dll\GetKeyboardLayout", "UInt", ThreadId, "UInt")
+; 		return false
 	
-	return KBLayout & 0xFFFF
-}
-
-^+r::Reload
+; 	return KBLayout & 0xFFFF
+; }
 
 #!l::
 Send, ^#{Right}
@@ -314,105 +276,4 @@ Return
 <>+a::
 char := Chr(191) ; ¿
 Send, %char%
-Return
-
-
-
-; ===================== COMFY NUMBERS ====================
-
-; Remap numbers into main row
-s::1
-d::2
-f::3
-g::4
-h::5
-j::6
-k::7
-l::8
-`;::9
-'::0
-
-LCtrl::
-if ComfyNumbers
-{
-  ComfyNumbers := False
-  Hotkey, *s, Off
-  Hotkey, *s up, Off
-  Hotkey, *d, Off
-  Hotkey, *d up, Off
-  Hotkey, *f, Off
-  Hotkey, *f up, Off
-  Hotkey, *g, Off
-  Hotkey, *g up, Off
-  Hotkey, *h, Off
-  Hotkey, *h up, Off
-  Hotkey, *j, Off
-  Hotkey, *j up, Off
-  Hotkey, *k, Off
-  Hotkey, *k up, Off
-  Hotkey, *l, Off
-  Hotkey, *l up, Off
-  Hotkey, *`;, Off
-  Hotkey, *`; up, Off
-  Hotkey, *', Off
-  Hotkey, *' up, Off
-  Hotkey, LCtrl, Off
-  if WinActive("ahk_exe Code.exe")
-    Send, gg
-    Send, gM
-    Send, zz
-}
-Return
-
-Appskey::
-if ComfyNumbers
-{
-  ComfyNumbers := False
-  Hotkey, *s, Off
-  Hotkey, *s up, Off
-  Hotkey, *d, Off
-  Hotkey, *d up, Off
-  Hotkey, *f, Off
-  Hotkey, *f up, Off
-  Hotkey, *g, Off
-  Hotkey, *g up, Off
-  Hotkey, *h, Off
-  Hotkey, *h up, Off
-  Hotkey, *j, Off
-  Hotkey, *j up, Off
-  Hotkey, *k, Off
-  Hotkey, *k up, Off
-  Hotkey, *l, Off
-  Hotkey, *l up, Off
-  Hotkey, *`;, Off
-  Hotkey, *`; up, Off
-  Hotkey, *', Off
-  Hotkey, *' up, Off
-  Hotkey, LCtrl, Off
-}
-else
-{
-  ComfyNumbers := True
-  Hotkey, *s, On
-  Hotkey, *s up, On
-  Hotkey, *d, On
-  Hotkey, *d up, On
-  Hotkey, *f, On
-  Hotkey, *f up, On
-  Hotkey, *g, On
-  Hotkey, *g up, On
-  Hotkey, *h, On
-  Hotkey, *h up, On
-  Hotkey, *j, On
-  Hotkey, *j up, On
-  Hotkey, *k, On
-  Hotkey, *k up, On
-  Hotkey, *l, On
-  Hotkey, *l up, On
-  Hotkey, *`;, On
-  Hotkey, *`; up, On
-  Hotkey, *', On
-  Hotkey, *' up, On
-  Hotkey, LCtrl, On
-}
 Return
