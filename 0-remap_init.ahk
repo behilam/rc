@@ -97,6 +97,10 @@ RAlt::LShift
 >^l::Send, *
 >^`;::Send, (
 >^'::Send, )
+>^i::Send, -
+>^o::Send, _
+>^p::Send, =
+>^[::Send, {+}
 
 ; Quick numbers
 Appskey & s::Send, 1
