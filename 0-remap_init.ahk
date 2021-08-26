@@ -87,20 +87,20 @@ RAlt::LShift
 
 
 ; Special number characters
-Appskey & s::Send, {!}
-Appskey & d::Send, @
-Appskey & f::Send, {#}
-Appskey & g::Send, $
-Appskey & h::Send, `%
-Appskey & j::Send, {^}
-Appskey & k::Send, &
-Appskey & l::Send, *
-Appskey & `;::Send, (
-Appskey & '::Send, )
+Appskey & w::Send, {!}
+Appskey & e::Send, @
+Appskey & r::Send, {#}
+Appskey & t::Send, $
+Appskey & y::Send, `%
+>^w::Send, {^}
+>^e::Send, &
+>^r::Send, *
+>^t::Send, (
+>^y::Send, )
 Appskey & i::Send, -
-Appskey & o::Send, _
+Appskey & o::Send, {+}
 Appskey & p::Send, =
-Appskey & [::Send, {+}
+Appskey & [::Send, _
 
 ; Quick numbers
 >^s::Send, 1
@@ -115,16 +115,16 @@ Appskey & [::Send, {+}
 >^'::Send, 0
 
 ; Tab movements
->^w::Send, ^1
->^e::Send, ^2
->^r::Send, ^3
->^t::Send, ^4
->^y::Send, ^5
->^u::Send, ^6
->^i::Send, ^7
->^o::Send, ^8
->^p::Send, ^9
->^]::Send, ^0
+Appskey & s::Send, ^1
+Appskey & d::Send, ^2
+Appskey & f::Send, ^3
+Appskey & g::Send, ^4
+Appskey & h::Send, ^5
+Appskey & j::Send, ^6
+Appskey & k::Send, ^7
+Appskey & l::Send, ^8
+Appskey & `;::Send, ^9
+Appskey & '::Send, ^0
 
 ; Box drawing
 NumpadEnd::Send, └
