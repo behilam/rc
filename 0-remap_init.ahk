@@ -115,16 +115,16 @@ Appskey & [::Send, {+}
 >^'::Send, 0
 
 ; Tab movements
-<^>+s::Send, ^1
-<^>+d::Send, ^2
-<^>+f::Send, ^3
-<^>+g::Send, ^4
-<^>+h::Send, ^5
-<^>+j::Send, ^6
-<^>+k::Send, ^7
-<^>+l::Send, ^8
-<^>+`;::Send, ^9
-<^>+'::Send, ^0
+>^w::Send, ^1
+>^e::Send, ^2
+>^r::Send, ^3
+>^t::Send, ^4
+>^y::Send, ^5
+>^u::Send, ^6
+>^i::Send, ^7
+>^o::Send, ^8
+>^p::Send, ^9
+>^]::Send, ^0
 
 ; Box drawing
 NumpadEnd::Send, └
@@ -137,15 +137,15 @@ NumpadHome::Send, ┌
 NumpadUp::Send, ┬
 NumpadPgup::Send, ┐
 NumpadSub::
-  if (GetKeyState("NumLock", "T"))  ; get the toggle-state of NumLock
-      Send, -
-  else
-      Send, ─
-  return
+    if (GetKeyState("NumLock", "T"))  ; get the toggle-state of NumLock
+        Send, -
+    else
+        Send, ─
+Return
 NumpadAdd::
-  if (GetKeyState("NumLock", "T"))  ; get the toggle-state of NumLock
-      Send, +
-  else
-      Send, │
-  return
+    if (GetKeyState("NumLock", "T"))  ; get the toggle-state of NumLock
+        Send, +
+    else
+        Send, │
+Return
 
