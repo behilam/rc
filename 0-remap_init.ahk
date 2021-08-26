@@ -97,10 +97,10 @@ Appskey & e::Send, &
 Appskey & r::Send, *
 Appskey & t::Send, (
 Appskey & y::Send, )
-Appskey & i::Send, -
-Appskey & o::Send, {+}
-Appskey & p::Send, _
-Appskey & [::Send, =
+Appskey & x::Send, -
+Appskey & c::Send, {+}
+Appskey & v::Send, _
+Appskey & b::Send, =
 
 ; Quick numbers
 >^s::Send, 1
