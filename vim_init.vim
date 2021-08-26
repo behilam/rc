@@ -1,5 +1,6 @@
 set encoding=utf-8
 set fileencoding=utf-8
+set buftype=""
 set shortmess=filnxtToOI
 let mapleader = ' '
 let maplocalleader = '\'
@@ -103,11 +104,11 @@ vnoremap <leader>ig <ESC>mq`>a%<ESC>`<<ESC>i%<ESC>`><ESC>`ql
 nnoremap <leader>dg mq/%<cr>x?%<cr>x:noh<cr>`q
 vnoremap <leader>dg <esc>mq`>/%<cr>x`<?%<cr>x:noh<cr>`q
 " ┌──➤ (Text)
-nnoremap <leader>il mqviw<ESC>a)<ESC>bi(<ESC>`ql
-nnoremap <leader><leader>il mqviW<ESC>a)<ESC>Bi(<ESC>`ql
-vnoremap <leader>il <ESC>mq`>a)<ESC>`<<ESC>i(<ESC>`><ESC>`ql
-nnoremap <leader>dl mqva(o<esc>%x``x`q
-vnoremap <leader>dl <esc>mq`>/)<cr>x`<?(<cr>x:noh<cr>`q
+nnoremap <leader>ir mqviw<ESC>a)<ESC>bi(<ESC>`ql
+nnoremap <leader><leader>ir mqviW<ESC>a)<ESC>Bi(<ESC>`ql
+vnoremap <leader>ir <ESC>mq`>a)<ESC>`<<ESC>i(<ESC>`><ESC>`ql
+nnoremap <leader>dr mqva(o<esc>%x``x`q
+vnoremap <leader>dr <esc>mq`>/)<cr>x`<?(<cr>x:noh<cr>`q
 " ┌──➤ [Text]
 nnoremap <leader>i[ mqviw<ESC>a]<ESC>bi[<ESC>`ql
 nnoremap <leader><leader>i[ mqviW<ESC>a]<ESC>Bi[<ESC>`ql
