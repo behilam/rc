@@ -115,16 +115,16 @@ Appskey & `;::Send, 9
 Appskey & '::Send, 0
 
 ; Tab movements
->+s::Send, ^1
->+d::Send, ^2
->+f::Send, ^3
->+g::Send, ^4
->+h::Send, ^5
->+j::Send, ^6
->+k::Send, ^7
->+l::Send, ^8
->+`;::Send, ^9
->+'::Send, ^0
+<^>+s::Send, ^1
+<^>+d::Send, ^2
+<^>+f::Send, ^3
+<^>+g::Send, ^4
+<^>+h::Send, ^5
+<^>+j::Send, ^6
+<^>+k::Send, ^7
+<^>+l::Send, ^8
+<^>+`;::Send, ^9
+<^>+'::Send, ^0
 
 ; Box drawing
 NumpadEnd::Send, └
