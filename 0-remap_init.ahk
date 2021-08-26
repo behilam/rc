@@ -99,8 +99,8 @@ Appskey & y::Send, `%
 >^y::Send, )
 Appskey & i::Send, -
 Appskey & o::Send, {+}
-Appskey & p::Send, =
-Appskey & [::Send, _
+Appskey & p::Send, _
+Appskey & [::Send, =
 
 ; Quick numbers
 >^s::Send, 1
