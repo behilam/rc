@@ -77,41 +77,49 @@ nnoremap <leader>i' mqviw<ESC>a'<ESC>bi'<ESC>`ql
 nnoremap <leader><leader>i' mqviW<ESC>a'<ESC>Bi'<ESC>`ql
 vnoremap <leader>i' <ESC>mq`>a'<ESC>`<<ESC>i'<ESC>`><ESC>`ql
 nnoremap <leader>d' mq/'<cr>x?'<cr>x:noh<cr>`q
+vnoremap <leader>d' <esc>mq`>/'<cr>x`<?'<cr>x:noh<cr>`q
 " ┌──➤ "Text"
 nnoremap <leader>i; mqviw<ESC>a"<ESC>bi"<ESC>`ql
 nnoremap <leader><leader>i; mqviW<ESC>a"<ESC>Bi"<ESC>`ql
 vnoremap <leader>i; <ESC>mq`>a"<ESC>`<<ESC>i"<ESC>`><ESC>`ql
 nnoremap <leader>d; mq/"<cr>x?"<cr>x:noh<cr>`q
+vnoremap <leader>d; <esc>mq`>/"<cr>x`<?"<cr>x:noh<cr>`q
 " ┌──➤ `Text`
 nnoremap <leader>i` mqviw<ESC>a`<ESC>bi`<ESC>`ql
 nnoremap <leader><leader>i` mqviW<ESC>a`<ESC>Bi`<ESC>`ql
 vnoremap <leader>i` <ESC>mq`>a`<ESC>`<<ESC>i`<ESC>`><ESC>`ql
 nnoremap <leader>d` mq/`<cr>x?`<cr>x:noh<cr>`q
+vnoremap <leader>d` <esc>mq`>/`<cr>x`<?`<cr>x:noh<cr>`q
 " ┌──➤ ${Text}
 nnoremap <leader>if mqviw<ESC>a}<ESC>bi${<ESC>`qll
 nnoremap <leader><leader>if mqviW<ESC>a}<ESC>Bi${<ESC>`qll
 vnoremap <leader>if <ESC>mq`>a}<ESC>`<<ESC>i${<ESC>`><ESC>`qll
 nnoremap <leader>df mq/}<cr>x?\$<cr>xx:noh<cr>`q
+vnoremap <leader>df <esc>mq`>/}<cr>x`<?$<cr>xx:noh<cr>`q
 " ┌──➤ %Text%
 nnoremap <leader>ig mqviw<ESC>a%<ESC>bi%<ESC>`ql
 nnoremap <leader><leader>ig mqviW<ESC>a%<ESC>Bi%<ESC>`ql
 vnoremap <leader>ig <ESC>mq`>a%<ESC>`<<ESC>i%<ESC>`><ESC>`ql
 nnoremap <leader>dg mq/%<cr>x?%<cr>x:noh<cr>`q
+vnoremap <leader>dg <esc>mq`>/%<cr>x`<?%<cr>x:noh<cr>`q
 " ┌──➤ (Text)
 nnoremap <leader>il mqviw<ESC>a)<ESC>bi(<ESC>`ql
 nnoremap <leader><leader>il mqviW<ESC>a)<ESC>Bi(<ESC>`ql
 vnoremap <leader>il <ESC>mq`>a)<ESC>`<<ESC>i(<ESC>`><ESC>`ql
 nnoremap <leader>dl mqva(o<esc>%x``x`q
+vnoremap <leader>dl <esc>mq`>/)<cr>x`<?(<cr>x:noh<cr>`q
 " ┌──➤ [Text]
 nnoremap <leader>i[ mqviw<ESC>a]<ESC>bi[<ESC>`ql
 nnoremap <leader><leader>i[ mqviW<ESC>a]<ESC>Bi[<ESC>`ql
 vnoremap <leader>i[ <ESC>mq`>a]<ESC>`<<ESC>i[<ESC>`><ESC>`ql
 nnoremap <leader>d[ mqva[o<esc>%x``x`q
+vnoremap <leader>d[ <esc>mq`>/]<cr>x`<?[<cr>x:noh<cr>`q
 " ┌──➤ {Text}
 nnoremap <leader>i] mqviw<ESC>a}<ESC>bi{<ESC>`ql
 nnoremap <leader><leader>i] mqviW<ESC>a}<ESC>Bi{<ESC>`ql
 vnoremap <leader>i] <ESC>mq`>a}<ESC>`<<ESC>i{<ESC>`><ESC>`ql
 nnoremap <leader>d] mqva{o<esc>%x``x`q
+vnoremap <leader>d] <esc>mq`>/}<cr>x`<?{<cr>x:noh<cr>`q
 " ┌──➤ { Text }
 nnoremap <leader>i} mqviw<ESC>a }<ESC>bi{ <ESC>`ql
 nnoremap <leader>I] mqviw<ESC>a }<ESC>bi{ <ESC>`ql
@@ -127,21 +135,25 @@ nnoremap <leader>i/ mqviw<ESC>a/<ESC>bi/<ESC>`ql
 nnoremap <leader><leader>i/ mqviW<ESC>a/<ESC>Bi/<ESC>`ql
 vnoremap <leader>i/ <ESC>mq`>a/<ESC>`<<ESC>i/<ESC>`><ESC>`ql
 nnoremap <leader>d/ mq//<cr>x?/<cr>x:noh<cr>`q
+vnoremap <leader>d/ <esc>mq`>//<cr>x`<?/<cr>x:noh<cr>`q
 " ┌──➤ <Text>
 nnoremap <leader>i, mqviw<ESC>a><ESC>bi<<ESC>`ql
 nnoremap <leader><leader>i, mqviW<ESC>a><ESC>Bi<<ESC>`ql
 vnoremap <leader>i, <ESC>mq`>a><ESC>`<<ESC>i<<ESC>`><ESC>`ql
 nnoremap <leader>d, mq/><cr>x?<<cr>x:noh<cr>`q
+vnoremap <leader>d, <esc>mq`>/><cr>x`<?<<cr>x:noh<cr>`q
 " ┌──➤ «Text»
 nnoremap <leader>i. mqviw<ESC>a»<ESC>bi«<ESC>`ql
 nnoremap <leader><leader>i. mqviW<ESC>a»<ESC>Bi«<ESC>`ql
 vnoremap <leader>i. <ESC>mq`>a»<ESC>`<<ESC>i«<ESC>`><ESC>`ql
 nnoremap <leader>d. mq/»<cr>x?«<cr>x:noh<cr>`q
+vnoremap <leader>d. <esc>mq`>/»<cr>x`<?«<cr>x:noh<cr>`q
 " ┌──➤  Text 
 nnoremap <leader>i<leader> mqviw<ESC>a <ESC>bi <ESC>`ql
 nnoremap <leader><leader>i<leader> mqviw<esc>a <esc>bi <esc>`ql
 vnoremap <leader>i<leader> <ESC>mq`>a <ESC>`<<ESC>i <ESC>`><ESC>`ql
 nnoremap <leader>d<leader> mq/ <cr>x? <cr>x:noh<cr>`q
+vnoremap <leader>d<leader> <esc>mq`>/ <cr>x`<? <cr>x:noh<cr>`q
     " Delete wrapper tags
 nnoremap <leader>dt mqvat<`q0i:exe "/^<esc>f<a\\/<esc>/[ >]<cr>i" <esc>"qdF::@q<cr>dd`qdd:noh<cr>
 """" Note: Your cursor has to be (anywhere) on top of the opening tag and it only works with spreaded tags (not oneliners) in the form:
