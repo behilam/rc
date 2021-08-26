@@ -87,32 +87,32 @@ RAlt::LShift
 
 
 ; Special number characters
->^s::Send, {!}
->^d::Send, @
->^f::Send, {#}
->^g::Send, $
->^h::Send, `%
->^j::Send, {^}
->^k::Send, &
->^l::Send, *
->^`;::Send, (
->^'::Send, )
->^i::Send, -
->^o::Send, _
->^p::Send, =
->^[::Send, {+}
+Appskey & s::Send, {!}
+Appskey & d::Send, @
+Appskey & f::Send, {#}
+Appskey & g::Send, $
+Appskey & h::Send, `%
+Appskey & j::Send, {^}
+Appskey & k::Send, &
+Appskey & l::Send, *
+Appskey & `;::Send, (
+Appskey & '::Send, )
+Appskey & i::Send, -
+Appskey & o::Send, _
+Appskey & p::Send, =
+Appskey & [::Send, {+}
 
 ; Quick numbers
-Appskey & s::Send, 1
-Appskey & d::Send, 2
-Appskey & f::Send, 3
-Appskey & g::Send, 4
-Appskey & h::Send, 5
-Appskey & j::Send, 6
-Appskey & k::Send, 7
-Appskey & l::Send, 8
-Appskey & `;::Send, 9
-Appskey & '::Send, 0
+>^s::Send, 1
+>^d::Send, 2
+>^f::Send, 3
+>^g::Send, 4
+>^h::Send, 5
+>^j::Send, 6
+>^k::Send, 7
+>^l::Send, 8
+>^`;::Send, 9
+>^'::Send, 0
 
 ; Tab movements
 <^>+s::Send, ^1
