@@ -85,6 +85,9 @@ LWin::LCtrl
 LAlt::LWin
 RAlt::LShift
 
+; Mouse
+XButton2::Media_Next
+
 
 ; Special number characters
 Appskey & s::Send, {!}
