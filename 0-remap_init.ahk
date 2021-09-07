@@ -86,7 +86,12 @@ LAlt::LWin
 RAlt::LShift
 
 ; Mouse
-XButton2::Media_Next
+XButton1::Browser_Back
+XButton1 & LButton::Media_Next
+XButton1 & RButton::Media_Prev
+XButton1 & WheelDown::Volume_Down
+XButton1 & WheelUp::Volume_Up
+XButton1 & MButton::Media_Play_Pause
 
 
 ; Special number characters
