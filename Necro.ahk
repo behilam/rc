@@ -5,80 +5,80 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
 #IfWinActive, Crypt of the NecroDancer
 ; ===================== Only Diamond ========================
-     ; Item
-     p::
-     Send, {Left} {Right}
-     Return
+    ; Item
+    [::
+    Send, {Left} {Right}
+    Return
 
-     ; Bomb
-     n::
-     Send, {Up} {Down}
-     Return
+    ; Bomb
+    m::
+    Send, {Up} {Down}
+    Return
 
-     ; UpLeft
-     u::
-     Send, {Up} {Left}
-     Return
+    ; UpLeft
+    i::
+    Send, {Up} {Left}
+    Return
 
-     ; UpRight
-     o::
-     Send, {Up} {Right}
-     Return
+    ; UpRight
+    p::
+    Send, {Up} {Right}
+    Return
 
-     ; DownLeft
-     h::
-     Send, {Down} {Left}
-     Return
+    ; DownLeft
+    j::
+    Send, {Down} {Left}
+    Return
 
-     ; DownRight
-     `;::
-     Send, {Down} {Right}
-     Return
+    ; DownRight
+    '::
+    Send, {Down} {Right}
+    Return
 
 ; ===================== Diamond 2 ==========================
-     ; Item
-     q::
-     Send, ad
-     Return
+    ; Item
+    w::
+    Send, ad
+    Return
 
-     ; Bomb
-     v::
-     Send, ws
-     Return
+    ; Bomb
+    b::
+    Send, ws
+    Return
 
-     ; UpLeft
-     w::
-     Send, wa
-     Return
+    ; UpLeft
+    e::
+    Send, wa
+    Return
 
-     ; UpRight
-     r::
-     Send, wd
-     Return
+    ; UpRight
+    t::
+    Send, wd
+    Return
 
-     ; DownLeft
-     a::
-     Send, as
-     Return
+    ; DownLeft
+    s::
+    Send, as
+    Return
 
-     ; DownRight
-     g::
-     Send, sd
-     Return
+    ; DownRight
+    h::
+    Send, sd
+    Return
 ;====================== Two players =========================
-    k::
+    l::
     Send, {Down}
     Return
 
-    i::
+    o::
     Send, {Up}
     Return
 
-    l::
+    `;::
     Send, {Right}
     Return
 
-    j::
+    k::
     Send, {Left}
     Return
 
@@ -114,10 +114,10 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
 
     ; LEFT HAND
-    d::s
-    e::w
-    f::d
-    s::a
+    f::s
+    r::w
+    g::d
+    d::a
 ;
 ;    ; Item 1
 ;    r::
