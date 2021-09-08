@@ -36,6 +36,9 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 ; │LCtr│Win │LAlt │         └───┘         │RAlt│ Fn │Apps│RCtr│ │ ← │ ↓ │ → │ │   0   │ . │ V │
 ; └────┴────┴─────┴───────────────────────┴────┴────┴────┴────┘ └───┴───┴───┘ └───────┴───┴───┘
 
+; VARIABLES
+CurrentWin := "test"
+
 ; Number row
 `::CapsLock
 
@@ -93,6 +96,19 @@ XButton1 & WheelDown::Volume_Down
 XButton1 & WheelUp::Volume_Up
 XButton1 & MButton::Media_Play_Pause
 
+XButton2::Browser_Forward
+XButton2 & MButton::Send, ^{F4}
+XButton2 & WheelDown::Send, ^{Tab}
+XButton2 & WheelUp::Send, ^+{Tab}
+
+XButton2 & LButton::
+WinGet, CurrentWin,, A
+WinMinimize, A
+Return
+
+XButton2 & RButton::
+WinRestore, ahk_id %CurrentWin%
+Return
 
 ; Special number characters
 Appskey & s::Send, {!}
