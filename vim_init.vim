@@ -55,6 +55,8 @@ nnoremap cie viwlc
 nnoremap di/ vip:g/\/\/.*$/d<cr>:noh<cr>
 nnoremap di> t»vT«d
 nnoremap ci> t»vT«c
+nnoremap dir di(
+nnoremap cir ci(
 
 nnoremap ci. t.vT.c
 nnoremap da. t.vF.d
