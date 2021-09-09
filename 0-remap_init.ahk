@@ -121,10 +121,10 @@ Appskey & e::Send, &
 Appskey & r::Send, *
 Appskey & t::Send, (
 Appskey & y::Send, )
-Appskey & x::Send, -
-Appskey & c::Send, {+}
-Appskey & v::Send, _
-Appskey & b::Send, =
+
+; Other special characters
+Appskey & v::Send, {{}
+Appskey & b::Send, {}}
 
 ; Quick numbers
 >^s::Send, 1
