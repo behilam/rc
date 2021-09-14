@@ -1,5 +1,5 @@
 ﻿#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
-; #Warn  ; Enable warnings to assist with detecting common errors.
+#Warn  ; Enable warnings to assist with detecting common errors.
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 #SingleInstance,Force
@@ -111,20 +111,20 @@ WinRestore, ahk_id %CurrentWin%
 Return
 
 ; Special number characters
-Appskey & s::Send, {!}
-Appskey & d::Send, @
-Appskey & f::Send, {#}
-Appskey & g::Send, $
+Appskey & s::!
+Appskey & d::@
+Appskey & f::#
+Appskey & g::$
 Appskey & h::Send, `%
-Appskey & w::Send, {^}
-Appskey & e::Send, &
-Appskey & r::Send, *
-Appskey & t::Send, (
-Appskey & y::Send, )
+Appskey & w::^
+Appskey & e::&
+Appskey & r::*
+Appskey & t::(
+Appskey & y::)
 
 ; Other special characters
-Appskey & v::Send, {{}
-Appskey & b::Send, {}}
+Appskey & v::{
+Appskey & b::}
 
 ; Quick numbers
 >^s::Send, 1
@@ -151,15 +151,15 @@ Appskey & b::Send, {}}
 >^]::Send, ^0
 
 ; Box drawing
-NumpadEnd::Send, └
-NumpadDown::Send, ┴
-NumpadPgdn::Send, ┘
-NumpadLeft::Send, ├
-NumpadClear::Send, ┼
-NumpadRight::Send, ┤
-NumpadHome::Send, ┌
-NumpadUp::Send, ┬
-NumpadPgup::Send, ┐
+NumpadEnd::└
+NumpadDown::┴
+NumpadPgdn::┘
+NumpadLeft::├
+NumpadClear::┼
+NumpadRight::┤
+NumpadHome::┌
+NumpadUp::┬
+NumpadPgup::┐
 NumpadSub::
     if (GetKeyState("NumLock", "T"))  ; get the toggle-state of NumLock
         Send, -
