@@ -50,18 +50,21 @@ nnoremap <leader><leader>p ggVG"*p
 nnoremap dc ^D
 nnoremap ds ^"_D
 
+" Alternative in-wrapper modifiers
 nnoremap die viwld
 nnoremap cie viwlc
 nnoremap di/ vip:g/\/\/.*$/d<cr>:noh<cr>
-nnoremap di> t»vT«d
-nnoremap ci> t»vT«c
+nnoremap di, /><cr>hv?<<cr> d<esc>:noh<cr>
+nnoremap ci, /><cr>hv?<<cr> d<esc>:noh<cr>i
+nnoremap di. /»<cr>hv?«<cr> d<esc>:noh<cr>
+nnoremap ci. /»<cr>hv?«<cr> d<esc>:noh<cr>i
+nnoremap di; di"
+nnoremap ci; ci"
 nnoremap dir di(
 nnoremap cir ci(
+nnoremap dic di{
+nnoremap cic ci{
 
-nnoremap ci. t.vT.c
-nnoremap da. t.vF.d
-nnoremap ci« /»<cr>hv?«<cr> d<esc>:noh<cr>i
-nnoremap di« /»<cr>hv?«<cr> d<esc>:noh<cr>
 nnoremap ca« /»<cr>v?«<cr>d<esc>:noh<cr>
 nnoremap da« /»<cr>v?«<cr>d<esc>:noh<cr>
 
