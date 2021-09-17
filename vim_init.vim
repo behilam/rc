@@ -54,19 +54,31 @@ nnoremap ds ^"_D
 nnoremap die viwld
 nnoremap cie viwlc
 nnoremap di/ vip:g/\/\/.*$/d<cr>:noh<cr>
-nnoremap di, /><cr>hv?<<cr> d<esc>:noh<cr>
-nnoremap ci, /><cr>hv?<<cr> d<esc>:noh<cr>i
+nnoremap di, di<
+nnoremap ci, ci<
+nnoremap da, da<
+nnoremap ca, ca<
 nnoremap di. /»<cr>hv?«<cr> d<esc>:noh<cr>
 nnoremap ci. /»<cr>hv?«<cr> d<esc>:noh<cr>i
+nnoremap ca. /»<cr>v?«<cr>d<esc>:noh<cr>
+nnoremap da. /»<cr>v?«<cr>d<esc>:noh<cr>
 nnoremap di; di"
 nnoremap ci; ci"
 nnoremap dir di(
 nnoremap cir ci(
+nnoremap dar da(
+nnoremap car ca(
+nnoremap dur va(Vd
+nnoremap cur va(Vc
 nnoremap dic di{
 nnoremap cic ci{
+nnoremap dac da{
+nnoremap cac ca{
+nnoremap duc va{Vd
+nnoremap cuc va{Vc
+nnoremap du[ va[Vd
+nnoremap cu[ va[Vc
 
-nnoremap ca« /»<cr>v?«<cr>d<esc>:noh<cr>
-nnoremap da« /»<cr>v?«<cr>d<esc>:noh<cr>
 
 nnoremap <leader>t< va<ovd^va<vd$A><esc>
 
