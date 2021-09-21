@@ -53,7 +53,7 @@ nnoremap ds ^"_D
 " Alternative in-wrapper modifiers
 nnoremap die viwld
 nnoremap cie viwlc
-nnoremap di/ vip:g/\/\/.*$/d<cr>:noh<cr>
+nnoremap di/ vip:g/^\/\/.*$/d<cr>:noh<cr>
 nnoremap di, di<
 nnoremap ci, ci<
 nnoremap da, da<
@@ -64,12 +64,14 @@ nnoremap ca. /»<cr>v?«<cr>d<esc>:noh<cr>
 nnoremap da. /»<cr>v?«<cr>d<esc>:noh<cr>
 nnoremap di; di"
 nnoremap ci; ci"
+nnoremap vir vi(
 nnoremap dir di(
 nnoremap cir ci(
 nnoremap dar da(
 nnoremap car ca(
 nnoremap dur va(Vd
 nnoremap cur va(Vc
+nnoremap vic vi{
 nnoremap dic di{
 nnoremap cic ci{
 nnoremap dac da{
