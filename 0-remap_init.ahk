@@ -101,14 +101,7 @@ XButton2 & MButton::Send, ^{F4}
 XButton2 & WheelDown::Send, ^{Tab}
 XButton2 & WheelUp::Send, ^+{Tab}
 
-XButton2 & LButton::
-WinGet, CurrentWin,, A
-WinMinimize, A
-Return
-
-XButton2 & RButton::
-WinRestore, ahk_id %CurrentWin%
-Return
+XButton2 & LButton::Send, +{LButton}
 
 ; Special number characters
 Appskey & s::!
