@@ -50,34 +50,48 @@ nnoremap <leader><leader>p ggVG"*p
 nnoremap dc ^D
 nnoremap ds ^"_D
 
+
 " Alternative in-wrapper modifiers
 nnoremap die viwld
 nnoremap cie viwlc
+""""""""
 nnoremap di/ vip:g/^\/\/.*$/d<cr>:noh<cr>
+""""""""
 nnoremap di, di<
 nnoremap ci, ci<
 nnoremap da, da<
 nnoremap ca, ca<
+""""""""
 nnoremap di. /»<cr>hv?«<cr> d<esc>:noh<cr>
 nnoremap ci. /»<cr>hv?«<cr> d<esc>:noh<cr>i
 nnoremap ca. /»<cr>v?«<cr>d<esc>:noh<cr>
 nnoremap da. /»<cr>v?«<cr>d<esc>:noh<cr>
+""""""""
+nnoremap vi; vi"
+nnoremap va; va"
 nnoremap di; di"
+nnoremap da; da"
 nnoremap ci; ci"
+nnoremap ca; ca"
+""""""""
 nnoremap vir vi(
+nnoremap var va(
 nnoremap dir di(
-nnoremap cir ci(
 nnoremap dar da(
+nnoremap cir ci(
 nnoremap car ca(
 nnoremap dur va(Vd
 nnoremap cur va(Vc
+""""""""
 nnoremap vic vi{
+nnoremap vac va{
 nnoremap dic di{
-nnoremap cic ci{
 nnoremap dac da{
+nnoremap cic ci{
 nnoremap cac ca{
 nnoremap duc va{Vd
 nnoremap cuc va{Vc
+""""""""
 nnoremap du[ va[Vd
 nnoremap cu[ va[Vc
 
