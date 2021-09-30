@@ -116,6 +116,11 @@ char := Chr(201) ; É
 Send, %char%
 Return
 
+>+u::
+char := Chr(252) ; ü
+Send, %char%
+Return
+
 <>+u::
 char := Chr(165) ; ¥
 Send, %char%
