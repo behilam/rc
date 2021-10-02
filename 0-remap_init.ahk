@@ -162,7 +162,7 @@ NumpadSub::
 Return
 NumpadAdd::
     if (GetKeyState("NumLock", "T"))  ; get the toggle-state of NumLock
-        Send, +
+        Send, {+}
     else
         Send, │
 Return
