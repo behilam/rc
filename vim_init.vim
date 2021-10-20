@@ -92,6 +92,13 @@ nnoremap cac ca{
 nnoremap duc va{Vd
 nnoremap cuc va{Vc
 """"""""
+nnoremap vig t%vT%
+nnoremap vag f%vF%
+nnoremap dig t%vT%d
+nnoremap dag f%vF%d
+nnoremap cig t%vT%c
+nnoremap cag f%vF%c
+""""""""
 nnoremap du[ va[Vd
 nnoremap cu[ va[Vc
 
