@@ -40,10 +40,7 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
 ; VARIABLES
 CurrentWin := "test"
-
-#IfWinActive, Morrowind
-Enter::SendEvent, {Click}
-#IfWinActive
+AudioDeviceCounter := False
 
 ; Number row
 `::CapsLock
@@ -172,3 +169,25 @@ NumpadAdd::
         Send, │
 Return
 
+
+; ===============================================================
+; ===============         OTHER FUNCTIONS         ===============
+; ===============================================================
+
++F1::
+If (AudioDeviceCounter)
+{
+    AudioDeviceCounter := False
+    VA_SetDefaultEndpoint("Altavoces", 0)
+}
+else
+{
+    AudioDeviceCounter := True
+    VA_SetDefaultEndpoint("ASUS VP228", 0)
+}
+Return
+
+; AutoClick in Morrowind
+#IfWinActive, Morrowind
+Enter::SendEvent, {Click}
+#IfWinActive
