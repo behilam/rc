@@ -108,8 +108,10 @@ nnoremap <leader>t< va<ovd^va<vd$A><esc>
 
 nnoremap <leader><leader>d ggVG"_d
 nnoremap <leader><leader>D ggVGd
+vnoremap <leader><leader>d "*d
 nnoremap <leader><leader>c ggVG"_c
 nnoremap <leader><leader>C ggVGc
+vnoremap <leader><leader>c "*c
 
 " « WRAPPERS »
 " ┌──➤ 'Text'
