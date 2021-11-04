@@ -175,6 +175,7 @@ Return
 ; ===============         OTHER FUNCTIONS         ===============
 ; ===============================================================
 
+; Change Audio Device
 +F1::
 If (AudioDeviceCounter)
 {
@@ -187,6 +188,13 @@ else
     VA_SetDefaultEndpoint("ASUS VP228", 0)
 }
 Return
+
+; Alternative left-hand Media shortcuts
+#w::Media_Play_Pause ; #q
+#x::Media_Next ; #z
+#z::Media_Prev ; #`
+#q::Volume_Up ; #[
+#a::Volume_Down ; #/
 
 ; AutoClick in Morrowind
 #IfWinActive, Morrowind
