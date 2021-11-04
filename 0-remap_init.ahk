@@ -4,6 +4,7 @@ SendMode Input  ; Recommended for new scripts due to its superior speed and reli
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 #MenuMaskKey vkFF
 #SingleInstance,Force
+#MaxHotkeysPerInterval 100
 #UseHook
 #MaxThreadsPerHotkey 3
 
