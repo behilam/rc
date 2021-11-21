@@ -52,23 +52,30 @@ nnoremap ds ^"_D
 
 
 " Alternative in-wrapper modifiers
+nnoremap yie viwly
 nnoremap die viwld
 nnoremap cie viwlc
 """"""""
 nnoremap di/ vip:g/^\/\/.*$/d<cr>:noh<cr>
 """"""""
+nnoremap vi, vi<
+nnoremap va, va<
+nnoremap yi, yi<
+nnoremap ya, ya<
 nnoremap di, di<
 nnoremap ci, ci<
 nnoremap da, da<
 nnoremap ca, ca<
 """"""""
 nnoremap di. /»<cr>hv?«<cr> d<esc>:noh<cr>
+nnoremap da. /»<cr>v?«<cr>d<esc>:noh<cr>
 nnoremap ci. /»<cr>hv?«<cr> d<esc>:noh<cr>i
 nnoremap ca. /»<cr>v?«<cr>d<esc>:noh<cr>
-nnoremap da. /»<cr>v?«<cr>d<esc>:noh<cr>
 """"""""
 nnoremap vi; vi"
 nnoremap va; va"
+nnoremap yi; yi"
+nnoremap ya; ya"
 nnoremap di; di"
 nnoremap da; da"
 nnoremap ci; ci"
@@ -76,6 +83,8 @@ nnoremap ca; ca"
 """"""""
 nnoremap vir vi(
 nnoremap var va(
+nnoremap yir yi(
+nnoremap yar ya(
 nnoremap dir di(
 nnoremap dar da(
 nnoremap cir ci(
@@ -85,6 +94,8 @@ nnoremap cur va(Vc
 """"""""
 nnoremap vic vi{
 nnoremap vac va{
+nnoremap yic yi{
+nnoremap yac ya{
 nnoremap dic di{
 nnoremap dac da{
 nnoremap cic ci{
@@ -94,11 +105,14 @@ nnoremap cuc va{Vc
 """"""""
 nnoremap vig t%vT%
 nnoremap vag f%vF%
+nnoremap yig t%yT%
+nnoremap yag f%yF%
 nnoremap dig t%vT%d
 nnoremap dag f%vF%d
 nnoremap cig t%vT%c
 nnoremap cag f%vF%c
 """"""""
+nnoremap yu[ va[Vy
 nnoremap du[ va[Vd
 nnoremap cu[ va[Vc
 
@@ -206,6 +220,7 @@ nnoremap <leader>dt mqvat<`q0i:exe "/^<esc>f<a\\/<esc>/[ >]<cr>i" <esc>"qdF::@q<
 
 nnoremap <leader>; mq$a;<ESC>`q
 nnoremap <leader>, mq$a,<ESC>`q
+nnoremap <leader>. mq$a.<ESC>`q
 
 nnoremap <leader>l $
 nnoremap <leader>h ^
