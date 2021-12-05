@@ -7,8 +7,5 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
 ; Mouse
 XButton1::Browser_Back
-XButton1 & LButton::Media_Next
-XButton1 & RButton::Media_Prev
 XButton1 & WheelDown::Volume_Down
 XButton1 & WheelUp::Volume_Up
-XButton1 & MButton::Media_Play_Pause
