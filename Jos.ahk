@@ -9,3 +9,7 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 XButton1::Browser_Back
 XButton1 & WheelDown::Volume_Down
 XButton1 & WheelUp::Volume_Up
+
+XButton2::Browser_Forward
+XButton2 & WheelDown::Send, ^{Tab}
+XButton2 & WheelUp::Send, ^+{Tab}
