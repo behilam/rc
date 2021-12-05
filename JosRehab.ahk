@@ -45,8 +45,6 @@ If GetKeyState("CapsLock", "T")
 }
 Return
 
-
-
 F4::
 If GetKeyState("CapsLock", "T")
 {
@@ -55,8 +53,6 @@ If GetKeyState("CapsLock", "T")
   Send, 4
 }
 Return
-
-
 
 F5::
 If GetKeyState("CapsLock", "T")
@@ -67,8 +63,6 @@ If GetKeyState("CapsLock", "T")
 }
 Return
 
-
-
 F6::
 If GetKeyState("CapsLock", "T")
 {
@@ -78,8 +72,6 @@ If GetKeyState("CapsLock", "T")
 }
 Return
 
-
-
 F7::
 If GetKeyState("CapsLock", "T")
 {
@@ -88,8 +80,6 @@ If GetKeyState("CapsLock", "T")
   Send, 7
 }
 Return
-
-
 
 F8::
 If GetKeyState("CapsLock", "T")
@@ -122,12 +112,12 @@ Else If GetKeyState("CapsLock", "T")
 }
 Return
 
+;;;;;; Media control ;;;;;;
+
 ; 5 and 6 to Volume control
 5::Volume_Down
 6::Volume_UP
 
-
-; Media control
 Home::
 If GetKeyState("CapsLock", "T")
 {
