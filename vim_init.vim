@@ -244,6 +244,12 @@ vnoremap P p
 " Format into multiple lines
 nnoremap <leader>= vi(o<esc>i<cr><esc>vi(<esc>a<cr><esc>k:s/,\s\?/,\r/g<cr>:noh<cr>
 
+" Add Markdown checklist to lines
+nnoremap <leader>ix mqI - [ ] <esc>`q:noh<cr>
+nnoremap <leader>dx mq:s/ - \[.\] <cr>`q:noh<cr>
+vnoremap <leader>ix <esc>mqgv^o^<c-v>I - [ ] <esc>`q:noh<cr>
+vnoremap <leader>dx <esc>mqgv:s/ - \[.\] <cr>`q:noh<cr>
+
 " Toggle capitalization of first letter of word
 nnoremap <leader>~ mqviwo<esc>~`q
 
