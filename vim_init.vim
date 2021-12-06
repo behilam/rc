@@ -310,3 +310,35 @@ function! InsertPrintFunction(x)
         echo "###   « Mi ne rekonas ĉi tiun dosiertipon... »   ###"
     endif
 endfunction
+
+function! EnumSubtitleLines()
+    let line = 1
+    
+    while line < 5000
+        try
+            exec "normal! /^$\<CR>"
+        catch /.*/
+            break
+        endtry
+        exec "normal! s" . line . "\<ESC>"
+        let line += 1
+    endwhile
+    
+    " Add newline before the added numbers
+    exec "normal! :%s/^\\(\\d*\\)$/\\r\\1/g\<CR>:noh\<CR>"
+    echo "Linioj nombritaj :)"
+endfunction
+
+
+
+
+
+
+
+
+
+
+
+
+
+
