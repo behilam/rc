@@ -5,8 +5,8 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 #MenuMaskKey vkFF
 #SingleInstance,Force
 #MaxHotkeysPerInterval 100
-#UseHook
-#MaxThreadsPerHotkey 3
+#UseHook On
+#MaxThreadsPerHotkey 5
 
 ; Current layout
 ; ┌───┐   ┌───┬───┬───┬───┐ ┌───┬───┬───┬───┐ ┌───┬───┬───┬───┐ ┌───┬───┬───┐
@@ -21,7 +21,7 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 ; ├───────┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴───┴───┤     ┌───┐     ├───┼───┼───┼───┤
 ; │   L↑    │ ` │ z │ x │ c │ v │ b │ n │ m │ , │ . │   R↑    │     │ ↑ │     │ 1 │ 2 │ 3 │   │
 ; ├────┬────┼───┴─┬─┴───┴───┴───┴───┴───┴─┬─┴──┬┴───┼────┬────┤ ┌───┼───┼───┐ ├───┴───┼───┤ ┐ │
-; │LAlt│LCtr│LWin │         └───┘         │ L↑ │ Fn │Apps│RCtr│ │ ← │ ↓ │ → │ │   0   │ . │ V │
+; │LCtr│Win │LAlt │         └───┘         │ L↑ │ Fn │Apps│RCtr│ │ ← │ ↓ │ → │ │   0   │ . │ V │
 ; └────┴────┴─────┴───────────────────────┴────┴────┴────┴────┘ └───┴───┴───┘ └───────┴───┴───┘
 
 ; Original English layout
@@ -88,9 +88,6 @@ m::n
 /::.
 
 ; Fourth row
-LCtrl::LAlt
-LWin::LCtrl
-LAlt::LWin
 RAlt::LShift
 
 ; Mouse
