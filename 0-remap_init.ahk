@@ -178,7 +178,7 @@ Return
 If (AudioDeviceCounter)
 {
     AudioDeviceCounter := False
-    VA_SetDefaultEndpoint("Altavoces", 0)
+    VA_SetDefaultEndpoint("Speakers (Realtek(R) Audio)", 0)
 }
 else
 {
