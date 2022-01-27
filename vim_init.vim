@@ -64,7 +64,7 @@ nnoremap yiE mqviWly`q:<cr>
 nnoremap diE viWld
 nnoremap ciE viWlc
 "" // Block
-nnoremap di/ vip:g/^\/\/.*$/d<cr>:noh<cr>
+nnoremap di/ vip:g/^\s*\/\/.*$/d<cr>:noh<cr>
 "" <text>
 nnoremap vi, vi<
 nnoremap va, va<
