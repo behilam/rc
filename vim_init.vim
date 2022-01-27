@@ -52,6 +52,7 @@ nnoremap ds ^"_D
 
 
 " Alternative in-wrapper modifiers
+"" word\s
 nnoremap vie viwl
 nnoremap yie viwly
 nnoremap die viwld
@@ -60,9 +61,9 @@ nnoremap viE viWl
 nnoremap yiE viWly
 nnoremap diE viWld
 nnoremap ciE viWlc
-""""""""
+"" // Block
 nnoremap di/ vip:g/^\/\/.*$/d<cr>:noh<cr>
-""""""""
+"" <text>
 nnoremap vi, vi<
 nnoremap va, va<
 nnoremap yi, yi<
@@ -71,7 +72,7 @@ nnoremap di, di<
 nnoremap ci, ci<
 nnoremap da, da<
 nnoremap ca, ca<
-""""""""
+"" ──><text>
 nnoremap vi. /<<cr>vi<<esc>:noh<cr>gv
 nnoremap va. /<<cr>va<<esc>:noh<cr>gv
 nnoremap yi. /<<cr>vi<<esc>:noh<cr>gvy
@@ -80,12 +81,12 @@ nnoremap di. /<<cr>vi<<esc>:noh<cr>gvd
 nnoremap da. /<<cr>va<<esc>:noh<cr>gvd
 nnoremap ci. /<<cr>vi<<esc>:noh<cr>gvc
 nnoremap ca. /<<cr>va<<esc>:noh<cr>gvc
-""""""""
+"" «text»
 nnoremap di< /»<cr>hv?«<cr> d<esc>:noh<cr>
 nnoremap da< /»<cr>v?«<cr>d<esc>:noh<cr>
 nnoremap ci< /»<cr>hv?«<cr> d<esc>:noh<cr>i
 nnoremap ca< /»<cr>v?«<cr>d<esc>:noh<cr>
-""""""""
+"" ──>'text'
 nnoremap vi" /'<cr>vi'<esc>:noh<cr>gv
 nnoremap va" /'<cr>va'<esc>:noh<cr>gv
 nnoremap yi" /'<cr>vi'<esc>:noh<cr>gvy
@@ -94,7 +95,7 @@ nnoremap di" /'<cr>vi'<esc>:noh<cr>gvd
 nnoremap da" /'<cr>va'<esc>:noh<cr>gvd
 nnoremap ci" /'<cr>vi'<esc>:noh<cr>gvc
 nnoremap ca" /'<cr>va'<esc>:noh<cr>gvc
-""""""""
+"" "text"
 nnoremap vi; vi"
 nnoremap va; va"
 nnoremap yi; yi"
@@ -103,7 +104,7 @@ nnoremap di; di"
 nnoremap da; da"
 nnoremap ci; ci"
 nnoremap ca; ca"
-""""""""
+"" ──>"text"
 nnoremap vi: /"<cr>vi"<esc>:noh<cr>gv
 nnoremap va: /"<cr>va"<esc>:noh<cr>gv
 nnoremap yi: /"<cr>vi"<esc>:noh<cr>gvy
@@ -112,7 +113,7 @@ nnoremap di: /"<cr>vi"<esc>:noh<cr>gvd
 nnoremap da: /"<cr>va"<esc>:noh<cr>gvd
 nnoremap ci: /"<cr>vi"<esc>:noh<cr>gvc
 nnoremap ca: /"<cr>va"<esc>:noh<cr>gvc
-""""""""
+"" (text)
 nnoremap vir vi(
 nnoremap var va(
 nnoremap yir yi(
@@ -123,7 +124,7 @@ nnoremap cir ci(
 nnoremap car ca(
 nnoremap dur va(Vd
 nnoremap cur va(Vc
-""""""""
+"" ──>(text)
 nnoremap vit /(<cr>vi(<esc>:noh<cr>gv
 nnoremap vat /(<cr>va(<esc>:noh<cr>gv
 nnoremap yit /(<cr>vi(<esc>:noh<cr>gvy
@@ -134,7 +135,7 @@ nnoremap cit /(<cr>vi(<esc>:noh<cr>gvc
 nnoremap cat /(<cr>va(<esc>:noh<cr>gvc
 nnoremap dut /(<cr>va(V<esc>:noh<cr>gvd
 nnoremap cut /(<cr>va(V<esc>:noh<cr>gvc
-""""""""
+"" {text}
 nnoremap vic vi{
 nnoremap vac va{
 nnoremap yic yi{
@@ -145,7 +146,7 @@ nnoremap cic ci{
 nnoremap cac ca{
 nnoremap duc va{Vd
 nnoremap cuc va{Vc
-""""""""
+""  ──>{text}
 nnoremap viv /{<cr>vi{<esc>:noh<cr>gv
 nnoremap vav /{<cr>va{<esc>:noh<cr>gv
 nnoremap yiv /{<cr>vi{<esc>:noh<cr>gvy
@@ -156,7 +157,7 @@ nnoremap civ /{<cr>vi{<esc>:noh<cr>gvc
 nnoremap cav /{<cr>va{<esc>:noh<cr>gvc
 nnoremap duv /{<cr>va{V<esc>:noh<cr>gvd
 nnoremap cuv /{<cr>va{V<esc>:noh<cr>gvc
-""""""""
+"" %text%
 nnoremap vig t%vT%
 nnoremap vag f%vF%
 nnoremap yig t%yT%
@@ -165,7 +166,7 @@ nnoremap dig t%vT%d
 nnoremap dag f%vF%d
 nnoremap cig t%vT%c
 nnoremap cag f%vF%c
-""""""""
+"" ──>%text%
 nnoremap viG /%<cr>t%vT%<esc>:noh<cr>gv
 nnoremap vaG /%<cr>vf%<esc>:noh<cr>gv
 nnoremap yiG /%<cr>t%yT%<esc>:noh<cr>gvy
@@ -174,11 +175,11 @@ nnoremap diG /%<cr>t%dT%<esc>:noh<cr>gvd
 nnoremap daG /%<cr>df%<esc>:noh<cr>gvd
 nnoremap ciG /%<cr>t%cT%<esc>:noh<cr>gvc
 nnoremap caG /%<cr>cf%<esc>:noh<cr>gvc
-"""""""" asdf [asdf] asdf
+"" [text]
 nnoremap yu[ va[Vy
 nnoremap du[ va[Vd
 nnoremap cu[ va[Vc
-""""""""
+"" ──>[text]
 nnoremap vi] /[<cr>vi[<esc>:noh<cr>gv
 nnoremap va] /[<cr>va[<esc>:noh<cr>gv
 nnoremap yi] /[<cr>vi[<esc>:noh<cr>gvy
