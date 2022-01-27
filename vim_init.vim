@@ -72,10 +72,10 @@ nnoremap ci, ci<
 nnoremap da, da<
 nnoremap ca, ca<
 """"""""
-nnoremap di. /»<cr>hv?«<cr> d<esc>:noh<cr>
-nnoremap da. /»<cr>v?«<cr>d<esc>:noh<cr>
-nnoremap ci. /»<cr>hv?«<cr> d<esc>:noh<cr>i
-nnoremap ca. /»<cr>v?«<cr>d<esc>:noh<cr>
+nnoremap di< /»<cr>hv?«<cr> d<esc>:noh<cr>
+nnoremap da< /»<cr>v?«<cr>d<esc>:noh<cr>
+nnoremap ci< /»<cr>hv?«<cr> d<esc>:noh<cr>i
+nnoremap ca< /»<cr>v?«<cr>d<esc>:noh<cr>
 """"""""
 nnoremap vi; vi"
 nnoremap va; va"
