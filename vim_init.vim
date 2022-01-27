@@ -72,10 +72,28 @@ nnoremap ci, ci<
 nnoremap da, da<
 nnoremap ca, ca<
 """"""""
+nnoremap vi. /<<cr>vi<<esc>:noh<cr>gv
+nnoremap va. /<<cr>va<<esc>:noh<cr>gv
+nnoremap yi. /<<cr>vi<<esc>:noh<cr>gvy
+nnoremap ya. /<<cr>va<<esc>:noh<cr>gvy
+nnoremap di. /<<cr>vi<<esc>:noh<cr>gvd
+nnoremap da. /<<cr>va<<esc>:noh<cr>gvd
+nnoremap ci. /<<cr>vi<<esc>:noh<cr>gvc
+nnoremap ca. /<<cr>va<<esc>:noh<cr>gvc
+""""""""
 nnoremap di< /»<cr>hv?«<cr> d<esc>:noh<cr>
 nnoremap da< /»<cr>v?«<cr>d<esc>:noh<cr>
 nnoremap ci< /»<cr>hv?«<cr> d<esc>:noh<cr>i
 nnoremap ca< /»<cr>v?«<cr>d<esc>:noh<cr>
+""""""""
+nnoremap vi" /'<cr>vi'<esc>:noh<cr>gv
+nnoremap va" /'<cr>va'<esc>:noh<cr>gv
+nnoremap yi" /'<cr>vi'<esc>:noh<cr>gvy
+nnoremap ya" /'<cr>va'<esc>:noh<cr>gvy
+nnoremap di" /'<cr>vi'<esc>:noh<cr>gvd
+nnoremap da" /'<cr>va'<esc>:noh<cr>gvd
+nnoremap ci" /'<cr>vi'<esc>:noh<cr>gvc
+nnoremap ca" /'<cr>va'<esc>:noh<cr>gvc
 """"""""
 nnoremap vi; vi"
 nnoremap va; va"
@@ -85,6 +103,15 @@ nnoremap di; di"
 nnoremap da; da"
 nnoremap ci; ci"
 nnoremap ca; ca"
+""""""""
+nnoremap vi: /"<cr>vi"<esc>:noh<cr>gv
+nnoremap va: /"<cr>va"<esc>:noh<cr>gv
+nnoremap yi: /"<cr>vi"<esc>:noh<cr>gvy
+nnoremap ya: /"<cr>va"<esc>:noh<cr>gvy
+nnoremap di: /"<cr>vi"<esc>:noh<cr>gvd
+nnoremap da: /"<cr>va"<esc>:noh<cr>gvd
+nnoremap ci: /"<cr>vi"<esc>:noh<cr>gvc
+nnoremap ca: /"<cr>va"<esc>:noh<cr>gvc
 """"""""
 nnoremap vir vi(
 nnoremap var va(
@@ -97,6 +124,17 @@ nnoremap car ca(
 nnoremap dur va(Vd
 nnoremap cur va(Vc
 """"""""
+nnoremap vit /(<cr>vi(<esc>:noh<cr>gv
+nnoremap vat /(<cr>va(<esc>:noh<cr>gv
+nnoremap yit /(<cr>vi(<esc>:noh<cr>gvy
+nnoremap yat /(<cr>va(<esc>:noh<cr>gvy
+nnoremap dit /(<cr>vi(<esc>:noh<cr>gvd
+nnoremap dat /(<cr>va(<esc>:noh<cr>gvd
+nnoremap cit /(<cr>vi(<esc>:noh<cr>gvc
+nnoremap cat /(<cr>va(<esc>:noh<cr>gvc
+nnoremap dut /(<cr>va(V<esc>:noh<cr>gvd
+nnoremap cut /(<cr>va(V<esc>:noh<cr>gvc
+""""""""
 nnoremap vic vi{
 nnoremap vac va{
 nnoremap yic yi{
@@ -108,6 +146,17 @@ nnoremap cac ca{
 nnoremap duc va{Vd
 nnoremap cuc va{Vc
 """"""""
+nnoremap viv /{<cr>vi{<esc>:noh<cr>gv
+nnoremap vav /{<cr>va{<esc>:noh<cr>gv
+nnoremap yiv /{<cr>vi{<esc>:noh<cr>gvy
+nnoremap yav /{<cr>va{<esc>:noh<cr>gvy
+nnoremap div /{<cr>vi{<esc>:noh<cr>gvd
+nnoremap dav /{<cr>va{<esc>:noh<cr>gvd
+nnoremap civ /{<cr>vi{<esc>:noh<cr>gvc
+nnoremap cav /{<cr>va{<esc>:noh<cr>gvc
+nnoremap duv /{<cr>va{V<esc>:noh<cr>gvd
+nnoremap cuv /{<cr>va{V<esc>:noh<cr>gvc
+""""""""
 nnoremap vig t%vT%
 nnoremap vag f%vF%
 nnoremap yig t%yT%
@@ -117,10 +166,29 @@ nnoremap dag f%vF%d
 nnoremap cig t%vT%c
 nnoremap cag f%vF%c
 """"""""
+nnoremap viG /%<cr>t%vT%<esc>:noh<cr>gv
+nnoremap vaG /%<cr>vf%<esc>:noh<cr>gv
+nnoremap yiG /%<cr>t%yT%<esc>:noh<cr>gvy
+nnoremap yaG /%<cr>yf%<esc>:noh<cr>gvy
+nnoremap diG /%<cr>t%dT%<esc>:noh<cr>gvd
+nnoremap daG /%<cr>df%<esc>:noh<cr>gvd
+nnoremap ciG /%<cr>t%cT%<esc>:noh<cr>gvc
+nnoremap caG /%<cr>cf%<esc>:noh<cr>gvc
+"""""""" asdf [asdf] asdf
 nnoremap yu[ va[Vy
 nnoremap du[ va[Vd
 nnoremap cu[ va[Vc
-
+""""""""
+nnoremap vi] /[<cr>vi[<esc>:noh<cr>gv
+nnoremap va] /[<cr>va[<esc>:noh<cr>gv
+nnoremap yi] /[<cr>vi[<esc>:noh<cr>gvy
+nnoremap ya] /[<cr>va[<esc>:noh<cr>gvy
+nnoremap di] /[<cr>vi[<esc>:noh<cr>gvd
+nnoremap da] /[<cr>va[<esc>:noh<cr>gvd
+nnoremap ci] /[<cr>vi[<esc>:noh<cr>gvc
+nnoremap ca] /[<cr>va[<esc>:noh<cr>gvc
+nnoremap du] /[<cr>va[V<esc>:noh<cr>gvd
+nnoremap cu] /[<cr>va[V<esc>:noh<cr>gvc
 
 nnoremap <leader>t< va<ovd^va<vd$A><esc>
 
