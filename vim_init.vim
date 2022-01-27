@@ -52,13 +52,15 @@ nnoremap ds ^"_D
 
 
 " Alternative in-wrapper modifiers
+"*** :<cr> is a manual fix for the q marks to work well in VSCode.
+"*** TODO: It would be worth it to check that bug.
 "" word\s
 nnoremap vie viwl
-nnoremap yie viwly
+nnoremap yie mqviwly`q:<cr>
 nnoremap die viwld
 nnoremap cie viwlc
 nnoremap viE viWl
-nnoremap yiE viWly
+nnoremap yiE mqviWly`q:<cr>
 nnoremap diE viWld
 nnoremap ciE viWlc
 "" // Block
@@ -66,8 +68,8 @@ nnoremap di/ vip:g/^\/\/.*$/d<cr>:noh<cr>
 "" <text>
 nnoremap vi, vi<
 nnoremap va, va<
-nnoremap yi, yi<
-nnoremap ya, ya<
+nnoremap yi, mqyi<`q:<cr>
+nnoremap ya, mqya<`q:<cr>
 nnoremap di, di<
 nnoremap ci, ci<
 nnoremap da, da<
@@ -75,8 +77,8 @@ nnoremap ca, ca<
 "" ──><text>
 nnoremap vi. /<<cr>vi<<esc>:noh<cr>gv
 nnoremap va. /<<cr>va<<esc>:noh<cr>gv
-nnoremap yi. /<<cr>vi<<esc>:noh<cr>gvy
-nnoremap ya. /<<cr>va<<esc>:noh<cr>gvy
+nnoremap yi. mq/<<cr>vi<<esc>gvy`q:noh<cr>
+nnoremap ya. mq/<<cr>va<<esc>gvy`q:noh<cr>
 nnoremap di. /<<cr>vi<<esc>:noh<cr>gvd
 nnoremap da. /<<cr>va<<esc>:noh<cr>gvd
 nnoremap ci. /<<cr>vi<<esc>:noh<cr>gvc
@@ -89,8 +91,8 @@ nnoremap ca< /»<cr>v?«<cr>d<esc>:noh<cr>
 "" ──>'text'
 nnoremap vi" /'<cr>vi'<esc>:noh<cr>gv
 nnoremap va" /'<cr>va'<esc>:noh<cr>gv
-nnoremap yi" /'<cr>vi'<esc>:noh<cr>gvy
-nnoremap ya" /'<cr>va'<esc>:noh<cr>gvy
+nnoremap yi" mq/'<cr>vi'<esc>gvy`q:noh<cr>
+nnoremap ya" mq/'<cr>va'<esc>gvy`q:noh<cr>
 nnoremap di" /'<cr>vi'<esc>:noh<cr>gvd
 nnoremap da" /'<cr>va'<esc>:noh<cr>gvd
 nnoremap ci" /'<cr>vi'<esc>:noh<cr>gvc
@@ -98,8 +100,8 @@ nnoremap ca" /'<cr>va'<esc>:noh<cr>gvc
 "" "text"
 nnoremap vi; vi"
 nnoremap va; va"
-nnoremap yi; yi"
-nnoremap ya; ya"
+nnoremap yi; mqyi"`q:<cr>
+nnoremap ya; mqya"`q:<cr>
 nnoremap di; di"
 nnoremap da; da"
 nnoremap ci; ci"
@@ -107,8 +109,8 @@ nnoremap ca; ca"
 "" ──>"text"
 nnoremap vi: /"<cr>vi"<esc>:noh<cr>gv
 nnoremap va: /"<cr>va"<esc>:noh<cr>gv
-nnoremap yi: /"<cr>vi"<esc>:noh<cr>gvy
-nnoremap ya: /"<cr>va"<esc>:noh<cr>gvy
+nnoremap yi: mq/"<cr>vi"<esc>gvy`q:noh<cr>
+nnoremap ya: mq/"<cr>va"<esc>gvy`q:noh<cr>
 nnoremap di: /"<cr>vi"<esc>:noh<cr>gvd
 nnoremap da: /"<cr>va"<esc>:noh<cr>gvd
 nnoremap ci: /"<cr>vi"<esc>:noh<cr>gvc
@@ -116,8 +118,8 @@ nnoremap ca: /"<cr>va"<esc>:noh<cr>gvc
 "" (text)
 nnoremap vir vi(
 nnoremap var va(
-nnoremap yir yi(
-nnoremap yar ya(
+nnoremap yir mqyi(`q:<cr>
+nnoremap yar mqya(`q:<cr>
 nnoremap dir di(
 nnoremap dar da(
 nnoremap cir ci(
@@ -127,8 +129,8 @@ nnoremap cur va(Vc
 "" ──>(text)
 nnoremap vit /(<cr>vi(<esc>:noh<cr>gv
 nnoremap vat /(<cr>va(<esc>:noh<cr>gv
-nnoremap yit /(<cr>vi(<esc>:noh<cr>gvy
-nnoremap yat /(<cr>va(<esc>:noh<cr>gvy
+nnoremap yit mq/(<cr>vi(<esc>gvy`q:noh<cr>
+nnoremap yat mq/(<cr>va(<esc>gvy`q:noh<cr>
 nnoremap dit /(<cr>vi(<esc>:noh<cr>gvd
 nnoremap dat /(<cr>va(<esc>:noh<cr>gvd
 nnoremap cit /(<cr>vi(<esc>:noh<cr>gvc
@@ -138,8 +140,8 @@ nnoremap cut /(<cr>va(V<esc>:noh<cr>gvc
 "" {text}
 nnoremap vic vi{
 nnoremap vac va{
-nnoremap yic yi{
-nnoremap yac ya{
+nnoremap yic mqyi{`q:<cr>
+nnoremap yac mqya{`q:<cr>
 nnoremap dic di{
 nnoremap dac da{
 nnoremap cic ci{
@@ -149,8 +151,8 @@ nnoremap cuc va{Vc
 ""  ──>{text}
 nnoremap viv /{<cr>vi{<esc>:noh<cr>gv
 nnoremap vav /{<cr>va{<esc>:noh<cr>gv
-nnoremap yiv /{<cr>vi{<esc>:noh<cr>gvy
-nnoremap yav /{<cr>va{<esc>:noh<cr>gvy
+nnoremap yiv mq/{<cr>vi{<esc>gvy`q:noh<cr>
+nnoremap yav mq/{<cr>va{<esc>gvy`q:noh<cr>
 nnoremap div /{<cr>vi{<esc>:noh<cr>gvd
 nnoremap dav /{<cr>va{<esc>:noh<cr>gvd
 nnoremap civ /{<cr>vi{<esc>:noh<cr>gvc
@@ -160,8 +162,8 @@ nnoremap cuv /{<cr>va{V<esc>:noh<cr>gvc
 "" %text%
 nnoremap vig t%vT%
 nnoremap vag f%vF%
-nnoremap yig t%yT%
-nnoremap yag f%yF%
+nnoremap yig mqt%yT%`q:<cr>
+nnoremap yag mqf%yF%`q:<cr>
 nnoremap dig t%vT%d
 nnoremap dag f%vF%d
 nnoremap cig t%vT%c
@@ -169,21 +171,21 @@ nnoremap cag f%vF%c
 "" ──>%text%
 nnoremap viG /%<cr>t%vT%<esc>:noh<cr>gv
 nnoremap vaG /%<cr>vf%<esc>:noh<cr>gv
-nnoremap yiG /%<cr>t%yT%<esc>:noh<cr>gvy
-nnoremap yaG /%<cr>yf%<esc>:noh<cr>gvy
+nnoremap yiG mq/%<cr>t%yT%<esc>gvy`q:noh<cr>
+nnoremap yaG mq/%<cr>yf%<esc>gvy`q:noh<cr>
 nnoremap diG /%<cr>t%dT%<esc>:noh<cr>gvd
 nnoremap daG /%<cr>df%<esc>:noh<cr>gvd
 nnoremap ciG /%<cr>t%cT%<esc>:noh<cr>gvc
 nnoremap caG /%<cr>cf%<esc>:noh<cr>gvc
 "" [text]
-nnoremap yu[ va[Vy
+nnoremap yu[ mqva[Vy`q:<cr>
 nnoremap du[ va[Vd
 nnoremap cu[ va[Vc
 "" ──>[text]
 nnoremap vi] /[<cr>vi[<esc>:noh<cr>gv
 nnoremap va] /[<cr>va[<esc>:noh<cr>gv
-nnoremap yi] /[<cr>vi[<esc>:noh<cr>gvy
-nnoremap ya] /[<cr>va[<esc>:noh<cr>gvy
+nnoremap yi] mq/[<cr>vi[<esc>gvy`q:noh<cr>
+nnoremap ya] mq/[<cr>va[<esc>gvy`q:noh<cr>
 nnoremap di] /[<cr>vi[<esc>:noh<cr>gvd
 nnoremap da] /[<cr>va[<esc>:noh<cr>gvd
 nnoremap ci] /[<cr>vi[<esc>:noh<cr>gvc
