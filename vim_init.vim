@@ -52,9 +52,14 @@ nnoremap ds ^"_D
 
 
 " Alternative in-wrapper modifiers
+nnoremap vie viwl
 nnoremap yie viwly
 nnoremap die viwld
 nnoremap cie viwlc
+nnoremap viE viWl
+nnoremap yiE viWly
+nnoremap diE viWld
+nnoremap ciE viWlc
 """"""""
 nnoremap di/ vip:g/^\/\/.*$/d<cr>:noh<cr>
 """"""""
