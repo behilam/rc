@@ -117,9 +117,13 @@ Appskey & r::*
 Appskey & t::(
 Appskey & y::)
 
-; Other special characters
-Appskey & v::{
-Appskey & b::}
+; Brakets
+Appskey & i::(
+Appskey & o::)
+Appskey & k::[
+Appskey & l::]
+Appskey & m::{
+Appskey & ,::}
 
 ; Quick numbers
 >^s::Send, 1

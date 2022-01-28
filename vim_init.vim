@@ -116,49 +116,72 @@ nnoremap da: /"<cr>va"<esc>:noh<cr>gvd
 nnoremap ci: /"<cr>vi"<esc>:noh<cr>gvc
 nnoremap ca: /"<cr>va"<esc>:noh<cr>gvc
 "" (text)
-nnoremap vir vi(
-nnoremap var va(
-nnoremap yir mqyi(`q:<cr>
-nnoremap yar mqya(`q:<cr>
-nnoremap dir di(
-nnoremap dar da(
-nnoremap cir ci(
-nnoremap car ca(
-nnoremap dur va(Vd
-nnoremap cur va(Vc
+nnoremap viu vi(
+nnoremap vau va(
+nnoremap yiu mqyi(`q:<cr>
+nnoremap yau mqya(`q:<cr>
+nnoremap diu di(
+nnoremap dau da(
+nnoremap ciu ci(
+nnoremap cau ca(
+nnoremap duu va(Vd
+nnoremap cuu va(Vc
 "" ──>(text)
-nnoremap vit /(<cr>vi(<esc>:noh<cr>gv
-nnoremap vat /(<cr>va(<esc>:noh<cr>gv
-nnoremap yit mq/(<cr>vi(<esc>gvy`q:noh<cr>
-nnoremap yat mq/(<cr>va(<esc>gvy`q:noh<cr>
-nnoremap dit /(<cr>vi(<esc>:noh<cr>gvd
-nnoremap dat /(<cr>va(<esc>:noh<cr>gvd
-nnoremap cit /(<cr>vi(<esc>:noh<cr>gvc
-nnoremap cat /(<cr>va(<esc>:noh<cr>gvc
-nnoremap dut /(<cr>va(V<esc>:noh<cr>gvd
-nnoremap cut /(<cr>va(V<esc>:noh<cr>gvc
+nnoremap vii /(<cr>vi(<esc>:noh<cr>gv
+nnoremap vai /(<cr>va(<esc>:noh<cr>gv
+nnoremap yii mq/(<cr>vi(<esc>gvy`q:noh<cr>
+nnoremap yai mq/(<cr>va(<esc>gvy`q:noh<cr>
+nnoremap dii /(<cr>vi(<esc>:noh<cr>gvd
+nnoremap dai /(<cr>va(<esc>:noh<cr>gvd
+nnoremap cii /(<cr>vi(<esc>:noh<cr>gvc
+nnoremap cai /(<cr>va(<esc>:noh<cr>gvc
+nnoremap dui /(<cr>va(V<esc>:noh<cr>gvd
+nnoremap cui /(<cr>va(V<esc>:noh<cr>gvc
+"" [text] asdfasdf[asdf 
+nnoremap vij vi[
+nnoremap vaj va[
+nnoremap yij yi[`q:<cr>
+nnoremap yaj ya[`q:<cr>
+nnoremap dij di[
+nnoremap daj da[
+nnoremap cij ci[
+nnoremap caj ca[
+nnoremap yuj mqva[Vy`q:<cr>
+nnoremap duj va[Vd
+nnoremap cuj va[Vc
+"" ──>[text]
+nnoremap vik /[<cr>vi[<esc>:noh<cr>gv
+nnoremap vak /[<cr>va[<esc>:noh<cr>gv
+nnoremap yik mq/[<cr>vi[<esc>gvy`q:noh<cr>
+nnoremap yak mq/[<cr>va[<esc>gvy`q:noh<cr>
+nnoremap dik /[<cr>vi[<esc>:noh<cr>gvd
+nnoremap dak /[<cr>va[<esc>:noh<cr>gvd
+nnoremap cik /[<cr>vi[<esc>:noh<cr>gvc
+nnoremap cak /[<cr>va[<esc>:noh<cr>gvc
+nnoremap duk /[<cr>va[V<esc>:noh<cr>gvd
+nnoremap cuk /[<cr>va[V<esc>:noh<cr>gvc
 "" {text}
-nnoremap vic vi{
-nnoremap vac va{
-nnoremap yic mqyi{`q:<cr>
-nnoremap yac mqya{`q:<cr>
-nnoremap dic di{
-nnoremap dac da{
-nnoremap cic ci{
-nnoremap cac ca{
-nnoremap duc va{Vd
-nnoremap cuc va{Vc
+nnoremap vin vi{
+nnoremap van va{
+nnoremap yin mqyi{`q:<cr>
+nnoremap yan mqya{`q:<cr>
+nnoremap din di{
+nnoremap dan da{
+nnoremap cin ci{
+nnoremap can ca{
+nnoremap dun va{Vd
+nnoremap cun va{Vc
 ""  ──>{text}
-nnoremap viv /{<cr>vi{<esc>:noh<cr>gv
-nnoremap vav /{<cr>va{<esc>:noh<cr>gv
-nnoremap yiv mq/{<cr>vi{<esc>gvy`q:noh<cr>
-nnoremap yav mq/{<cr>va{<esc>gvy`q:noh<cr>
-nnoremap div /{<cr>vi{<esc>:noh<cr>gvd
-nnoremap dav /{<cr>va{<esc>:noh<cr>gvd
-nnoremap civ /{<cr>vi{<esc>:noh<cr>gvc
-nnoremap cav /{<cr>va{<esc>:noh<cr>gvc
-nnoremap duv /{<cr>va{V<esc>:noh<cr>gvd
-nnoremap cuv /{<cr>va{V<esc>:noh<cr>gvc
+nnoremap vim /{<cr>vi{<esc>:noh<cr>gv
+nnoremap vam /{<cr>va{<esc>:noh<cr>gv
+nnoremap yim mq/{<cr>vi{<esc>gvy`q:noh<cr>
+nnoremap yam mq/{<cr>va{<esc>gvy`q:noh<cr>
+nnoremap dim /{<cr>vi{<esc>:noh<cr>gvd
+nnoremap dam /{<cr>va{<esc>:noh<cr>gvd
+nnoremap cim /{<cr>vi{<esc>:noh<cr>gvc
+nnoremap cam /{<cr>va{<esc>:noh<cr>gvc
+nnoremap dum /{<cr>va{V<esc>:noh<cr>gvd
+nnoremap cum /{<cr>va{V<esc>:noh<cr>gvc
 "" %text%
 nnoremap vig t%vT%
 nnoremap vag f%vF%
@@ -177,21 +200,6 @@ nnoremap diG /%<cr>t%dT%<esc>:noh<cr>gvd
 nnoremap daG /%<cr>df%<esc>:noh<cr>gvd
 nnoremap ciG /%<cr>t%cT%<esc>:noh<cr>gvc
 nnoremap caG /%<cr>cf%<esc>:noh<cr>gvc
-"" [text]
-nnoremap yu[ mqva[Vy`q:<cr>
-nnoremap du[ va[Vd
-nnoremap cu[ va[Vc
-"" ──>[text]
-nnoremap vi] /[<cr>vi[<esc>:noh<cr>gv
-nnoremap va] /[<cr>va[<esc>:noh<cr>gv
-nnoremap yi] mq/[<cr>vi[<esc>gvy`q:noh<cr>
-nnoremap ya] mq/[<cr>va[<esc>gvy`q:noh<cr>
-nnoremap di] /[<cr>vi[<esc>:noh<cr>gvd
-nnoremap da] /[<cr>va[<esc>:noh<cr>gvd
-nnoremap ci] /[<cr>vi[<esc>:noh<cr>gvc
-nnoremap ca] /[<cr>va[<esc>:noh<cr>gvc
-nnoremap du] /[<cr>va[V<esc>:noh<cr>gvd
-nnoremap cu] /[<cr>va[V<esc>:noh<cr>gvc
 
 nnoremap <leader>t< va<ovd^va<vd$A><esc>
 
@@ -235,34 +243,29 @@ vnoremap <leader>ig <ESC>mq`>a%<ESC>`<<ESC>i%<ESC>`><ESC>`ql
 nnoremap <leader>dg mq/%<cr>x?%<cr>x:noh<cr>`q
 vnoremap <leader>dg <esc>mq`>/%<cr>x`<?%<cr>x:noh<cr>`q
 " ┌──➤ (Text)
-nnoremap <leader>ir mqviw<ESC>a)<ESC>bi(<ESC>`ql
-nnoremap <leader><leader>ir mqviW<ESC>a)<ESC>Bi(<ESC>`ql
-vnoremap <leader>ir <ESC>mq`>a)<ESC>`<<ESC>i(<ESC>`><ESC>`ql
-nnoremap <leader>dr mqva(o<esc>%x``x`q
-vnoremap <leader>dr <esc>mq`>/)<cr>x`<?(<cr>x:noh<cr>`q
+nnoremap <leader>iu mqviw<ESC>a)<ESC>bi(<ESC>`ql
+nnoremap <leader><leader>iu mqviW<ESC>a)<ESC>Bi(<ESC>`ql
+vnoremap <leader>iu <ESC>mq`>a)<ESC>`<<ESC>i(<ESC>`><ESC>`ql
+nnoremap <leader>du mqva(o<esc>%x``x`q
+vnoremap <leader>du <esc>mq`>/)<cr>x`<?(<cr>x:noh<cr>`q
 " ┌──➤ [Text]
-nnoremap <leader>i[ mqviw<ESC>a]<ESC>bi[<ESC>`ql
-nnoremap <leader><leader>i[ mqviW<ESC>a]<ESC>Bi[<ESC>`ql
-vnoremap <leader>i[ <ESC>mq`>a]<ESC>`<<ESC>i[<ESC>`><ESC>`ql
-nnoremap <leader>d[ mqva[o<esc>%x``x`q
-vnoremap <leader>d[ <esc>mq`>/]<cr>x`<?[<cr>x:noh<cr>`q
+nnoremap <leader>ij mqviw<ESC>a]<ESC>bi[<ESC>`ql
+nnoremap <leader><leader>ij mqviW<ESC>a]<ESC>Bi[<ESC>`ql
+vnoremap <leader>ij <ESC>mq`>a]<ESC>`<<ESC>i[<ESC>`><ESC>`ql
+nnoremap <leader>dj mqva[o<esc>%x``x`q
+vnoremap <leader>dj <esc>mq`>/]<cr>x`<?[<cr>x:noh<cr>`q
 " ┌──➤ {Text}
-nnoremap <leader>i] mqviw<ESC>a}<ESC>bi{<ESC>`ql
-nnoremap <leader>ic mqviw<ESC>a}<ESC>bi{<ESC>`ql
-nnoremap <leader><leader>i] mqviW<ESC>a}<ESC>Bi{<ESC>`ql
-nnoremap <leader><leader>ic mqviW<ESC>a}<ESC>Bi{<ESC>`ql
-vnoremap <leader>i] <ESC>mq`>a}<ESC>`<<ESC>i{<ESC>`><ESC>`ql
-vnoremap <leader>ic <ESC>mq`>a}<ESC>`<<ESC>i{<ESC>`><ESC>`ql
-nnoremap <leader>d] mqva{o<esc>%x``x`q
-nnoremap <leader>dc mqva{o<esc>%x``x`q
-vnoremap <leader>d] <esc>mq`>/}<cr>x`<?{<cr>x:noh<cr>`q
-vnoremap <leader>dc <esc>mq`>/}<cr>x`<?{<cr>x:noh<cr>`q
+nnoremap <leader>in mqviw<ESC>a}<ESC>bi{<ESC>`ql
+nnoremap <leader><leader>in mqviW<ESC>a}<ESC>Bi{<ESC>`ql
+vnoremap <leader>in <ESC>mq`>a}<ESC>`<<ESC>i{<ESC>`><ESC>`ql
+nnoremap <leader>dn mqva{o<esc>%x``x`q
+vnoremap <leader>dn <esc>mq`>/}<cr>x`<?{<cr>x:noh<cr>`q
 " ┌──➤ { Text }
-nnoremap <leader>iv mqviw<ESC>a }<ESC>bi{ <ESC>`ql
-nnoremap <leader><leader>iv mqviW<ESC>a }<ESC>Bi{ <ESC>`ql
-vnoremap <leader>iv <ESC>mq`>a }<ESC>`<<ESC>i{ <ESC>`><ESC>`ql
-nnoremap <leader>dv mqva{o<esc>%hxx``xx`q
-vnoremap <leader>dv <esc>mq`>/}<cr>hxx`<?{<cr>xx:noh<cr>`q
+nnoremap <leader>im mqviw<ESC>a }<ESC>bi{ <ESC>`ql
+nnoremap <leader><leader>im mqviW<ESC>a }<ESC>Bi{ <ESC>`ql
+vnoremap <leader>im <ESC>mq`>a }<ESC>`<<ESC>i{ <ESC>`><ESC>`ql
+nnoremap <leader>dm mqva{o<esc>%hxx``xx`q
+vnoremap <leader>dm <esc>mq`>/}<cr>hxx`<?{<cr>xx:noh<cr>`q
 " ┌──➤ /Text/
 nnoremap <leader>i/ mqviw<ESC>a/<ESC>bi/<ESC>`ql
 nnoremap <leader><leader>i/ mqviW<ESC>a/<ESC>Bi/<ESC>`ql
