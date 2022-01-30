@@ -27,6 +27,17 @@ nnoremap <leader>O mqO<ESC>j`q
 nnoremap ó o<esc>cc
 nnoremap Ó O<esc>cc
 
+" Clipboard shortcuts
+nnoremap <leader>x viw"*d
+nnoremap <leader><leader>x viW"*d
+vnoremap <leader>x "*d
+nnoremap <leader><leader>d ggVG"_d
+nnoremap <leader><leader>D ggVGd
+vnoremap <leader><leader>d "*d
+nnoremap <leader><leader>c ggVG"_c
+nnoremap <leader><leader>C ggVGc
+vnoremap <leader><leader>c "*c
+
 nnoremap <leader>yy "*yy
 nnoremap <leader>Y "*y$
 nnoremap <leader>yw "*yw
@@ -202,14 +213,6 @@ nnoremap ciG /%<cr>t%cT%<esc>:noh<cr>gvc
 nnoremap caG /%<cr>cf%<esc>:noh<cr>gvc
 
 nnoremap <leader>t< va<ovd^va<vd$A><esc>
-
-
-nnoremap <leader><leader>d ggVG"_d
-nnoremap <leader><leader>D ggVGd
-vnoremap <leader><leader>d "*d
-nnoremap <leader><leader>c ggVG"_c
-nnoremap <leader><leader>C ggVGc
-vnoremap <leader><leader>c "*c
 
 " « WRAPPERS »
 " ┌──➤ 'Text'
