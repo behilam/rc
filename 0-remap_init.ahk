@@ -182,7 +182,7 @@ Return
 If (AudioDeviceCounter)
 {
     AudioDeviceCounter := False
-    VA_SetDefaultEndpoint("Speakers (Realtek(R) Audio)", 0)
+    VA_SetDefaultEndpoint("Speakers (3- High Definition Audio Device)", 0)
 }
 else
 {
