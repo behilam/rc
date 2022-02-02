@@ -264,11 +264,11 @@ vnoremap <leader>in <ESC>mq`>a}<ESC>`<<ESC>i{<ESC>`><ESC>`ql
 nnoremap <leader>dn mqva{o<esc>%x``x`q
 vnoremap <leader>dn <esc>mq`>/}<cr>x`<?{<cr>x:noh<cr>`q
 " ┌──➤ { Text }
-nnoremap <leader>im mqviw<ESC>a }<ESC>bi{ <ESC>`ql
-nnoremap <leader><leader>im mqviW<ESC>a }<ESC>Bi{ <ESC>`ql
-vnoremap <leader>im <ESC>mq`>a }<ESC>`<<ESC>i{ <ESC>`><ESC>`ql
-nnoremap <leader>dm mqva{o<esc>%hxx``xx`q
-vnoremap <leader>dm <esc>mq`>/}<cr>hxx`<?{<cr>xx:noh<cr>`q
+nnoremap <leader>iN mqviw<ESC>a }<ESC>bi{ <ESC>`ql
+nnoremap <leader><leader>iN mqviW<ESC>a }<ESC>Bi{ <ESC>`ql
+vnoremap <leader>iN <ESC>mq`>a }<ESC>`<<ESC>i{ <ESC>`><ESC>`ql
+nnoremap <leader>dN mqva{o<esc>%hxx``xx`q
+vnoremap <leader>dN <esc>mq`>/}<cr>hxx`<?{<cr>xx:noh<cr>`q
 " ┌──➤ /Text/
 nnoremap <leader>i/ mqviw<ESC>a/<ESC>bi/<ESC>`ql
 nnoremap <leader><leader>i/ mqviW<ESC>a/<ESC>Bi/<ESC>`ql
