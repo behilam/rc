@@ -235,8 +235,8 @@ vnoremap <leader>d` <esc>mq`>/`<cr>x`<?`<cr>x:noh<cr>`q
 nnoremap <leader>if mqviw<ESC>a}<ESC>bi${<ESC>`qll
 nnoremap <leader><leader>if mqviW<ESC>a}<ESC>Bi${<ESC>`qll
 vnoremap <leader>if <ESC>mq`>a}<ESC>`<<ESC>i${<ESC>`><ESC>`qll
-nnoremap <leader>df mq/}<cr>x?\$<cr>xx:noh<cr>`q
-nnoremap <leader>dF mq/}<cr>x/\$<cr>xx:noh<cr>`q
+nnoremap <leader>df mqva{o<esc>%x``xX:noh<cr>`q
+nnoremap <leader>dF mq/{<cr>va{o<esc>%x``xX:noh<cr>`q
 vnoremap <leader>df <esc>mq`>/}<cr>x`<?$<cr>xx:noh<cr>`q
 " ┌──➤ %Text%
 nnoremap <leader>ig mqviw<ESC>a%<ESC>bi%<ESC>`ql
@@ -257,7 +257,7 @@ nnoremap <leader>ij mqviw<ESC>a]<ESC>bi[<ESC>`ql
 nnoremap <leader><leader>ij mqviW<ESC>a]<ESC>Bi[<ESC>`ql
 vnoremap <leader>ij <ESC>mq`>a]<ESC>`<<ESC>i[<ESC>`><ESC>`ql
 nnoremap <leader>dj mqva[o<esc>%x``x`q
-nnoremap <leader>dk mqv/[<cr>a[o<esc>%x``x:noh<cr>`q
+nnoremap <leader>dk mq/[<cr>va[o<esc>%x``x:noh<cr>`q
 vnoremap <leader>dj <esc>mq`>/]<cr>x`<?[<cr>x:noh<cr>`q
 " ┌──➤ {Text}
 nnoremap <leader>in mqviw<ESC>a}<ESC>bi{<ESC>`ql
@@ -284,8 +284,8 @@ vnoremap <leader>d/ <esc>mq`>//<cr>x`<?/<cr>x:noh<cr>`q
 nnoremap <leader>i, mqviw<ESC>a><ESC>bi<<ESC>`ql
 nnoremap <leader><leader>i, mqviW<ESC>a><ESC>Bi<<ESC>`ql
 vnoremap <leader>i, <ESC>mq`>a><ESC>`<<ESC>i<<ESC>`><ESC>`ql
-nnoremap <leader>d, mq?<<cr>x/><cr>x:noh<cr>`q
-nnoremap <leader>d. mq/><cr>x?<<cr>x:noh<cr>`q
+nnoremap <leader>d, mqva<o<esc>va<<esc>x``x:noh<cr>`q
+nnoremap <leader>d. mq/<<cr>va<o<esc>va<<esc>x``x:noh<cr>`q
 vnoremap <leader>d, <esc>mq`>/><cr>x`<?<<cr>x:noh<cr>`q
 " ┌──➤  Text 
 nnoremap <leader>i<leader> mqviw<ESC>a <ESC>bi <ESC>`ql
