@@ -94,11 +94,6 @@ nnoremap di. mq/<<cr>vi<<esc>gvd`q:noh<cr>
 nnoremap da. mq/<<cr>va<<esc>gvd`q:noh<cr>
 nnoremap ci. /<<cr>vi<<esc>:noh<cr>gvc
 nnoremap ca. /<<cr>va<<esc>:noh<cr>gvc
-"" «text»
-nnoremap di< /»<cr>hv?«<cr> d<esc>:noh<cr>
-nnoremap da< /»<cr>v?«<cr>d<esc>:noh<cr>
-nnoremap ci< /»<cr>hv?«<cr> d<esc>:noh<cr>i
-nnoremap ca< /»<cr>v?«<cr>d<esc>:noh<cr>
 "" ──>'text'
 nnoremap vi" /'<cr>vi'<esc>:noh<cr>gv
 nnoremap va" /'<cr>va'<esc>:noh<cr>gv
@@ -292,12 +287,6 @@ vnoremap <leader>i, <ESC>mq`>a><ESC>`<<ESC>i<<ESC>`><ESC>`ql
 nnoremap <leader>d, mq?<<cr>x/><cr>x:noh<cr>`q
 nnoremap <leader>d. mq/><cr>x?<<cr>x:noh<cr>`q
 vnoremap <leader>d, <esc>mq`>/><cr>x`<?<<cr>x:noh<cr>`q
-" ┌──➤ «Text»
-nnoremap <leader>i. mqviw<ESC>a»<ESC>bi«<ESC>`ql
-nnoremap <leader><leader>i. mqviW<ESC>a»<ESC>Bi«<ESC>`ql
-vnoremap <leader>i. <ESC>mq`>a»<ESC>`<<ESC>i«<ESC>`><ESC>`ql
-nnoremap <leader>d. mq/»<cr>x?«<cr>x:noh<cr>`q
-vnoremap <leader>d. <esc>mq`>/»<cr>x`<?«<cr>x:noh<cr>`q
 " ┌──➤  Text 
 nnoremap <leader>i<leader> mqviw<ESC>a <ESC>bi <ESC>`ql
 nnoremap <leader><leader>i<leader> mqviw<esc>a <esc>bi <esc>`ql
