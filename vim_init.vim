@@ -146,8 +146,8 @@ nnoremap cui /(<cr>va(V<esc>:noh<cr>gvc
 "" [text]
 nnoremap vij vi[
 nnoremap vaj va[
-nnoremap yij yi[`q:<cr>
-nnoremap yaj ya[`q:<cr>
+nnoremap yij mqyi[`q:<cr>
+nnoremap yaj mqya[`q:<cr>
 nnoremap dij di[
 nnoremap daj da[
 nnoremap cij ci[
