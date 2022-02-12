@@ -130,6 +130,7 @@ nnoremap diu di(
 nnoremap dau da(
 nnoremap ciu ci(
 nnoremap cau ca(
+nnoremap vuu va(V
 nnoremap duu va(Vd
 nnoremap cuu va(Vc
 "" ──>(text)
@@ -141,6 +142,7 @@ nnoremap dii mq/(<cr>vi(<esc>gvd`q:noh<cr>
 nnoremap dai mq/(<cr>va(<esc>gvd`q:noh<cr>
 nnoremap cii /(<cr>vi(<esc>:noh<cr>gvc
 nnoremap cai /(<cr>va(<esc>:noh<cr>gvc
+nnoremap vui /(<cr>va(V<esc>:noh<cr>gv
 nnoremap dui mq/(<cr>va(V<esc>gvd`q:noh<cr>
 nnoremap cui /(<cr>va(V<esc>:noh<cr>gvc
 "" [text]
@@ -153,6 +155,7 @@ nnoremap daj da[
 nnoremap cij ci[
 nnoremap caj ca[
 nnoremap yuj mqva[Vy`q:<cr>
+nnoremap vuj va[V
 nnoremap duj va[Vd
 nnoremap cuj va[Vc
 "" ──>[text]
@@ -164,6 +167,7 @@ nnoremap dik mq/[<cr>vi[<esc>gvd`q:noh<cr>
 nnoremap dak mq/[<cr>va[<esc>gvd`q:noh<cr>
 nnoremap cik /[<cr>vi[<esc>:noh<cr>gvc
 nnoremap cak /[<cr>va[<esc>:noh<cr>gvc
+nnoremap vuk /[<cr>va[V<esc>:noh<cr>gv
 nnoremap duk mq/[<cr>va[V<esc>gvd`q:noh<cr>
 nnoremap cuk /[<cr>va[V<esc>:noh<cr>gvc
 "" {text}
@@ -175,6 +179,7 @@ nnoremap din di{
 nnoremap dan da{
 nnoremap cin ci{
 nnoremap can ca{
+nnoremap vun va{V
 nnoremap dun va{Vd
 nnoremap cun va{Vc
 ""  ──>{text}
@@ -186,6 +191,7 @@ nnoremap dim mq/{<cr>vi{<esc>gvd`q:noh<cr>
 nnoremap dam mq/{<cr>va{<esc>gvd`q:noh<cr>
 nnoremap cim /{<cr>vi{<esc>:noh<cr>gvc
 nnoremap cam /{<cr>va{<esc>:noh<cr>gvc
+nnoremap vum /{<cr>va{V<esc>:noh<cr>gv
 nnoremap dum mq/{<cr>va{V<esc>gvd`q:noh<cr>
 nnoremap cum /{<cr>va{V<esc>:noh<cr>gvc
 "" %text%
