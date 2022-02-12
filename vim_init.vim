@@ -236,12 +236,12 @@ nnoremap cag f%vF%c
 "" ──>%text%
 nnoremap viG /%<cr>t%vT%<esc>:noh<cr>gv
 nnoremap vaG /%<cr>vf%<esc>:noh<cr>gv
-nnoremap yiG mq/%<cr>t%yT%<esc>gvy`q:noh<cr>
-nnoremap yaG mq/%<cr>yf%<esc>gvy`q:noh<cr>
-nnoremap diG mq/%<cr>f%dT%<esc>`q:noh<cr>
-nnoremap daG mq/%<cr>df%<esc>`q:noh<cr>
-nnoremap ciG /%<cr>t%cT%<esc>:noh<cr>gvc
-nnoremap caG /%<cr>cf%<esc>:noh<cr>gvc
+nnoremap yiG mq/%<cr>t%yT%`q:noh<cr>
+nnoremap yaG mq/%<cr>yf%`q:noh<cr>
+nnoremap diG mq/%<cr>f%dT%`q:noh<cr>
+nnoremap daG mq/%<cr>df%`q:noh<cr>
+nnoremap ciG /%<cr>t%vT%<esc>:noh<cr>gvc
+nnoremap caG /%<cr>vf%<esc>:noh<cr>gvc
 
 nnoremap <leader>t< va<ovd^va<vd$A><esc>
 
