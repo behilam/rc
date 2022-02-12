@@ -85,15 +85,23 @@ nnoremap di, di<
 nnoremap ci, ci<
 nnoremap da, da<
 nnoremap ca, ca<
+nnoremap vu, va<V
+nnoremap yu, mqva<Vy`q:noh<cr>
+nnoremap du, va<Vd
+nnoremap cu, va<Vc
 "" ──><text>
 nnoremap vi. /<<cr>vi<<esc>:noh<cr>gv
-nnoremap va. /<<cr>va<<esc>:noh<cr>gv
 nnoremap yi. mq/<<cr>vi<<esc>gvy`q:noh<cr>
-nnoremap ya. mq/<<cr>va<<esc>gvy`q:noh<cr>
 nnoremap di. mq/<<cr>vi<<esc>gvd`q:noh<cr>
-nnoremap da. mq/<<cr>va<<esc>gvd`q:noh<cr>
 nnoremap ci. /<<cr>vi<<esc>:noh<cr>gvc
+nnoremap va. /<<cr>va<<esc>:noh<cr>gv
+nnoremap ya. mq/<<cr>va<<esc>gvy`q:noh<cr>
+nnoremap da. mq/<<cr>va<<esc>gvd`q:noh<cr>
 nnoremap ca. /<<cr>va<<esc>:noh<cr>gvc
+nnoremap vu. /<<cr>va<V<esc>:noh<cr>gv
+nnoremap yu. mq/<<cr>va<V<esc>gvy`q:noh<cr>
+nnoremap du. mq/<<cr>va<V<esc>gvd`q:noh<cr>
+nnoremap cu. /<<cr>va<V<esc>:noh<cr>gvc
 "" ──>'text'
 nnoremap vi" /'<cr>vi'<esc>:noh<cr>gv
 nnoremap va" /'<cr>va'<esc>:noh<cr>gv
