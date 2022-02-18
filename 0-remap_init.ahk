@@ -87,9 +87,6 @@ m::n
 .::,
 /::.
 
-; Fourth row
-RAlt::LShift
-
 ; Mouse
 XButton1::Browser_Back
 XButton1 & LButton::Media_Next
