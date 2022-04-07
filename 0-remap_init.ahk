@@ -43,6 +43,8 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 ; VARIABLES
 CurrentWin := "test"
 AudioDeviceCounter := False
+Clipstack := []
+temp := ""
 
 ; Number row
 `::CapsLock
@@ -201,3 +203,35 @@ Return
 #IfWinActive, Morrowind
 Enter::SendEvent, {Click}
 #IfWinActive
+
+; ###########################
+; ##   Private Clipboard   ##
+; ###########################
+
+; Copy into Clipstack
+<!#v::
+    temp := ClipboardAll
+    Send, ^c
+    ClipWait, 1
+    Clipstack.Push(Clipboard)
+    Clipboard := temp
+    temp := ""
+Return
+
+; Paste pop
+<!#b::
+    temp := ClipboardAll
+    Clipboard := Clipstack.Pop()
+    Send, ^v
+    Clipboard := temp
+    temp := ""
+Return
+
+;Paste shift
+<!#n::
+    temp := ClipboardAll
+    Clipboard := Clipstack.RemoveAt(1)
+    Send, ^v
+    Clipboard := temp
+    temp := ""
+Return
