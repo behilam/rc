@@ -8,9 +8,8 @@ case $- in
       *) return;;
 esac
 
-alias so=". ~/.bashrc"
+alias so=". ~/.bashrc; echo bashrc ĝisdata!"
 alias rc="code ~/rc"
-alias bashrc="code ~/.bashrc"
 alias bsrc="source ~/.bashrc"
 alias cm="cmatrix -b -a -u 5 -s"
 alias ..="cd .."
@@ -18,6 +17,7 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias cdw="cd $(echo '$1' | sed -e 's/\\/\//g' | sed -e 's/C:/c:/')"
+alias pwc="pwd | clip"
 
 
 # enable color support of ls and also add handy aliases
@@ -44,7 +44,6 @@ if [ -f ~/.bash_aliases ]; then
 fi
 
 eval "$(zoxide init bash)"
-eval "$(thefuck --alias fek)"
 
 e() {
     if [ $1 ] ; then
