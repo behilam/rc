@@ -8,6 +8,11 @@ if !exists('g:vscode')
     " Alt-z
     nnoremap ú :set wrap!<cr>
     inoremap ú <esc>:set wrap!<cr>gi
+    
+    call plug#begin()
+    Plug 'tpope/vim-repeat'
+    Plug 'ggandor/lightspeed.nvim'
+    call plug#end()
 endif
 
 nnoremap Y y$
