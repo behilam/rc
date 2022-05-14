@@ -93,16 +93,16 @@ m::n
 XButton1::Browser_Back
 XButton1 & LButton::Media_Next
 XButton1 & RButton::Media_Prev
+XButton1 & MButton::Media_Play_Pause
 XButton1 & WheelDown::Volume_Down
 XButton1 & WheelUp::Volume_Up
-XButton1 & MButton::Media_Play_Pause
 
 XButton2::Browser_Forward
+XButton2 & LButton::Send, +{LButton}
+XButton2 & RButton::Send, ^{LButton}
 XButton2 & MButton::Send, ^{F4}
 XButton2 & WheelDown::Send, ^{Tab}
 XButton2 & WheelUp::Send, ^+{Tab}
-
-XButton2 & LButton::Send, +{LButton}
 
 ; Special number characters
 Appskey & s::!
