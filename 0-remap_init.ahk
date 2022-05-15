@@ -56,7 +56,6 @@ XButton1 & WheelUp::Volume_Up
 
 XButton2::Browser_Forward
 XButton2 & LButton::Send, +{LButton}
-XButton2 & RButton::Send, ^{LButton}
 XButton2 & MButton::Send, ^{F4}
 XButton2 & WheelDown::Send, ^{Tab}
 XButton2 & WheelUp::Send, ^+{Tab}
