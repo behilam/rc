@@ -177,16 +177,13 @@ Return
 
 ; Change Audio Device
 +F1::
-If (AudioDeviceCounter)
-{
+If (AudioDeviceCounter) {
     AudioDeviceCounter := False
     ; VA_SetDefaultEndpoint("Speakers (3- High Definition Audio Device)", 0)
     VA_SetDefaultEndpoint("Altavoces (4- High Definition Audio Device)", 0)
     ; VA_SetDefaultEndpoint("Speakers (Realtek(R) Audio)", 0)
     ; VA_SetDefaultEndpoint("Speakers (2- Realtek(R) Audio)", 0)
-}
-else
-{
+} else {
     AudioDeviceCounter := True
     VA_SetDefaultEndpoint("ASUS VP228", 0)
 }
