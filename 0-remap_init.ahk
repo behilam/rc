@@ -118,10 +118,10 @@ Appskey & y::)
 ; Brakets
 Appskey & i::(
 Appskey & o::)
-Appskey & k::[
-Appskey & l::]
-Appskey & m::{
-Appskey & ,::}
+Appskey & k::{
+Appskey & l::}
+; Appskey & m::{
+; Appskey & ,::}
 
 ; Quick numbers
 >^s::Send, 1
