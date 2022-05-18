@@ -280,26 +280,26 @@ nnoremap <leader>du mqva(o<esc>%x``x`q
 nnoremap <leader>di mq/(<cr>va(o<esc>%x``x:noh<cr>`q
 vnoremap <leader>du <esc>mq`>/)<cr>x`<?(<cr>x:noh<cr>`q
 " ┌──➤ [Text]
-nnoremap <leader>ij mqviw<ESC>a]<ESC>bi[<ESC>`ql
-nnoremap <leader><leader>ij mqviW<ESC>a]<ESC>Bi[<ESC>`ql
-vnoremap <leader>ij <ESC>mq`>a]<ESC>`<<ESC>i[<ESC>`><ESC>`ql
-nnoremap <leader>dj mqva[o<esc>%x``x`q
-nnoremap <leader>dk mq/[<cr>va[o<esc>%x``x:noh<cr>`q
-vnoremap <leader>dj <esc>mq`>/]<cr>x`<?[<cr>x:noh<cr>`q
+nnoremap <leader>i[ mqviw<ESC>a]<ESC>bi[<ESC>`ql
+nnoremap <leader><leader>i[ mqviW<ESC>a]<ESC>Bi[<ESC>`ql
+vnoremap <leader>i[ <ESC>mq`>a]<ESC>`<<ESC>i[<ESC>`><ESC>`ql
+nnoremap <leader>d[ mqva[o<esc>%x``x`q
+nnoremap <leader>d] mq/[<cr>va[o<esc>%x``x:noh<cr>`q
+vnoremap <leader>d[ <esc>mq`>/]<cr>x`<?[<cr>x:noh<cr>`q
 " ┌──➤ {Text}
-nnoremap <leader>in mqviw<ESC>a}<ESC>bi{<ESC>`ql
-nnoremap <leader><leader>in mqviW<ESC>a}<ESC>Bi{<ESC>`ql
-vnoremap <leader>in <ESC>mq`>a}<ESC>`<<ESC>i{<ESC>`><ESC>`ql
-nnoremap <leader>dn mqva{o<esc>%x``x`q
-nnoremap <leader>dm mq/{<cr>va{o<esc>%x``x:noh<cr>`q
-vnoremap <leader>dn <esc>mq`>/}<cr>x`<?{<cr>x:noh<cr>`q
+nnoremap <leader>ij mqviw<ESC>a}<ESC>bi{<ESC>`ql
+nnoremap <leader><leader>ij mqviW<ESC>a}<ESC>Bi{<ESC>`ql
+vnoremap <leader>ij <ESC>mq`>a}<ESC>`<<ESC>i{<ESC>`><ESC>`ql
+nnoremap <leader>dj mqva{o<esc>%x``x`q
+nnoremap <leader>dk mq/{<cr>va{o<esc>%x``x:noh<cr>`q
+vnoremap <leader>dj <esc>mq`>/}<cr>x`<?{<cr>x:noh<cr>`q
 " ┌──➤ { Text }
-nnoremap <leader>iN mqviw<ESC>a }<ESC>bi{ <ESC>`ql
-nnoremap <leader><leader>iN mqviW<ESC>a }<ESC>Bi{ <ESC>`ql
-vnoremap <leader>iN <ESC>mq`>a }<ESC>`<<ESC>i{ <ESC>`><ESC>`ql
-nnoremap <leader>dN mqva{o<esc>%hxx``xx`q
-nnoremap <leader>dM mq/{<cr>va{o<esc>%hxx``xx:noh<cr>`q
-vnoremap <leader>dN <esc>mq`>/}<cr>hxx`<?{<cr>xx:noh<cr>`q
+nnoremap <leader>iJ mqviw<ESC>a }<ESC>bi{ <ESC>`ql
+nnoremap <leader><leader>iJ mqviW<ESC>a }<ESC>Bi{ <ESC>`ql
+vnoremap <leader>iJ <ESC>mq`>a }<ESC>`<<ESC>i{ <ESC>`><ESC>`ql
+nnoremap <leader>dJ mqva{o<esc>%hxx``xx`q
+nnoremap <leader>dK mq/{<cr>va{o<esc>%hxx``xx:noh<cr>`q
+vnoremap <leader>dJ <esc>mq`>/}<cr>hxx`<?{<cr>xx:noh<cr>`q
 " ┌──➤ /Text/
 nnoremap <leader>i/ mqviw<ESC>a/<ESC>bi/<ESC>`ql
 nnoremap <leader><leader>i/ mqviW<ESC>a/<ESC>Bi/<ESC>`ql
