@@ -320,6 +320,12 @@ nnoremap <leader><leader>i<leader> mqviw<esc>a <esc>bi <esc>`ql
 vnoremap <leader>i<leader> <ESC>mq`>a <ESC>`<<ESC>i <ESC>`><ESC>`ql
 nnoremap <leader>d<leader> mq/ <cr>x? <cr>x:noh<cr>`q
 vnoremap <leader>d<leader> <esc>mq`>/ <cr>x`<? <cr>x:noh<cr>`q
+" ┌──➤  \n
+"    Text
+"\n
+nnoremap <leader>i<CR> viw<ESC>a<CR><ESC>`<i<CR><ESC>
+nnoremap <leader><leader>i<CR> viW<ESC>a<CR><ESC>`<i<CR><ESC>
+vnoremap <leader>i<CR> <ESC>`>a<CR><ESC>`<i<CR><ESC>
     " Delete wrapper tags
 nnoremap <leader>dt mqvat<`q0i:exe "/^<esc>f<a\\/<esc>/[ >]<cr>i" <esc>"qdF::@q<cr>dd`qdd:noh<cr>
 """" Note: Your cursor has to be (anywhere) on top of the opening tag and it only works with spreaded tags (not oneliners) in the form:
