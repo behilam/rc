@@ -201,7 +201,7 @@ nnoremap daj da{
 nnoremap duj va{Vd
 nnoremap cij ci{
 nnoremap caj ca{
-nnoremap cun va{Vc
+nnoremap cuj va{Vc
 ""  ──>{text}
 nnoremap vik /{<cr>vi{<esc>:noh<cr>gv
 nnoremap vak /{<cr>va{<esc>:noh<cr>gv
