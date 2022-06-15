@@ -77,14 +77,19 @@ Return
 Return
 ; V ;
 ^#RButton::
+    BlockInput On
     CoordMode, Mouse, Screen
     MouseGetPos, Mouse2_gotoX, Mouse2_gotoY
+    Sleep 75
+    BlockInput Off
 Return
 #RButton::
+    BlockInput On
     CoordMode, Mouse, Screen
     MouseMove, Mouse2_gotoX, Mouse2_gotoY
-    Sleep 10
+    Sleep 75
     Click
+    BlockInput Off
 Return
 
 ; Number row
