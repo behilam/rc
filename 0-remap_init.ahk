@@ -45,6 +45,8 @@ CurrentWin := "test"
 AudioDeviceCounter := False
 Mouse_gotoX := 0
 Mouse_gotoY := 0
+Mouse2_gotoX := 0
+Mouse2_gotoY := 0
 Clipstack := []
 temp := ""
 
@@ -70,6 +72,17 @@ Return
 #LButton::
     CoordMode, Mouse, Screen
     MouseMove, Mouse_gotoX, Mouse_gotoY
+    Sleep 10
+    Click
+Return
+; V ;
+^#RButton::
+    CoordMode, Mouse, Screen
+    MouseGetPos, Mouse2_gotoX, Mouse2_gotoY
+Return
+#RButton::
+    CoordMode, Mouse, Screen
+    MouseMove, Mouse2_gotoX, Mouse2_gotoY
     Sleep 10
     Click
 Return
