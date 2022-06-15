@@ -43,6 +43,8 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 ; VARIABLES
 CurrentWin := "test"
 AudioDeviceCounter := False
+Mouse_gotoX := 0
+Mouse_gotoY := 0
 Clipstack := []
 temp := ""
 
@@ -59,6 +61,18 @@ XButton2 & LButton::Send, +{LButton}
 XButton2 & MButton::Send, ^{F4}
 XButton2 & WheelDown::Send, ^{Tab}
 XButton2 & WheelUp::Send, ^+{Tab}
+
+    ; Mouse save location and quick go to location
+^#LButton::
+    CoordMode, Mouse, Screen
+    MouseGetPos, Mouse_gotoX, Mouse_gotoY
+Return
+#LButton::
+    CoordMode, Mouse, Screen
+    MouseMove, Mouse_gotoX, Mouse_gotoY
+    Sleep 10
+    Click
+Return
 
 ; Number row
 `::CapsLock
