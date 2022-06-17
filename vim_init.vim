@@ -1,6 +1,7 @@
 set encoding=utf-8
 set fileencoding=utf-8
 set shortmess=filnxtToOI
+hi LightspeedCursor gui=reverse
 let mapleader = ' '
 let maplocalleader = '\'
 
