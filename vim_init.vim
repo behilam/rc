@@ -9,12 +9,12 @@ if !exists('g:vscode')
     nnoremap ú :set wrap!<cr>
     inoremap ú <esc>:set wrap!<cr>gi
     
-    if has('nvim')
-        call plug#begin()
-        Plug 'tpope/vim-repeat'
-        Plug 'ggandor/lightspeed.nvim'
-        call plug#end()
-    endif
+endif
+if !has('vim')
+    call plug#begin()
+    Plug 'tpope/vim-repeat'
+    Plug 'ggandor/lightspeed.nvim'
+    call plug#end()
 endif
 
 nnoremap Y y$
