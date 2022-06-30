@@ -109,7 +109,7 @@ nnoremap <leader><leader>p ggVG"*p
 nnoremap d<leader> 0"_D
 nnoremap dc ^"_D
 nnoremap dC ^_D
-
+vnoremap <leader>x :s/^.*$<cr>
 
 " Alternative in-wrapper modifiers
 "*** :<cr> is a manual fix for the q marks to work well in VSCode.
