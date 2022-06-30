@@ -22,6 +22,20 @@ if !exists('g:vscode')
     inoremap <c-;> <esc>O
     inoremap s a
     nnoremap <c-k><c-l> :set nu!<cr>
+
+    "  Commenting blocks of code.
+    augroup commenting_blocks_of_code
+        autocmd!
+        autocmd FileType c,cpp,java,scala,rust let b:comment_leader = '// '
+        autocmd FileType sh,ruby,python        let b:comment_leader = '# '
+        autocmd FileType conf,fstab            let b:comment_leader = '# '
+        autocmd FileType tex                   let b:comment_leader = '% '
+        autocmd FileType mail                  let b:comment_leader = '> '
+        autocmd FileType vim                   let b:comment_leader = '" '
+        autocmd FileType ahk                   let b:comment_leader = '; '
+    augroup END
+    noremap gc :<C-B>silent <C-E>s/^/<C-R>=escape(b:comment_leader,'\/')<CR>/<CR>:nohlsearch<CR>
+    noremap gC :<C-B>silent <C-E>s/^\V<C-R>=escape(b:comment_leader,'\/')<CR>//e<CR>:nohlsearch<CR>
 endif
 
 if exists('g:started_by_firenvim')
