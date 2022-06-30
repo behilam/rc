@@ -21,6 +21,7 @@ if !exists('g:vscode')
     inoremap jk <esc>
     inoremap <c-;> <esc>O
     inoremap s a
+    nnoremap <c-k><c-l> :set nu!<cr>
 endif
 
 if exists('g:started_by_firenvim')
@@ -32,8 +33,6 @@ if exists('g:started_by_firenvim')
     inoremap <expr> )  strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
     inoremap <expr> ' strpart(getline('.'), col('.')-1, 1) == "\'" ? "\<Right>" : "\'\'\<Left>"
 
-    nnoremap <c-k><c-l> :set nu!<cr>
-    
     au BufEnter colab.*.txt set ft=python
     au BufEnter github.com_*.txt set ft=markdown
 
