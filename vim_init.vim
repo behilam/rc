@@ -20,7 +20,6 @@ if !exists('g:vscode')
     inoremap ú <esc>:set wrap!<cr>gi
     inoremap jk <esc>
     inoremap <c-;> <esc>O
-    inoremap s a
     nnoremap <c-k><c-l> :set nu!<cr>
 
     "  Commenting blocks of code.
