@@ -1,4 +1,4 @@
-#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
+﻿#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
 ; #Warn  ; Enable warnings to assist with detecting common errors.
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
@@ -40,7 +40,9 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 ; │LCtr│Win │LAlt │         └───┘         │RAlt│ Fn │Apps│RCtr│ │ ← │ ↓ │ → │ │   0   │ . │ V │
 ; └────┴────┴─────┴───────────────────────┴────┴────┴────┴────┘ └───┴───┴───┘ └───────┴───┴───┘
 
-; VARIABLES
+; =======================
+; =====  VARIABLES  =====
+; =======================
 CurrentWin := "test"
 AudioDeviceCounter := False
 Mouse_gotoX := 0
@@ -50,7 +52,9 @@ Mouse2_gotoY := 0
 Clipstack := []
 temp := ""
 
-; Mouse
+; =======================
+; =======  MOUSE  =======
+; =======================
 XButton1::Browser_Back
 XButton1 & LButton::Media_Next
 XButton1 & RButton::Media_Prev
@@ -92,6 +96,9 @@ Return
     BlockInput Off
 Return
 
+; =======================
+; =====  KEYBOARD  ======
+; =======================
 ; Number row
 `::CapsLock
 
