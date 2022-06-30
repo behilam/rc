@@ -37,6 +37,8 @@ if !exists('g:vscode')
     noremap gC :<C-B>silent <C-E>s/^\V<C-R>=escape(b:comment_leader,'\/')<CR>//e<CR>:nohlsearch<CR>
 endif
 
+"  Firenvim
+let g:timer_firenvim = ""
 if exists('g:started_by_firenvim')
     inoremap {      {}<Left>
     inoremap <expr> }  strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}"
@@ -57,6 +59,25 @@ if exists('g:started_by_firenvim')
             \ },
         \ }
     \ }
+
+    " Throttled autoupdate text area
+    let g:timer_started = v:false
+    function! My_Write(timer) abort
+        let g:timer_started = v:false
+        write
+    endfunction
+
+    function! Delay_My_Write() abort
+        if g:timer_started
+            call timer_stop(g:timer_firenvim)
+        end
+        let g:timer_started = v:true
+        echo g:timer_firenvim
+        let g:timer_firenvim = timer_start(1000, 'My_Write')
+    endfunction
+
+    au TextChanged * ++nested call Delay_My_Write()
+    au TextChangedI * ++nested call Delay_My_Write()
 endif
 
 nnoremap Y y$
