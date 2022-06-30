@@ -19,6 +19,32 @@ if !exists('g:vscode')
     nnoremap ú :set wrap!<cr>
     inoremap ú <esc>:set wrap!<cr>gi
     inoremap jk <esc>
+    inoremap <c-;> <esc>O
+    inoremap s a
+endif
+
+if exists('g:started_by_firenvim')
+    inoremap {      {}<Left>
+    inoremap <expr> }  strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}"
+    inoremap [      []<Left>
+    inoremap <expr> ]  strpart(getline('.'), col('.')-1, 1) == "]" ? "\<Right>" : "]"
+    inoremap ( ()<Left>
+    inoremap <expr> )  strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
+    inoremap <expr> ' strpart(getline('.'), col('.')-1, 1) == "\'" ? "\<Right>" : "\'\'\<Left>"
+
+    nnoremap <c-k><c-l> :set nu!<cr>
+    
+    au BufEnter colab.*.txt set ft=python
+    au BufEnter github.com_*.txt set ft=markdown
+
+    let g:firenvim_config = { 
+        \ 'localSettings': {
+            \ '.*': {
+                \ 'takeover': 'never',
+                \ 'cmdline': 'firenvim',
+            \ },
+        \ }
+    \ }
 endif
 
 nnoremap Y y$
@@ -67,8 +93,8 @@ xnoremap <leader>P "*P
 nnoremap <leader><leader>p ggVG"*p
 
 " Delete row content
-nnoremap ds 0"_D
-nnoremap dS 0D
+nnoremap d<leader> 0"_D
+nnoremap d<leader> 0D
 nnoremap dc ^"_D
 nnoremap dC ^_D
 
