@@ -107,7 +107,6 @@ nnoremap <leader><leader>p ggVG"*p
 
 " Delete row content
 nnoremap d<leader> 0"_D
-nnoremap d<leader> 0D
 nnoremap dc ^"_D
 nnoremap dC ^_D
 
