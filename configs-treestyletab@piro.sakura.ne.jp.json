@@ -1,0 +1,39 @@
+{
+  "cachedExternalAddons": [
+    "@tst-search",
+    "tst_fade_old_tabs@emvaized.com"
+  ],
+  "chunkedUserStyleRules0": "LyogU2hvdyB0aXRsZSBvZiB1bnJlYWQgdGFicyB3aXRoIHJlZCBhbmQgaXRhbGljIGZvbnQgKi8KLyoKOnJvb3Quc2lkZWJhciB0YWItaXRlbS51bnJlYWQgLmxhYmVsLWNvbnRlbnQgewogIGNvbG9yOiByZWQgIWltcG9ydGFudDsKICBmb250LXN0eWxlOiBpdGFsaWMgIWltcG9ydGFudDsKfQoqLwoKLyogQWRkIHByaXZhdGUgYnJvd3NpbmcgaW5kaWNhdG9yIHBlciB0YWIgKi8KLyoKOnJvb3Quc2lkZWJhciB0YWItaXRlbS5wcml2YXRlLWJyb3dzaW5nIHRhYi1sYWJlbDpiZWZvcmUgewogIGNvbnRlbnQ6ICLwn5W2IjsKfQoqLw==",
+  "closeParentBehavior_insideSidebar_expanded": 0,
+  "closeParentBehavior_outsideSidebar_expanded": 0,
+  "configsVersion": 25,
+  "lastSelectedSubPanelProviderId": "@tst-search",
+  "moveParentBehavior_outsideSidebar_expanded": 2,
+  "notifiedFeaturesVersion": 9,
+  "optionsExpandedGroups": [
+    "group-allConfigs"
+  ],
+  "optionsExpandedSections": [
+    "section-appearance",
+    "section-treeBehavior",
+    "section-drag",
+    "section-advanced",
+    "section-addons",
+    "section-debug"
+  ],
+  "skipCollapsedTabsForTabSwitchingShortcuts": true,
+  "successorTabControlLevel": 1,
+  "syncDevices": {
+    "device-1652474629307-47805": {
+      "id": "device-1652474629307-47805",
+      "name": "Firefox on Windows",
+      "icon": "device-desktop",
+      "timestamp": 1652477120876
+    }
+  },
+  "tabDragBehaviorShift": 12,
+  "treeDoubleClickBehavior": 1,
+  "userStyleRules": "",
+  "userStyleRulesFieldHeight": "120px",
+  "warnOnCloseTabs": false
+}
