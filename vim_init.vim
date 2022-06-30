@@ -5,17 +5,17 @@ hi LightspeedCursor gui=reverse
 let mapleader = ' '
 let maplocalleader = '\'
 
+call plug#begin()
+Plug 'tpope/vim-repeat'
+Plug 'ggandor/lightspeed.nvim'
+Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+call plug#end()
+
 if !exists('g:vscode')
     " Alt-z
     nnoremap ú :set wrap!<cr>
     inoremap ú <esc>:set wrap!<cr>gi
     inoremap jk <esc>
-endif
-if !has('vim')
-    call plug#begin()
-    Plug 'tpope/vim-repeat'
-    Plug 'ggandor/lightspeed.nvim'
-    call plug#end()
 endif
 
 nnoremap Y y$
