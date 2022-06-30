@@ -64,8 +64,10 @@ xnoremap <leader>P "*P
 nnoremap <leader><leader>p ggVG"*p
 
 " Delete row content
-nnoremap dc ^D
-nnoremap ds ^"_D
+nnoremap ds 0"_D
+nnoremap dS 0D
+nnoremap dc ^"_D
+nnoremap dC ^_D
 
 
 " Alternative in-wrapper modifiers
