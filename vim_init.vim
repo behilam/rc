@@ -1,7 +1,7 @@
 set encoding=utf-8
 set fileencoding=utf-8
 set shortmess=filnxtToOI
-set guifont=Consola:h8
+set guifont=Consola:h10
 set nu
 
 hi LightspeedCursor gui=reverse
