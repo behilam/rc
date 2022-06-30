@@ -9,7 +9,7 @@ if !exists('g:vscode')
     " Alt-z
     nnoremap ú :set wrap!<cr>
     inoremap ú <esc>:set wrap!<cr>gi
-    
+    inoremap jk <esc>
 endif
 if !has('vim')
     call plug#begin()
@@ -20,8 +20,6 @@ endif
 
 nnoremap Y y$
 nnoremap yY ggVGy
-
-inoremap jk <esc>
 
 nnoremap q i_<esc>r
 nnoremap Q q
