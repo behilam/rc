@@ -35,8 +35,8 @@ if !exists('g:vscode')
         autocmd FileType vim                   let b:comment_leader = '" '
         autocmd FileType ahk                   let b:comment_leader = '; '
     augroup END
-    noremap gc :<C-B>silent <C-E>s/^/<C-R>=escape(b:comment_leader,'\/')<CR>/<CR>:nohlsearch<CR>
-    noremap gC :<C-B>silent <C-E>s/^\V<C-R>=escape(b:comment_leader,'\/')<CR>//e<CR>:nohlsearch<CR>
+    "  noremap gc :<C-B>silent <C-E>s/^/<C-R>=escape(b:comment_leader,'\/')<CR>/<CR>:nohlsearch<CR>
+    "  noremap gC :<C-B>silent <C-E>s/^\V<C-R>=escape(b:comment_leader,'\/')<CR>//e<CR>:nohlsearch<CR>
 endif
 
 "  Firenvim
@@ -445,7 +445,6 @@ nnoremap <localleader><localleader>s :source C:\Users\Moiso\rc\vim_init.vim<cr>
 nnoremap <localleader><localleader>e :e C:\Users\Moiso\rc\vim_init.vim<cr>
 
 
-
 " ====================== VSCode only begin ===================
 
 " VSCode needs double backlash (\\) for the OR operator for some unkown reason...
@@ -455,12 +454,6 @@ nnoremap cix /,\\|)\\|}\\|]\\|\s}<cr>hv?,<cr>wv:noh<cr>gvc
 nnoremap ciX mq/,<cr>lv`q?(\\|\[\\|{<cr>v:noh<cr>gvwc
 
 " ===================== VSCode only end =======================
-
-
-
-
-
-
 
 
 " ============================ TESTS =================================
@@ -508,17 +501,3 @@ function! EnumSubtitleLines()
     exec "normal! :%s/^\\(\\d*\\)$/\\r\\1/g\<CR>:noh\<CR>"
     echo "Linioj nombritaj :)"
 endfunction
-
-
-
-
-
-
-
-
-
-
-
-
-
-
