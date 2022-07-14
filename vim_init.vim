@@ -8,11 +8,13 @@ hi LightspeedCursor gui=reverse
 let mapleader = ' '
 let maplocalleader = '\'
 
-call plug#begin()
-Plug 'tpope/vim-repeat'
-Plug 'ggandor/lightspeed.nvim'
-Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
-call plug#end()
+if has('nvim')
+    call plug#begin()
+    Plug 'tpope/vim-repeat'
+    Plug 'ggandor/lightspeed.nvim'
+    Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+    call plug#end()
+endif
 
 if !exists('g:vscode')
     " Alt-z
