@@ -415,6 +415,8 @@ nnoremap <C-a> v<C-a>
 nnoremap <C-x> v<C-x>
 
 vnoremap <c-j> /^\s*$<cr>:<c-u>noh<cr>gv
+nnoremap ) /[)}\]]<cr>:noh<cr>
+nnoremap ( ?[({[]<cr>:noh<cr>
 
 " Don't replace register when pasting in visual + give alternative
 vnoremap p "_dP
@@ -450,14 +452,6 @@ nnoremap dix /,\\|)\\|}\\|]\\|\s}<cr>d?,<cr>:noh<cr>
 nnoremap diX mq/,<cr>lv`q?(\\|\[\\|{<cr>wd:noh<cr>
 nnoremap cix /,\\|)\\|}\\|]\\|\s}<cr>hv?,<cr>wv:noh<cr>gvc
 nnoremap ciX mq/,<cr>lv`q?(\\|\[\\|{<cr>v:noh<cr>gvwc
-
-" Normal [[ and ]] were practically useless, so they now will search for the next or previous bracket
-nnoremap ( ?(<cr>:noh<cr>
-nnoremap ) /)<cr>:noh<cr>
-nnoremap [[ ?[<cr>:noh<cr>
-nnoremap ]] /]<cr>:noh<cr>
-nnoremap { ?{<cr>:noh<cr>
-nnoremap } /}<cr>:noh<cr>
 
 " ===================== VSCode only end =======================
 
