@@ -414,8 +414,8 @@ onoremap O :<c-u>normal! T[vi[<cr>
 nnoremap <C-a> v<C-a>
 nnoremap <C-x> v<C-x>
 
-nnoremap } /^\s*$<cr>:noh<cr>
-nnoremap { ?^\s*$<cr>:noh<cr>
+nnoremap { /^\s*$<cr>:noh<cr>
+nnoremap } ?^\s*$<cr>:noh<cr>
 nnoremap ) /[)}\]]<cr>:noh<cr>
 nnoremap ( ?[({[]<cr>:noh<cr>
 
