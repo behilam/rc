@@ -226,3 +226,5 @@ Return
     Clipboard := temp
     temp := ""
 Return
+
+#Include unicode.ahk
