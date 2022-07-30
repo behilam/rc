@@ -1,199 +1,188 @@
 {
-    "terminal.integrated.profiles.windows": {
-        "PowerShell": {
-            "source": "PowerShell",
-            "icon": "terminal-powershell"
-        },
-        "Command Prompt": {
-            "path": [
-                "${env:windir}\\Sysnative\\cmd.exe",
-                "${env:windir}\\System32\\cmd.exe"
-            ],
-            "args": [],
-            "icon": "terminal-cmd"
-        },
-        "Git Bash": {
-            "source": "Git Bash",
-            "icon": "git-branch"
-        }
-    },
-    "terminal.integrated.defaultProfile.windows": "Git Bash",
-    "editor.renderWhitespace": "none",
-    "editor.multiCursorModifier": "ctrlCmd",
-    "editor.find.seedSearchStringFromSelection": "never",
-    "editor.acceptSuggestionOnCommitCharacter": false,
-    "editor.scrollBeyondLastLine": false,
-    "editor.cursorBlinking": "solid",
-    "editor.semanticHighlighting.enabled": true,
-    "editor.tokenColorCustomizations": {
-        "comments": "#999999",
-        "variables": "#FF0000"
-    },
-    "editor.semanticTokenColorCustomizations": {
-        "[Community Material Theme Ocean High Contrast]": {
-            "enabled": true,
-            "rules": {
-            }
-        }
-    },
-    "liveServer.settings.donotShowInfoMsg": true,
-    "liveServer.settings.donotVerifyTags": true,
-    "vscode-neovim.neovimExecutablePaths.win32": "C:\\Program Files\\Neovim\\bin\\nvim.exe",
-    "vscode-neovim.mouseSelectionStartVisualMode": true,
-    "vscode-neovim.neovimInitVimPaths.win32": "C:\\Users\\Moiso\\rc\\vim_init.vim",
-    "explorer.confirmDelete": false,
-    "explorer.compactFolders": false,
-    "explorer.confirmDragAndDrop": false,
-    "git.enableSmartCommit": true,
-    "files.autoSave": "onFocusChange",
-    "typescript.updateImportsOnFileMove.enabled": "always",
-    "window.title": "${dirty}${activeEditorMedium}${separator}${rootName} > ${remoteName} (~￣︶￣)~",
-    "workbench.editor.highlightModifiedTabs": true,
-    "workbench.iconTheme": "vscode-icons",
-    "workbench.startupEditor": "newUntitledFile",
-    "workbench.colorCustomizations": {
-        "diffEditor.removedTextBackground": "#ff880033",
-        "diffEditor.insertedTextBackground": "#00eaff2a",
-        "[Community Material Theme Darker High Contrast]": {
-            "editor.background": "#000003",
-            "editor.selectionBackground": "#138cef6f",
-            "terminal.background": "#15120f",
-            "menu.background": "#000",
-            "menu.border": "#333",
-            "sideBar.background": "#12161a",
-            "sideBar.border": "#0b2c2c",
-            "titleBar.activeForeground": "#959595",
-            "titleBar.inactiveBackground": "#000000",
-            "editorLineNumber.activeForeground": "#ff7300",
-            "notebook.focusedCellBorder": "#4a0e7e",
-            "notebook.focusedEditorBorder": "#4a0e7e",
-            "editor.findMatchBackground": "#aa1515",
-            "editor.findMatchHighlightBackground": "#703f1a",
-            "editor.selectionHighlightBackground": "#681430"
-        },
-        "[Community Material Theme Ocean High Contrast]": {
-            "editorLineNumber.foreground": "#988650",
-            "editorLineNumber.activeForeground": "#ff7300",
-            "editor.selectionBackground": "#1886e064",
-            "editor.findMatchHighlightBackground": "#fe01d44b",
-            "focusBorder": "#4d4d4d",
-            "selection.background": "#7c1354",
-            "scrollbar.shadow": "#000",
-            "editor.background": "#000003",
-            "sideBar.background": "#000f1f",
-            "sideBar.border": "#002a2a",
-            "sideBar.foreground": "#799",
-            "list.inactiveSelectionBackground": "#12344b",
-            "list.inactiveSelectionForeground": "#e6e6e6",
-            "list.focusBackground": "#af2806d8",
-            "listFilterWidget.background": "#08383a",
-            "listFilterWidget.outline": "#3ea89781",
-            "listFilterWidget.noMatchesOutline": "#af2806d8",
-            "statusBar.foreground": "#8d9ba0",
-            "statusBarItem.hoverBackground": "#4a223a",
-            "titleBar.activeForeground": "#959595",
-            "titleBar.inactiveBackground": "#000000",
-            "menu.background": "#000",
-            "menu.border": "#333",
-            "menu.selectionBackground": "#380a16",
-            "gitDecoration.modifiedResourceForeground": "#1f8ed8",
-            "terminal.background": "#010202",
-            "terminal.border": "#212424"
-        }
-    },
-    "[json]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[javascript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[html]": {
-        "editor.defaultFormatter": "vscode.html-language-features"
-    },
-    "[typescript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[rust]": {
-        "editor.defaultFormatter": "rust-lang.rust-analyzer",
-        "editor.tabSize": 4
-    },
-    "security.workspace.trust.untrustedFiles": "open",
-    "zenMode.hideLineNumbers": false,
-    "emmet.includeLanguages": {
-        "njk": "html",
-        "rust": "html"
-    },
-    "notebook.cellToolbarLocation": {
-        "default": "right",
-        "jupyter-notebook": "right"
-    },
-    "vscode-neovim.highlightGroups.highlights": {
-        "Directory": "vim",
-        "IncSearch": {
-            "backgroundColor": "theme.editor.findMatchBackground",
-            "borderColor": "theme.editor.findMatchBorder"
-        },
-        "Search": {
-            "backgroundColor": "theme.editor.findMatchHighlightBackground",
-            "borderColor": "theme.editor.findMatchHighlightBorder"
-        },
-        "Visual": {
-            "backgroundColor": "theme.editor.selectionBackground"
-        },
-        "Conceal": "vim",
-        "Substitute": "vim"
-    },
-    "files.eol": "auto",
-    "aws.telemetry": false,
-    "json.schemas": [],
-    "vsicons.customIconFolderPath": "C:\\Users\\Moiso\\AppData\\Roaming\\Code\\User",
-    "vsicons.associations.folders": [
-        { "icon": "css", "extensions": ["stilo"]},
-        { "icon": "public", "extensions": ["publika"]},
-        { "icon": "src", "extensions": ["fonto"]},
-        { "icon": "fonts", "extensions": ["tiparo", "tiparoj"]}
-    ],
-    "vsicons.associations.files": [
-        { "icon": "webpack", "extensions": ["agordoj.js", "komuna.js", "ata.js", "ita.js"]},
-        { "icon": "vtt-subtitoloj", "extensions": ["vtt"], "format": "png" },
-        { "icon": "rpp", "extensions": ["rpp"], "format": "png" },
-        { "icon": "rpp-bak", "extensions": ["rpp-bak"], "format": "png" }
-    ],
-    "vsicons.dontShowNewVersionMessage": true,
-    "gitlens.advanced.messages": {
-        "suppressRebaseSwitchToTextWarning": true
-    },
-    
-    "liveServer.settings.root": "/build",
-    "diffEditor.ignoreTrimWhitespace": false,
-    "notebook.cellToolbarVisibility": "hover",
-    "editor.minimap.enabled": false,
-    "window.newWindowDimensions": "maximized",
-    "http.proxyAuthorization": null,
-    "jupyter.allowUnauthorizedRemoteConnection": true,
-    "jupyter.jupyterServerType": "remote",
-    "remote.SSH.configFile": "C:\\Users\\Moiso\\.ssh\\config",
-    "azureFunctions.requestTimeout": 20,
-    "editor.inlayHints.enabled": "on",
-    "terminal.integrated.tabs.showActiveTerminal": "always",
-    "editor.tabCompletion": "on",
-    "prettier.useTabs": true,
-    "remote.SSH.remotePlatform": {
-        "ava_moodle": "linux"
-    },
-    "editor.acceptSuggestionOnEnter": "off",
-    "jupyter.askForKernelRestart": false,
-    "editor.tabSize": 2,
-    "[typescriptreact]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "GitLive.Issue tracker integration": "Disabled",
-    "GitLive.Hide my activity graph": true,
-    "workbench.activityBar.visible": false,
-    "window.zoomLevel": -1,
-    "git.branchRandomName.enable": true,
-    "files.insertFinalNewline": true,
-    "search.showLineNumbers": true,
-    "workbench.colorTheme": "Community Material Theme Darker High Contrast",
-    "notebook.lineNumbers": "on"
+	"aws.telemetry": false,
+	"azureFunctions.requestTimeout": 20,
+	"editor.acceptSuggestionOnCommitCharacter": false,
+	"editor.acceptSuggestionOnEnter": "off",
+	"editor.cursorBlinking": "solid",
+	"editor.find.seedSearchStringFromSelection": "never",
+	"editor.formatOnPaste": true,
+	"editor.formatOnSave": true,
+	"editor.inlayHints.enabled": false,
+	"editor.minimap.enabled": false,
+	"editor.multiCursorModifier": "ctrlCmd",
+	"editor.renderWhitespace": "none",
+	"editor.scrollBeyondLastLine": false,
+	"editor.semanticHighlighting.enabled": true,
+	"editor.tabCompletion": "on",
+	"editor.tabSize": 2,
+	"editor.tokenColorCustomizations": {
+		"comments": "#999999",
+		"variables": "#FF0000"
+	},
+	"editor.peekWidgetDefaultFocus": "tree",
+	"emmet.includeLanguages": {
+		"njk": "html",
+		"rust": "html"
+	},
+	"explorer.confirmDelete": false,
+	"explorer.compactFolders": false,
+	"explorer.confirmDragAndDrop": false,
+	"files.autoSave": "onFocusChange",
+	"files.eol": "auto",
+	"files.insertFinalNewline": true,
+	"git.branchRandomName.enable": true,
+	"git.enableSmartCommit": true,
+	"gitlens.advanced.messages": {
+		"suppressRebaseSwitchToTextWarning": true
+	},
+	"GitLive.Issue tracker integration": "Disabled",
+	"GitLive.Hide my activity graph": true,
+	"http.proxyAuthorization": null,
+	"json.schemas": [],
+	"jupyter.askForKernelRestart": false,
+	"jupyter.allowUnauthorizedRemoteConnection": true,
+	"jupyter.jupyterServerType": "remote",
+	"liveServer.settings.donotShowInfoMsg": true,
+	"liveServer.settings.root": "/build",
+	"liveServer.settings.donotVerifyTags": true,
+	"notebook.lineNumbers": "on",
+	"notebook.cellToolbarVisibility": "hover",
+	"notebook.cellToolbarLocation": {
+		"default": "right",
+		"jupyter-notebook": "right"
+	},
+	"prettier.endOfLine": "auto",
+	"prettier.useTabs": true,
+	"remote.SSH.configFile": "C:\\Users\\Moiso\\.ssh\\config",
+	"remote.SSH.remotePlatform": {
+		"ava_moodle": "linux"
+	},
+	"search.showLineNumbers": true,
+	"security.workspace.trust.untrustedFiles": "open",
+	"svg.preview.mode": "svg",
+	"terminal.integrated.defaultProfile.windows": "Git Bash",
+	"terminal.integrated.profiles.windows": {
+		"Git Bash": {
+			"source": "Git Bash",
+			"icon": "git-branch"
+		}
+	},
+	"terminal.integrated.tabs.showActiveTerminal": "always",
+	"typescript.format.semicolons": "insert",
+	"typescript.inlayHints.parameterNames.suppressWhenArgumentMatchesName": false,
+	"typescript.updateImportsOnFileMove.enabled": "always",
+	"vsicons.associations.files": [
+		{
+			"icon": "webpack",
+			"extensions": ["agordoj.js", "komuna.js", "ata.js", "ita.js"]
+		},
+		{ "icon": "vtt-subtitoloj", "extensions": ["vtt"], "format": "png" },
+		{ "icon": "rpp", "extensions": ["rpp"], "format": "png" },
+		{ "icon": "rpp-bak", "extensions": ["rpp-bak"], "format": "png" }
+	],
+	"vsicons.associations.folders": [
+		{ "icon": "css", "extensions": ["stilo"] },
+		{ "icon": "public", "extensions": ["publika"] },
+		{ "icon": "src", "extensions": ["fonto"] },
+		{ "icon": "fonts", "extensions": ["tiparo", "tiparoj"] }
+	],
+	"vscode-neovim.highlightGroups.highlights": {
+		"Directory": "vim",
+		"IncSearch": {
+			"backgroundColor": "theme.editor.findMatchBackground",
+			"borderColor": "theme.editor.findMatchBorder"
+		},
+		"Search": {
+			"backgroundColor": "theme.editor.findMatchHighlightBackground",
+			"borderColor": "theme.editor.findMatchHighlightBorder"
+		},
+		"Visual": {
+			"backgroundColor": "theme.editor.selectionBackground"
+		},
+		"Conceal": "vim",
+		"Substitute": "vim"
+	},
+	"vscode-neovim.mouseSelectionStartVisualMode": true,
+	"vscode-neovim.neovimExecutablePaths.win32": "C:\\Program Files\\Neovim\\bin\\nvim.exe",
+	"vscode-neovim.neovimInitVimPaths.win32": "C:\\Users\\Moiso\\rc\\vim_init.vim",
+	"vsicons.customIconFolderPath": "C:\\Users\\Moiso\\AppData\\Roaming\\Code\\User",
+	"vsicons.dontShowNewVersionMessage": true,
+	"window.newWindowDimensions": "maximized",
+	"window.title": "${dirty}${activeEditorMedium}${separator}${rootName} > ${remoteName} (~￣︶￣)~",
+	"workbench.activityBar.visible": false,
+	"workbench.colorTheme": "Community Material Theme Darker High Contrast",
+	"workbench.editor.highlightModifiedTabs": true,
+	"workbench.iconTheme": "vscode-icons",
+	"workbench.list.automaticKeyboardNavigation": false,
+	"workbench.startupEditor": "newUntitledFile",
+	"workbench.colorCustomizations": {
+		"diffEditor.removedTextBackground": "#ff880033",
+		"diffEditor.insertedTextBackground": "#00eaff2a",
+		"[Community Material Theme Darker High Contrast]": {
+			"editor.background": "#000003",
+			"editor.findMatchBackground": "#aa1515",
+			"editor.findMatchHighlightBackground": "#703f1a",
+			"editor.selectionBackground": "#138cef6f",
+			"editor.selectionHighlightBackground": "#681430",
+			"editorLineNumber.activeForeground": "#ff7300",
+			"menu.background": "#000",
+			"menu.border": "#333",
+			"notebook.focusedCellBorder": "#4a0e7e",
+			"notebook.focusedEditorBorder": "#4a0e7e",
+			"sideBar.background": "#12161a",
+			"sideBar.border": "#0b2c2c",
+			"terminal.background": "#15120f",
+			"titleBar.activeForeground": "#959595",
+			"titleBar.inactiveBackground": "#000000"
+		},
+		"[Community Material Theme Ocean High Contrast]": {
+			"editorLineNumber.activeForeground": "#ff7300",
+			"editorLineNumber.foreground": "#988650",
+			"editor.background": "#000003",
+			"editor.findMatchHighlightBackground": "#fe01d44b",
+			"editor.selectionBackground": "#1886e064",
+			"focusBorder": "#4d4d4d",
+			"gitDecoration.modifiedResourceForeground": "#1f8ed8",
+			"list.focusBackground": "#af2806d8",
+			"list.inactiveSelectionBackground": "#12344b",
+			"list.inactiveSelectionForeground": "#e6e6e6",
+			"listFilterWidget.background": "#08383a",
+			"listFilterWidget.noMatchesOutline": "#af2806d8",
+			"listFilterWidget.outline": "#3ea89781",
+			"menu.background": "#000",
+			"menu.border": "#333",
+			"menu.selectionBackground": "#380a16",
+			"scrollbar.shadow": "#000",
+			"selection.background": "#7c1354",
+			"sideBar.background": "#000f1f",
+			"sideBar.border": "#002a2a",
+			"sideBar.foreground": "#799",
+			"statusBar.foreground": "#8d9ba0",
+			"statusBarItem.hoverBackground": "#4a223a",
+			"titleBar.activeForeground": "#959595",
+			"titleBar.inactiveBackground": "#000000",
+			"terminal.background": "#010202",
+			"terminal.border": "#212424"
+		}
+	},
+	"zenMode.hideLineNumbers": false,
+	"[json]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[javascript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[html]": {
+		"editor.defaultFormatter": "vscode.prettier-vscode"
+	},
+	"[typescript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[typescriptreact]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[rust]": {
+		"editor.defaultFormatter": "rust-lang.rust-analyzer",
+		"editor.tabSize": 4
+	}
 }
