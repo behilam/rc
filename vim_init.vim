@@ -559,9 +559,16 @@ vnoremap <leader>d<leader> <esc>mq`>/ <cr>x`<? <cr>x:noh<cr>`q
 " ┌──➤  \n
 "    Text
 "\n
-nnoremap <leader>i<CR> viw<ESC>a<CR><ESC>`<i<CR><ESC>
-nnoremap <leader><leader>i<CR> viW<ESC>a<CR><ESC>`<i<CR><ESC>
+nnoremap <leader>i<CR> <Plug>NewlineWordWrap
+nnoremap <Plug>NewlineWordWrap viw<ESC>a<CR><ESC>`<i<CR><ESC>
+    \:call repeat#set("\<Plug>NewlineWordWrap")<CR>
+
+nnoremap <leader><leader>i<CR> <Plug>NewlineWORDWrap
+nnoremap <Plug>NewlineWORDWrap viW<ESC>a<CR><ESC>`<i<CR><ESC>
+    \:call repeat#set("\<Plug>NewlineWORDWrap")<CR>
+
 vnoremap <leader>i<CR> <ESC>`>a<CR><ESC>`<i<CR><ESC>
+
     " Delete wrapper tags
 nnoremap <leader>dt mqvat<`q0i:exe "/^<esc>f<a\\/<esc>/[ >]<cr>i" <esc>"qdF::@q<cr>dd`qdd:noh<cr>
 """" Note: Your cursor has to be (anywhere) on top of the opening tag and it only works with spreaded tags (not oneliners) in the form:
