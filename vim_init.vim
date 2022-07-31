@@ -603,7 +603,7 @@ vnoremap ) /[)}\]]<cr>
 vnoremap ( ?[({[]<cr>
 
 " Don't replace register when pasting in visual + give alternative
-vnoremap p "_dP
+vnoremap p "_c<c-r>"<esc>
 vnoremap P p
 
 " Format into multiple lines
