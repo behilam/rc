@@ -302,88 +302,260 @@ nnoremap <leader>t< va<ovd^va<vd$A><esc>
 
 " « WRAPPERS »
 " ┌──➤ 'Text'
-nnoremap <leader>i' mqviw<ESC>a'<ESC>bi'<ESC>`ql
-nnoremap <leader><leader>i' mqviW<ESC>a'<ESC>Bi'<ESC>`ql
+nnoremap <leader>i' <Plug>QuoteWordWrap
+nnoremap <Plug>QuoteWordWrap mqviw<ESC>a'<ESC>bi'<ESC>`ql
+    \:call repeat#set("\<Plug>QuoteWordWrap")<CR>
+
+nnoremap <leader><leader>i' <Plug>QuoteWORDWrap
+nnoremap <Plug>QuoteWORDWrap mqviW<ESC>a'<ESC>Bi'<ESC>`ql
+    \:call repeat#set("\<Plug>QuoteWORDWrap")<CR>
+
 vnoremap <leader>i' <ESC>mq`>a'<ESC>`<<ESC>i'<ESC>`><ESC>`ql
-nnoremap <leader>d' mq/'<cr>x?'<cr>x:noh<cr>`q
-nnoremap <leader>d" mq/'<cr>x/'<cr>x:noh<cr>`q
+
+nnoremap <leader>d' <Plug>QuoteUnwrap
+nnoremap <Plug>QuoteUnwrap mq/'<cr>x?'<cr>x:noh<cr>`q
+    \:call repeat#set("\<Plug>QuoteUnwrap")<CR>
+
+nnoremap <leader>d" <Plug>NextQuoteUnwrap
+nnoremap <Plug>NextQuoteUnwrap mq/'<cr>x/'<cr>x:noh<cr>`q
+    \:call repeat#set("\<Plug>NextQuoteUnwrap")<CR>
+
 vnoremap <leader>d' <esc>mq`>/'<cr>x`<?'<cr>x:noh<cr>`q
+
 " ┌──➤ "Text"
-nnoremap <leader>i; mqviw<ESC>a"<ESC>bi"<ESC>`ql
-nnoremap <leader><leader>i; mqviW<ESC>a"<ESC>Bi"<ESC>`ql
+nnoremap <leader>i; <Plug>DQuoteWordWrap
+nnoremap <Plug>DQuoteWordWrap mqviw<ESC>a"<ESC>bi"<ESC>`ql
+    \:call repeat#set("\<Plug>DQuoteWordWrap")<CR>
+
+nnoremap <leader><leader>i; <Plug>DQuoteWORDWrap
+nnoremap <Plug>DQuoteWORDWrap mqviW<ESC>a"<ESC>Bi"<ESC>`ql
+    \:call repeat#set("\<Plug>DQuoteWORDWrap")<CR>
+
 vnoremap <leader>i; <ESC>mq`>a"<ESC>`<<ESC>i"<ESC>`><ESC>`ql
-nnoremap <leader>d; mq/"<cr>x?"<cr>x:noh<cr>`q
-nnoremap <leader>d: mq/"<cr>x/"<cr>x:noh<cr>`q
+
+nnoremap <leader>d; <Plug>DQuoteUnwrap
+nnoremap <Plug>DQuoteUnwrap mq/"<cr>x?"<cr>x:noh<cr>`q
+    \:call repeat#set("\<Plug>DQuoteUnwrap")<CR>
+
+nnoremap <leader>d: <Plug>NextDQuoteUnwrap
+nnoremap <Plug>NextDQuoteUnwrap mq/"<cr>x/"<cr>x:noh<cr>`q
+    \:call repeat#set("\<Plug>NextDQuoteUnwrap")<CR>
+
 vnoremap <leader>d; <esc>mq`>/"<cr>x`<?"<cr>x:noh<cr>`q
+
 " ┌──➤ `Text`
-nnoremap <leader>i` mqviw<ESC>a`<ESC>bi`<ESC>`ql
-nnoremap <leader><leader>i` mqviW<ESC>a`<ESC>Bi`<ESC>`ql
+nnoremap <leader>i` <Plug>BTickWordWrap
+nnoremap <Plug>BTickWordWrap mqviw<ESC>a`<ESC>bi`<ESC>`ql
+    \:call repeat#set("\<Plug>BTickWordWrap")<CR>
+
+nnoremap <leader><leader>i` <Plug>BTickWORDWrap
+nnoremap <Plug>BTickWORDWrap mqviW<ESC>a`<ESC>Bi`<ESC>`ql
+    \:call repeat#set("\<Plug>BTickWORDWrap")<CR>
+
 vnoremap <leader>i` <ESC>mq`>a`<ESC>`<<ESC>i`<ESC>`><ESC>`ql
-nnoremap <leader>d` mq/`<cr>x?`<cr>x:noh<cr>`q
-nnoremap <leader>d~ mq/`<cr>x/`<cr>x:noh<cr>`q
+
+nnoremap <leader>d` <Plug>BTickUnwrap
+nnoremap <Plug>BTickUnwrap mq/`<cr>x?`<cr>x:noh<cr>`q
+    \:call repeat#set("\<Plug>BTickUnwrap")<CR>
+
+nnoremap <leader>d~ <Plug>NextBTickUnwrap
+nnoremap <Plug>NextBTickUnwrap mq/`<cr>x/`<cr>x:noh<cr>`q
+    \:call repeat#set("\<Plug>NextBTickUnwrap")<CR>
+
 vnoremap <leader>d` <esc>mq`>/`<cr>x`<?`<cr>x:noh<cr>`q
+
 " ┌──➤ ${Text}
-nnoremap <leader>if mqviw<ESC>a}<ESC>bi${<ESC>`qll
-nnoremap <leader><leader>if mqviW<ESC>a}<ESC>Bi${<ESC>`qll
+nnoremap <leader>if <Plug>PlaceholderWordWrap
+nnoremap <Plug>PlaceholderWordWrap mqviw<ESC>a}<ESC>bi${<ESC>`qll
+    \:call repeat#set("\<Plug>PlaceholderWordWrap")<CR>
+
+nnoremap <leader><leader>if <Plug>PlaceholderWORDWrap
+nnoremap <Plug>PlaceholderWORDWrap mqviW<ESC>a}<ESC>Bi${<ESC>`qll
+    \:call repeat#set("\<Plug>PlaceholderWORDWrap")<CR>
+
 vnoremap <leader>if <ESC>mq`>a}<ESC>`<<ESC>i${<ESC>`><ESC>`qll
-nnoremap <leader>df mqva{o<esc>%x``xX:noh<cr>`q
-nnoremap <leader>dF mq/{<cr>va{o<esc>%x``xX:noh<cr>`q
+
+nnoremap <leader>df <Plug>PlaceholderUnwrap
+nnoremap <Plug>PlaceholderUnwrap mqva{o<esc>%x``xX:noh<cr>`q
+    \:call repeat#set("\<Plug>PlaceholderUnwrap")<CR>
+
+nnoremap <leader>dF <Plug>NextPlaceholderUnwrap
+nnoremap <Plug>NextPlaceholderUnwrap mq/{<cr>va{o<esc>%x``xX:noh<cr>`q
+    \:call repeat#set("\<Plug>NextPlaceholderUnwrap")<CR>
+
 vnoremap <leader>df <esc>mq`>/}<cr>x`<?$<cr>xx:noh<cr>`q
+
 " ┌──➤ %Text%
-nnoremap <leader>ig mqviw<ESC>a%<ESC>bi%<ESC>`ql
-nnoremap <leader><leader>ig mqviW<ESC>a%<ESC>Bi%<ESC>`ql
+nnoremap <leader>ig <Plug>AHKVarWordWrap
+nnoremap <Plug>AHKVarWordWrap mqviw<ESC>a%<ESC>bi%<ESC>`ql
+    \:call repeat#set("\<Plug>AHKVarWordWrap")<CR>
+
+nnoremap <leader><leader>ig <Plug>AHKVarWORDWrap
+nnoremap <Plug>AHKVarWORDWrap mqviW<ESC>a%<ESC>Bi%<ESC>`ql
+    \:call repeat#set("\<Plug>AHKVarWORDWrap")<CR>
+
 vnoremap <leader>ig <ESC>mq`>a%<ESC>`<<ESC>i%<ESC>`><ESC>`ql
-nnoremap <leader>dg mq/%<cr>x?%<cr>x:noh<cr>`q
-nnoremap <leader>dG mq/%<cr>x/%<cr>x:noh<cr>`q
+
+nnoremap <leader>dg <Plug>AHKVarUnwrap
+nnoremap <Plug>AHKVarUnwrap mq/%<cr>x?%<cr>x:noh<cr>`q
+    \:call repeat#set("\<Plug>AHKVarUnwrap")<CR>
+
+nnoremap <leader>dG <Plug>NextAHKVarUnwrap
+nnoremap <Plug>NextAHKVarUnwrap mq/%<cr>x/%<cr>x:noh<cr>`q
+    \:call repeat#set("\<Plug>NextAHKVarUnwrap")<CR>
+
 vnoremap <leader>dg <esc>mq`>/%<cr>x`<?%<cr>x:noh<cr>`q
+
 " ┌──➤ (Text)
-nnoremap <leader>iu mqviw<ESC>a)<ESC>bi(<ESC>`ql
-nnoremap <leader><leader>iu mqviW<ESC>a)<ESC>Bi(<ESC>`ql
-vnoremap <leader>iu <ESC>mq`>a)<ESC>`<<ESC>i(<ESC>`><ESC>`ql
-nnoremap <leader>du mqva(o<esc>%x``x`q
-nnoremap <leader>di mq/(<cr>va(o<esc>%x``x:noh<cr>`q
+nnoremap <leader>iu <Plug>ParensWordWrap
+nnoremap <Plug>ParensWordWrap mqviw<ESC>a)<ESC>bi(<ESC>`ql
+    \:call repeat#set("\<Plug>ParensWordWrap")<CR>
+
+nnoremap <leader><leader>iu <Plug>ParensWORDWrap 
+nnoremap <Plug>ParensWORDWrap mqviW<ESC>a)<ESC>Bi(<ESC>`ql
+    \:call repeat#set("\<Plug>ParensWORDWrap")<CR>
+
+vnoremap <leader>iu <Plug>ParensVisualWrap
+
+nnoremap <leader>du <Plug>ParensUnwrap
+nnoremap <Plug>ParensUnwrap mqva(o<esc>%x``x`q
+    \:call repeat#set("\<Plug>ParensUnwrap")<CR>
+
+nnoremap <leader>di <Plug>NextParensUnwrap
+nnoremap <Plug>NextParensUnwrap mq/(<cr>va(o<esc>%x``x:noh<cr>`q
+    \:call repeat#set("\<Plug>NextParensUnwrap")<CR>
+
 vnoremap <leader>du <esc>mq`>/)<cr>x`<?(<cr>x:noh<cr>`q
+nnoremap <leader>cu <Plug>ToParensWrap
+nnoremap <Plug>ToParensWrap mq/[)\]}]<cr>%r(``r):noh<cr>`q
+    \:call repeat#set("\<Plug>ToParensWrap")<CR>
+
+nnoremap <leader>ci <Plug>NextToParensWrap
+nnoremap <Plug>NextToParensWrap mq/[)\]}]<cr>n%r(``r):noh<cr>`q
+    \:call repeat#set("\<Plug>NextToParensWrap")<CR>
+
 " ┌──➤ [Text]
-nnoremap <leader>i[ mqviw<ESC>a]<ESC>bi[<ESC>`ql
-nnoremap <leader><leader>i[ mqviW<ESC>a]<ESC>Bi[<ESC>`ql
+nnoremap <leader>i[ <Plug>BracketsWordWrap
+nnoremap <Plug>BracketsWordWrap mqviw<ESC>a]<ESC>bi[<ESC>`ql
+    \:call repeat#set("\<Plug>BracketsWordWrap")<CR>
+
+nnoremap <leader><leader>i[ <Plug>BracketsWORDWrap
+nnoremap <Plug>BracketsWORDWrap mqviW<ESC>a]<ESC>Bi[<ESC>`ql
+    \:call repeat#set("\<Plug>BracketsWORDWrap")<CR>
+
 vnoremap <leader>i[ <ESC>mq`>a]<ESC>`<<ESC>i[<ESC>`><ESC>`ql
-nnoremap <leader>d[ mqva[o<esc>%x``x`q
-nnoremap <leader>d] mq/[<cr>va[o<esc>%x``x:noh<cr>`q
+
+nnoremap <leader>d[ <Plug>BracketsUnwrap
+nnoremap <Plug>BracketsUnwrap mqva[o<esc>%x``x`q
+    \:call repeat#set("\<Plug>BracketsUnwrap")<CR>
+
+nnoremap <leader>d] <Plug>NextBracketsUnwrap
+nnoremap <Plug>NextBracketsUnwrap mq/[<cr>va[o<esc>%x``x:noh<cr>`q
+    \:call repeat#set("\<Plug>NextBracketsUnwrap")<CR>
+
 vnoremap <leader>d[ <esc>mq`>/]<cr>x`<?[<cr>x:noh<cr>`q
+
 " ┌──➤ {Text}
-nnoremap <leader>ij mqviw<ESC>a}<ESC>bi{<ESC>`ql
-nnoremap <leader><leader>ij mqviW<ESC>a}<ESC>Bi{<ESC>`ql
+nnoremap <leader>ij <Plug>BracesWordWrap
+nnoremap <Plug>BracesWordWrap mqviw<ESC>a}<ESC>bi{<ESC>`ql
+    \:call repeat#set("\<Plug>BracesWordWrap")<CR>
+
+nnoremap <leader><leader>ij <Plug>BracesWORDWrap
+nnoremap <Plug>BracesWORDWrap mqviW<ESC>a}<ESC>Bi{<ESC>`ql
+    \:call repeat#set("\<Plug>BracesWORDWrap")<CR>
+
 vnoremap <leader>ij <ESC>mq`>a}<ESC>`<<ESC>i{<ESC>`><ESC>`ql
-nnoremap <leader>dj mqva{o<esc>%x``x`q
-nnoremap <leader>dk mq/{<cr>va{o<esc>%x``x:noh<cr>`q
+
+nnoremap <leader>dj <Plug>BracesUnwrap
+nnoremap <Plug>BracesUnwrap mqva{o<esc>%x``x`q
+    \:call repeat#set("\<Plug>BracesUnwrap")<CR>
+
+nnoremap <leader>dk <Plug>NextBracesUnwrap
+nnoremap <Plug>NextBracesUnwrap mq/{<cr>va{o<esc>%x``x:noh<cr>`q
+    \:call repeat#set("\<Plug>NextBracesUnwrap")<CR>
+
 vnoremap <leader>dj <esc>mq`>/}<cr>x`<?{<cr>x:noh<cr>`q
+
 " ┌──➤ { Text }
-nnoremap <leader>iJ mqviw<ESC>a }<ESC>bi{ <ESC>`ql
-nnoremap <leader><leader>iJ mqviW<ESC>a }<ESC>Bi{ <ESC>`ql
+nnoremap <leader>iJ <Plug>SBracesWordWrap
+nnoremap <Plug>SBracesWordWrap mqviw<ESC>a }<ESC>bi{ <ESC>`ql
+    \:call repeat#set("\<Plug>SBracesWordWrap")<CR>
+
+nnoremap <leader><leader>iJ <Plug>SBracesWORDWrap
+nnoremap <Plug>SBracesWORDWrap mqviW<ESC>a }<ESC>Bi{ <ESC>`ql
+    \:call repeat#set("\<Plug>SBracesWORDWrap")<CR>
+
 vnoremap <leader>iJ <ESC>mq`>a }<ESC>`<<ESC>i{ <ESC>`><ESC>`ql
-nnoremap <leader>dJ mqva{o<esc>%hxx``xx`q
-nnoremap <leader>dK mq/{<cr>va{o<esc>%hxx``xx:noh<cr>`q
-vnoremap <leader>dJ <esc>mq`>/}<cr>hxx`<?{<cr>xx:noh<cr>`q
+
+nnoremap <leader>dJ <Plug>SBracesUnwrap
+nnoremap <Plug>SBracesUnwrap mqva{o<esc>%hxx``xx`q
+    \:call repeat#set("\<Plug>SBracesUnwrap")<CR>
+
+nnoremap <leader>dK <Plug>NextSBracesUnwrap
+nnoremap <Plug>NextSBracesUnwrap mq/{<cr>va{o<esc>%hxx``xx:noh<cr>`q
+    \:call repeat#set("\<Plug>NextSBracesUnwrap")<CR>
+
+vnoremap <leader>dJ <esc>mq`>/}<cr>hxx`<?<cr>xx:noh<cr>`q
+
 " ┌──➤ /Text/
-nnoremap <leader>i/ mqviw<ESC>a/<ESC>bi/<ESC>`ql
-nnoremap <leader><leader>i/ mqviW<ESC>a/<ESC>Bi/<ESC>`ql
+nnoremap <leader>i/ <Plug>SlashWordWrap
+nnoremap <Plug>SlashWordWrap mqviw<ESC>a/<ESC>bi/<ESC>`ql
+    \:call repeat#set("\<Plug>SlashWordWrap")<CR>
+
+nnoremap <leader><leader>i/ <Plug>SlashWORDWrap
+nnoremap <Plug>SlashWORDWrap mqviW<ESC>a/<ESC>Bi/<ESC>`ql
+    \:call repeat#set("\<Plug>SlashWORDWrap")<CR>
+
 vnoremap <leader>i/ <ESC>mq`>a/<ESC>`<<ESC>i/<ESC>`><ESC>`ql
-nnoremap <leader>d/ mq//<cr>x?/<cr>x:noh<cr>`q
-nnoremap <leader>d? mq//<cr>nx?/<cr>x:noh<cr>`q
+
+nnoremap <leader>d/ <Plug>SlashUnwrap
+nnoremap <Plug>SlashUnwrap mq//<cr>x?/<cr>x:noh<cr>`q
+    \:call repeat#set("\<Plug>SlashUnwrap")<CR>
+
+nnoremap <leader>d? <Plug>NextSlashUnwrap
+nnoremap <Plug>NextSlashUnwrap mq//<cr>nx?/<cr>x:noh<cr>`q
+    \:call repeat#set("\<Plug>NextSlashUnwrap")<CR>
+
 vnoremap <leader>d/ <esc>mq`>//<cr>x`<?/<cr>x:noh<cr>`q
+
 " ┌──➤ <Text>
-nnoremap <leader>i, mqviw<ESC>a><ESC>bi<<ESC>`ql
-nnoremap <leader><leader>i, mqviW<ESC>a><ESC>Bi<<ESC>`ql
+nnoremap <leader>i, <Plug>ChevronsWordWrap
+nnoremap <Plug>ChevronsWordWrap mqviw<ESC>a><ESC>bi<<ESC>`ql
+    \:call repeat#set("\<Plug>ChevronsWordWrap")<CR>
+
+nnoremap <leader><leader>i, <Plug>ChevronsWORDWrap
+nnoremap <Plug>ChevronsWORDWrap mqviW<ESC>a><ESC>Bi<<ESC>`ql
+    \:call repeat#set("\<Plug>ChevronsWORDWrap")<CR>
+
 vnoremap <leader>i, <ESC>mq`>a><ESC>`<<ESC>i<<ESC>`><ESC>`ql
-nnoremap <leader>d, mqva<o<esc>va<<esc>x``x:noh<cr>`q
-nnoremap <leader>d. mq/<<cr>va<o<esc>va<<esc>x``x:noh<cr>`q
+
+nnoremap <leader>d, <Plug>ChevronsUnwrap
+nnoremap <Plug>ChevronsUnwrap mqva<o<esc>va<<esc>x``x:noh<cr>`q
+    \:call repeat#set("\<Plug>ChevronsUnwrap")<CR>
+
+nnoremap <leader>d. <Plug>NextChevronsUnwrap
+nnoremap <Plug>NextChevronsUnwrap mq/<<cr>va<o<esc>va<<esc>x``x:noh<cr>`q
+    \:call repeat#set("\<Plug>NextChevronsUnwrap")<CR>
+
 vnoremap <leader>d, <esc>mq`>/><cr>x`<?<<cr>x:noh<cr>`q
+
 " ┌──➤  Text 
-nnoremap <leader>i<leader> mqviw<ESC>a <ESC>bi <ESC>`ql
-nnoremap <leader><leader>i<leader> mqviw<esc>a <esc>bi <esc>`ql
+nnoremap <leader>i<leader> <Plug>SpaceWordWrap
+nnoremap <Plug>SpaceWordWrap mqviw<ESC>a <ESC>bi <ESC>`ql
+    \:call repeat#set("\<Plug>SpaceWordWrap")<CR>
+
+nnoremap <leader><leader>i<leader> <Plug>SpaceWORDWrap
+nnoremap <Plug>SpaceWORDWrap mqviw<esc>a <esc>bi <esc>`ql
+    \:call repeat#set("\<Plug>SpaceWORDWrap")<CR>
+
 vnoremap <leader>i<leader> <ESC>mq`>a <ESC>`<<ESC>i <ESC>`><ESC>`ql
-nnoremap <leader>d<leader> mq/ <cr>x? <cr>x:noh<cr>`q
+
+nnoremap <leader>d<leader> <Plug>SpaceUnwrap
+nnoremap <Plug>SpaceUnwrap mq/ <cr>x? <cr>x:noh<cr>`q
+    \:call repeat#set("\<Plug>SpaceUnwrap")<CR>
+
 vnoremap <leader>d<leader> <esc>mq`>/ <cr>x`<? <cr>x:noh<cr>`q
+
 " ┌──➤  \n
 "    Text
 "\n
