@@ -595,8 +595,12 @@ nnoremap <C-x> v<C-x>
 
 nnoremap { /^\s*$<cr>:noh<cr>
 nnoremap } ?^\s*$<cr>:noh<cr>
+vnoremap { }
+vnoremap } {
 nnoremap ) /[)}\]]<cr>:noh<cr>
 nnoremap ( ?[({[]<cr>:noh<cr>
+vnoremap ) /[)}\]]<cr>
+vnoremap ( ?[({[]<cr>
 
 " Don't replace register when pasting in visual + give alternative
 vnoremap p "_dP
