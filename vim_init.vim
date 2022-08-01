@@ -612,6 +612,8 @@ nnoremap <C-x> v<C-x>
 
 nnoremap { /^\s*$<cr>:noh<cr>
 nnoremap } ?^\s*$<cr>:noh<cr>
+onoremap { }
+onoremap } {
 vnoremap { }
 vnoremap } {
 nnoremap ) /[)}\]]<cr>:noh<cr>
