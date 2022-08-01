@@ -426,6 +426,7 @@ nnoremap <Plug>NextParensUnwrap mq/(<cr>va(o<esc>%x``x:noh<cr>`q
     \:call repeat#set("\<Plug>NextParensUnwrap")<CR>
 
 vnoremap <leader>du <esc>mq`>/)<cr>x`<?(<cr>x:noh<cr>`q
+
 nnoremap <leader>cu <Plug>ToParensWrap
 nnoremap <Plug>ToParensWrap mq/[)\]}]<cr>%r(``r):noh<cr>`q
     \:call repeat#set("\<Plug>ToParensWrap")<CR>
@@ -455,6 +456,14 @@ nnoremap <Plug>NextBracketsUnwrap mq/[<cr>va[o<esc>%x``x:noh<cr>`q
 
 vnoremap <leader>d[ <esc>mq`>/]<cr>x`<?[<cr>x:noh<cr>`q
 
+nnoremap <leader>c[ <Plug>ToBracketsWrap
+nnoremap <Plug>ToBracketsWrap mq/[)}]<cr>%r[``r]:noh<cr>`q
+    \:call repeat#set("\<Plug>ToBracketsWrap")<CR>
+
+nnoremap <leader>c] <Plug>NextToBracketsWrap
+nnoremap <Plug>NextToBracketsWrap mq/[)}]<cr>n%r[``r]:noh<cr>`q
+    \:call repeat#set("\<Plug>NextToBracketsWrap")<CR>
+
 " ┌──➤ {Text}
 nnoremap <leader>ij <Plug>BracesWordWrap
 nnoremap <Plug>BracesWordWrap mqviw<ESC>a}<ESC>bi{<ESC>`ql
@@ -475,6 +484,14 @@ nnoremap <Plug>NextBracesUnwrap mq/{<cr>va{o<esc>%x``x:noh<cr>`q
     \:call repeat#set("\<Plug>NextBracesUnwrap")<CR>
 
 vnoremap <leader>dj <esc>mq`>/}<cr>x`<?{<cr>x:noh<cr>`q
+
+nnoremap <leader>cj <Plug>ToBracesWrap
+nnoremap <Plug>ToBracesWrap mq/[)\]]<cr>%r{``r}:noh<cr>`q
+    \:call repeat#set("\<Plug>ToBracesWrap")<CR>
+
+nnoremap <leader>ck <Plug>NextToBracesWrap
+nnoremap <Plug>NextToBracesWrap mq/[)\]]<cr>n%r{``r}:noh<cr>`q
+    \:call repeat#set("\<Plug>NextToBracesWrap")<CR>
 
 " ┌──➤ { Text }
 nnoremap <leader>iJ <Plug>SBracesWordWrap
@@ -606,7 +623,7 @@ vnoremap ( ?[({[]<cr>
 vnoremap p "_c<c-r>"<esc>
 vnoremap P p
 
-" Format into multiple lines
+" Format into multiple lines <EXPERIMENTAL>
 nnoremap <leader>= vi(o<esc>i<cr><esc>vi(<esc>a<cr><esc>k:s/,\s\?/,\r/g<cr>:noh<cr>
 
 " Add Markdown checklist to lines
