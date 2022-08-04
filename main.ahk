@@ -101,16 +101,16 @@ Return
 ; =======================
 
 ; Special number characters
-Appskey & a::!
-Appskey & s::@
-Appskey & d::#
-Appskey & f::$
-Appskey & g::Send, `%
-Appskey & q::^
-Appskey & w::&
-Appskey & e::*
-Appskey & r::(
-Appskey & t::)
+Appskey & a::Send, {!}
+Appskey & s::Send, @
+Appskey & d::Send, {#}
+Appskey & f::Send, $
+Appskey & g::Send, {`%}
+Appskey & q::Send, {^}
+Appskey & w::Send, &
+Appskey & e::Send, *
+Appskey & r::Send, (
+Appskey & t::Send, )
 
 ; Brakets
 Appskey & u::Send, (
