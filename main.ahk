@@ -1,4 +1,4 @@
-﻿#NoEnv ; Recommended for performance and compatibility with future AutoHotkey releases.
+#NoEnv ; Recommended for performance and compatibility with future AutoHotkey releases.
 ; #Warn  ; Enable warnings to assist with detecting common errors.
 SendMode Input ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir% ; Ensures a consistent starting directory.
@@ -113,10 +113,12 @@ Appskey & r::(
 Appskey & t::)
 
 ; Brakets
-Appskey & u::(
-Appskey & i::)
-Appskey & j::{
-Appskey & k::}
+Appskey & u::Send, (
+Appskey & i::Send, )
+Appskey & j::Send, {{}
+Appskey & k::Send, {}}
+Appskey & o::Send, [
+Appskey & l::Send, ]
 
 ; Quick numbers
 >^a::Send, 1
