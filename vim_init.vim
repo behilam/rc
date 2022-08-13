@@ -420,7 +420,7 @@ nnoremap <leader><leader>iu <Plug>ParensWORDWrap
 nnoremap <Plug>ParensWORDWrap mqviW<ESC>a)<ESC>Bi(<ESC>`ql
     \:call repeat#set("\<Plug>ParensWORDWrap")<CR>
 
-vnoremap <leader>iu <Plug>ParensVisualWrap
+vnoremap <leader>iu <ESC>mq`>a)<ESC>`<<ESC>i(<ESC>`><ESC>`ql
 
 nnoremap <leader>du <Plug>ParensUnwrap
 nnoremap <Plug>ParensUnwrap mqva(o<esc>%x``x`q
