@@ -432,11 +432,11 @@ nnoremap <Plug>NextParensUnwrap mq/(<cr>va(o<esc>%x``x:noh<cr>`q
 
 vnoremap <leader>du <esc>mq`>/)<cr>x`<?(<cr>x:noh<cr>`q
 
-nnoremap <leader>cu <Plug>ToParensWrap
+nnoremap <leader>ru <Plug>ToParensWrap
 nnoremap <Plug>ToParensWrap mq/[)\]}]<cr>%r(``r):noh<cr>`q
     \:call repeat#set("\<Plug>ToParensWrap")<CR>
 
-nnoremap <leader>ci <Plug>NextToParensWrap
+nnoremap <leader>ri <Plug>NextToParensWrap
 nnoremap <Plug>NextToParensWrap mq/[)\]}]<cr>n%r(``r):noh<cr>`q
     \:call repeat#set("\<Plug>NextToParensWrap")<CR>
 
@@ -461,11 +461,11 @@ nnoremap <Plug>NextBracketsUnwrap mq/[<cr>va[o<esc>%x``x:noh<cr>`q
 
 vnoremap <leader>d[ <esc>mq`>/]<cr>x`<?[<cr>x:noh<cr>`q
 
-nnoremap <leader>c[ <Plug>ToBracketsWrap
+nnoremap <leader>r[ <Plug>ToBracketsWrap
 nnoremap <Plug>ToBracketsWrap mq/[)}]<cr>%r[``r]:noh<cr>`q
     \:call repeat#set("\<Plug>ToBracketsWrap")<CR>
 
-nnoremap <leader>c] <Plug>NextToBracketsWrap
+nnoremap <leader>r] <Plug>NextToBracketsWrap
 nnoremap <Plug>NextToBracketsWrap mq/[)}]<cr>n%r[``r]:noh<cr>`q
     \:call repeat#set("\<Plug>NextToBracketsWrap")<CR>
 
@@ -490,11 +490,11 @@ nnoremap <Plug>NextBracesUnwrap mq/{<cr>va{o<esc>%x``x:noh<cr>`q
 
 vnoremap <leader>dj <esc>mq`>/}<cr>x`<?{<cr>x:noh<cr>`q
 
-nnoremap <leader>cj <Plug>ToBracesWrap
+nnoremap <leader>rj <Plug>ToBracesWrap
 nnoremap <Plug>ToBracesWrap mq/[)\]]<cr>%r{``r}:noh<cr>`q
     \:call repeat#set("\<Plug>ToBracesWrap")<CR>
 
-nnoremap <leader>ck <Plug>NextToBracesWrap
+nnoremap <leader>rk <Plug>NextToBracesWrap
 nnoremap <Plug>NextToBracesWrap mq/[)\]]<cr>n%r{``r}:noh<cr>`q
     \:call repeat#set("\<Plug>NextToBracesWrap")<CR>
 
