@@ -20,6 +20,7 @@ alias cdw="cd $(echo '$1' | sed -e 's/\\/\//g' | sed -e 's/C:/c:/')"
 alias pwc="pwd | clip; echo 'copied to clipboard!'"
 alias pn="pnpm"
 alias g="git"
+alias c="cargo"
 alias v="nvim"
 
 
