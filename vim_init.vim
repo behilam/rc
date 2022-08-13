@@ -113,16 +113,9 @@ nnoremap <leader><leader>c ggVG"_c
 nnoremap <leader><leader>C ggVGc
 vnoremap <leader><leader>c "*c
 
-nnoremap <leader>yy "*yy
-nnoremap <leader>Y "*y$
-nnoremap <leader>yw "*yw
-nnoremap <leader>yW "*yW
-nnoremap <leader>yiw "*yiw
-nnoremap <leader>yiW "*yiW
-nnoremap <leader>ye "*ye
-nnoremap <leader><leader>y ggVG"*y
-
+nnoremap <leader>y "*y
 vnoremap <leader>y "*y
+nnoremap <leader><leader>y ggVG"*y
 
 nnoremap <leader>v ggVG
 
