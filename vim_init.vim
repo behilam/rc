@@ -97,6 +97,11 @@ nnoremap <leader>O mqO<ESC>j`q
 nnoremap ó o<esc>cc
 nnoremap Ó O<esc>cc
 
+nnoremap <bs> ge
+vnoremap <bs> ge
+nnoremap <s-bs> gE
+vnoremap <s-bs> gE
+
 " Clipboard shortcuts
 nnoremap <leader>x viw"*d
 nnoremap <leader><leader>x viW"*d
