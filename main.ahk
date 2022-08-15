@@ -1,3 +1,4 @@
+#NoEnv ; Recommended for performance and compatibility with future AutoHotkey releases.
 ; #Warn  ; Enable warnings to assist with detecting common errors.
 SendMode Input ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir% ; Ensures a consistent starting directory.
@@ -44,12 +45,22 @@ SetWorkingDir %A_ScriptDir% ; Ensures a consistent starting directory.
 ; =======================
 CurrentWin := "test"
 AudioDeviceCounter := False
-Mouse_gotoX := 0
-Mouse_gotoY := 0
-Mouse2_gotoX := 0
-Mouse2_gotoY := 0
 Clipstack := []
 temp := ""
+
+Mouse_gotoX := 0
+Mouse_gotoY := 0
+LClickIndex := 1
+LClickStack := []
+LBtnResetable := true
+
+Mouse2_gotoX := 0
+Mouse2_gotoY := 0
+RClickIndex := 1
+RClickStack := []
+RBtnResetable := true
+
+^#!r::Reload
 
 ; =======================
 ; =======  MOUSE  =======
@@ -69,27 +80,43 @@ XButton2 & WheelUp::Send, ^+{Tab}
 
 ; Mouse save location and quick go to location
 ^#LButton::
+    if LBtnResetable {
+        LClickStack := []
+        LClickIndex := 1
+        LBtnResetable := false
+    }
     CoordMode, Mouse, Screen
-    MouseGetPos, Mouse_gotoX, Mouse_gotoY
+    MouseGetPos, Mouse2_gotoX, Mouse2_gotoY
+    LClickStack.Push([Mouse2_gotoX, Mouse2_gotoY])
 Return
 #LButton::
+    LBtnResetable := true
     CoordMode, Mouse, Screen
-    MouseMove, Mouse_gotoX, Mouse_gotoY
+    MouseMove, LClickStack[LClickIndex][1], LClickStack[LClickIndex][2]
+    LClickIndex := Mod(LClickIndex, LClickStack.Length()) + 1
     Sleep 10
     Click
 Return
 ; V ;
 ^#RButton::
+    if RBtnResetable {
+        RClickStack := []
+        RClickIndex := 1
+        RBtnResetable := false
+    }
     BlockInput On
     CoordMode, Mouse, Screen
     MouseGetPos, Mouse2_gotoX, Mouse2_gotoY
+    RClickStack.Push([Mouse2_gotoX, Mouse2_gotoY])
     Sleep 75
     BlockInput Off
 Return
 #RButton::
+    RBtnResetable := true
     BlockInput On
     CoordMode, Mouse, Screen
-    MouseMove, Mouse2_gotoX, Mouse2_gotoY
+    MouseMove, RClickStack[RClickIndex][1], RClickStack[RClickIndex][2]
+    RClickIndex := Mod(RClickIndex, RClickStack.Length()) + 1
     Sleep 75
     Click
     BlockInput Off
