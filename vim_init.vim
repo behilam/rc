@@ -242,14 +242,30 @@ nnoremap cii /(<cr>vi(<esc>:noh<cr>gvc
 nnoremap cai /(<cr>va(<esc>:noh<cr>gvc
 nnoremap cui /(<cr>va(V<esc>:noh<cr>gvc
 "" [text]
+nnoremap vi[ vi[
+nnoremap va[ va[
 nnoremap vu[ va[V
+nnoremap yi[ mqyi[`q:<cr>
+nnoremap ya[ mqya[`q:<cr>
 nnoremap yu[ mqva[Vy`q:<cr>
+nnoremap di[ di[
+nnoremap da[ da[
 nnoremap du[ va[Vd
+nnoremap ci[ ci[
+nnoremap ca[ ca[
 nnoremap cu[ va[Vc
 "" ──>[text]
+nnoremap vi] /[<cr>vi[<esc>:noh<cr>gv
+nnoremap va] /[<cr>va[<esc>:noh<cr>gv
 nnoremap vu] /[<cr>va[V<esc>:noh<cr>gv
+nnoremap yi] mq/[<cr>vi[y`q:noh<cr>
+nnoremap ya] mq/[<cr>va[y`q:noh<cr>
 nnoremap yu] mq/[<cr>va[Vy`q:noh<cr>
+nnoremap di] mq/[<cr>vi[d`q:noh<cr>
+nnoremap da] mq/[<cr>va[d`q:noh<cr>
 nnoremap du] mq/[<cr>va[Vd`q:noh<cr>
+nnoremap ci] /[<cr>vi[<esc>:noh<cr>gvc
+nnoremap ca] /[<cr>va[<esc>:noh<cr>gvc
 nnoremap cu] /[<cr>va[V<esc>:noh<cr>gvc
 "" {text}
 nnoremap vij vi{
