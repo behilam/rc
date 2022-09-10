@@ -1,0 +1,71 @@
+[user]
+	name = Behilam
+	email = praehil@gmail.com
+	signingkey = 3C0248E3B96E5478
+[core]
+	# editor = \"C:\\Users\\Moiso\\AppData\\Local\\Programs\\Microsoft VS Code\\bin\\code\" --wait
+	editor = nvim
+	autocrlf = true
+[alias]
+	l = log --color --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s' --abbrev-commit
+	ls = log --color --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s' --abbrev-commit -S
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	lgs = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit -S
+	logs = log -S
+
+	sl = shortlog --format='%h %s'
+
+	s = status --short
+	st = status
+
+	sw = switch
+	b = branch
+	br = branch -v
+
+	a = add
+	ap = add -p
+
+	c = commit
+	ca = commit --amend
+	ac = "!git add . && git commit"
+	aca = "!git add . && git commit --amend"
+	acan = "!git add . && git commit --amend --no-edit"
+	acpf = "!git add . && git commit --amend --no-edit --allow-empty && git push --force"
+
+	m = merge
+	mnc = merge --no-commit --no-ff
+
+	f = fetch
+	pnc = pull --no-commit --no-ff
+
+	rt= restore
+	rts = "!git restore --staged ."
+
+	rs = reset
+	rs1 = reset HEAD~
+
+	sh = stash
+	shu = stash -u
+	shl = stash list
+	shs = stash show
+	shp = stash push
+	shpp = stash push --patch
+	shps = stash push --staged
+	shpk = stash push --keep-index
+
+	d = diff
+	ds = diff --staged
+
+	g = grep
+
+	rc = config --global --edit
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[help]
+	autocorrect = 30
+[commit]
+	gpgsign = true

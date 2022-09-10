@@ -616,10 +616,10 @@ nnoremap <leader>h ^
 nnoremap <leader>H 0
 
 " Change inside parens/brackets shortcut [EXPERIMENTAL]
-onoremap p :<c-u>normal! t)vi(<cr>
-onoremap P :<c-u>normal! T(vi(<cr>
-onoremap o :<c-u>normal! t]vi[<cr>
-onoremap O :<c-u>normal! T[vi[<cr>
+"  onoremap p :<c-u>normal! t)vi(<cr>
+"  onoremap P :<c-u>normal! T(vi(<cr>
+"  onoremap o :<c-u>normal! t]vi[<cr>
+"  onoremap O :<c-u>normal! T[vi[<cr>
 
 nnoremap <C-a> v<C-a>
 nnoremap <C-x> v<C-x>

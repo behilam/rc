@@ -125,91 +125,46 @@ Return
 ; =======================
 ; =====  KEYBOARD  ======
 ; =======================
-; Number row
-`::CapsLock
-
-; First row
-q::[
-w::q
-e::w
-r::e
-t::r
-y::t
-u::y
-i::u
-o::i
-p::o
-[::p
-
-; Second Row
-CapsLock::\
-a::/
-s::a
-d::s
-f::d
-g::f
-h::g
-j::h
-k::j
-l::k
-`;::l
-'::`;
-\::'
-
-; Third Row
-z::`
-x::z
-c::x
-v::c
-b::v
-n::b
-m::n
-,::m
-.::,
-/::.
-
 ; Special number characters
-Appskey & s::!
-Appskey & d::@
-Appskey & f::#
-Appskey & g::$
-Appskey & h::Send, `%
-Appskey & w::^
-Appskey & e::&
-Appskey & r::*
-Appskey & t::(
-Appskey & y::)
+Appskey & a::!
+Appskey & s::@
+Appskey & d::#
+Appskey & f::$
+Appskey & g::Send, `%
+Appskey & q::^
+Appskey & w::&
+Appskey & e::*
+Appskey & r::(
+Appskey & t::)
 
 ; Brakets
-Appskey & i::(
-Appskey & o::)
-Appskey & k::{
-Appskey & l::}
-; Appskey & m::{
-; Appskey & ,::}
+Appskey & u::(
+Appskey & i::)
+Appskey & j::{
+Appskey & k::}
 
 ; Quick numbers
->^s::Send, 1
->^d::Send, 2
->^f::Send, 3
->^g::Send, 4
->^h::Send, 5
->^w::Send, 6
->^e::Send, 7
->^r::Send, 8
->^t::Send, 9
->^y::Send, 0
+>^a::Send, 1
+>^s::Send, 2
+>^d::Send, 3
+>^f::Send, 4
+>^g::Send, 5
+>^q::Send, 6
+>^w::Send, 7
+>^e::Send, 8
+>^r::Send, 9
+>^t::Send, 0
 
 ; Tab movements
->^k::Send, ^1
->^l::Send, ^2
->^`;::Send, ^3
->^'::Send, ^4
->^\::Send, ^5
->^i::Send, ^6
->^o::Send, ^7
->^p::Send, ^8
->^[::Send, ^9
+>^j::Send, ^1
+>^k::Send, ^2
+>^l::Send, ^3
+>^`;::Send, ^4
+>^'::Send, ^5
+>^u::Send, ^6
+>^i::Send, ^7
+>^o::Send, ^8
+>^p::Send, ^9
 >^]::Send, ^0
 
 ; Box drawing
@@ -255,11 +210,11 @@ Return
 Return
 
 ; Alternative left-hand Media shortcuts
-#w::Media_Play_Pause ; #q
-#x::Media_Next ; #z
-#z::Media_Prev ; #`
-#q::Volume_Up ; #[
-#a::Volume_Down ; #/
+#q::Media_Play_Pause
+#z::Media_Next
+#`::Media_Prev
+#[::Volume_Up
+#/::Volume_Down
 
 ; AutoClick in Morrowind
 #IfWinActive, Morrowind
@@ -271,7 +226,7 @@ Return
 ; ###########################
 
 ; Copy into Clipstack
-<!#v::
+<!#c::
     temp := ClipboardAll
     Send, ^c
     ClipWait, 1
@@ -281,7 +236,7 @@ Return
 Return
 
 ; Paste pop
-<!#b::
+<!#v::
     temp := ClipboardAll
     Clipboard := Clipstack.Pop()
     Send, ^v
@@ -290,7 +245,7 @@ Return
 Return
 
 ;Paste shift
-<!#n::
+<!#b::
     temp := ClipboardAll
     Clipboard := Clipstack.RemoveAt(1)
     Send, ^v
