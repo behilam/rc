@@ -131,6 +131,8 @@ nnoremap dc ^"_D
 nnoremap dC ^_D
 vnoremap <leader>x :s/^.*$<cr>
 
+vnoremap x "_d
+
 " Alternative in-wrapper modifiers
 "*** :<cr> is a manual fix for the q marks to work well in VSCode.
 "*** TODO: It would be worth it to check that bug.
