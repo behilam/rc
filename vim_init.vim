@@ -602,7 +602,9 @@ nnoremap <Plug>NewlineWORDWrap viW<ESC>a<CR><ESC>`<i<CR><ESC>
 
 vnoremap <leader>i<CR> <ESC>`>a<CR><ESC>`<i<CR><ESC>
 
-    " Delete wrapper tags
+" ┌──➤  <>Text</>
+nnoremap <leader>it o</><ESC>kO<><ESC>mqj>>`qi
+vnoremap <leader>it <ESC>`>o</><ESC>`<O<><ESC>mqgv>`qi
 nnoremap <leader>dt mqvat<`q0i:exe "/^<esc>f<a\\/<esc>/[ >]<cr>i" <esc>"qdF::@q<cr>dd`qdd:noh<cr>
 """" Note: Your cursor has to be (anywhere) on top of the opening tag and it only works with spreaded tags (not oneliners) in the form:
     " <tag (optional attributes)>
