@@ -29,6 +29,7 @@
 	ca = commit --amend
 	ac = "!git add . && git commit"
 	aca = "!git add . && git commit --amend"
+	can = commit --amend --no-edit
 	acan = "!git add . && git commit --amend --no-edit"
 	acpf = "!git add . && git commit --amend --no-edit --allow-empty && git push --force"
 
