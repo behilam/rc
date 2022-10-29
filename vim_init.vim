@@ -297,6 +297,30 @@ nnoremap duk mq/{<cr>va{Vd`q:noh<cr>
 nnoremap cik /{<cr>vi{<esc>:noh<cr>gvc
 nnoremap cak /{<cr>va{<esc>:noh<cr>gvc
 nnoremap cuk /{<cr>va{V<esc>:noh<cr>gvc
+"" ${text}
+nnoremap vaf va{oho
+nnoremap vuf va{V
+nnoremap yaf mqva{ohy`q:<cr>
+nnoremap yuf mqva{Vy`q:<cr>
+nnoremap dif di{
+nnoremap daf va{ohd
+nnoremap duf va{Vd
+nnoremap cif ci{
+nnoremap caf va{ohc
+nnoremap cuf va{Vc
+""  ──>${text}
+nnoremap viF /{<cr>vi{<esc>:noh<cr>gv
+nnoremap vaF /{<cr>va{oho<esc>:noh<cr>gv
+nnoremap vuF /{<cr>va{V<esc>:noh<cr>gv
+nnoremap yiF mq/{<cr>vi{y`q:noh<cr>
+nnoremap yaF mq/{<cr>va{ohy`q:noh<cr>
+nnoremap yuF mq/{<cr>va{Vy`q:noh<cr>
+nnoremap diF mq/{<cr>vi{d`q:noh<cr>
+nnoremap daF mq/{<cr>va{ohd`q:noh<cr>
+nnoremap duF mq/{<cr>va{Vd`q:noh<cr>
+nnoremap ciF /{<cr>vi{<esc>:noh<cr>gvc
+nnoremap caF /{<cr>va{oh<esc>:noh<cr>gvc
+nnoremap cuF /{<cr>va{V<esc>:noh<cr>gvc
 "" %text%
 nnoremap vig t%vT%
 nnoremap vag f%vF%
