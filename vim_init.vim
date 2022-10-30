@@ -83,7 +83,7 @@ if exists('g:started_by_firenvim')
 endif
 
 nnoremap Y y$
-nnoremap yY ggVGy
+nnoremap yY mqhv0y`q
 
 nnoremap q i_<esc>r
 nnoremap Q q
