@@ -132,6 +132,7 @@ nnoremap <leader><leader>p ggVG"*p
 
 nnoremap dp ddp
 nnoremap yp yyp
+nnoremap cp yypk<CMD>call VSCodeNotify('editor.action.commentLine')<CR>j
 
 " Delete row content
 nnoremap d<leader> 0"_D
