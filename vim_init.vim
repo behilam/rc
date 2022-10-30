@@ -89,6 +89,11 @@ nnoremap q i_<esc>r
 nnoremap Q q
 nnoremap g: Q
 
+nnoremap ß <BS>?_<CR>:noh<CR><SPACE>
+nnoremap ŭ /_<CR>:noh<CR><SPACE>
+nnoremap é <SPACE>/_<CR>:noh<CR><BS>
+nnoremap É <BS>?_<CR>:noh<CR><BS>
+
 nnoremap <leader>z :noh<CR>
 
 nnoremap <leader>w :w<CR>
