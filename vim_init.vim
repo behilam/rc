@@ -126,6 +126,7 @@ xnoremap <leader>P "*P
 nnoremap <leader><leader>p ggVG"*p
 
 nnoremap dp ddp
+nnoremap yp yyp
 
 " Delete row content
 nnoremap d<leader> 0"_D
