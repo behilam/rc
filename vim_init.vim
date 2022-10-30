@@ -83,7 +83,6 @@ if exists('g:started_by_firenvim')
 endif
 
 nnoremap Y y$
-nnoremap yY mqhv0y`q
 
 nnoremap q i_<esc>r
 nnoremap Q q
@@ -130,6 +129,7 @@ nnoremap <leader>P "*P
 xnoremap <leader>P "*P
 nnoremap <leader><leader>p ggVG"*p
 
+nnoremap dh dd
 nnoremap dp ddp
 nnoremap yp yyp
 nnoremap cp yypk<CMD>call VSCodeNotify('editor.action.commentLine')<CR>j
