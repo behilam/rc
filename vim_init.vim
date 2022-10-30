@@ -133,6 +133,7 @@ nnoremap dh dd
 nnoremap dp ddp
 nnoremap yp yyp
 nnoremap cp yypk<CMD>call VSCodeNotify('editor.action.commentLine')<CR>j
+vnoremap <leader>j yP`<
 
 " Delete row content
 nnoremap d<leader> 0"_D
