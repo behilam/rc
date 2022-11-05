@@ -457,7 +457,7 @@ nnoremap <Plug>NextAHKVarUnwrap mq/%<cr>x/%<cr>x:noh<cr>`q
 vnoremap <leader>dg <esc>mq`>/%<cr>x`<?%<cr>x:noh<cr>`q
 
 " ┌──➤ (Text)
-nnoremap <leader>iu <Plug>(ParensWordWrap)
+nnoremap <leader>iu <Plug>ParensWordWrap
 nnoremap <Plug>ParensWordWrap mqviw<ESC>a)<ESC>bi(<ESC>`q
     \:call repeat#set("\<Plug>ParensWordWrap")<CR>
 
