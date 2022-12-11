@@ -48,7 +48,7 @@ Return
 Return
 
 >+7::
-  char := Chr(176) ; ° 
+  char := Chr(176) ; °
   Send, %char%
 Return
 
@@ -98,6 +98,50 @@ Return
 Return
 
 ; ----------Second line ------------
+; Ithkuil
+>!t::
+  char := Chr(355) ; ţt͕
+  Send, %char%
+Return
+>!s::
+  char := Chr(353) ; š
+  Send, %char%
+Return
+>!z::
+  char := Chr(382) ;
+  Send, %char%
+Return
+>!c::
+  char := Chr(269) ; č
+  Send, %char%
+Return
+>!n::
+  char := Chr(328) ; ň
+  Send, %char%
+Return
+>!r::
+  char := Chr(345) ; ř
+  Send, %char%
+Return
+>!l::
+  char := Chr(108) ; l͕
+  ext := Chr(853)
+  Send, %char%%ext%
+Return
+>!;::
+ext := Chr(853) ;
+Send, %ext%
+Return
+>!p::
+  ext := Chr(807) ;
+  ; ext := Chr(711) ;
+  Send, %ext%
+Return
+>!'::
+  char := Chr(8217) ; ’
+  Send, %char%
+Return
+
 >+w::
   char := Chr(365) ; ŭ
   Send, %char%
@@ -228,18 +272,18 @@ Return
   Send, %char%
 Return
 
-<>+b::
+>+b::
   char := Chr(223) ; ß
   Send, %char%
 Return
 
 >+,::
-  char := Chr(8249) ; ‹
-  Send, %char%
+char := Chr(8249) ; ‹
+Send, %char%
 Return
 <>+,::
-  char := Chr(171) ; «
-  Send, %char%
+char := Chr(171) ; «
+Send, %char%
 Return
 
 >+.::
