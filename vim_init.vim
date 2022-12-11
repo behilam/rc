@@ -414,27 +414,6 @@ nnoremap <Plug>NextBTickUnwrap mq/`<cr>x/`<cr>x:noh<cr>`q
 
 vnoremap <leader>d` <esc>mq`>/`<cr>x`<?`<cr>x:noh<cr>`q
 
-" ┌──➤ ${Text}
-nnoremap <leader>if <Plug>PlaceholderWordWrap
-nnoremap <Plug>PlaceholderWordWrap mqviw<ESC>a}<ESC>bi${<ESC>`q
-    \:call repeat#set("\<Plug>PlaceholderWordWrap")<CR>
-
-nnoremap <leader><leader>if <Plug>PlaceholderWORDWrap
-nnoremap <Plug>PlaceholderWORDWrap mqviW<ESC>a}<ESC>Bi${<ESC>`q
-    \:call repeat#set("\<Plug>PlaceholderWORDWrap")<CR>
-
-vnoremap <leader>if <ESC>mq`>a}<ESC>`<<ESC>i${<ESC>`><ESC>`q
-
-nnoremap <leader>df <Plug>PlaceholderUnwrap
-nnoremap <Plug>PlaceholderUnwrap mqva{o<esc>%x``xX:noh<cr>`q
-    \:call repeat#set("\<Plug>PlaceholderUnwrap")<CR>
-
-nnoremap <leader>dF <Plug>NextPlaceholderUnwrap
-nnoremap <Plug>NextPlaceholderUnwrap mq/{<cr>va{o<esc>%x``xX:noh<cr>`q
-    \:call repeat#set("\<Plug>NextPlaceholderUnwrap")<CR>
-
-vnoremap <leader>df <esc>mq`>/}<cr>x`<?$<cr>xx:noh<cr>`q
-
 " ┌──➤ %Text%
 nnoremap <leader>ig <Plug>AHKVarWordWrap
 nnoremap <Plug>AHKVarWordWrap mqviw<ESC>a%<ESC>bi%<ESC>`q
@@ -485,6 +464,18 @@ nnoremap <leader>ri <Plug>NextToParensWrap
 nnoremap <Plug>NextToParensWrap mq/[)\]}]<cr>n%r(``r):noh<cr>`q
     \:call repeat#set("\<Plug>NextToParensWrap")<CR>
 
+nnoremap <leader><CR>u <Plug>OutlineWordParensWrap
+nnoremap <Plug>OutlineWordParensWrap mqviw<ESC>a<CR>)<CR><ESC>`<i<CR>(<CR><ESC>`q
+    \:call repeat#set("\<Plug>OutlineWordParensWrap")<CR>
+
+vnoremap <leader><CR>u <ESC>mq`>a<CR>)<ESC>`<i(<CR><ESC>`q
+
+nnoremap <leader><CR>i <Plug>OutlineParensWrap
+nnoremap <Plug>OutlineParensWrap mqO(<ESC>jo)<ESC>`q>>
+    \:call repeat#set("\<Plug>OutlineParensWrap")<CR>
+
+vnoremap <leader><CR>i <ESC>mq`<O(<ESC>`>o)<ESC>gv><ESC>`q
+
 " ┌──➤ [Text]
 nnoremap <leader>i[ <Plug>BracketsWordWrap
 nnoremap <Plug>BracketsWordWrap mqviw<ESC>a]<ESC>bi[<ESC>`q
@@ -513,6 +504,18 @@ nnoremap <Plug>ToBracketsWrap mq/[)}]<cr>%r[``r]:noh<cr>`q
 nnoremap <leader>r] <Plug>NextToBracketsWrap
 nnoremap <Plug>NextToBracketsWrap mq/[)}]<cr>n%r[``r]:noh<cr>`q
     \:call repeat#set("\<Plug>NextToBracketsWrap")<CR>
+
+nnoremap <leader><CR>[ <Plug>OutlineWordBracketsWrap
+nnoremap <Plug>OutlineWordBracketsWrap mqviw<ESC>a<CR>]<CR><ESC>`<i<CR>[<CR><ESC>`q
+    \:call repeat#set("\<Plug>OutlineWordBracketsWrap")<CR>
+
+vnoremap <leader><CR>[ <ESC>mq`>a<CR>]<ESC>`<i[<CR><ESC>`q
+
+nnoremap <leader><CR>] <Plug>OutlineBracketsWrap
+nnoremap <Plug>OutlineBracketsWrap mqO[<ESC>jo]<ESC>`q>>
+    \:call repeat#set("\<Plug>OutlineBracketsWrap")<CR>
+
+vnoremap <leader><CR>] <ESC>mq`<O[<ESC>`>o]<ESC>gv><ESC>`q
 
 " ┌──➤ {Text}
 nnoremap <leader>ij <Plug>BracesWordWrap
@@ -543,6 +546,18 @@ nnoremap <leader>rk <Plug>NextToBracesWrap
 nnoremap <Plug>NextToBracesWrap mq/[)\]]<cr>n%r{``r}:noh<cr>`q
     \:call repeat#set("\<Plug>NextToBracesWrap")<CR>
 
+nnoremap <leader><CR>j <Plug>OutlineWordBracesWrap
+nnoremap <Plug>OutlineWordBracesWrap mqviw<ESC>a<CR>}<CR><ESC>`<i<CR>{<CR><ESC>`q
+    \:call repeat#set("\<Plug>OutlineWordBracesWrap")<CR>
+
+vnoremap <leader><CR>j <ESC>mq`<O{<ESC>`>o}<ESC>gv><ESC>`q
+
+nnoremap <leader><CR>k <Plug>OutlineBracesWrap
+nnoremap <Plug>OutlineBracesWrap mqO{<ESC>jo}<ESC>`q>>
+    \:call repeat#set("\<Plug>OutlineBracesWrap")<CR>
+
+vnoremap <leader><CR>k <ESC>mq`<O{<ESC>`>o}<ESC>gv><ESC>`q
+
 " ┌──➤ { Text }
 nnoremap <leader>iJ <Plug>SBracesWordWrap
 nnoremap <Plug>SBracesWordWrap mqviw<ESC>a }<ESC>bi{ <ESC>`q
@@ -563,6 +578,33 @@ nnoremap <Plug>NextSBracesUnwrap mq/{<cr>va{o<esc>%hxx``xx:noh<cr>`q
     \:call repeat#set("\<Plug>NextSBracesUnwrap")<CR>
 
 vnoremap <leader>dJ <esc>mq`>/}<cr>hxx`<?<cr>xx:noh<cr>`q
+
+" ┌──➤ ${Text}
+nnoremap <leader>if <Plug>PlaceholderWordWrap
+nnoremap <Plug>PlaceholderWordWrap mqviw<ESC>a}<ESC>bi${<ESC>`q
+    \:call repeat#set("\<Plug>PlaceholderWordWrap")<CR>
+
+nnoremap <leader><leader>if <Plug>PlaceholderWORDWrap
+nnoremap <Plug>PlaceholderWORDWrap mqviW<ESC>a}<ESC>Bi${<ESC>`q
+    \:call repeat#set("\<Plug>PlaceholderWORDWrap")<CR>
+
+vnoremap <leader>if <ESC>mq`>a}<ESC>`<<ESC>i${<ESC>`><ESC>`q
+
+nnoremap <leader>df <Plug>PlaceholderUnwrap
+nnoremap <Plug>PlaceholderUnwrap mqva{o<esc>%x``xX:noh<cr>`q
+    \:call repeat#set("\<Plug>PlaceholderUnwrap")<CR>
+
+nnoremap <leader>dF <Plug>NextPlaceholderUnwrap
+nnoremap <Plug>NextPlaceholderUnwrap mq/{<cr>va{o<esc>%x``xX:noh<cr>`q
+    \:call repeat#set("\<Plug>NextPlaceholderUnwrap")<CR>
+
+vnoremap <leader>df <esc>mq`>/}<cr>x`<?$<cr>xx:noh<cr>`q
+
+nnoremap <leader><CR>f <Plug>OutlinePlaceholderWrap
+nnoremap <Plug>OutlinePlaceholderWrap mqO${<ESC>jo}<ESC>`q>>
+    \:call repeat#set("\<Plug>OutlinePlaceholderWrap")<CR>
+
+vnoremap <leader><CR>f <ESC>mq`>a<CR>}<ESC>`<i${<CR><ESC>gv><ESC>`q
 
 " ┌──➤ /Text/
 nnoremap <leader>i/ <Plug>SlashWordWrap
