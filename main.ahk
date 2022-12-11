@@ -174,26 +174,26 @@ Appskey & k::}
 >^]::Send, ^0
 
 ; Box drawing
-NumpadEnd::Send, └
-NumpadDown::Send, ┴
-NumpadPgdn::Send, ┘
-NumpadLeft::Send, ├
-NumpadClear::Send, ┼
-NumpadRight::Send, ┤
-NumpadHome::Send, ┌
-NumpadUp::Send, ┬
-NumpadPgup::Send, ┐
+NumpadEnd::Send, % (Chr(9492))
+NumpadDown::Send, % (Chr(9524))
+NumpadPgdn::Send, % (Chr(9496))
+NumpadLeft::Send, % (Chr(9500))
+NumpadClear::Send, % (Chr(9532))
+NumpadRight::Send, % (Chr(9508))
+NumpadHome::Send, % (Chr(9484))
+NumpadUp::Send, % (Chr(9516))
+NumpadPgup::Send, % (Chr(9488))
 NumpadSub::
     if (GetKeyState("NumLock", "T"))
         Send, -
     else
-        Send, ─
+        Send, % (Chr(9472))
 Return
 NumpadAdd::
     if (GetKeyState("NumLock", "T"))
         Send, {+}
     else
-        Send, │
+        Send, % (Chr(9474))
 Return
 
 ; ===============================================================
