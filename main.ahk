@@ -80,10 +80,7 @@ XButton2 & WheelUp::Send, ^+{Tab}
 
 ; Clipboard util using 5 and 4 in mouse
 F14 & LButton::^c
-F14 & RButton::
-Click
-Send, ^v
-Return
+F14 & RButton::^v
 F15 & LButton::^x
 F15 & RButton::Delete
 
@@ -168,7 +165,7 @@ Appskey & k::}
 >^j::Send, ^1
 >^k::Send, ^2
 >^l::Send, ^3
->^`;::Send, ^4
+    >^`;::Send, ^4
 >^'::Send, ^5
 >^u::Send, ^6
 >^i::Send, ^7
