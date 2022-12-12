@@ -85,6 +85,13 @@ endif
 
 nnoremap Y y$
 
+nnoremap p ]p
+nnoremap P ]P
+nnoremap ]p p
+nnoremap ]P P
+vnoremap p P
+vnoremap P p
+
 nnoremap q i_<esc>r
 nnoremap Q q
 nnoremap g: Q
@@ -715,10 +722,6 @@ nnoremap ) /[)}\]]<cr>:noh<cr>
 nnoremap ( ?[({[]<cr>:noh<cr>
 vnoremap ) /[)}\]]<cr>
 vnoremap ( ?[({[]<cr>
-
-" Don't replace register when pasting in visual + give alternative
-vnoremap p "_c<c-r>"<esc>
-vnoremap P p
 
 " Format into multiple lines <EXPERIMENTAL>
 nnoremap <leader>= vi(o<esc>i<cr><esc>vi(<esc>a<cr><esc>k:s/,\s\?/,\r/g<cr>:noh<cr>
