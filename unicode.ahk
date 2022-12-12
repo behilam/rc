@@ -5,301 +5,112 @@ SendMode Input ; Recommended for new scripts due to its superior speed and relia
 SetWorkingDir %A_ScriptDir% ; Ensures a consistent starting directory.
 
 ; ---------- First Line ----------
->+1::
-  char := Chr(161) ; ¡
-  Send, %char%
-Return
-<>+1::
-  char := Chr(188) ; ¼
-  Send, %char%
-Return
+>+1::Send, % (Chr(161)) ; ¡
+<>+1::Send, % (Chr(188)) ; ¼
 
->+2::
-  char := Chr(169) ; ©
-  Send, %char%
-Return
+>+2::Send, % (Chr(169)) ; ©
 
->+3::
-  char := Chr(163) ; £
-  Send, %char%
-Return
-<>+3::
-  char := Chr(190) ; ¾
-  Send, %char%
-Return
+>+3::Send, % (Chr(163)) ; £
+<>+3::Send, % (Chr(190)) ; ¾
 
->+4::
-  char := Chr(8364) ; €
-  Send, %char%
-Return
-<>+4::
-  char := Chr(162) ; ¢
-  Send, %char%
-Return
+>+4::Send, % (Chr(8364)) ; €
+<>+4::Send, % (Chr(162)) ; ¢
 
-<>+5::
-  char := Chr(189) ; ½
-  Send, %char%
-Return
+<>+5::Send, % (Chr(189)) ; ½
 
->+6::
-  char := Chr(181) ; µ
-  Send, %char%
-Return
+>+6::Send, % (Chr(181)) ; µ
 
->+7::
-  char := Chr(176) ; °
-  Send, %char%
-Return
+>+7::Send, % (Chr(176)) ; °
 
->+8::
-  char := Chr(215) ; ×
-  Send, %char%
-Return
-<>+8::
-  char := Chr(183) ; ·
-  Send, %char%
-Return
+>+8::Send, % (Chr(215)) ; ×
+<>+8::Send, % (Chr(183)) ; ·
 
->+9::
-  char := Chr(186) ; º
-  Send, %char%
-Return
-<>+9::
-  char := Chr(170) ; ª
-  Send, %char%
-Return
+>+9::Send, % (Chr(186)) ; º
+<>+9::Send, % (Chr(170)) ; ª
 
->+0::
-  char := Chr(248) ; ø
-  Send, %char%
-Return
-<>+0::
-  char := Chr(216) ; Ø
-  Send, %char%
-Return
+>+0::Send, % (Chr(248)) ; ø
+<>+0::Send, % (Chr(216)) ; Ø
 
->+-::
-  char := Chr(8211) ; – (En dash)
-  Send, %char%
-Return
-<>+-::
-  char := Chr(8212) ; — (Em dash)
-  Send, %char%
-Return
+>+-::Send, % (Chr(8211)) ; – (En dash)
+<>+-::Send, % (Chr(8212)) ; — (Em dash)
 
->+=::
-  char := Chr(177) ; ±
-  Send, %char%
-Return
-<>+=::
-  char := Chr(8734) ; ∞
-  Send, %char%
-Return
+>+=::Send, % (Chr(177)) ; ±
+<>+=::Send, % (Chr(8734)) ; ∞
 
 ; ----------Second line ------------
 ; Ithkuil
->!t::
-  char := Chr(355) ; ţt͕
-  Send, %char%
-Return
->!s::
-  char := Chr(353) ; š
-  Send, %char%
-Return
->!z::
-  char := Chr(382) ;
-  Send, %char%
-Return
->!c::
-  char := Chr(269) ; č
-  Send, %char%
-Return
->!n::
-  char := Chr(328) ; ň
-  Send, %char%
-Return
->!r::
-  char := Chr(345) ; ř
-  Send, %char%
-Return
+>!t::Send, % (Chr(355)) ; ţt͕
+>!s::Send, % (Chr(353)) ; š
+>!z::Send, % (Chr(382)) ;
+>!c::Send, % (Chr(269)) ; č
+>!n::Send, % (Chr(328)) ; ň
+>!r::Send, % (Chr(345)) ; ř
 >!l::
   char := Chr(108) ; l͕
   ext := Chr(853)
   Send, %char%%ext%
 Return
->!;::
-ext := Chr(853) ;
-Send, %ext%
-Return
+  >!;::Send, % (Chr(853)) ;
 >!p::
   ext := Chr(807) ;
   ; ext := Chr(711) ;
   Send, %ext%
 Return
->!'::
-  char := Chr(8217) ; ’
-  Send, %char%
-Return
+>!'::Send, % (Chr(8217)) ; ’
 
->+w::
-  char := Chr(365) ; ŭ
-  Send, %char%
-Return
-<>+w::
-  char := Chr(364) ; Ŭ
-  Send, %char%
-Return
+>+w::Send, % (Chr(365)) ; ŭ
+<>+w::Send, % (Chr(364)) ; Ŭ
 
->+e::
-  char := Chr(233) ; é
-  Send, %char%
-Return
-<>+e::
-  char := Chr(201) ; É
-  Send, %char%
-Return
+>+e::Send, % (Chr(233)) ; é
+<>+e::Send, % (Chr(201)) ; É
 
->+y::
-  char := Chr(252) ; ü
-  Send, %char%
-Return
+>+y::Send, % (Chr(252)) ; ü
 
-<>+y::
-  char := Chr(165) ; ¥
-  Send, %char%
-Return
+<>+y::Send, % (Chr(165)) ; ¥
 
->+u::
-  char := Chr(250) ; ú
-  Send, %char%
-Return
-<>+u::
-  char := Chr(218) ; Ú
-  Send, %char%
-Return
+>+u::Send, % (Chr(250)) ; ú
+<>+u::Send, % (Chr(218)) ; Ú
 
->+i::
-  char := Chr(237) ; í
-  Send, %char%
-Return
-<>+i::
-  char := Chr(205) ; Í
-  Send, %char%
-Return
+>+i::Send, % (Chr(237)) ; í
+<>+i::Send, % (Chr(205)) ; Í
 
->+o::
-  char := Chr(243) ; ó
-  Send, %char%
-Return
-<>+o::
-  char := Chr(211) ; Ó
-  Send, %char%
-Return
+>+o::Send, % (Chr(243)) ; ó
+<>+o::Send, % (Chr(211)) ; Ó
 
 ; ------------ Third Line -------------
->+a::
-  char := Chr(225) ; á
-  Send, %char%
-Return
-<>+a::
-  char := Chr(193) ; Á
-  Send, %char%
-Return
+>+a::Send, % (Chr(225)) ; á
+<>+a::Send, % (Chr(193)) ; Á
 
->+s::
-  char := Chr(349) ; ŝ
-  Send, %char%
-Return
-<>+s::
-  char := Chr(348) ; Ŝ
-  Send, %char%
-Return
+>+s::Send, % (Chr(349)) ; ŝ
+<>+s::Send, % (Chr(348)) ; Ŝ
 
->+g::
-  char := Chr(285) ; ĝ
-  Send, %char%
-Return
-<>+g::
-  char := Chr(284) ; Ĝ
-  Send, %char%
-Return
+>+g::Send, % (Chr(285)) ; ĝ
+<>+g::Send, % (Chr(284)) ; Ĝ
 
->+h::
-  char := Chr(293) ; ĥ
-  Send, %char%
-Return
-<>+h::
-  char := Chr(292) ; Ĥ
-  Send, %char%
-Return
+>+h::Send, % (Chr(293)) ; ĥ
+<>+h::Send, % (Chr(292)) ; Ĥ
 
->+j::
-  char := Chr(309) ; ĵ
-  Send, %char%
-Return
-<>+j::
-  char := Chr(308) ; Ĵ
-  Send, %char%
-Return
+>+j::Send, % (Chr(309)) ; ĵ
+<>+j::Send, % (Chr(308)) ; Ĵ
 
->+;::
-char := Chr(241) ; ñ
-Send, %char%
-Return
-<>+;::
-char := Chr(209) ; Ñ
-Send, %char%
-Return
+  >+;::Send, % (Chr(241)) ; ñ
+  <>+;::Send, % (Chr(209)) ; Ñ
 
-<>+'::
-  char := Chr(8230) ; …
-  Send, %char%
-Return
+<>+'::Send, % (Chr(8230)) ; …
 
-<>+\::
-  char := Chr(172) ; ¬
-  Send, %char%
-Return
+<>+\::Send, % (Chr(172)) ; ¬
 
 ; --------------- Fourth Line --------------
->+c::
-  char := Chr(265) ; ĉ
-  Send, %char%
-Return
-<>+c::
-  char := Chr(264) ; Ĉ
-  Send, %char%
-Return
+>+c::Send, % (Chr(265)) ; ĉ
+<>+c::Send, % (Chr(264)) ; Ĉ
 
->+b::
-  char := Chr(223) ; ß
-  Send, %char%
-Return
+>+b::Send, % (Chr(223)) ; ß
 
->+,::
-char := Chr(8249) ; ‹
-Send, %char%
-Return
-<>+,::
-char := Chr(171) ; «
-Send, %char%
-Return
+>+,::Send, % (Chr(8249)) ; ‹
+<>+,::Send, % (Chr(171)) ; «
 
->+.::
-  char := Chr(8250) ; ›
-  Send, %char%
-Return
-<>+.::
-  char := Chr(187) ; »
-  Send, %char%
-Return
+>+.::Send, % (Chr(8250)) ; ›
+<>+.::Send, % (Chr(187)) ; »
 
->+/::
-  char := Chr(247) ; ÷
-  Send, %char%
-Return
-<>+/::
-  char := Chr(191) ; ¿
-  Send, %char%
-Return
+>+/::Send, % (Chr(247)) ; ÷
+<>+/::Send, % (Chr(191)) ; ¿
