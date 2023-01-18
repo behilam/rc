@@ -723,6 +723,19 @@ nnoremap ( ?[({[]<cr>:noh<cr>
 vnoremap ) /[)}\]]<cr>
 vnoremap ( ?[({[]<cr>
 
+nnoremap <leader>^ :call AddTwoSlashQuery()<cr>
+function! AddTwoSlashQuery()
+    let l:startPos = getcurpos()
+    let l:col = l:startPos[2]
+    let l:currentLine = l:startPos[1]
+    let l:indent = indent(l:currentLine)
+    let l:query = repeat(" ", l:indent) . "//" . repeat(" ", l:col - l:indent - 3) . "^?"
+    let l:failed = append(l:currentLine, l:query)
+    if failed
+        echom "Unable to add TwoSlashQuery after line: " . l:currentLine
+    endif
+endfunction
+
 " Format into multiple lines <EXPERIMENTAL>
 nnoremap <leader>= vi(o<esc>i<cr><esc>vi(<esc>a<cr><esc>k:s/,\s\?/,\r/g<cr>:noh<cr>
 
@@ -757,7 +770,6 @@ nnoremap ciX mq/,<cr>lv`q?(\\|\[\\|{<cr>v:noh<cr>gvwc
 
 
 " ============================ TESTS =================================
-
 "augroup test_js
 "	au!
 "	au FileType javascript nnoremap <buffer> <localleader>c iasdfjkl;<ESC>
