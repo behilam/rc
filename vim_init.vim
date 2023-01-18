@@ -776,7 +776,6 @@ nnoremap ciX mq/,<cr>lv`q?(\\|\[\\|{<cr>v:noh<cr>gvwc
 "augroup END
 
 nnoremap <localleader><localleader>p :call InsertPrintFunction("w")<cr>
-
 function! InsertPrintFunction(x)
     let extension = expand('%:e')
 

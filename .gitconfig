@@ -6,6 +6,8 @@
 	# editor = \"C:\\Users\\Moiso\\AppData\\Local\\Programs\\Microsoft VS Code\\bin\\code\" --wait
 	editor = nvim
 	autocrlf = true
+[init]
+	defaultBranch = main
 [alias]
 	l = log --color --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s' --abbrev-commit
 	ls = log --color --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s' --abbrev-commit -S
