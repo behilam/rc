@@ -6,16 +6,16 @@
 -- set nu
 
 -- hi LightspeedCursor gui=reverse
-vim.g.mapleader = ' '
--- let maplocalleader = '\'
+vim.g.mapleader = ' ';
+vim.g.maplocalleader = '\\';
 
--- if has('nvim')
---     call plug#begin()
---     Plug 'tpope/vim-repeat'
---     Plug 'ggandor/lightspeed.nvim'
---     Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
---     call plug#end()
--- endif
+if nvim then
+    vim.api.nvim_command('call plug#begin()')
+    vim.api.nvim_command('Plug "tpope/vim-repeat"')
+    vim.api.nvim_command('Plug "ggandor/lightspeed.nvim"')
+    vim.api.nvim_command('Plug "glacambre/firenvim", { "do": { _ -> firenvim#install(0) } }')
+    vim.api.nvim_command('call plug#end()')
+end
 
 if not vscode then
     -- Alt-z -- TODO: needs fixing for neovim
@@ -25,63 +25,92 @@ if not vscode then
     vim.keymap.set('i', '<c-;>', '<esc>O')
     vim.keymap.set('n', '<c-k><c-l>', function() vim.api.nvim_command('set nu!') end)
 
-    -- "  Commenting blocks of code.
-    -- augroup commenting_blocks_of_code
-    --     autocmd!
-    --     autocmd FileType c,cpp,java,scala,rust let b:comment_leader = '// '
-    --     autocmd FileType sh,ruby,python        let b:comment_leader = '# '
-    --     autocmd FileType conf,fstab            let b:comment_leader = '# '
-    --     autocmd FileType tex                   let b:comment_leader = '% '
-    --     autocmd FileType mail                  let b:comment_leader = '> '
-    --     autocmd FileType vim                   let b:comment_leader = '" '
-    --     autocmd FileType ahk                   let b:comment_leader = '; '
-    -- augroup END
-    -- "  noremap gc :<C-B>silent <C-E>s/^/<C-R>=escape(b:comment_leader,'\/')<CR>/<CR>:nohlsearch<CR>
-    -- "  noremap gC :<C-B>silent <C-E>s/^\V<C-R>=escape(b:comment_leader,'\/')<CR>//e<CR>:nohlsearch<CR>
+    -- Commenting blocks of code.
+    local vanillaNvimComments = vim.api.nvim_create_augroup('vanilla nvim comments', { clear = false })
+    vim.api.nvim_create_autocmd('FileType',
+        {
+            pattern = 'c,cpp,java,scala,rust',
+            callback = function() vim.b.comment_leader = '// ' end,
+            group = vanillaNvimComments
+        })
+    vim.api.nvim_create_autocmd('FileType',
+        {
+            pattern = 'sh,ruby,python,conf,fstab',
+            callback = function() vim.b.comment_leader = '# ' end,
+            group = vanillaNvimComments
+        })
+    vim.api.nvim_create_autocmd('FileType',
+        {
+            pattern = 'tex',
+            callback = function() vim.b.comment_leader = '% ' end,
+            group = vanillaNvimComments
+        })
+    vim.api.nvim_create_autocmd('FileType',
+        {
+            pattern = 'mail',
+            callback = function() vim.b.comment_leader = '> ' end,
+            group = vanillaNvimComments
+        })
+    vim.api.nvim_create_autocmd('FileType',
+        {
+            pattern = 'vim',
+            callback = function() vim.b.comment_leader = '" ' end,
+            group = vanillaNvimComments
+        })
+    vim.api.nvim_create_autocmd('FileType',
+        {
+            pattern = 'ahk',
+            callback = function() vim.b.comment_leader = '; ' end,
+            group = vanillaNvimComments
+        })
+    -- TODO: Add vanilla commenting for neovim
+    -- vim.keymap.set('n', 'gc', ':<C-B>silent <C-E>s/^/<C-R>=escape(b:comment_leader,\'\\/\')<CR>/<CR>:nohlsearch<CR>')
+    -- vim.keymap.set('n', 'gC', ':<C-B>silent <C-E>s/^\\V<C-R>=escape(b:comment_leader,\'\\/\')<CR>//e<CR>:nohlsearch<CR>')
 end
 
 -- "  Firenvim
--- let g:timer_firenvim = ""
--- if exists('g:started_by_firenvim')
---     inoremap {      {}<Left>
---     inoremap <expr> }  strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}"
---     inoremap [      []<Left>
---     inoremap <expr> ]  strpart(getline('.'), col('.')-1, 1) == "]" ? "\<Right>" : "]"
---     inoremap ( ()<Left>
---     inoremap <expr> )  strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
---     inoremap <expr> ' strpart(getline('.'), col('.')-1, 1) == "\'" ? "\<Right>" : "\'\'\<Left>"
+vim.g.timer_firenvim = ""
+if started_by_firenvim then
+    vim.keymap.set('i', '{', '{}<Left>')
+    vim.keymap.set('i', '<expr>', '}  strpart(getline(\'.\'), col(\'.\')-1, 1) == "}" ? "\\<Right>" : "}"')
+    vim.keymap.set('i', '[', '[]<Left>')
+    vim.keymap.set('i', '<expr>', ']  strpart(getline(\'.\'), col(\'.\')-1, 1) == "]" ? "\\<Right>" : "]"')
+    vim.keymap.set('i', '(', '()<Left>')
+    vim.keymap.set('i', '<expr>', ')  strpart(getline(\'.\'), col(\'.\')-1, 1) == ")" ? "\\<Right>" : ")"')
+    vim.keymap.set('i', '<expr>',
+        '\' strpart(getline(\'.\'), col(\'.\')-1, 1) == "\'" ? "\\<Right>" : "\\\'\\\'\\<Left>"')
 
---     au BufEnter colab.*.txt set ft=python
---     au BufEnter github.com_*.txt set ft=markdown
+    -- -- au BufEnter colab.*.txt set ft=python
+    -- -- au BufEnter github.com_*.txt set ft=markdown
+    -- --
+    -- vim.g.firenvim_config = {
+    --     localSettings = {
+    --         ['.*'] = {
+    --             takeover = 'never',
+    --             cmdline = 'firenvim',
+    --         }
+    --     }
+    -- };
 
---     let g:firenvim_config = {
---         \ 'localSettings': {
---             \ '.*': {
---                 \ 'takeover': 'never',
---                 \ 'cmdline': 'firenvim',
---             \ },
---         \ }
---     \ }
+    -- -- Throttled autoupdate text area
+    -- vim.g.timer_started = false
+    -- function myWrite(timer)
+    --     vim.g.timer_started = false;
+    --     vim.g.write();
+    -- end
 
---     " Throttled autoupdate text area
---     let g:timer_started = v:false
---     function! My_Write(timer) abort
---         let g:timer_started = v:false
---         write
---     endfunction
+    -- function delayMyWrite()
+    --     if vim.g.timer_started then
+    --         vim.api.nvim_command('call timer_stop(vim.g.timer_firenvim)')
+    --     end
+    --     vim.g.timer_started = true
+    --     print(vim.g.timer_firenvim)
+    --     vim.g.timer_firenvim = vim.g.timer_start(1000, 'myWrite')
+    -- end
 
---     function! Delay_My_Write() abort
---         if g:timer_started
---             call timer_stop(g:timer_firenvim)
---         end
---         let g:timer_started = v:true
---         echo g:timer_firenvim
---         let g:timer_firenvim = timer_start(1000, 'My_Write')
---     endfunction
-
---     au TextChanged * ++nested call Delay_My_Write()
---     au TextChangedI * ++nested call Delay_My_Write()
--- endif
+    -- au TextChanged * ++nested call Delay_My_Write()
+    -- au TextChangedI * ++nested call Delay_My_Write()
+end
 
 vim.keymap.set('n', 'p', ']p')
 vim.keymap.set('n', 'P', ']P')
