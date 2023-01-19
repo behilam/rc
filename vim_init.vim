@@ -83,8 +83,6 @@ if exists('g:started_by_firenvim')
     au TextChangedI * ++nested call Delay_My_Write()
 endif
 
-nnoremap Y y$
-
 nnoremap p ]p
 nnoremap P ]P
 nnoremap ]p p
@@ -755,7 +753,7 @@ vnoremap <localleader>c s<c-r>=<c-r>"<cr><esc>
 " Wrap with console print function
 
 " Source or edit config file
-nnoremap <localleader><localleader>s :source C:\Users\Moiso\rc\vim_init.vim<cr>
+nnoremap <localleader><localleader>s :source C:\Users\Moiso\rc\vim_init.lua<cr>
 nnoremap <localleader><localleader>e :e C:\Users\Moiso\rc\vim_init.vim<cr>
 
 
