@@ -14,6 +14,7 @@ if has('nvim')
     Plug 'tpope/vim-repeat'
     Plug 'ggandor/lightspeed.nvim'
     Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+    Plug 'terryma/vim-expand-region'
     call plug#end()
 endif
 
