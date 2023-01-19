@@ -127,6 +127,7 @@ vnoremap <leader><leader>c "*c
 
 nnoremap <leader>y "*y
 vnoremap <leader>y "*y
+nnoremap <leader>Y "*y$
 nnoremap <leader><leader>y ggVG"*y
 
 nnoremap <leader>v ggVG
