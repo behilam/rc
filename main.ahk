@@ -65,6 +65,7 @@ RBtnResetable := true
 ; =======================
 ; =======  MOUSE  =======
 ; =======================
+; Mouse 6
 XButton1::Browser_Back
 XButton1 & LButton::Media_Next
 XButton1 & RButton::Media_Prev
@@ -72,6 +73,7 @@ XButton1 & MButton::Media_Play_Pause
 XButton1 & WheelDown::Volume_Down
 XButton1 & WheelUp::Volume_Up
 
+; Mouse 3
 XButton2::Browser_Forward
 XButton2 & LButton::Send, +{LButton}
 XButton2 & MButton::Send, ^{F4}
@@ -92,8 +94,14 @@ F15 & WheelDown::Right
 F15 & WheelUp::Left
 
 ; Mouse 8
+; F16::F16
 F16 & LButton::^z
 F16 & RButton::^+z
+F16::
+    if (GetKeyState("LButton", "P")) {
+        Send, {Esc}
+    }
+Return
 
 ; Mouse save location and quick go to location
 ^#LButton::
