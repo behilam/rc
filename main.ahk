@@ -84,6 +84,10 @@ F14 & RButton::^v
 F15 & LButton::^x
 F15 & RButton::Delete
 
+; Mouse 8
+F16 & LButton::^z
+F16 & RButton::^+z
+
 ; Mouse save location and quick go to location
 ^#LButton::
     if LBtnResetable {
