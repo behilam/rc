@@ -81,8 +81,12 @@ XButton2 & WheelUp::Send, ^+{Tab}
 ; Clipboard util using 5 and 4 in mouse
 F14 & LButton::^c
 F14 & RButton::^v
+F14 & WheelDown::Right
+F14 & WheelUp::Left
 F15 & LButton::^x
 F15 & RButton::Delete
+F15 & WheelDown::Down
+F15 & WheelUp::Up
 
 ; Mouse 8
 F16 & LButton::^z
