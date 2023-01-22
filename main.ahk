@@ -103,6 +103,9 @@ F16::
     }
 Return
 
+; Mouse 9
+F17 & LButton::^a
+
 ; Mouse save location and quick go to location
 ^#LButton::
     if LBtnResetable {
