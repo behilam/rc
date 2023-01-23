@@ -751,18 +751,17 @@ vim.keymap.set('n', '(', '?[({%]<cr>:noh<cr>')
 vim.keymap.set('v', ')', '/[)}%]]<cr>')
 vim.keymap.set('v', '(', '?[({[]<cr>')
 
--- nnoremap <leader>^ :call AddTwoSlashQuery()<cr>
--- function! AddTwoSlashQuery()
---     let l:startPos = getcurpos()
---     let l:col = l:startPos[2]
---     let l:currentLine = l:startPos[1]
---     let l:indent = indent(l:currentLine)
---     let l:query = repeat(" ", l:indent) . "//" . repeat(" ", l:col - l:indent - 3) . "^?"
---     let l:failed = append(l:currentLine, l:query)
---     if failed
---         echom "Unable to add TwoSlashQuery after line: " . l:currentLine
---     endif
--- endfunction
+vim.keymap.set('n', '<leader>^', function()
+    local startPos = vim.api.getcurpos();
+    local col = startPos[2];
+    local currentLine = startPos[1];
+    local indent = vim.api.indent(currentLine);
+    local query = string.rep(" ", indent) .. "//" .. string.rep(" ", col - indent - 3) .. "^?";
+    local failed = vim.api.append(currentLine, query);
+    if failed then
+        vim.api.echom("Unable to add TwoSlashQuery after line: " .. currentLine);
+    end
+end)
 
 -- Format into multiple lines <EXPERIMENTAL>
 vim.keymap.set('n', '<leader>=', 'vi(o<esc>i<cr><esc>vi(<esc>a<cr><esc>k:s/,%s%?/,\r/g<cr>:noh<cr>')
