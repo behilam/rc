@@ -70,8 +70,6 @@ RemoveToolTip() {
     ToolTip
 }
 
-#Include mouse.ahk
-
 ; =======================
 ; =====  KEYBOARD  ======
 ; =======================
@@ -204,4 +202,5 @@ Return
     temp := ""
 Return
 
+#Include mouse.ahk
 #Include unicode.ahk
