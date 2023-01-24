@@ -731,12 +731,6 @@ vim.keymap.set('n', '<leader>l', '$')
 vim.keymap.set('n', '<leader>h', '^')
 vim.keymap.set('n', '<leader>H', '0')
 
--- Change inside parens/brackets shortcut [EXPERIMENTAL]
---  onoremap p :<c-u>normal! t)vi(<cr>
---  onoremap P :<c-u>normal! T(vi(<cr>
---  onoremap o :<c-u>normal! t]vi[<cr>
---  onoremap O :<c-u>normal! T[vi[<cr>
-
 vim.keymap.set('n', '<C-a>', 'v<C-a>')
 vim.keymap.set('n', '<C-x>', 'v<C-x>')
 
@@ -784,61 +778,13 @@ vim.keymap.set('v', '<localleader>c', 's<c-r>=<c-r>"<cr><esc>')
 vim.keymap.set('n', '<localleader><localleader>s', ':source C:\\Users\\Moiso\\rc\\vim_init.lua<cr>')
 vim.keymap.set('n', '<localleader><localleader>e', ':e C:\\Users\\Moiso\\rc\\vim_init.vim<cr>')
 
-
 -- ====================== VSCode only begin ===================
 
--- VSCode needs double backlash (\\) for the OR operator for some unkown reason...
 vim.keymap.set('n', 'dix', '/,\\|)\\|}\\|]\\|%s}<cr>d?,<cr>:noh<cr>')
 vim.keymap.set('n', 'diX', 'mq/,<cr>lv`q?(\\|%[\\|{<cr>wd:noh<cr>')
 vim.keymap.set('n', 'cix', '/,\\|)\\|}\\|]\\|%s}<cr>hv?,<cr>wv:noh<cr>gvc')
 vim.keymap.set('n', 'ciX', 'mq/,<cr>lv`q?(\\|%[\\|{<cr>v:noh<cr>gvwc')
 
 -- ===================== VSCode only end =======================
-
-
--- ============================ TESTS =================================
---augroup test_js
---	au!
---	au FileType javascript nnoremap <buffer> <localleader>c iasdfjkl;<ESC>
---augroup END
-
--- nnoremap <localleader><localleader>p :call InsertPrintFunction("w")<cr>
--- function! InsertPrintFunction(x)
---     let extension = expand('%:e')
-
---     " Python
---     if extension =~# "py"
---         exec "normal! vi" . a:x . "\<ESC>a)\<ESC>biprint(\<ESC>%"
-
---     " Javascript
---     elseif extension =~# "^js" || "^ts"
---         exec "normal! vi" . a:x . "\<ESC>a)\<ESC>biconsole.log(\<ESC>%"
-
---     " Rust
---     elseif extension ==# "rs"
---         exec "normal! vi" . a:x . "\<ESC>a)\<ESC>biprintln!(\"{}\", \<ESC>f)"
---     else
---         echo "###   « Mi ne rekonas ĉi tiun dosiertipon... »   ###"
---     endif
--- endfunction
-
--- function! EnumSubtitleLines()
---     let line = 1
-
---     while line < 5000
---         try
---             exec "normal! /^$\<CR>"
---         catch /.*/
---             break
---         endtry
---         exec "normal! s" . line . "\<ESC>"
---         let line += 1
---     endwhile
-
---     " Add newline before the added numbers
---     exec "normal! :%s/^\\(\\d*\\)$/\\r\\1/g\<CR>:noh\<CR>"
---     echo "Linioj nombritaj :)"
--- endfunction
---
 
 vim.api.nvim_command('echo "Neovim config sourced!"')
