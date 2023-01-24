@@ -1,9 +1,10 @@
--- set encoding=utf-8
--- set fileencoding=utf-8
--- set shortmess=filnxtToOI
--- set guifont=Consola:h10
--- set gdefault
--- set nu
+vim.o.encoding = 'utf-8';
+vim.o.fileencoding = 'utf-8';
+vim.o.shortmess = 'filnxtToOI';
+vim.o.guifont = 'consola:h10';
+vim.o.gdefault = true;
+vim.o.nu = true;
+
 
 -- hi LightspeedCursor gui=reverse
 vim.g.mapleader = ' ';
