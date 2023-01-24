@@ -19,13 +19,13 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     desc = "Briefly highlight yanked text"
 })
 
-if nvim then
-    vim.api.nvim_command('call plug#begin()')
-    vim.api.nvim_command('Plug "tpope/vim-repeat"')
-    vim.api.nvim_command('Plug "ggandor/lightspeed.nvim"')
-    vim.api.nvim_command('Plug "glacambre/firenvim", { "do": { _ -> firenvim#install(0) } }')
-    vim.api.nvim_command('call plug#end()')
-end
+-- if nvim then
+--     vim.api.nvim_command('call plug#begin()')
+--     vim.api.nvim_command('Plug "tpope/vim-repeat"')
+--     vim.api.nvim_command('Plug "ggandor/lightspeed.nvim"')
+--     vim.api.nvim_command('Plug "glacambre/firenvim", { "do": { _ -> firenvim#install(0) } }')
+--     vim.api.nvim_command('call plug#end()')
+-- end
 
 if not vscode then
     -- Alt-z -- TODO: needs fixing for neovim
@@ -92,31 +92,39 @@ if started_by_firenvim then
 
     -- -- au BufEnter colab.*.txt set ft=python
     -- -- au BufEnter github.com_*.txt set ft=markdown
-    -- --
-    -- vim.g.firenvim_config = {
-    --     localSettings = {
-    --         ['.*'] = {
-    --             takeover = 'never',
-    --             cmdline = 'firenvim',
-    --         }
-    --     }
-    -- };
+    vim.api.nvim_create_autocmd('BufEnter', {
+        pattern = 'colab.*.txt',
+        callback = function() vim.o.ft = 'python' end,
+    });
+    vim.api.nvim_create_autocmd('BufEnter', {
+        pattern = 'github.com_*.txt',
+        callback = function() vim.o.ft = 'markdown' end,
+    });
 
-    -- -- Throttled autoupdate text area
-    -- vim.g.timer_started = false
-    -- function myWrite(timer)
-    --     vim.g.timer_started = false;
-    --     vim.g.write();
-    -- end
+    vim.g.firenvim_config = {
+        localSettings = {
+            ['.*'] = {
+                takeover = 'never',
+                cmdline = 'firenvim',
+            }
+        }
+    };
 
-    -- function delayMyWrite()
-    --     if vim.g.timer_started then
-    --         vim.api.nvim_command('call timer_stop(vim.g.timer_firenvim)')
-    --     end
-    --     vim.g.timer_started = true
-    --     print(vim.g.timer_firenvim)
-    --     vim.g.timer_firenvim = vim.g.timer_start(1000, 'myWrite')
-    -- end
+    -- Throttled autoupdate text area
+    vim.g.timer_started = false
+    function myWrite(timer)
+        vim.g.timer_started = false;
+        vim.g.write();
+    end
+
+    function delayMyWrite()
+        if vim.g.timer_started then
+            vim.api.nvim_command('call timer_stop(vim.g.timer_firenvim)')
+        end
+        vim.g.timer_started = true
+        print(vim.g.timer_firenvim)
+        vim.g.timer_firenvim = vim.g.timer_start(1000, 'myWrite')
+    end
 
     -- au TextChanged * ++nested call Delay_My_Write()
     -- au TextChangedI * ++nested call Delay_My_Write()
