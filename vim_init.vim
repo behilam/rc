@@ -5,7 +5,6 @@ set guifont=Consola:h10
 set gdefault
 set nu
 
-hi LightspeedCursor gui=reverse
 let mapleader = ' '
 let maplocalleader = '\'
 

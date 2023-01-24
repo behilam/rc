@@ -11,6 +11,9 @@ vim.o.number = true;
 vim.g.mapleader = ' ';
 vim.g.maplocalleader = '\\';
 
+package.loaded['plugins'] = nil
+require('plugins')
+
 vim.api.nvim_create_autocmd('TextYankPost', {
     callback = function() vim.highlight.on_yank() end,
     desc = "Briefly highlight yanked text"
