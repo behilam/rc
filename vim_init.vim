@@ -9,6 +9,8 @@ hi LightspeedCursor gui=reverse
 let mapleader = ' '
 let maplocalleader = '\'
 
+au TextYankPost * silent! lua.vim.highlight.on_yank {higroup="IncSearch", timeout=1500}
+
 if has('nvim')
     call plug#begin()
     Plug 'tpope/vim-repeat'
@@ -756,6 +758,7 @@ vnoremap <localleader>c s<c-r>=<c-r>"<cr><esc>
 " Source or edit config file
 "  nnoremap <localleader><localleader>s :source C:\Users\Moiso\rc\vim_init.lua<cr>
 nnoremap <localleader><localleader>s :source C:\Users\Moiso\rc\vim_init.vim<cr>
+nnoremap <localleader><localleader>w :source C:\Users\Moiso\rc\vim_init.lua<cr>
 nnoremap <localleader><localleader>e :!code C:\Users\Moiso\rc\vim_init.vim<cr>
 
 " ====================== VSCode only begin ===================
@@ -812,3 +815,5 @@ function! EnumSubtitleLines()
     exec "normal! :%s/^\\(\\d*\\)$/\\r\\1/g\<CR>:noh\<CR>"
     echo "Linioj nombritaj :)"
 endfunction
+
+echom 'init.vim config sourced!'

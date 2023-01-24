@@ -3,7 +3,7 @@ vim.o.fileencoding = 'utf-8';
 vim.o.shortmess = 'filnxtToOI';
 vim.o.guifont = 'consola:h10';
 vim.o.gdefault = true;
-vim.o.nu = true;
+vim.o.number = true;
 
 
 -- hi LightspeedCursor gui=reverse
@@ -776,7 +776,8 @@ vim.keymap.set('v', '<localleader>c', 's<c-r>=<c-r>"<cr><esc>')
 -- Wrap with console print function
 
 -- Source or edit config file
-vim.keymap.set('n', '<localleader><localleader>s', ':source C:\\Users\\Moiso\\rc\\vim_init.lua<cr>')
+vim.keymap.set('n', '<localleader><localleader>s', ':source C:\\Users\\Moiso\\rc\\vim_init.vim<cr>')
+vim.keymap.set('n', '<localleader><localleader>w', ':source C:\\Users\\Moiso\\rc\\vim_init.lua<cr>')
 vim.keymap.set('n', '<localleader><localleader>e', ':e C:\\Users\\Moiso\\rc\\vim_init.vim<cr>')
 
 -- ====================== VSCode only begin ===================
