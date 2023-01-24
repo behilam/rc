@@ -589,10 +589,10 @@ vim.keymap.set('n', '<leader>t<', 'va<ovd^va<vd$A><esc>')
 -- vnoremap <leader><CR>j <ESC>mq`<O{<ESC>`>o}<ESC>gv><ESC>`q
 
 -- nnoremap <leader><CR>k <Plug>OutlineBracesWrap
--- nnoremap <Plug>OutlineBracesWrap mqO{<ESC>jo}<ESC>`q>>
+-- nnoremap <Plug>OutlineBracesWrap >>o}<ESC>kO{<ESC>
 --     \:call repeat#set("\<Plug>OutlineBracesWrap")<CR>
 
--- vnoremap <leader><CR>k <ESC>mq`<O{<ESC>`>o}<ESC>gv><ESC>`q
+-- vnoremap <leader><CR>k <ESC>`>o}<ESC>`<O{<ESC>
 
 -- -- ┌──➤ { Text }
 -- nnoremap <leader>iJ <Plug>SBracesWordWrap
