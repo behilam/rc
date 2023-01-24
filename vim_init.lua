@@ -5,10 +5,16 @@ vim.o.guifont = 'consola:h10';
 vim.o.gdefault = true;
 vim.o.number = true;
 
-
+-- vim.o.highlight = { LightspeedCursor = { gui = 'reverse' } }
 -- hi LightspeedCursor gui=reverse
+
 vim.g.mapleader = ' ';
 vim.g.maplocalleader = '\\';
+
+vim.api.nvim_create_autocmd('TextYankPost', {
+    callback = function() vim.highlight.on_yank() end,
+    desc = "Briefly highlight yanked text"
+})
 
 if nvim then
     vim.api.nvim_command('call plug#begin()')
@@ -789,4 +795,4 @@ vim.keymap.set('n', 'ciX', 'mq/,<cr>lv`q?(\\|%[\\|{<cr>v:noh<cr>gvwc')
 
 -- ===================== VSCode only end =======================
 
-vim.api.nvim_command('echo "Neovim config sourced!"')
+vim.api.nvim_command('echo "init.lua sourced!"')
