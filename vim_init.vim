@@ -756,7 +756,7 @@ vnoremap <localleader>c s<c-r>=<c-r>"<cr><esc>
 " Source or edit config file
 "  nnoremap <localleader><localleader>s :source C:\Users\Moiso\rc\vim_init.lua<cr>
 nnoremap <localleader><localleader>s :source C:\Users\Moiso\rc\vim_init.vim<cr>
-nnoremap <localleader><localleader>e :e C:\Users\Moiso\rc\vim_init.vim<cr>
+nnoremap <localleader><localleader>e :!code C:\Users\Moiso\rc\vim_init.vim<cr>
 
 " ====================== VSCode only begin ===================
 
