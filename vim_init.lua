@@ -139,7 +139,7 @@ vim.keymap.set('n', 'Q', 'q')
 vim.keymap.set('n', 'g:', 'Q')
 
 vim.keymap.set('n', 'ß', '<BS>?_<CR>:noh<CR><SPACE>')
-eim.keymap.set('n', 'ß', '<BS>?_<CR>:noh<CR><SPACE>')
+vim.keymap.set('n', 'ŭ', '/_<CR>:noh<CR><SPACE>')
 vim.keymap.set('n', 'é', '<SPACE>/_<CR>:noh<CR><BS>')
 vim.keymap.set('n', 'É', '<BS>?_<CR>:noh<CR><BS>')
 
@@ -183,6 +183,7 @@ vim.keymap.set('n', '<leader><leader>p', 'ggVG"*p')
 vim.keymap.set('n', 'dh', 'dd')
 vim.keymap.set('n', 'dp', 'ddp')
 vim.keymap.set('n', 'yp', 'yyp')
+-- TODO: This seems to create empty lines in the buffer for some reason
 vim.keymap.set('n', 'cp',
     function()
         vim.cmd('copy .');

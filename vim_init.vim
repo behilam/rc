@@ -141,6 +141,7 @@ nnoremap <leader><leader>p ggVG"*p
 nnoremap dh dd
 nnoremap dp ddp
 nnoremap yp yyp
+" This adds empty line to the nvim buffer for some reason
 nnoremap cp yypk<CMD>call VSCodeNotify('editor.action.commentLine')<CR>j
 vnoremap <leader>j yP`<
 
