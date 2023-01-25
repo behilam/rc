@@ -1,4 +1,3 @@
-vim.o.encoding = 'utf-8';
 vim.o.fileencoding = 'utf-8';
 vim.o.shortmess = 'filnxtToOI';
 vim.o.guifont = 'consola:h10';
@@ -140,7 +139,7 @@ vim.keymap.set('n', 'Q', 'q')
 vim.keymap.set('n', 'g:', 'Q')
 
 vim.keymap.set('n', 'ß', '<BS>?_<CR>:noh<CR><SPACE>')
-vim.keymap.set('n', 'ŭ', '/_<CR>:noh<CR><SPACE>')
+eim.keymap.set('n', 'ß', '<BS>?_<CR>:noh<CR><SPACE>')
 vim.keymap.set('n', 'é', '<SPACE>/_<CR>:noh<CR><BS>')
 vim.keymap.set('n', 'É', '<BS>?_<CR>:noh<CR><BS>')
 
@@ -184,7 +183,12 @@ vim.keymap.set('n', '<leader><leader>p', 'ggVG"*p')
 vim.keymap.set('n', 'dh', 'dd')
 vim.keymap.set('n', 'dp', 'ddp')
 vim.keymap.set('n', 'yp', 'yyp')
--- nnoremap cp yypk<CMD>call VSCodeNotify('editor.action.commentLine')<CR>j
+vim.keymap.set('n', 'cp',
+    function()
+        vim.cmd('copy .');
+        vim.cmd('call VSCodeNotify("editor.action.commentLine")');
+    end
+)
 vim.keymap.set('v', '<leader>j', 'yP`<')
 
 -- Delete row content
