@@ -5,27 +5,19 @@ vim.o.guifont = 'consola:h10';
 vim.o.gdefault = true;
 vim.o.number = true;
 
--- vim.o.highlight = { LightspeedCursor = { gui = 'reverse' } }
+-- vim.o.highlight.LightspeedCursor = { gui = 'reverse' }
 -- hi LightspeedCursor gui=reverse
 
 vim.g.mapleader = ' ';
 vim.g.maplocalleader = '\\';
 
-package.loaded['plugins'] = nil
-require('plugins')
+-- package.loaded['plugins'] = nil
+-- require('plugins')
 
 vim.api.nvim_create_autocmd('TextYankPost', {
     callback = function() vim.highlight.on_yank() end,
     desc = "Briefly highlight yanked text"
 })
-
--- if nvim then
---     vim.api.nvim_command('call plug#begin()')
---     vim.api.nvim_command('Plug "tpope/vim-repeat"')
---     vim.api.nvim_command('Plug "ggandor/lightspeed.nvim"')
---     vim.api.nvim_command('Plug "glacambre/firenvim", { "do": { _ -> firenvim#install(0) } }')
---     vim.api.nvim_command('call plug#end()')
--- end
 
 if not vscode then
     -- Alt-z -- TODO: needs fixing for neovim
@@ -90,8 +82,6 @@ if started_by_firenvim then
     vim.keymap.set('i', '<expr>',
         '\' strpart(getline(\'.\'), col(\'.\')-1, 1) == "\'" ? "\\<Right>" : "\\\'\\\'\\<Left>"')
 
-    -- -- au BufEnter colab.*.txt set ft=python
-    -- -- au BufEnter github.com_*.txt set ft=markdown
     vim.api.nvim_create_autocmd('BufEnter', {
         pattern = 'colab.*.txt',
         callback = function() vim.o.ft = 'python' end,
@@ -126,8 +116,16 @@ if started_by_firenvim then
         vim.g.timer_firenvim = vim.g.timer_start(1000, 'myWrite')
     end
 
-    -- au TextChanged * ++nested call Delay_My_Write()
-    -- au TextChangedI * ++nested call Delay_My_Write()
+    vim.api.nvim_create_autocmd('TextChanged', {
+        pattern = '*',
+        nested = true,
+        callback = delayMyWrite,
+    })
+    vim.api.nvim_create_autocmd('TextChangedI', {
+        pattern = '*',
+        nested = true,
+        callback = delayMyWrite,
+    })
 end
 
 vim.keymap.set('n', 'p', ']p')
