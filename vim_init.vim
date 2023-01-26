@@ -8,7 +8,7 @@ set nu
 let mapleader = ' '
 let maplocalleader = '\'
 
-au TextYankPost * silent! lua.vim.highlight.on_yank {higroup="IncSearch", timeout=1500}
+au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=150}
 
 if has('nvim')
     call plug#begin()
