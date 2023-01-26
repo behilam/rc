@@ -183,11 +183,11 @@ vim.keymap.set('n', '<leader><leader>p', 'ggVG"*p')
 vim.keymap.set('n', 'dh', 'dd')
 vim.keymap.set('n', 'dp', 'ddp')
 vim.keymap.set('n', 'yp', 'yyp')
--- TODO: This seems to create empty lines in the buffer for some reason
 vim.keymap.set('n', 'cp',
     function()
-        vim.cmd('copy .');
-        vim.cmd('call VSCodeNotify("editor.action.commentLine")');
+        vim.cmd('call VSCodeCall("editor.action.copyLinesDownAction")');
+        vim.cmd('call VSCodeCall("cursorUp")');
+        vim.cmd('call VSCodeCall("editor.action.commentLine")');
     end
 )
 vim.keymap.set('v', '<leader>j', 'yP`<')

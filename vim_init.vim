@@ -141,8 +141,7 @@ nnoremap <leader><leader>p ggVG"*p
 nnoremap dh dd
 nnoremap dp ddp
 nnoremap yp yyp
-" This adds empty line to the nvim buffer for some reason
-nnoremap cp yypk<CMD>call VSCodeNotify('editor.action.commentLine')<CR>j
+nnoremap cp <CMD>call VSCodeCall('editor.action.copyLinesDownAction')<CR><CMD>call VSCodeCall('editor.action.commentLine')<CR>k
 vnoremap <leader>j yP`<
 
 " Delete row content
