@@ -148,7 +148,7 @@ vnoremap <leader>j yP`<
 nnoremap d<leader> 0"_D
 nnoremap dc ^"_D
 nnoremap dC ^_D
-vnoremap <leader>x :s/^.*$<cr>
+vnoremap <leader>x :s/^.*$<cr>:noh<cr>
 
 vnoremap x "_d
 

@@ -196,7 +196,7 @@ vim.keymap.set('v', '<leader>j', 'yP`<')
 vim.keymap.set('n', 'd<leader>', '0"_D')
 vim.keymap.set('n', 'dc', '^"_D')
 vim.keymap.set('n', 'dC', '^_D')
-vim.keymap.set('v', '<leader>x', ':s/^.*$<cr>')
+vim.keymap.set('v', '<leader>x', ':s/^.*$<cr>:noh<cr>')
 
 vim.keymap.set('v', 'x', '"_d')
 
