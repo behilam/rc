@@ -213,7 +213,7 @@ vim.keymap.set('n', 'yiE', 'mqviWly`q:<cr>')
 vim.keymap.set('n', 'diE', 'viWld')
 vim.keymap.set('n', 'ciE', 'viWlc')
 --" // Block
-vim.keymap.set('n', 'di/', 'vip:g/^%s*%/%/.*$/d<cr>:noh<cr>')
+vim.keymap.set('n', 'di/', 'vip:g/^\\s*\\/\\/.*$/d<cr>:noh<cr>')
 --" <text>
 vim.keymap.set('n', 'vi,', 'vi<')
 vim.keymap.set('n', 'va,', 'va<')
@@ -755,15 +755,15 @@ vim.keymap.set('n', '<leader>H', '0')
 vim.keymap.set('n', '<C-a>', 'v<C-a>')
 vim.keymap.set('n', '<C-x>', 'v<C-x>')
 
-vim.keymap.set('n', '{', '/^%s*$<cr>:noh<cr>')
-vim.keymap.set('n', '}', '?^%s*$<cr>:noh<cr>')
+vim.keymap.set('n', '{', '/^\\s*$<cr>:noh<cr>')
+vim.keymap.set('n', '}', '?^\\s*$<cr>:noh<cr>')
 vim.keymap.set('o', '{', '}')
 vim.keymap.set('o', '}', '{')
 vim.keymap.set('v', '{', '}')
 vim.keymap.set('v', '}', '{')
-vim.keymap.set('n', ')', '/[)}%]]<cr>:noh<cr>')
-vim.keymap.set('n', '(', '?[({%]<cr>:noh<cr>')
-vim.keymap.set('v', ')', '/[)}%]]<cr>')
+vim.keymap.set('n', ')', '/[)}\\]]<cr>:noh<cr>')
+vim.keymap.set('n', '(', '?[({\\]<cr>:noh<cr>')
+vim.keymap.set('v', ')', '/[)}\\]]<cr>')
 vim.keymap.set('v', '(', '?[({[]<cr>')
 
 vim.keymap.set('n', '<leader>^', function()
@@ -779,13 +779,13 @@ vim.keymap.set('n', '<leader>^', function()
 end)
 
 -- Format into multiple lines <EXPERIMENTAL>
-vim.keymap.set('n', '<leader>=', 'vi(o<esc>i<cr><esc>vi(<esc>a<cr><esc>k:s/,%s%?/,\r/g<cr>:noh<cr>')
+vim.keymap.set('n', '<leader>=', 'vi(o<esc>i<cr><esc>vi(<esc>a<cr><esc>k:s/,\\s\\?/,\r/g<cr>:noh<cr>')
 
 -- Add Markdown checklist to lines
 vim.keymap.set('n', '<leader>ix', 'mqI - [ ] <esc>`q:noh<cr>')
-vim.keymap.set('n', '<leader>dx', 'mq:s/ - %[.%] <cr>`q:noh<cr>')
+vim.keymap.set('n', '<leader>dx', 'mq:s/ - \\[.\\] <cr>`q:noh<cr>')
 vim.keymap.set('v', '<leader>ix', '<esc>mqgv^o^<c-v>I - [ ] <esc>`q:noh<cr>')
-vim.keymap.set('v', '<leader>dx', '<esc>mqgv:s/ - %[.%] <cr>`q:noh<cr>')
+vim.keymap.set('v', '<leader>dx', '<esc>mqgv:s/ - \\[.\\] <cr>`q:noh<cr>')
 
 -- Toggle capitalization of first letter of word
 vim.keymap.set('n', '<leader>~', 'mqviwo<esc>~`q')
@@ -802,10 +802,10 @@ vim.keymap.set('n', '<localleader><localleader>e', ':e C:\\Users\\Moiso\\rc\\vim
 
 -- ====================== VSCode only begin ===================
 
-vim.keymap.set('n', 'dix', '/,\\|)\\|}\\|]\\|%s}<cr>d?,<cr>:noh<cr>')
-vim.keymap.set('n', 'diX', 'mq/,<cr>lv`q?(\\|%[\\|{<cr>wd:noh<cr>')
-vim.keymap.set('n', 'cix', '/,\\|)\\|}\\|]\\|%s}<cr>hv?,<cr>wv:noh<cr>gvc')
-vim.keymap.set('n', 'ciX', 'mq/,<cr>lv`q?(\\|%[\\|{<cr>v:noh<cr>gvwc')
+vim.keymap.set('n', 'dix', '/,\\|)\\|}\\|]\\|\\s}<cr>d?,<cr>:noh<cr>')
+vim.keymap.set('n', 'diX', 'mq/,<cr>lv`q?(\\|\\[\\|{<cr>wd:noh<cr>')
+vim.keymap.set('n', 'cix', '/,\\|)\\|}\\|]\\|\\s}<cr>hv?,<cr>wv:noh<cr>gvc')
+vim.keymap.set('n', 'ciX', 'mq/,<cr>lv`q?(\\|\\[\\|{<cr>v:noh<cr>gvwc')
 
 -- ===================== VSCode only end =======================
 
