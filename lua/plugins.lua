@@ -13,5 +13,7 @@ return require('packer').startup(function(use)
     run = function() vim.fn['firenvim#install'](0) end
   };
 
+  vim.call('expand_region#custom_text_objects({ "a]": 1, "ab": 1, "aB": 1, "a\'\'": 1, "a\'"": 1 })')
+
   vim.api.nvim_command('echom "Plugins loaded!"');
 end)

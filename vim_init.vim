@@ -19,6 +19,8 @@ if has('nvim')
     call plug#end()
 endif
 
+call expand_region#custom_text_objects({ 'a]': 1, 'ab': 1, 'aB': 1, 'a''': 1, 'a"': 1 })
+
 if !exists('g:vscode')
     " Alt-z
     nnoremap ú :set wrap!<cr>
