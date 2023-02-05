@@ -153,6 +153,7 @@ Return
   CoordMode, Mouse, Screen
   MouseGetPos, Mouse2_gotoX, Mouse2_gotoY
   LClickStack.Push([Mouse2_gotoX, Mouse2_gotoY])
+  Click
 Return
 #LButton::
   LBtnResetable := true
@@ -173,6 +174,7 @@ Return
   CoordMode, Mouse, Screen
   MouseGetPos, Mouse2_gotoX, Mouse2_gotoY
   RClickStack.Push([Mouse2_gotoX, Mouse2_gotoY])
+  Click
   Sleep 75
   BlockInput Off
 Return
