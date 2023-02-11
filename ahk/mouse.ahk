@@ -1,4 +1,4 @@
-; Mouse 6
+; * Mouse 6
 XButton1 & LButton::Media_Next
 XButton1 & RButton::Media_Prev
 XButton1 & MButton::Media_Play_Pause
@@ -21,8 +21,9 @@ XButton1::
 
   Send, {Browser_Back}
 Return
+^XButton1::^-
 
-; Mouse 3
+; * Mouse 3
 ; XButton2 & LButton::
 ; XButton2 & RButton::
 XButton2 & MButton::Send, ^{F4}
@@ -45,8 +46,9 @@ XButton2::
 
   Send, {Browser_Forward}
 Return
+^XButton2::^+
 
-; Mouse 4
+; * Mouse 4
 F14 & LButton::^c
 F14 & RButton::^v
 F14 & WheelDown::Down
@@ -70,7 +72,7 @@ F14::
   Send, {Browser_Back}
 Return
 
-; Mouse 5
+; * Mouse 5
 F15 & LButton::^x
 F15 & RButton::Delete
 F15 & WheelDown::Right
@@ -94,7 +96,7 @@ F15 & WheelUp::Left
 ;     Send, x
 ; Return
 
-; Mouse 8
+; * Mouse 8
 F16 & LButton::^z
 F16 & RButton::^+z
 ; F16 & WheelDown::
@@ -119,7 +121,7 @@ F16::
   Send, F16
 Return
 
-; Mouse 9
+; * Mouse 9
 F17 & LButton::^a
 ; F17 & RButton::
 ; F17 & WheelDown::
@@ -143,7 +145,7 @@ F17::
   ShowTooltip("F19 pressed")
 Return
 
-; Mouse save location and quick go to location
+; * Mouse save location and quick go to location
 ^#LButton::
   if LBtnResetable {
     LClickStack := []
