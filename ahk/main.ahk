@@ -73,6 +73,8 @@ RemoveToolTip() {
 ; =======================
 ; =====  KEYBOARD  ======
 ; =======================
+#Enter::Click
+
 ; Special number characters
 Appskey & a::!
 Appskey & s::@
@@ -107,7 +109,7 @@ Appskey & k::}
 >^j::Send, ^1
 >^k::Send, ^2
 >^l::Send, ^3
-    >^`;::Send, ^4
+>^`;::Send, ^4
 >^'::Send, ^5
 >^u::Send, ^6
 >^i::Send, ^7
