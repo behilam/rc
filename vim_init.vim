@@ -6,7 +6,6 @@ set gdefault
 set nohlsearch
 set ignorecase
 set smartcase
-set nu
 
 let mapleader = ' '
 let maplocalleader = '\'
@@ -24,8 +23,23 @@ endif
 
 call expand_region#custom_text_objects({ 'a]': 1, 'ab': 1, 'aB': 1, 'a''': 1, 'a"': 1 })
 
+" ? Jumps
+nnoremap `j <CMD>call Jump()<CR>
+nnoremap mj <CMD>call CustomMark()<CR>
+function! CustomMark()
+    exec "call VSCodeNotify('copyFilePath')"
+    let g:jFile = getreg('*')
+    let g:jMark = getcurpos()
+endfunction
+
+function! Jump() 
+    exec "Edit " . g:jFile
+    call setpos('.', g:jMark)
+endfunction
+
 if !exists('g:vscode')
     " Alt-z
+    set number
     nnoremap ú :set wrap!<cr>
     inoremap ú <esc>:set wrap!<cr>gi
     inoremap jk <esc>
