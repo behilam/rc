@@ -3,6 +3,7 @@ set fileencoding=utf-8
 set shortmess=filnxtToOI
 set guifont=Consola:h10
 set gdefault
+set nohlsearch
 set nu
 
 let mapleader = ' '
@@ -47,12 +48,12 @@ endif
 "  Firenvim
 let g:timer_firenvim = ""
 if exists('g:started_by_firenvim')
-    inoremap {      {}<Left>
-    inoremap <expr> }  strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}"
-    inoremap [      []<Left>
-    inoremap <expr> ]  strpart(getline('.'), col('.')-1, 1) == "]" ? "\<Right>" : "]"
-    inoremap ( ()<Left>
-    inoremap <expr> )  strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
+    inoremap        { {}<Left>
+    inoremap <expr> } strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}"
+    inoremap        [ []<Left>
+    inoremap <expr> ] strpart(getline('.'), col('.')-1, 1) == "]" ? "\<Right>" : "]"
+    inoremap        ( ()<Left>
+    inoremap <expr> ) strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
     inoremap <expr> ' strpart(getline('.'), col('.')-1, 1) == "\'" ? "\<Right>" : "\'\'\<Left>"
 
     au BufEnter colab.*.txt set ft=python
@@ -87,6 +88,8 @@ if exists('g:started_by_firenvim')
     au TextChangedI * ++nested call Delay_My_Write()
 endif
 
+nnoremap / :set hlsearch<CR>/
+
 nnoremap p ]p
 nnoremap P ]P
 nnoremap ]p p
@@ -98,10 +101,10 @@ nnoremap q i_<esc>r
 nnoremap Q q
 nnoremap g: Q
 
-nnoremap ß <BS>?_<CR>:noh<CR><SPACE>
-nnoremap ŭ /_<CR>:noh<CR><SPACE>
-nnoremap é <SPACE>/_<CR>:noh<CR><BS>
-nnoremap É <BS>?_<CR>:noh<CR><BS>
+nnoremap ß <BS>?_<CR><SPACE>
+nnoremap ŭ /_<CR><SPACE>
+nnoremap é <SPACE>/_<CR><BS>
+nnoremap É <BS>?_<CR><BS>
 
 nnoremap <expr> <leader>z (&hls && v:hlsearch ? ':noh' : ':set hls')."\n"
 
@@ -149,8 +152,7 @@ vnoremap <leader>j yP`<
 " Delete row content
 nnoremap d<leader> 0"_D
 nnoremap dc ^"_D
-nnoremap dC ^_D
-vnoremap <leader>x :s/^.*$<cr>:noh<cr>
+"  vnoremap <leader>x :s/^.*$<cr>
 
 vnoremap x "_d
 
@@ -167,7 +169,7 @@ nnoremap yiE mqviWly`q:<cr>
 nnoremap diE viWld
 nnoremap ciE viWlc
 "" // Block
-nnoremap di/ vip:g/^\s*\/\/.*$/d<cr>:noh<cr>
+nnoremap di/ vip:g/^\s*\/\/.*$/d<cr>
 "" <text>
 nnoremap vi, vi<
 nnoremap va, va<
@@ -178,40 +180,40 @@ nnoremap ci, ci<
 nnoremap da, da<
 nnoremap ca, ca<
 nnoremap vu, va<V
-nnoremap yu, mqva<Vy`q:noh<cr>
+nnoremap yu, mqva<Vy`q
 nnoremap du, va<Vd
 nnoremap cu, va<Vc
 "" ──><text>
-nnoremap vi. /<<cr>vi<<esc>:noh<cr>gv
-nnoremap va. /<<cr>va<<esc>:noh<cr>gv
-nnoremap vu. /<<cr>va<V<esc>:noh<cr>gv
-nnoremap yi. mq/<<cr>vi<y`q:noh<cr>
-nnoremap ya. mq/<<cr>va<y`q:noh<cr>
-nnoremap yu. mq/<<cr>va<Vy`q:noh<cr>
-nnoremap di. mq/<<cr>vi<d`q:noh<cr>
-nnoremap da. mq/<<cr>va<d`q:noh<cr>
-nnoremap du. mq/<<cr>va<Vd`q:noh<cr>
-nnoremap ci. /<<cr>vi<<esc>:noh<cr>gvc
-nnoremap ca. /<<cr>va<<esc>:noh<cr>gvc
-nnoremap cu. /<<cr>va<V<esc>:noh<cr>gvc
+nnoremap vi. /<<cr>vi<<esc>gv
+nnoremap va. /<<cr>va<<esc>gv
+nnoremap vu. /<<cr>va<V<esc>gv
+nnoremap yi. mq/<<cr>vi<y`q
+nnoremap ya. mq/<<cr>va<y`q
+nnoremap yu. mq/<<cr>va<Vy`q
+nnoremap di. mq/<<cr>vi<d`q
+nnoremap da. mq/<<cr>va<d`q
+nnoremap du. mq/<<cr>va<Vd`q
+nnoremap ci. /<<cr>vi<<esc>gvc
+nnoremap ca. /<<cr>va<<esc>gvc
+nnoremap cu. /<<cr>va<V<esc>gvc
 "" 'text'
 nnoremap vu' vi'V
-nnoremap yu' mqvi'Vy`q:noh<cr>
-nnoremap du' mqvi'Vd`q:noh<cr>
+nnoremap yu' mqvi'Vy`q
+nnoremap du' mqvi'Vd`q
 nnoremap cu' vi'Vc
 "" ──>'text'
-nnoremap vi" /'<cr>vi'<esc>:noh<cr>gv
-nnoremap va" /'<cr>va'<esc>:noh<cr>gv
-nnoremap vu" /'<cr>va'V<esc>:noh<cr>gv
-nnoremap yi" mq/'<cr>vi'y`q:noh<cr>
-nnoremap ya" mq/'<cr>va'y`q:noh<cr>
-nnoremap yu" mq/'<cr>va'Vy`q:noh<cr>
-nnoremap di" mq/'<cr>vi'd`q:noh<cr>
-nnoremap da" mq/'<cr>va'd`q:noh<cr>
-nnoremap du" mq/'<cr>va'Vd`q:noh<cr>
-nnoremap ci" /'<cr>vi'<esc>:noh<cr>gvc
-nnoremap ca" /'<cr>va'<esc>:noh<cr>gvc
-nnoremap cu" /'<cr>va'V<esc>:noh<cr>gvc
+nnoremap vi" /'<cr>vi'<esc>gv
+nnoremap va" /'<cr>va'<esc>gv
+nnoremap vu" /'<cr>va'V<esc>gv
+nnoremap yi" mq/'<cr>vi'y`q
+nnoremap ya" mq/'<cr>va'y`q
+nnoremap yu" mq/'<cr>va'Vy`q
+nnoremap di" mq/'<cr>vi'd`q
+nnoremap da" mq/'<cr>va'd`q
+nnoremap du" mq/'<cr>va'Vd`q
+nnoremap ci" /'<cr>vi'<esc>gvc
+nnoremap ca" /'<cr>va'<esc>gvc
+nnoremap cu" /'<cr>va'V<esc>gvc
 "" "text"
 nnoremap vi; vi"
 nnoremap va; va"
@@ -226,18 +228,18 @@ nnoremap ci; ci"
 nnoremap ca; ca"
 nnoremap cu; va"Vc
 "" ──>"text"
-nnoremap vi: /"<cr>vi"<esc>:noh<cr>gv
-nnoremap va: /"<cr>va"<esc>:noh<cr>gv
-nnoremap vu: /"<cr>va"V<esc>:noh<cr>gv
-nnoremap yi: mq/"<cr>vi"y`q:noh<cr>
-nnoremap ya: mq/"<cr>va"y`q:noh<cr>
-nnoremap yu: mq/"<cr>va"Vy`q:noh<cr>
-nnoremap di: mq/"<cr>vi"d`q:noh<cr>
-nnoremap da: mq/"<cr>va"d`q:noh<cr>
-nnoremap du: mq/"<cr>va"Vd`q:noh<cr>
-nnoremap ci: /"<cr>vi"<esc>:noh<cr>gvc
-nnoremap ca: /"<cr>va"<esc>:noh<cr>gvc
-nnoremap cu: /"<cr>va"V<esc>:noh<cr>gvc
+nnoremap vi: /"<cr>vi"<esc>gv
+nnoremap va: /"<cr>va"<esc>gv
+nnoremap vu: /"<cr>va"V<esc>gv
+nnoremap yi: mq/"<cr>vi"y`q
+nnoremap ya: mq/"<cr>va"y`q
+nnoremap yu: mq/"<cr>va"Vy`q
+nnoremap di: mq/"<cr>vi"d`q
+nnoremap da: mq/"<cr>va"d`q
+nnoremap du: mq/"<cr>va"Vd`q
+nnoremap ci: /"<cr>vi"<esc>gvc
+nnoremap ca: /"<cr>va"<esc>gvc
+nnoremap cu: /"<cr>va"V<esc>gvc
 "" (text)
 nnoremap viu vi(
 nnoremap vau va(
@@ -252,18 +254,18 @@ nnoremap ciu ci(
 nnoremap cau ca(
 nnoremap cuu va(Vc
 "" ──>(text)
-nnoremap vii /(<cr>vi(<esc>:noh<cr>gv
-nnoremap vai /(<cr>va(<esc>:noh<cr>gv
-nnoremap vui /(<cr>va(V<esc>:noh<cr>gv
-nnoremap yii mq/(<cr>vi(y`q:noh<cr>
-nnoremap yai mq/(<cr>va(y`q:noh<cr>
-nnoremap yui mq/(<cr>va(Vy`q:noh<cr>
-nnoremap dii mq/(<cr>vi(d`q:noh<cr>
-nnoremap dai mq/(<cr>va(d`q:noh<cr>
-nnoremap dui mq/(<cr>va(Vd`q:noh<cr>
-nnoremap cii /(<cr>vi(<esc>:noh<cr>gvc
-nnoremap cai /(<cr>va(<esc>:noh<cr>gvc
-nnoremap cui /(<cr>va(V<esc>:noh<cr>gvc
+nnoremap vii /(<cr>vi(<esc>gv
+nnoremap vai /(<cr>va(<esc>gv
+nnoremap vui /(<cr>va(V<esc>gv
+nnoremap yii mq/(<cr>vi(y`q
+nnoremap yai mq/(<cr>va(y`q
+nnoremap yui mq/(<cr>va(Vy`q
+nnoremap dii mq/(<cr>vi(d`q
+nnoremap dai mq/(<cr>va(d`q
+nnoremap dui mq/(<cr>va(Vd`q
+nnoremap cii /(<cr>vi(<esc>gvc
+nnoremap cai /(<cr>va(<esc>gvc
+nnoremap cui /(<cr>va(V<esc>gvc
 "" [text]
 nnoremap vi[ vi[
 nnoremap va[ va[
@@ -278,18 +280,18 @@ nnoremap ci[ ci[
 nnoremap ca[ ca[
 nnoremap cu[ va[Vc
 "" ──>[text]
-nnoremap vi] /[<cr>vi[<esc>:noh<cr>gv
-nnoremap va] /[<cr>va[<esc>:noh<cr>gv
-nnoremap vu] /[<cr>va[V<esc>:noh<cr>gv
-nnoremap yi] mq/[<cr>vi[y`q:noh<cr>
-nnoremap ya] mq/[<cr>va[y`q:noh<cr>
-nnoremap yu] mq/[<cr>va[Vy`q:noh<cr>
-nnoremap di] mq/[<cr>vi[d`q:noh<cr>
-nnoremap da] mq/[<cr>va[d`q:noh<cr>
-nnoremap du] mq/[<cr>va[Vd`q:noh<cr>
-nnoremap ci] /[<cr>vi[<esc>:noh<cr>gvc
-nnoremap ca] /[<cr>va[<esc>:noh<cr>gvc
-nnoremap cu] /[<cr>va[V<esc>:noh<cr>gvc
+nnoremap vi] /[<cr>vi[<esc>gv
+nnoremap va] /[<cr>va[<esc>gv
+nnoremap vu] /[<cr>va[V<esc>gv
+nnoremap yi] mq/[<cr>vi[y`q
+nnoremap ya] mq/[<cr>va[y`q
+nnoremap yu] mq/[<cr>va[Vy`q
+nnoremap di] mq/[<cr>vi[d`q
+nnoremap da] mq/[<cr>va[d`q
+nnoremap du] mq/[<cr>va[Vd`q
+nnoremap ci] /[<cr>vi[<esc>gvc
+nnoremap ca] /[<cr>va[<esc>gvc
+nnoremap cu] /[<cr>va[V<esc>gvc
 "" {text}
 nnoremap vij vi{
 nnoremap vaj va{
@@ -304,18 +306,18 @@ nnoremap cij ci{
 nnoremap caj ca{
 nnoremap cuj va{Vc
 ""  ──>{text}
-nnoremap vik /{<cr>vi{<esc>:noh<cr>gv
-nnoremap vak /{<cr>va{<esc>:noh<cr>gv
-nnoremap vuk /{<cr>va{V<esc>:noh<cr>gv
-nnoremap yik mq/{<cr>vi{y`q:noh<cr>
-nnoremap yak mq/{<cr>va{y`q:noh<cr>
-nnoremap yuk mq/{<cr>va{Vy`q:noh<cr>
-nnoremap dik mq/{<cr>vi{d`q:noh<cr>
-nnoremap dak mq/{<cr>va{d`q:noh<cr>
-nnoremap duk mq/{<cr>va{Vd`q:noh<cr>
-nnoremap cik /{<cr>vi{<esc>:noh<cr>gvc
-nnoremap cak /{<cr>va{<esc>:noh<cr>gvc
-nnoremap cuk /{<cr>va{V<esc>:noh<cr>gvc
+nnoremap vik /{<cr>vi{<esc>gv
+nnoremap vak /{<cr>va{<esc>gv
+nnoremap vuk /{<cr>va{V<esc>gv
+nnoremap yik mq/{<cr>vi{y`q
+nnoremap yak mq/{<cr>va{y`q
+nnoremap yuk mq/{<cr>va{Vy`q
+nnoremap dik mq/{<cr>vi{d`q
+nnoremap dak mq/{<cr>va{d`q
+nnoremap duk mq/{<cr>va{Vd`q
+nnoremap cik /{<cr>vi{<esc>gvc
+nnoremap cak /{<cr>va{<esc>gvc
+nnoremap cuk /{<cr>va{V<esc>gvc
 "" ${text}
 nnoremap vaf va{oho
 nnoremap vuf va{V
@@ -328,18 +330,18 @@ nnoremap cif ci{
 nnoremap caf va{ohc
 nnoremap cuf va{Vc
 ""  ──>${text}
-nnoremap viF /{<cr>vi{<esc>:noh<cr>gv
-nnoremap vaF /{<cr>va{oho<esc>:noh<cr>gv
-nnoremap vuF /{<cr>va{V<esc>:noh<cr>gv
-nnoremap yiF mq/{<cr>vi{y`q:noh<cr>
-nnoremap yaF mq/{<cr>va{ohy`q:noh<cr>
-nnoremap yuF mq/{<cr>va{Vy`q:noh<cr>
-nnoremap diF mq/{<cr>vi{d`q:noh<cr>
-nnoremap daF mq/{<cr>va{ohd`q:noh<cr>
-nnoremap duF mq/{<cr>va{Vd`q:noh<cr>
-nnoremap ciF /{<cr>vi{<esc>:noh<cr>gvc
-nnoremap caF /{<cr>va{oh<esc>:noh<cr>gvc
-nnoremap cuF /{<cr>va{V<esc>:noh<cr>gvc
+nnoremap viF /{<cr>vi{<esc>gv
+nnoremap vaF /{<cr>va{oho<esc>gv
+nnoremap vuF /{<cr>va{V<esc>gv
+nnoremap yiF mq/{<cr>vi{y`q
+nnoremap yaF mq/{<cr>va{ohy`q
+nnoremap yuF mq/{<cr>va{Vy`q
+nnoremap diF mq/{<cr>vi{d`q
+nnoremap daF mq/{<cr>va{ohd`q
+nnoremap duF mq/{<cr>va{Vd`q
+nnoremap ciF /{<cr>vi{<esc>gvc
+nnoremap caF /{<cr>va{oh<esc>gvc
+nnoremap cuF /{<cr>va{V<esc>gvc
 "" %text%
 nnoremap vig t%vT%
 nnoremap vag f%vF%
@@ -350,14 +352,14 @@ nnoremap dag f%vF%d
 nnoremap cig t%vT%c
 nnoremap cag f%vF%c
 "" ──>%text%
-nnoremap viG /%<cr>t%vT%<esc>:noh<cr>gv
-nnoremap vaG /%<cr>vf%<esc>:noh<cr>gv
-nnoremap yiG mq/%<cr>t%yT%`q:noh<cr>
-nnoremap yaG mq/%<cr>yf%`q:noh<cr>
-nnoremap diG mq/%<cr>f%dT%`q:noh<cr>
-nnoremap daG mq/%<cr>df%`q:noh<cr>
-nnoremap ciG /%<cr>t%vT%<esc>:noh<cr>gvc
-nnoremap caG /%<cr>vf%<esc>:noh<cr>gvc
+nnoremap viG /%<cr>t%vT%<esc>gv
+nnoremap vaG /%<cr>vf%<esc>gv
+nnoremap yiG mq/%<cr>t%yT%`q
+nnoremap yaG mq/%<cr>yf%`q
+nnoremap diG mq/%<cr>f%dT%`q
+nnoremap daG mq/%<cr>df%`q
+nnoremap ciG /%<cr>t%vT%<esc>gvc
+nnoremap caG /%<cr>vf%<esc>gvc
 
 nnoremap <leader>t< va<ovd^va<vd$A><esc>
 
@@ -374,14 +376,14 @@ nnoremap <Plug>QuoteWORDWrap mqviW<ESC>a'<ESC>Bi'<ESC>`q
 vnoremap <leader>i' <ESC>mq`>a'<ESC>`<<ESC>i'<ESC>`><ESC>`q
 
 nnoremap <leader>d' <Plug>QuoteUnwrap
-nnoremap <Plug>QuoteUnwrap mq/'<cr>x?'<cr>x:noh<cr>`q
+nnoremap <Plug>QuoteUnwrap mq/'<cr>x?'<cr>x`q
     \:call repeat#set("\<Plug>QuoteUnwrap")<CR>
 
 nnoremap <leader>d" <Plug>NextQuoteUnwrap
-nnoremap <Plug>NextQuoteUnwrap mq/'<cr>x/'<cr>x:noh<cr>`q
+nnoremap <Plug>NextQuoteUnwrap mq/'<cr>x/'<cr>x`q
     \:call repeat#set("\<Plug>NextQuoteUnwrap")<CR>
 
-vnoremap <leader>d' <esc>mq`>/'<cr>x`<?'<cr>x:noh<cr>`q
+vnoremap <leader>d' <esc>mq`>/'<cr>x`<?'<cr>x`q
 
 " ┌──➤ "Text"
 nnoremap <leader>i; <Plug>DQuoteWordWrap
@@ -395,14 +397,14 @@ nnoremap <Plug>DQuoteWORDWrap mqviW<ESC>a"<ESC>Bi"<ESC>`q
 vnoremap <leader>i; <ESC>mq`>a"<ESC>`<<ESC>i"<ESC>`><ESC>`q
 
 nnoremap <leader>d; <Plug>DQuoteUnwrap
-nnoremap <Plug>DQuoteUnwrap mq/"<cr>x?"<cr>x:noh<cr>`q
+nnoremap <Plug>DQuoteUnwrap mq/"<cr>x?"<cr>x`q
     \:call repeat#set("\<Plug>DQuoteUnwrap")<CR>
 
 nnoremap <leader>d: <Plug>NextDQuoteUnwrap
-nnoremap <Plug>NextDQuoteUnwrap mq/"<cr>x/"<cr>x:noh<cr>`q
+nnoremap <Plug>NextDQuoteUnwrap mq/"<cr>x/"<cr>x`q
     \:call repeat#set("\<Plug>NextDQuoteUnwrap")<CR>
 
-vnoremap <leader>d; <esc>mq`>/"<cr>x`<?"<cr>x:noh<cr>`q
+vnoremap <leader>d; <esc>mq`>/"<cr>x`<?"<cr>x`q
 
 " ┌──➤ `Text`
 nnoremap <leader>i` <Plug>BTickWordWrap
@@ -416,14 +418,14 @@ nnoremap <Plug>BTickWORDWrap mqviW<ESC>a`<ESC>Bi`<ESC>`q
 vnoremap <leader>i` <ESC>mq`>a`<ESC>`<<ESC>i`<ESC>`><ESC>`q
 
 nnoremap <leader>d` <Plug>BTickUnwrap
-nnoremap <Plug>BTickUnwrap mq/`<cr>x?`<cr>x:noh<cr>`q
+nnoremap <Plug>BTickUnwrap mq/`<cr>x?`<cr>x`q
     \:call repeat#set("\<Plug>BTickUnwrap")<CR>
 
 nnoremap <leader>d~ <Plug>NextBTickUnwrap
-nnoremap <Plug>NextBTickUnwrap mq/`<cr>x/`<cr>x:noh<cr>`q
+nnoremap <Plug>NextBTickUnwrap mq/`<cr>x/`<cr>x`q
     \:call repeat#set("\<Plug>NextBTickUnwrap")<CR>
 
-vnoremap <leader>d` <esc>mq`>/`<cr>x`<?`<cr>x:noh<cr>`q
+vnoremap <leader>d` <esc>mq`>/`<cr>x`<?`<cr>x`q
 
 " ┌──➤ %Text%
 nnoremap <leader>ig <Plug>AHKVarWordWrap
@@ -437,14 +439,14 @@ nnoremap <Plug>AHKVarWORDWrap mqviW<ESC>a%<ESC>Bi%<ESC>`q
 vnoremap <leader>ig <ESC>mq`>a%<ESC>`<<ESC>i%<ESC>`><ESC>`q
 
 nnoremap <leader>dg <Plug>AHKVarUnwrap
-nnoremap <Plug>AHKVarUnwrap mq/%<cr>x?%<cr>x:noh<cr>`q
+nnoremap <Plug>AHKVarUnwrap mq/%<cr>x?%<cr>x`q
     \:call repeat#set("\<Plug>AHKVarUnwrap")<CR>
 
 nnoremap <leader>dG <Plug>NextAHKVarUnwrap
-nnoremap <Plug>NextAHKVarUnwrap mq/%<cr>x/%<cr>x:noh<cr>`q
+nnoremap <Plug>NextAHKVarUnwrap mq/%<cr>x/%<cr>x`q
     \:call repeat#set("\<Plug>NextAHKVarUnwrap")<CR>
 
-vnoremap <leader>dg <esc>mq`>/%<cr>x`<?%<cr>x:noh<cr>`q
+vnoremap <leader>dg <esc>mq`>/%<cr>x`<?%<cr>x`q
 
 " ┌──➤ (Text)
 nnoremap <leader>iu <Plug>ParensWordWrap
@@ -462,17 +464,17 @@ nnoremap <Plug>ParensUnwrap mqva(o<esc>%x``x`q
     \:call repeat#set("\<Plug>ParensUnwrap")<CR>
 
 nnoremap <leader>di <Plug>NextParensUnwrap
-nnoremap <Plug>NextParensUnwrap mq/(<cr>va(o<esc>%x``x:noh<cr>`q
+nnoremap <Plug>NextParensUnwrap mq/(<cr>va(o<esc>%x``x`q
     \:call repeat#set("\<Plug>NextParensUnwrap")<CR>
 
-vnoremap <leader>du <esc>mq`>/)<cr>x`<?(<cr>x:noh<cr>`q
+vnoremap <leader>du <esc>mq`>/)<cr>x`<?(<cr>x`q
 
 nnoremap <leader>ru <Plug>ToParensWrap
-nnoremap <Plug>ToParensWrap mq/[)\]}]<cr>%r(``r):noh<cr>`q
+nnoremap <Plug>ToParensWrap mq/[)\]}]<cr>%r(``r)`q
     \:call repeat#set("\<Plug>ToParensWrap")<CR>
 
 nnoremap <leader>ri <Plug>NextToParensWrap
-nnoremap <Plug>NextToParensWrap mq/[)\]}]<cr>n%r(``r):noh<cr>`q
+nnoremap <Plug>NextToParensWrap mq/[)\]}]<cr>n%r(``r)`q
     \:call repeat#set("\<Plug>NextToParensWrap")<CR>
 
 nnoremap <leader><CR>u <Plug>OutlineWordParensWrap
@@ -503,17 +505,17 @@ nnoremap <Plug>BracketsUnwrap mqva[o<esc>%x``x`q
     \:call repeat#set("\<Plug>BracketsUnwrap")<CR>
 
 nnoremap <leader>d] <Plug>NextBracketsUnwrap
-nnoremap <Plug>NextBracketsUnwrap mq/[<cr>va[o<esc>%x``x:noh<cr>`q
+nnoremap <Plug>NextBracketsUnwrap mq/[<cr>va[o<esc>%x``x`q
     \:call repeat#set("\<Plug>NextBracketsUnwrap")<CR>
 
-vnoremap <leader>d[ <esc>mq`>/]<cr>x`<?[<cr>x:noh<cr>`q
+vnoremap <leader>d[ <esc>mq`>/]<cr>x`<?[<cr>x`q
 
 nnoremap <leader>r[ <Plug>ToBracketsWrap
-nnoremap <Plug>ToBracketsWrap mq/[)}]<cr>%r[``r]:noh<cr>`q
+nnoremap <Plug>ToBracketsWrap mq/[)}]<cr>%r[``r]`q
     \:call repeat#set("\<Plug>ToBracketsWrap")<CR>
 
 nnoremap <leader>r] <Plug>NextToBracketsWrap
-nnoremap <Plug>NextToBracketsWrap mq/[)}]<cr>n%r[``r]:noh<cr>`q
+nnoremap <Plug>NextToBracketsWrap mq/[)}]<cr>n%r[``r]`q
     \:call repeat#set("\<Plug>NextToBracketsWrap")<CR>
 
 nnoremap <leader><CR>[ <Plug>OutlineWordBracketsWrap
@@ -544,17 +546,17 @@ nnoremap <Plug>BracesUnwrap mqva{o<esc>%x``x`q
     \:call repeat#set("\<Plug>BracesUnwrap")<CR>
 
 nnoremap <leader>dk <Plug>NextBracesUnwrap
-nnoremap <Plug>NextBracesUnwrap mq/{<cr>va{o<esc>%x``x:noh<cr>`q
+nnoremap <Plug>NextBracesUnwrap mq/{<cr>va{o<esc>%x``x`q
     \:call repeat#set("\<Plug>NextBracesUnwrap")<CR>
 
-vnoremap <leader>dj <esc>mq`>/}<cr>x`<?{<cr>x:noh<cr>`q
+vnoremap <leader>dj <esc>mq`>/}<cr>x`<?{<cr>x`q
 
 nnoremap <leader>rj <Plug>ToBracesWrap
-nnoremap <Plug>ToBracesWrap mq/[)\]]<cr>%r{``r}:noh<cr>`q
+nnoremap <Plug>ToBracesWrap mq/[)\]]<cr>%r{``r}`q
     \:call repeat#set("\<Plug>ToBracesWrap")<CR>
 
 nnoremap <leader>rk <Plug>NextToBracesWrap
-nnoremap <Plug>NextToBracesWrap mq/[)\]]<cr>n%r{``r}:noh<cr>`q
+nnoremap <Plug>NextToBracesWrap mq/[)\]]<cr>n%r{``r}`q
     \:call repeat#set("\<Plug>NextToBracesWrap")<CR>
 
 nnoremap <leader><CR>j <Plug>OutlineWordBracesWrap
@@ -585,10 +587,10 @@ nnoremap <Plug>SBracesUnwrap mqva{o<esc>%hxx``xx`q
     \:call repeat#set("\<Plug>SBracesUnwrap")<CR>
 
 nnoremap <leader>dK <Plug>NextSBracesUnwrap
-nnoremap <Plug>NextSBracesUnwrap mq/{<cr>va{o<esc>%hxx``xx:noh<cr>`q
+nnoremap <Plug>NextSBracesUnwrap mq/{<cr>va{o<esc>%hxx``xx`q
     \:call repeat#set("\<Plug>NextSBracesUnwrap")<CR>
 
-vnoremap <leader>dJ <esc>mq`>/}<cr>hxx`<?<cr>xx:noh<cr>`q
+vnoremap <leader>dJ <esc>mq`>/}<cr>hxx`<?<cr>xx`q
 
 " ┌──➤ ${Text}
 nnoremap <leader>if <Plug>PlaceholderWordWrap
@@ -602,14 +604,14 @@ nnoremap <Plug>PlaceholderWORDWrap mqviW<ESC>a}<ESC>Bi${<ESC>`q
 vnoremap <leader>if <ESC>mq`>a}<ESC>`<<ESC>i${<ESC>`><ESC>`q
 
 nnoremap <leader>df <Plug>PlaceholderUnwrap
-nnoremap <Plug>PlaceholderUnwrap mqva{o<esc>%x``xX:noh<cr>`q
+nnoremap <Plug>PlaceholderUnwrap mqva{o<esc>%x``xX`q
     \:call repeat#set("\<Plug>PlaceholderUnwrap")<CR>
 
 nnoremap <leader>dF <Plug>NextPlaceholderUnwrap
-nnoremap <Plug>NextPlaceholderUnwrap mq/{<cr>va{o<esc>%x``xX:noh<cr>`q
+nnoremap <Plug>NextPlaceholderUnwrap mq/{<cr>va{o<esc>%x``xX`q
     \:call repeat#set("\<Plug>NextPlaceholderUnwrap")<CR>
 
-vnoremap <leader>df <esc>mq`>/}<cr>x`<?$<cr>xx:noh<cr>`q
+vnoremap <leader>df <esc>mq`>/}<cr>x`<?$<cr>xx`q
 
 nnoremap <leader><CR>f <Plug>OutlinePlaceholderWrap
 nnoremap <Plug>OutlinePlaceholderWrap mqO${<ESC>jo}<ESC>`q>>
@@ -629,14 +631,14 @@ nnoremap <Plug>SlashWORDWrap mqviW<ESC>a/<ESC>Bi/<ESC>`q
 vnoremap <leader>i/ <ESC>mq`>a/<ESC>`<<ESC>i/<ESC>`><ESC>`q
 
 nnoremap <leader>d/ <Plug>SlashUnwrap
-nnoremap <Plug>SlashUnwrap mq//<cr>x?/<cr>x:noh<cr>`q
+nnoremap <Plug>SlashUnwrap mq//<cr>x?/<cr>x`q
     \:call repeat#set("\<Plug>SlashUnwrap")<CR>
 
 nnoremap <leader>d? <Plug>NextSlashUnwrap
-nnoremap <Plug>NextSlashUnwrap mq//<cr>nx?/<cr>x:noh<cr>`q
+nnoremap <Plug>NextSlashUnwrap mq//<cr>nx?/<cr>x`q
     \:call repeat#set("\<Plug>NextSlashUnwrap")<CR>
 
-vnoremap <leader>d/ <esc>mq`>//<cr>x`<?/<cr>x:noh<cr>`q
+vnoremap <leader>d/ <esc>mq`>//<cr>x`<?/<cr>x`q
 
 " ┌──➤ <Text>
 nnoremap <leader>i, <Plug>ChevronsWordWrap
@@ -650,14 +652,14 @@ nnoremap <Plug>ChevronsWORDWrap mqviW<ESC>a><ESC>Bi<<ESC>`q
 vnoremap <leader>i, <ESC>mq`>a><ESC>`<<ESC>i<<ESC>`><ESC>`q
 
 nnoremap <leader>d, <Plug>ChevronsUnwrap
-nnoremap <Plug>ChevronsUnwrap mqva<o<esc>va<<esc>x``x:noh<cr>`q
+nnoremap <Plug>ChevronsUnwrap mqva<o<esc>va<<esc>x``x`q
     \:call repeat#set("\<Plug>ChevronsUnwrap")<CR>
 
 nnoremap <leader>d. <Plug>NextChevronsUnwrap
-nnoremap <Plug>NextChevronsUnwrap mq/<<cr>va<o<esc>va<<esc>x``x:noh<cr>`q
+nnoremap <Plug>NextChevronsUnwrap mq/<<cr>va<o<esc>va<<esc>x``x`q
     \:call repeat#set("\<Plug>NextChevronsUnwrap")<CR>
 
-vnoremap <leader>d, <esc>mq`>/><cr>x`<?<<cr>x:noh<cr>`q
+vnoremap <leader>d, <esc>mq`>/><cr>x`<?<<cr>x`q
 
 " ┌──➤  Text 
 nnoremap <leader>i<leader> <Plug>SpaceWordWrap
@@ -671,10 +673,10 @@ nnoremap <Plug>SpaceWORDWrap mqviw<esc>a <esc>bi <esc>`q
 vnoremap <leader>i<leader> <ESC>mq`>a <ESC>`<<ESC>i <ESC>`><ESC>`q
 
 nnoremap <leader>d<leader> <Plug>SpaceUnwrap
-nnoremap <Plug>SpaceUnwrap mq/ <cr>x? <cr>x:noh<cr>`q
+nnoremap <Plug>SpaceUnwrap mq/ <cr>x? <cr>x`q
     \:call repeat#set("\<Plug>SpaceUnwrap")<CR>
 
-vnoremap <leader>d<leader> <esc>mq`>/ <cr>x`<? <cr>x:noh<cr>`q
+vnoremap <leader>d<leader> <esc>mq`>/ <cr>x`<? <cr>x`q
 
 " ┌──➤  \n
 "    Text
@@ -692,7 +694,7 @@ vnoremap <leader>i<CR> <ESC>`>a<CR><ESC>`<i<CR><ESC>
 " ┌──➤  <>Text</>
 nnoremap <leader>it o</><ESC>kO<><ESC>mqj>>`qi
 vnoremap <leader>it <ESC>`>o</><ESC>`<O<><ESC>mqgv>`qi
-nnoremap <leader>dt mqvat<`q0i:exe "/^<esc>f<a\\/<esc>/[ >]<cr>i" <esc>"qdF::@q<cr>dd`qdd:noh<cr>
+nnoremap <leader>dt mqvat<`q0i:exe "/^<esc>f<a\\/<esc>/[ >]<cr>i" <esc>"qdF::@q<cr>dd`qdd
 """" Note: Your cursor has to be (anywhere) on top of the opening tag and it only works with spreaded tags (not oneliners) in the form:
     " <tag (optional attributes)>
     "   (optional content)
@@ -715,14 +717,14 @@ nnoremap <leader>H 0
 nnoremap <C-a> v<C-a>
 nnoremap <C-x> v<C-x>
 
-nnoremap { /^\s*$<cr>:noh<cr>
-nnoremap } ?^\s*$<cr>:noh<cr>
+nnoremap { /^\s*$<cr>
+nnoremap } ?^\s*$<cr>
 onoremap { }
 onoremap } {
 vnoremap { }
 vnoremap } {
-nnoremap ) /[)}\]]<cr>:noh<cr>
-nnoremap ( ?[({[]<cr>:noh<cr>
+nnoremap ) /[)}\]]<cr>
+nnoremap ( ?[({[]<cr>
 vnoremap ) /[)}\]]<cr>
 vnoremap ( ?[({[]<cr>
 
@@ -740,13 +742,13 @@ function! AddTwoSlashQuery()
 endfunction
 
 " Format into multiple lines <EXPERIMENTAL>
-nnoremap <leader>= vi(o<esc>i<cr><esc>vi(<esc>a<cr><esc>k:s/,\s\?/,\r/g<cr>:noh<cr>
+nnoremap <leader>= vi(o<esc>i<cr><esc>vi(<esc>a<cr><esc>k:s/,\s\?/,\r/g<cr>
 
 " Add Markdown checklist to lines
-nnoremap <leader>ix mqI - [ ] <esc>`q:noh<cr>
-nnoremap <leader>dx mq:s/ - \[.\] <cr>`q:noh<cr>
-vnoremap <leader>ix <esc>mqgv^o^<c-v>I - [ ] <esc>`q:noh<cr>
-vnoremap <leader>dx <esc>mqgv:s/ - \[.\] <cr>`q:noh<cr>
+nnoremap <leader>ix mqI - [ ] <esc>`q
+nnoremap <leader>dx mq:s/ - \[.\] <cr>`q
+vnoremap <leader>ix <esc>mqgv^o^<c-v>I - [ ] <esc>`q
+vnoremap <leader>dx <esc>mqgv:s/ - \[.\] <cr>`q
 
 " Toggle capitalization of first letter of word
 nnoremap <leader>~ mqviwo<esc>~`q
@@ -765,10 +767,10 @@ nnoremap <localleader><localleader>e :!code C:\Users\Moiso\rc\vim_init.vim<cr>
 " ====================== VSCode only begin ===================
 
 " VSCode needs double backlash (\\) for the OR operator for some unkown reason...
-nnoremap dix /,\\|)\\|}\\|]\\|\s}<cr>d?,<cr>:noh<cr>
-nnoremap diX mq/,<cr>lv`q?(\\|\[\\|{<cr>wd:noh<cr>
-nnoremap cix /,\\|)\\|}\\|]\\|\s}<cr>hv?,<cr>wv:noh<cr>gvc
-nnoremap ciX mq/,<cr>lv`q?(\\|\[\\|{<cr>v:noh<cr>gvwc
+nnoremap dix /,\\|)\\|}\\|]\\|\s}<cr>d?,<cr>
+nnoremap diX mq/,<cr>lv`q?(\\|\[\\|{<cr>wd
+nnoremap cix /,\\|)\\|}\\|]\\|\s}<cr>hv?,<cr>wvgvc
+nnoremap ciX mq/,<cr>lv`q?(\\|\[\\|{<cr>vgvwc
 
 " ===================== VSCode only end =======================
 
