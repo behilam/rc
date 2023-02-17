@@ -4,6 +4,8 @@ set shortmess=filnxtToOI
 set guifont=Consola:h10
 set gdefault
 set nohlsearch
+set ignorecase
+set smartcase
 set nu
 
 let mapleader = ' '
