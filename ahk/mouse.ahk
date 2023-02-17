@@ -146,7 +146,7 @@ F17::
 Return
 
 ; * Mouse save location and quick go to location
-^#LButton::
+!#LButton::
   if LBtnResetable {
     LClickStack := []
     LClickIndex := 1
@@ -163,10 +163,10 @@ Return
   MouseMove, LClickStack[LClickIndex][1], LClickStack[LClickIndex][2]
   LClickIndex := Mod(LClickIndex, LClickStack.Length()) + 1
   Sleep 10
-  Click
+  Send, {LButton}
 Return
 ; V ;
-^#RButton::
+!#RButton::
   if RBtnResetable {
     RClickStack := []
     RClickIndex := 1
@@ -187,6 +187,6 @@ Return
   MouseMove, RClickStack[RClickIndex][1], RClickStack[RClickIndex][2]
   RClickIndex := Mod(RClickIndex, RClickStack.Length()) + 1
   Sleep 75
-  Click
+  Send, {Lbutton}
   BlockInput Off
 Return
