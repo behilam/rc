@@ -103,7 +103,7 @@ nnoremap ŭ /_<CR>:noh<CR><SPACE>
 nnoremap é <SPACE>/_<CR>:noh<CR><BS>
 nnoremap É <BS>?_<CR>:noh<CR><BS>
 
-nnoremap <leader>z :noh<CR>
+nnoremap <expr> <leader>z (&hls && v:hlsearch ? ':noh' : ':set hls')."\n"
 
 nnoremap <leader>w :w<CR>
 nnoremap <leader>o mqo<ESC>k`q
