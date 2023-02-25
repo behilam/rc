@@ -1,0 +1,13 @@
+[package]
+edition = "2021"
+name = "nvim_oxi"
+version = "0.1.0"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+crate-type = ["dylib"]
+
+[dependencies]
+nvim-oxi = {version = "0.2.2", path = "../../../kod/Open Source/nvim-oxi/crates/nvim-oxi", features = ["neovim-0-8", "test"]}
+# nvim-oxi = {version = "0.2.2", features = ["neovim-0-8", "test"]}
