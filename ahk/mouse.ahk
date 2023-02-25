@@ -49,30 +49,6 @@ Return
 ^XButton2::^+
 
 ; * Mouse 4
-F14 & LButton::^c
-F14 & RButton::^v
-F14 & WheelDown::Down
-F14 & WheelUp::Up
-; F14 & MButton::
-; F14 & F18::
-; ^F14::
-; !F14::
-; ^!F14::
-F14::
-  ; LButton & Mouse_4
-  ; if (GetKeyState("LButton", "P")) {
-  ;     Return
-  ; }
-
-  ; F18 & Mouse_4
-  ; if (GetKeyState("F18", "P")) {
-  ;     Return
-  ; }
-
-  Send, {Browser_Back}
-Return
-
-; * Mouse 5
 F15 & LButton::^x
 F15 & RButton::Delete
 F15 & WheelDown::Right
@@ -95,6 +71,30 @@ F15 & WheelUp::Left
 
 ;     Send, x
 ; Return
+
+; * Mouse 5
+F14 & LButton::^c
+F14 & RButton::^v
+F14 & WheelDown::Down
+F14 & WheelUp::Up
+; F14 & MButton::
+; F14 & F18::
+; ^F14::
+; !F14::
+; ^!F14::
+F14::
+  ; LButton & Mouse_4
+  ; if (GetKeyState("LButton", "P")) {
+  ;     Return
+  ; }
+
+  ; F18 & Mouse_4
+  ; if (GetKeyState("F18", "P")) {
+  ;     Return
+  ; }
+
+  Send, {Browser_Back}
+Return
 
 ; * Mouse 8
 F16 & LButton::^z
