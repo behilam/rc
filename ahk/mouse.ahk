@@ -82,19 +82,19 @@ F14 & WheelUp::Up
 ; ^F14::
 ; !F14::
 ; ^!F14::
-F14::
-  ; LButton & Mouse_4
-  ; if (GetKeyState("LButton", "P")) {
-  ;     Return
-  ; }
+; F14::
+; LButton & Mouse_4
+; if (GetKeyState("LButton", "P")) {
+;     Return
+; }
 
-  ; F18 & Mouse_4
-  ; if (GetKeyState("F18", "P")) {
-  ;     Return
-  ; }
+; F18 & Mouse_4
+; if (GetKeyState("F18", "P")) {
+;     Return
+; }
 
-  Send, {Browser_Back}
-Return
+; Send, {Browser_Back}
+; Return
 
 ; * Mouse 8
 F16 & LButton::^z
