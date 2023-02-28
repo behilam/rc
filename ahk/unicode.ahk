@@ -34,29 +34,16 @@
 ; ----------Second line ------------
 >+t::Send, % (Chr(807)) ; ̧t (combining cedilla)
 >+s::Send, % (Chr(780)) ; ̌s (combining caron)
->!l::
-  char := Chr(108) ; l͕
-  ext := Chr(853)
-  Send, %char%%ext%
-Return
->!;::Send, % (Chr(853)) ;
->!p::
-  ext := Chr(807) ;
-  ; ext := Chr(711) ;
-  Send, %ext%
-Return
->!'::Send, % (Chr(8217)) ; ’
+>!'::Send, % (Chr(8217)) ; ’ (quotation mark)
 
 >+w::Send, % (Chr(774)) ; ŭ (combining breve)
 >+e::Send, % (Chr(769)) ; é (combining acute)
-
 >+u::Send, % (Chr(776)) ; ̈u (combining diaeresis)
 
 <>+y::Send, % (Chr(165)) ; ¥
 
 ; ------------ Third Line -------------
 >+g::Send, % (Chr(770)) ; ĝ (combining circumflex)
-
 >+;::Send, % (Chr(771)) ; ̃n (combining tilde)
 
 <>+'::Send, % (Chr(8230)) ; …
@@ -64,6 +51,8 @@ Return
 <>+\::Send, % (Chr(172)) ; ¬
 
 ; --------------- Fourth Line --------------
+>+z::Send, % (Chr(803)) ; ẓ (combining dot below)
+
 >+b::Send, % (Chr(223)) ; ß
 
 >+,::Send, % (Chr(8249)) ; ‹
