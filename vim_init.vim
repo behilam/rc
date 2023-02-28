@@ -724,6 +724,10 @@ nnoremap <leader>l $
 nnoremap <leader>h ^
 nnoremap <leader>H 0
 
+nnoremap <leader>s :s/
+vnoremap <leader>s :s/
+nnoremap <leader><leader>s :%s/
+
 " Change inside parens/brackets shortcut [EXPERIMENTAL]
 "  onoremap p :<c-u>normal! t)vi(<cr>
 "  onoremap P :<c-u>normal! T(vi(<cr>
