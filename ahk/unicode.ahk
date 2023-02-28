@@ -32,19 +32,14 @@
 <>+=::Send, % (Chr(8734)) ; ∞
 
 ; ----------Second line ------------
-; Ithkuil
->!t::Send, % (Chr(355)) ; ţt͕
->+s::Send, % (Chr(780)) ; ̌s (combining)
->!z::Send, % (Chr(382)) ; ž
->!c::Send, % (Chr(269)) ; č
->!n::Send, % (Chr(328)) ; ň
->!r::Send, % (Chr(345)) ; ř
+>+t::Send, % (Chr(807)) ; ̧t (combining cedilla)
+>+s::Send, % (Chr(780)) ; ̌s (combining caron)
 >!l::
   char := Chr(108) ; l͕
   ext := Chr(853)
   Send, %char%%ext%
 Return
-  >!;::Send, % (Chr(853)) ;
+>!;::Send, % (Chr(853)) ;
 >!p::
   ext := Chr(807) ;
   ; ext := Chr(711) ;
@@ -52,52 +47,23 @@ Return
 Return
 >!'::Send, % (Chr(8217)) ; ’
 
->+w::Send, % (Chr(365)) ; ŭ
-<>+w::Send, % (Chr(364)) ; Ŭ
+>+w::Send, % (Chr(774)) ; ŭ (combining breve)
+>+e::Send, % (Chr(769)) ; é (combining acute)
 
->+e::Send, % (Chr(233)) ; é
-<>+e::Send, % (Chr(201)) ; É
-
->+y::Send, % (Chr(252)) ; ü
+>+u::Send, % (Chr(776)) ; ̈u (combining diaeresis)
 
 <>+y::Send, % (Chr(165)) ; ¥
 
->+u::Send, % (Chr(250)) ; ú
-<>+u::Send, % (Chr(218)) ; Ú
-
->+i::Send, % (Chr(237)) ; í
-<>+i::Send, % (Chr(205)) ; Í
-
->+o::Send, % (Chr(243)) ; ó
-<>+o::Send, % (Chr(211)) ; Ó
-
 ; ------------ Third Line -------------
->+a::Send, % (Chr(225)) ; á
-<>+a::Send, % (Chr(193)) ; Á
+>+g::Send, % (Chr(770)) ; ĝ (combining circumflex)
 
->+s::Send, % (Chr(349)) ; ŝ
-<>+s::Send, % (Chr(348)) ; Ŝ
-
->+g::Send, % (Chr(285)) ; ĝ
-<>+g::Send, % (Chr(284)) ; Ĝ
-
->+h::Send, % (Chr(293)) ; ĥ
-<>+h::Send, % (Chr(292)) ; Ĥ
-
->+j::Send, % (Chr(309)) ; ĵ
-<>+j::Send, % (Chr(308)) ; Ĵ
-
-  >+;::Send, % (Chr(241)) ; ñ
-  <>+;::Send, % (Chr(209)) ; Ñ
+>+;::Send, % (Chr(771)) ; ̃n (combining tilde)
 
 <>+'::Send, % (Chr(8230)) ; …
 
 <>+\::Send, % (Chr(172)) ; ¬
 
 ; --------------- Fourth Line --------------
->+c::Send, % (Chr(265)) ; ĉ
-<>+c::Send, % (Chr(264)) ; Ĉ
-
 >+b::Send, % (Chr(223)) ; ß
 
 >+,::Send, % (Chr(8249)) ; ‹
