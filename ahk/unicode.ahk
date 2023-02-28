@@ -34,7 +34,7 @@
 ; ----------Second line ------------
 ; Ithkuil
 >!t::Send, % (Chr(355)) ; ţt͕
->!s::Send, % (Chr(780)) ; ̌s (combining)
+>+s::Send, % (Chr(780)) ; ̌s (combining)
 >!z::Send, % (Chr(382)) ; ž
 >!c::Send, % (Chr(269)) ; č
 >!n::Send, % (Chr(328)) ; ň
