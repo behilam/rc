@@ -144,21 +144,21 @@ Return
 ; ===============         OTHER FUNCTIONS         ===============
 ; ===============================================================
 
-; Change Audio Device
-+F1::
-    If (AudioDeviceCounter) {
-        AudioDeviceCounter := False
-        ; VA_SetDefaultEndpoint("Speakers (3- High Definition Audio Device)", 0)
-        VA_SetDefaultEndpoint("Altavoces (4- High Definition Audio Device)", 0)
-        ; VA_SetDefaultEndpoint("Speakers (Realtek(R) Audio)", 0)
-        ; VA_SetDefaultEndpoint("Speakers (2- Realtek(R) Audio)", 0)
-    } else {
-        AudioDeviceCounter := True
-        ; VA_SetDefaultEndpoint("ASUS VP228", 0)
-        ; VA_SetDefaultEndpoint("Speakers (8- Logitech G533 Gaming Headset)", 0)
-        VA_SetDefaultEndpoint("Speakers (Logitech G533 Gaming Headset)", 0)
-    }
-Return
+; ; Change Audio Device
+; +F1::
+;     If (AudioDeviceCounter) {
+;         AudioDeviceCounter := False
+;         ; VA_SetDefaultEndpoint("Speakers (3- High Definition Audio Device)", 0)
+;         VA_SetDefaultEndpoint("Altavoces (4- High Definition Audio Device)", 0)
+;         ; VA_SetDefaultEndpoint("Speakers (Realtek(R) Audio)", 0)
+;         ; VA_SetDefaultEndpoint("Speakers (2- Realtek(R) Audio)", 0)
+;     } else {
+;         AudioDeviceCounter := True
+;         ; VA_SetDefaultEndpoint("ASUS VP228", 0)
+;         ; VA_SetDefaultEndpoint("Speakers (8- Logitech G533 Gaming Headset)", 0)
+;         VA_SetDefaultEndpoint("Speakers (Logitech G533 Gaming Headset)", 0)
+;     }
+; Return
 
 ; Alternative left-hand Media shortcuts
 #q::Media_Play_Pause
@@ -166,6 +166,91 @@ Return
 #`::Media_Prev
 #[::Volume_Up
 #/::Volume_Down
+
+; AutoClick in VRChat
+#IfWinActive, VRChat
+    F13::
+        Send, {LShift down}{F1 down}
+        Sleep, 200
+        Send, {LShift up}{F1 up}
+    Return
+    F14::
+        Send, {LShift down}{F2 down}
+        Sleep, 200
+        Send, {LShift up}{F2 up}
+    Return
+    F15::
+        Send, {LShift down}{F3 down}
+        Sleep, 200
+        Send, {LShift up}{F3 up}
+    Return
+    F16::
+        Send, {LShift down}{F4 down}
+        Sleep, 200
+        Send, {LShift up}{F4 up}
+    Return
+    F17::
+        Send, {LShift down}{F5 down}
+        Sleep, 200
+        Send, {LShift up}{F5 up}
+    Return
+    F18::
+        Send, {LShift down}{F6 down}
+        Sleep, 200
+        Send, {LShift up}{F6 up}
+    Return
+    F19::
+        Send, {LShift down}{F7 down}
+        Sleep, 200
+        Send, {LShift up}{F7 up}
+    Return
+    F20::
+        Send, {LShift down}{F8 down}
+        Sleep, 200
+        Send, {LShift up}{F8 up}
+    Return
+
+    +F13::
+        Send, {RShift down}{LShift down}{F1 down}
+        Sleep, 200
+        Send, {RShift up}{LShift up}{F1 up}
+    Return
+    +F14::
+        Send, {RShift down}{LShift down}{F2 down}
+        Sleep, 200
+        Send, {RShift up}{LShift up}{F2 up}
+    Return
+    +F15::
+        Send, {RShift down}{LShift down}{F3 down}
+        Sleep, 200
+        Send, {RShift up}{LShift up}{F3 up}
+    Return
+    +F16::
+        Send, {RShift down}{LShift down}{F4 down}
+        Sleep, 200
+        Send, {RShift up}{LShift up}{F4 up}
+    Return
+    +F17::
+        Send, {RShift down}{LShift down}{F5 down}
+        Sleep, 200
+        Send, {RShift up}{LShift up}{F5 up}
+    Return
+    +F18::
+        Send, {RShift down}{LShift down}{F6 down}
+        Sleep, 200
+        Send, {RShift up}{LShift up}{F6 up}
+    Return
+    +F19::
+        Send, {RShift down}{LShift down}{F7 down}
+        Sleep, 200
+        Send, {RShift up}{LShift up}{F7 up}
+    Return
+    +F20::
+        Send, {RShift down}{LShift down}{F8 down}
+        Sleep, 200
+        Send, {RShift up}{LShift up}{F8 up}
+    Return
+#IfWinActive
 
 ; AutoClick in Morrowind
 #IfWinActive, Morrowind
