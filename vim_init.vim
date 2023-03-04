@@ -746,8 +746,8 @@ nnoremap <leader>l $
 nnoremap <leader>h ^
 nnoremap <leader>H 0
 
-nnoremap <leader>s :s/
-vnoremap <leader>s :s/
+nnoremap <leader>s :s/<c-r>=GetChar()<CR>/
+vnoremap <leader>s :s/<c-r>=GetChar()<CR>/
 nnoremap <leader><leader>s :%s/
 
 " Change inside parens/brackets shortcut [EXPERIMENTAL]
@@ -781,6 +781,10 @@ function! AddTwoSlashQuery()
     if failed
         echom "Unable to add TwoSlashQuery after line: " . l:currentLine
     endif
+endfunction
+
+function! GetChar()
+    return matchstr(getline('.'), '\%'.col('.').'c.')
 endfunction
 
 nnoremap <leader>en <CMD>.!node<CR>
