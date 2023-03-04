@@ -59,6 +59,28 @@ if !exists('g:vscode')
     augroup END
     "  noremap gc :<C-B>silent <C-E>s/^/<C-R>=escape(b:comment_leader,'\/')<CR>/<CR>:nohlsearch<CR>
     "  noremap gC :<C-B>silent <C-E>s/^\V<C-R>=escape(b:comment_leader,'\/')<CR>//e<CR>:nohlsearch<CR>
+else
+    nnoremap mh <CMD>call VSCodeNotify('numberedBookmarks.toggleBookmark1')<CR>
+    nnoremap `h <CMD>call VSCodeNotify('numberedBookmarks.jumpToBookmark1')<CR>
+    nnoremap mj <CMD>call VSCodeNotify('numberedBookmarks.toggleBookmark2')<CR>
+    nnoremap `j <CMD>call VSCodeNotify('numberedBookmarks.jumpToBookmark2')<CR>
+    nnoremap mk <CMD>call VSCodeNotify('numberedBookmarks.toggleBookmark3')<CR>
+    nnoremap `k <CMD>call VSCodeNotify('numberedBookmarks.jumpToBookmark3')<CR>
+    nnoremap ml <CMD>call VSCodeNotify('numberedBookmarks.toggleBookmark4')<CR>
+    nnoremap `l <CMD>call VSCodeNotify('numberedBookmarks.jumpToBookmark4')<CR>
+    nnoremap mn <CMD>call VSCodeNotify('numberedBookmarks.toggleBookmark5')<CR>
+    nnoremap `n <CMD>call VSCodeNotify('numberedBookmarks.jumpToBookmark5')<CR>
+    nnoremap my <CMD>call VSCodeNotify('numberedBookmarks.toggleBookmark6')<CR>
+    nnoremap `y <CMD>call VSCodeNotify('numberedBookmarks.jumpToBookmark6')<CR>
+    nnoremap mu <CMD>call VSCodeNotify('numberedBookmarks.toggleBookmark7')<CR>
+    nnoremap `u <CMD>call VSCodeNotify('numberedBookmarks.jumpToBookmark7')<CR>
+    nnoremap mi <CMD>call VSCodeNotify('numberedBookmarks.toggleBookmark8')<CR>
+    nnoremap `i <CMD>call VSCodeNotify('numberedBookmarks.jumpToBookmark8')<CR>
+    nnoremap mo <CMD>call VSCodeNotify('numberedBookmarks.toggleBookmark9')<CR>
+    nnoremap `o <CMD>call VSCodeNotify('numberedBookmarks.jumpToBookmark9')<CR>
+    nnoremap mm <CMD>call VSCodeNotify('numberedBookmarks.toggleBookmark0')<CR>
+    nnoremap `m <CMD>call VSCodeNotify('numberedBookmarks.jumpToBookmark0')<CR>
+    nnoremap m; <CMD>call VSCodeNotify('numberedBookmarks.listFromAllFiles')<CR>
 endif
 
 "  Firenvim
