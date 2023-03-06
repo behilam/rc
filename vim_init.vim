@@ -746,8 +746,10 @@ nnoremap <leader>l $
 nnoremap <leader>h ^
 nnoremap <leader>H 0
 
-nnoremap <leader>s :s/<c-r>=GetChar()<CR>/
-vnoremap <leader>s :s/<c-r>=GetChar()<CR>/
+nnoremap <expr> <leader>s GetChar() == "/" ? ":s/\\//" : ":s/<c-r>=GetChar()<CR>/"
+vnoremap <expr> <leader>s GetChar() == "/" ? ":s/\\//" : ":s/<c-r>=GetChar()<CR>/"
+nnoremap <leader>S :s/
+vnoremap <leader>S :s/
 nnoremap <leader><leader>s :%s/
 
 " Change inside parens/brackets shortcut [EXPERIMENTAL]
