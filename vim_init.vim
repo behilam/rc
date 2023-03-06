@@ -793,7 +793,7 @@ nnoremap <leader>en <CMD>.!node<CR>
 vnoremap <leader>en :!node<CR>
 nnoremap <leader>ep <CMD>.!py<CR>
 vnoremap <leader>ep :!py<CR>
-nnoremap <leader>eb :.!node bqn.js "<c-r>=substitute(getline('.'), '\"', '\\\"', 'g')<CR>"<CR>
+nnoremap <leader>eb :.!node <c-r>=getenv('HOME')<CR>\rc\bqn.js "<c-r>=substitute(getline('.'), '\"', '\\\"', 'g')<CR>"<CR>
 
 " Format into multiple lines <EXPERIMENTAL>
 nnoremap <leader>= vi(o<esc>i<cr><esc>vi(<esc>a<cr><esc>k:s/,\s\?/,\r/g<cr>
