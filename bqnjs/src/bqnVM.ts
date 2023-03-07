@@ -1,25 +1,25 @@
-"use strict";
+'use strict';
 // Virtual machine
-let has = (x) => x !== undefined;
-let isnum = (x) => typeof x === "number";
-let isfunc = (x) => typeof x === "function";
+let has = (x: unknown) => x !== undefined;
+let isNum = (x: unknown) => typeof x === 'number';
+let isFunc = (x: unknown): x is Function => typeof x === 'function';
 let call = (f, x, w) => {
   if (x === undefined) return x;
-  if (!isfunc(f)) return f;
-  if (f.m) throw Error("Runtime: Cannot call modifier as function");
+  if (!isFunc(f)) return f;
+  if (f.m) throw Error('Runtime: Cannot call modifier as function');
   return f(x, w);
 };
 
-let getrev = (names) => {
+let getrev = names => {
   let m = names.rev;
   if (m) return m;
   m = {};
   names.forEach((s, i) => (m[s] = i));
   return (names.rev = m);
 };
-let nsget = (x) => {
+let nsget = x => {
   let rev = getrev(x.ns.names);
-  return (s) => ((i) => (has(i) ? x[x.ns[i]] : i))(rev[s]);
+  return s => (i => (has(i) ? x[x.ns[i]] : i))(rev[s]);
 };
 let findkey = (ns, names, i) => {
   let nn = ns.names;
@@ -27,54 +27,54 @@ let findkey = (ns, names, i) => {
 };
 let readns_sub = (v, names, i) => {
   let ni = findkey(v.ns, names, i);
-  if (!has(ni)) throw Error("Unknown namespace key: " + names[i]);
+  if (!has(ni)) throw Error('Unknown namespace key: ' + names[i]);
   return v[ni];
 };
 let readns_assign = (v, vid, i) => readns_sub(v, vid.names, vid[i]);
 let readns = (v, vid, i) => {
-  if (!v.ns) throw Error("Key lookup in non-namespace");
+  if (!v.ns) throw Error('Key lookup in non-namespace');
   return readns_sub(v, vid.names, i);
 };
 let makens = (keys, vals) => {
   let n = Array(keys.length)
     .fill()
     .map((_, i) => i);
-  n.names = keys.map((k) => k.toLowerCase());
+  n.names = keys.map(k => k.toLowerCase());
   vals.ns = n;
   return vals;
 };
-let listkeys = (x) => {
+let listkeys = x => {
   let s = x.ns,
-    k = Object.keys(s).filter((n) => !isNaN(n));
-  return k.map((n) => s.names[+n]).sort();
+    k = Object.keys(s).filter(n => !isNaN(n));
+  return k.map(n => s.names[+n]).sort();
 };
 
 let getv = (a, i) => {
   let v = a[i];
-  if (v === null) throw Error("Runtime: Variable referenced before definition");
+  if (v === null) throw Error('Runtime: Variable referenced before definition');
   return v;
 };
-let get = (x) =>
+let get = x =>
   x.e
     ? getv(x.e, x.p)
     : arr(
-        x.map((c) => get(c)),
-        x.sh
+        x.map(c => get(c)),
+        x.sh,
       );
 let preview = false;
 let inpreview = () => preview;
 
 let setc = (d, id, v) => {
   if (preview && seteff(id))
-    throw { kind: "previewError", message: "side effects are not allowed" };
+    throw { kind: 'previewError', message: 'side effects are not allowed' };
   return set(d, id, v);
 };
 
-let seteff = (id) => {
+let seteff = id => {
   if (id.e) return !id.e.inpreview;
   else if (id.match) return false;
   else if (Array.isArray(id))
-    return id.some((id) => (id.m ? seteff(id.m) : seteff(id)));
+    return id.some(id => (id.m ? seteff(id.m) : seteff(id)));
   else return false;
 };
 
@@ -82,18 +82,18 @@ let set = (d, id, v) => {
   let eq = (a, b) => a.length === b.length && a.every((e, i) => e === b[i]);
   if (id.e) {
     if (!d && id.e[id.p] === null)
-      throw Error("↩: Variable modified before definition");
+      throw Error('↩: Variable modified before definition');
     id.e[id.p] = v;
   } else if (id.match) {
     if (has(id.v) && !call(runtime[18], id.v, v)) throw Error();
   } else if (id.merge) {
     if (!v.sh || v.sh.length < 1)
-      throw Error("[…]← or ↩: Value must have rank 1 or more");
+      throw Error('[…]← or ↩: Value must have rank 1 or more');
     if (id.sh[0] !== v.sh[0])
       throw Error("[…]← or ↩: Target and value lengths don't match");
     let cs = v.sh.slice(1);
     let c = cs.reduce((a, b) => a * b, 1);
-    let cell = (j) => arr(v.slice(c * j, c * j + c), cs, v.fill);
+    let cell = j => arr(v.slice(c * j, c * j + c), cs, v.fill);
     id.map((n, j) => set(d, n, cell(j)));
   } else if (id.m) {
     throw Error("← or ↩: Can't use alias in list destructuring");
@@ -103,63 +103,67 @@ let set = (d, id, v) => {
         throw Error("← or ↩: Target and value shapes don't match");
       id.map((n, j) => set(d, n, v[j]));
     } else if (v.ns) {
-      id.map((n) => {
+      id.map(n => {
         if (n.e) {
           let vid = n.e.vid;
           set(d, n, readns_assign(v, vid, n.p));
         } else if (n.m) {
           set(d, n.m, readns(v, n.vid, n.a));
         } else {
-          throw Error("← or ↩: Cannot extract non-name from namespace");
+          throw Error('← or ↩: Cannot extract non-name from namespace');
         }
       });
     } else {
-      throw Error("← or ↩: Multiple targets but atomic value");
+      throw Error('← or ↩: Multiple targets but atomic value');
     }
   }
   return v;
 };
 
-let merge = (x) => {
+let merge = x => {
   return call(runtime[13], x);
 };
 
 let chkM = (v, m) => {
   if (m.m !== v)
     throw Error(
-      "Runtime: Only a " + v + "-modifier can be called as a " + v + "-modifier"
+      'Runtime: Only a ' +
+        v +
+        '-modifier can be called as a ' +
+        v +
+        '-modifier',
     );
 };
 let genjs = (B, p, L) => {
   // Bytecode -> Javascript compiler
   let rD = 0;
-  let r = L ? "let l=0;try{" : "";
-  let set = L ? "setc" : "set";
+  let r = L ? 'let l=0;try{' : '';
+  let set = L ? 'setc' : 'set';
   let fin = L
-    ? "}catch(er){let s=L.map(p=>p[l]);s.sh=[1,2];let m=[s,er.message];m.loc=1;m.src=e.vid.src;m.sh=[2];er.message=m;throw er;}"
-    : "";
+    ? '}catch(er){let s=L.map(p=>p[l]);s.sh=[1,2];let m=[s,er.message];m.loc=1;m.src=e.vid.src;m.sh=[2];er.message=m;throw er;}'
+    : '';
   let szM = 1;
-  let rV = (n) => {
+  let rV = n => {
     szM = Math.max(szM, n + 1);
-    return "v" + n;
+    return 'v' + n;
   };
-  let rP = (val) => rV(rD++) + "=" + val + ";";
+  let rP = val => rV(rD++) + '=' + val + ';';
   let rG = () => rV(--rD);
   let num = () => {
     return B[p++];
   };
-  let ge = (n) => "e" + ".p".repeat(n);
+  let ge = n => 'e' + '.p'.repeat(n);
   loop: while (true) {
-    r += "\n";
-    if (p > B.length) throw Error("Internal compiler error: Unclosed function");
-    if (L) r += "l=" + p + ";";
+    r += '\n';
+    if (p > B.length) throw Error('Internal compiler error: Unclosed function');
+    if (L) r += 'l=' + p + ';';
     switch (B[p++]) {
       case 0: {
-        r += rP("O[" + num() + "]");
+        r += rP('O[' + num() + ']');
         break;
       }
       case 1: {
-        r += rP("D[" + num() + "](e)");
+        r += rP('D[' + num() + '](e)');
         break;
       }
       case 6: {
@@ -167,12 +171,12 @@ let genjs = (B, p, L) => {
         break;
       }
       case 7: {
-        if (rD !== 1) throw Error("Internal compiler error: Wrong stack size");
-        r += "return v0;";
+        if (rD !== 1) throw Error('Internal compiler error: Wrong stack size');
+        r += 'return v0;';
         break loop;
       }
       case 8: {
-        r += "e.ns=e.vid.ns;return e;";
+        r += 'e.ns=e.vid.ns;return e;';
         break loop;
       }
       case 11:
@@ -183,21 +187,21 @@ let genjs = (B, p, L) => {
         let n = num();
         rD -= n;
         let l =
-          "llst([" +
+          'llst([' +
           new Array(n)
             .fill()
             .map((_, i) => rV(rD + i))
-            .join(",") +
-          "])";
-        r += rP(o == 13 ? "merge(" + l + ")" : l);
-        if (o == 14) r += rV(rD - 1) + ".merge=1;";
+            .join(',') +
+          '])';
+        r += rP(o == 13 ? 'merge(' + l + ')' : l);
+        if (o == 14) r += rV(rD - 1) + '.merge=1;';
         break;
       }
       case 16:
       case 18: {
         let f = rG(),
           x = rG();
-        r += rP("call(" + f + "," + x + ")");
+        r += rP('call(' + f + ',' + x + ')');
         break;
       }
       case 17:
@@ -205,13 +209,13 @@ let genjs = (B, p, L) => {
         let w = rG(),
           f = rG(),
           x = rG();
-        r += rP("call(" + f + "," + x + "," + w + ")");
+        r += rP('call(' + f + ',' + x + ',' + w + ')');
         break;
       }
       case 20: {
         let g = rG(),
           h = rG();
-        r += rP("train2(" + g + "," + h + ")");
+        r += rP('train2(' + g + ',' + h + ')');
         break;
       }
       case 21:
@@ -219,107 +223,107 @@ let genjs = (B, p, L) => {
         let f = rG(),
           g = rG(),
           h = rG();
-        r += rP("train3(" + f + "," + g + "," + h + ")");
+        r += rP('train3(' + f + ',' + g + ',' + h + ')');
         break;
       }
       case 26: {
         let f = rG(),
           m = rG();
-        r += "chkM(1," + m + ");" + rP(m + "(" + f + ")");
+        r += 'chkM(1,' + m + ');' + rP(m + '(' + f + ')');
         break;
       }
       case 27: {
         let f = rG(),
           m = rG(),
           g = rG();
-        r += "chkM(2," + m + ");" + rP(m + "(" + f + "," + g + ")");
+        r += 'chkM(2,' + m + ');' + rP(m + '(' + f + ',' + g + ')');
         break;
       }
       case 22: {
         r +=
-          "if(undefined===" +
+          'if(undefined===' +
           rV(rD - 1) +
           ")throw Error('Left argument required');";
         break;
       }
       case 32:
       case 34: {
-        r += rP("getv(" + ge(num()) + "," + num() + ")");
+        r += rP('getv(' + ge(num()) + ',' + num() + ')');
         break;
       }
       case 33: {
-        r += rP("{e:" + ge(num()) + ",p:" + num() + "}");
+        r += rP('{e:' + ge(num()) + ',p:' + num() + '}');
         break;
       }
       case 42: {
         let p = rG();
         r +=
-          "if(1!==" +
+          'if(1!==' +
           p +
-          "){if(0!==" +
+          '){if(0!==' +
           p +
           ")throw Error('Predicate value must be 0 or 1');break;}";
         break;
       }
       case 43: {
         let m = rG();
-        r += rP("{match:1,v:" + m + "}");
+        r += rP('{match:1,v:' + m + '}');
         break;
       }
       case 44: {
-        r += rP("{match:1}");
+        r += rP('{match:1}');
         break;
       }
       case 47: {
         let i = rG(),
           v = rG();
-        r += "try{set(1," + i + "," + v + ");}catch(e){break;}";
+        r += 'try{set(1,' + i + ',' + v + ');}catch(e){break;}';
         break;
       }
       case 48: {
         let i = rG(),
           v = rG();
-        r += rP(set + "(1," + i + "," + v + ")");
+        r += rP(set + '(1,' + i + ',' + v + ')');
         break;
       }
       case 49: {
         let i = rG(),
           v = rG();
-        r += rP(set + "(0," + i + "," + v + ")");
+        r += rP(set + '(0,' + i + ',' + v + ')');
         break;
       }
       case 50: {
         let i = rG(),
           f = rG(),
           x = rG();
-        r += rP(set + "(0," + i + ",call(" + f + "," + x + ",get(" + i + ")))");
+        r += rP(set + '(0,' + i + ',call(' + f + ',' + x + ',get(' + i + ')))');
         break;
       }
       case 51: {
         let i = rG(),
           f = rG();
-        r += rP(set + "(0," + i + ",call(" + f + ",get(" + i + ")))");
+        r += rP(set + '(0,' + i + ',call(' + f + ',get(' + i + ')))');
         break;
       }
       case 66: {
         let m = rG();
-        r += rP("{vid:e.vid,m:" + m + ",a:" + num() + "}");
+        r += rP('{vid:e.vid,m:' + m + ',a:' + num() + '}');
         break;
       }
       case 64: {
         let v = rG();
-        r += rP("readns(" + v + ",e.vid," + num() + ")");
+        r += rP('readns(' + v + ',e.vid,' + num() + ')');
         break;
       }
     }
   }
   return (
-    "let " +
+    'let ' +
     new Array(szM)
       .fill()
       .map((_, i) => rV(i))
-      .join(",") +
-    ";" +
+      .join(',') +
+    ';' +
     r +
     fin
   );
@@ -337,15 +341,15 @@ let run = (B, O, F, S, L, T, src, env) => {
     t.repr = () => [3, f, g, h];
     return t;
   };
-  let repdf = ["", "4,f,mod", "5,f,mod,g"].map((s) =>
-    s ? "fn.repr=()=>[" + s + "];" : s
+  let repdf = ['', '4,f,mod', '5,f,mod,g'].map(s =>
+    s ? 'fn.repr=()=>[' + s + '];' : s,
   );
 
   let D = F.map(([type, imm, ind], i) => {
     let I = imm ? 0 : 3; // Operand start
     let sp = (type === 0 ? 0 : type + 1) + I;
     let useenv = i === 0 && env;
-    let gen = (j) => {
+    let gen = j => {
       let [pos, varam, vid, vex] = S[j];
       let ns = {};
       if (vex)
@@ -355,114 +359,114 @@ let run = (B, O, F, S, L, T, src, env) => {
       vid = new Array(sp).fill(null).concat(vid);
       vid.src = src;
       vid.ns = ns;
-      if (T) ns.names = vid.names = T[2][0].map((s) => s.join(""));
+      if (T) ns.names = vid.names = T[2][0].map(s => s.join(''));
       return [genjs(B, pos, L), vid];
     };
 
-    let ginpreview = (e) => (L ? e + ".inpreview=inpreview()" : "");
+    let ginpreview = e => (L ? e + '.inpreview=inpreview()' : '');
     let c, vid, def;
-    if (isnum(ind)) {
+    if (isNum(ind)) {
       [c, vid] = gen(ind);
-      c = "do {" + c + "} while (0);\nthrow Error('No matching case');\n";
+      c = 'do {' + c + "} while (0);\nthrow Error('No matching case');\n";
       if (useenv) {
-        c = "const e=env;" + c;
+        c = 'const e=env;' + c;
         env.vid = vid;
       } else if (imm)
-        c = "const e=[...e2];" + ginpreview("e") + ";e.vid=vid;e.p=oe;" + c;
+        c = 'const e=[...e2];' + ginpreview('e') + ';e.vid=vid;e.p=oe;' + c;
       else
         c =
-          "const fn=(x, w)=>{const e=[...e2];" +
-          ginpreview("e") +
-          ";e.vid=vid;e.p=oe;e[0]=fn;e[1]=x;e[2]=w;" +
+          'const fn=(x, w)=>{const e=[...e2];' +
+          ginpreview('e') +
+          ';e.vid=vid;e.p=oe;e[0]=fn;e[1]=x;e[2]=w;' +
           c +
-          "};" +
+          '};' +
           repdf[type] +
-          "return fn;";
-      def = useenv ? "env" : "new Array(" + vid.length + ").fill(null)";
+          'return fn;';
+      def = useenv ? 'env' : 'new Array(' + vid.length + ').fill(null)';
     } else {
       if (imm !== +(ind.length < 2))
-        throw "Internal error: malformed block info";
+        throw 'Internal error: malformed block info';
       let cache = []; // Avoid generating a shared case twice
       vid = [];
-      let g = (j) => {
+      let g = j => {
         let [c, v] = cache[j] || (cache[j] = gen(j));
         c =
-          "const e=[...e1];" +
-          ginpreview("e") +
-          ";e.vid=vid[" +
+          'const e=[...e1];' +
+          ginpreview('e') +
+          ';e.vid=vid[' +
           vid.length +
-          "];e.p=oe;e.length=" +
+          '];e.p=oe;e.length=' +
           v.length +
-          ";e.fill(null," +
+          ';e.fill(null,' +
           sp +
-          ");" +
+          ');' +
           c;
         vid.push(v);
-        return "do {" + c + "} while (0);\n";
+        return 'do {' + c + '} while (0);\n';
       };
       if (ind.length === 3) ind[3] = [];
       let cases = ind.map((js, i) => {
         let e = js.length
-          ? "No matching case"
-          : "Left argument " + (i ? "not allowed" : "required");
+          ? 'No matching case'
+          : 'Left argument ' + (i ? 'not allowed' : 'required');
         return js
           .map(g)
           .concat(["throw Error('" + e + "');\n"])
-          .join("");
+          .join('');
       });
-      let fn = (b) =>
-        "(x, w)=>{const e1=[...e2];" +
-        ginpreview("e1") +
-        ";e1[0]=fn;e1[1]=x;e1[2]=w;\n" +
+      let fn = b =>
+        '(x, w)=>{const e1=[...e2];' +
+        ginpreview('e1') +
+        ';e1[0]=fn;e1[1]=x;e1[2]=w;\n' +
         b +
-        "\n};";
+        '\n};';
       let combine = ([mon, dy]) =>
-        fn("if (w===undefined) {\n" + mon + "} else {\n" + dy + "}");
-      def = "new Array(" + sp + ").fill(null)";
-      if (imm) c = "const e1=[...e2];" + ginpreview("e1") + ";" + cases[0];
+        fn('if (w===undefined) {\n' + mon + '} else {\n' + dy + '}');
+      def = 'new Array(' + sp + ').fill(null)';
+      if (imm) c = 'const e1=[...e2];' + ginpreview('e1') + ';' + cases[0];
       else {
-        c = "const fn=" + combine(cases) + repdf[type];
+        c = 'const fn=' + combine(cases) + repdf[type];
         if (cases.length > 2) {
-          c += "fn.inverse=" + combine(cases.slice(2));
+          c += 'fn.inverse=' + combine(cases.slice(2));
           if (cases[4])
             c +=
-              "fn.sinverse=" +
+              'fn.sinverse=' +
               fn("if(!has(w))throw Error('No matching case');" + cases[4]);
         }
-        c += "return fn;";
+        c += 'return fn;';
       }
     }
 
-    let de2 = "let e2=" + def + ";" + ginpreview("e2") + ";";
+    let de2 = 'let e2=' + def + ';' + ginpreview('e2') + ';';
     if (type === 0) c = de2 + c;
     if (type === 1)
       c =
-        "const mod=(f  ) => {" +
+        'const mod=(f  ) => {' +
         de2 +
-        " e2[" +
+        ' e2[' +
         I +
-        "]=mod;e2[" +
+        ']=mod;e2[' +
         (I + 1) +
-        "]=f;" +
+        ']=f;' +
         c +
-        "}; mod.m=1;return mod;";
+        '}; mod.m=1;return mod;';
     if (type === 2)
       c =
-        "const mod=(f,g) => {" +
+        'const mod=(f,g) => {' +
         de2 +
-        " e2[" +
+        ' e2[' +
         I +
-        "]=mod;e2[" +
+        ']=mod;e2[' +
         (I + 1) +
-        "]=f;e2[" +
+        ']=f;e2[' +
         (I + 2) +
-        "]=g;" +
+        ']=g;' +
         c +
-        "}; mod.m=2;return mod;";
+        '}; mod.m=2;return mod;';
     return Function(
       "'use strict'; return (chkM,has,call,getv,get,set,setc,llst,merge,train2,train3,readns,O,L,env,vid,inpreview) => D => oe => {" +
         c +
-        "};"
+        '};',
     )()(
       chkM,
       has,
@@ -480,7 +484,7 @@ let run = (B, O, F, S, L, T, src, env) => {
       L,
       env,
       vid,
-      inpreview
+      inpreview,
     );
   });
   D.forEach((d, i) => {
@@ -490,7 +494,7 @@ let run = (B, O, F, S, L, T, src, env) => {
 };
 
 // Runtime
-let assertFn = (pre) => (x, w) => {
+let assertFn = pre => (x, w) => {
   if (x !== 1) throw { kind: pre, message: has(w) ? w : x };
   return x;
 };
@@ -500,19 +504,19 @@ let arr = (r, sh, fill) => {
   return r;
 };
 let list = (l, fill) => arr(l, [l.length], fill);
-let llst = (l) => list(l, l.length > 0 && l.every(isnum) ? 0 : undefined);
-let str = (s) => list(Array.from(s), " ");
-let unstr = (s) => s.join("");
+let llst = l => list(l, l.length > 0 && l.every(isNum) ? 0 : undefined);
+let str = s => list(Array.from(s), ' ');
+let unstr = s => s.join('');
 let setrepr = (r, f) => {
   f.repr = r;
   return f;
 };
-let m1 = (m) => {
-  let r = (f) => setrepr(() => [4, f, r], m(f));
+let m1 = m => {
+  let r = f => setrepr(() => [4, f, r], m(f));
   r.m = 1;
   return r;
 };
-let m2 = (m) => {
+let m2 = m => {
   let r = (f, g) => setrepr(() => [5, f, r, g], m(f, g));
   r.m = 2;
   return r;
@@ -520,110 +524,110 @@ let m2 = (m) => {
 let ctrans = (c, t) => String.fromCodePoint(c.codePointAt(0) + t);
 let plus = (x, w) => {
   if (!has(w)) {
-    if (!isnum(x)) throw Error("+: Argument must be a number");
+    if (!isNum(x)) throw Error('+: Argument must be a number');
     return x;
   }
   let s = typeof w,
     t = typeof x;
-  if (s === "number" && t === "number") return w + x;
-  if (s === "number" && t === "string") return ctrans(x, w);
-  if (s === "string" && t === "number") return ctrans(w, x);
-  if (s === "string" && t === "string")
-    throw Error("+: Cannot add two characters");
-  throw Error("+: Cannot add non-data values");
+  if (s === 'number' && t === 'number') return w + x;
+  if (s === 'number' && t === 'string') return ctrans(x, w);
+  if (s === 'string' && t === 'number') return ctrans(w, x);
+  if (s === 'string' && t === 'string')
+    throw Error('+: Cannot add two characters');
+  throw Error('+: Cannot add non-data values');
 };
 let minus = (x, w) => {
-  if (!isnum(x)) {
-    if (has(w) && typeof w === "string")
+  if (!isNum(x)) {
+    if (has(w) && typeof w === 'string')
       return w.codePointAt(0) - x.codePointAt(0);
-    throw Error("-: Can only negate numbers");
+    throw Error('-: Can only negate numbers');
   }
   if (!has(w)) return -x;
   let s = typeof w;
-  if (s === "number") return w - x;
-  if (s === "string") return ctrans(w, -x);
-  throw Error("-: Cannot subtract from non-data value");
+  if (s === 'number') return w - x;
+  if (s === 'string') return ctrans(w, -x);
+  throw Error('-: Cannot subtract from non-data value');
 };
 let times = (x, w) => {
-  if (isnum(x) && isnum(w)) return x * w;
-  throw Error("×: Arguments must be numbers");
+  if (isNum(x) && isNum(w)) return x * w;
+  throw Error('×: Arguments must be numbers');
 };
 let divide = (x, w) => {
-  if (isnum(x) && (!has(w) || isnum(w)))
+  if (isNum(x) && (!has(w) || isNum(w)))
     return (has(w) ? w : 1) / (x === 0 ? 0 : x);
-  throw Error("÷: Arguments must be numbers");
+  throw Error('÷: Arguments must be numbers');
 };
 let power = (x, w) => {
-  if (isnum(x)) {
+  if (isNum(x)) {
     if (!has(w)) return Math.exp(x);
-    if (isnum(w)) return Math.pow(w === 0 ? 0 : w, x);
+    if (isNum(w)) return Math.pow(w === 0 ? 0 : w, x);
   }
-  throw Error("⋆: Arguments must be numbers");
+  throw Error('⋆: Arguments must be numbers');
 };
 let log = (x, w) => {
-  if (isnum(x)) {
+  if (isNum(x)) {
     if (!has(w)) return Math.log(x);
-    if (isnum(w)) return Math.log(x) / Math.log(w);
+    if (isNum(w)) return Math.log(x) / Math.log(w);
   }
-  throw Error("⋆⁼: Arguments must be numbers");
+  throw Error('⋆⁼: Arguments must be numbers');
 };
 let fc = (dy, mon, gl) => (x, w) => {
   if (has(w)) return dy(w, x);
-  if (isnum(x)) return mon(x);
-  throw Error(gl + "𝕩: Argument must be a number");
+  if (isNum(x)) return mon(x);
+  throw Error(gl + '𝕩: Argument must be a number');
 };
-let floor = fc(Math.min, Math.floor, "⌊");
-let ceil = fc(Math.max, Math.ceil, "⌈");
+let floor = fc(Math.min, Math.floor, '⌊');
+let ceil = fc(Math.max, Math.ceil, '⌈');
 let abs = (x, w) => {
-  if (isnum(x)) return Math.abs(x);
-  throw Error("|𝕩: Argument must be a number");
+  if (isNum(x)) return Math.abs(x);
+  throw Error('|𝕩: Argument must be a number');
 };
 let abs_mod = (x, w) => {
   if (!has(w)) return abs(x, w);
-  if (isnum(x) && isnum(w)) {
+  if (isNum(x) && isNum(w)) {
     let r = x % w;
     return x < 0 != w < 0 && r != 0 ? r + w : r;
   }
-  throw Error("𝕨|𝕩: Arguments must be numbers");
+  throw Error('𝕨|𝕩: Arguments must be numbers');
 };
 let lesseq = (x, w) => {
   let s = typeof w,
     t = typeof x;
-  if (s === "function" || t === "function")
-    throw Error("𝕨≤𝕩: Cannot compare operations");
-  if (w.ns || x.ns) throw Error("𝕨≤𝕩: Cannot compare namespaces");
+  if (s === 'function' || t === 'function')
+    throw Error('𝕨≤𝕩: Cannot compare operations');
+  if (w.ns || x.ns) throw Error('𝕨≤𝕩: Cannot compare namespaces');
   return +(s !== t
     ? s <= t
-    : s === "string"
+    : s === 'string'
     ? w.codePointAt(0) <= x.codePointAt(0)
     : w <= x);
 };
 let equals = (x, w) => {
   let a, b;
-  if (typeof w !== "function" || !(a = w.repr)) return x === w;
-  if (typeof x !== "function" || !(b = x.repr)) return false;
+  if (typeof w !== 'function' || !(a = w.repr)) return x === w;
+  if (typeof x !== 'function' || !(b = x.repr)) return false;
   b = b();
   return a().every((e, i) => call(runtime[18], e, b[i])); // ≡
 };
 let table = m1(
-  (f) => (x, w) =>
+  f => (x, w) =>
     !has(w)
       ? arr(
-          x.map((e) => call(f, e)),
-          x.sh
+          x.map(e => call(f, e)),
+          x.sh,
         )
-      : arr(w.map((d) => x.map((e) => call(f, e, d))).flat(), w.sh.concat(x.sh))
+      : arr(w.map(d => x.map(e => call(f, e, d))).flat(), w.sh.concat(x.sh)),
 );
-let scan = m1((f) => (x, w) => {
+let scan = m1(f => (x, w) => {
   let s = x.sh;
-  if (!s || s.length === 0) throw Error("`: 𝕩 must have rank at least 1");
+  if (!s || s.length === 0) throw Error('`: 𝕩 must have rank at least 1');
   if (has(w)) {
     let r = w.sh,
       wr = r ? r.length : 0;
-    if (1 + wr !== s.length) throw Error("`: rank of 𝕨 must be cell rank of 𝕩");
+    if (1 + wr !== s.length) throw Error('`: rank of 𝕨 must be cell rank of 𝕩');
     if (!r) w = [w];
     else if (!r.every((l, a) => l === s[1 + a]))
-      throw Error("`: shape of 𝕨 must be cell shape of 𝕩");
+      throw Error('`: shape of 𝕨 must be cell shape of 𝕩');
   }
   let l = x.length,
     r = Array(l);
@@ -659,7 +663,7 @@ let group_len = (x, w) => {
   // ≠¨⊔ for a valid list argument
   let l = x.reduce((a, b) => Math.max(a, b), (w || 0) - 1);
   let r = Array(l + 1).fill(0);
-  x.map((e) => {
+  x.map(e => {
     if (e >= 0) r[e] += 1;
   });
   return list(r, 0);
@@ -667,7 +671,7 @@ let group_len = (x, w) => {
 let group_ord = (x, w) => {
   // ∾⊔x assuming w=group_len(x)
   let l = 0,
-    s = w.map((n) => {
+    s = w.map(n => {
       let l0 = l;
       l += n;
       return l0;
@@ -678,28 +682,28 @@ let group_ord = (x, w) => {
   });
   return list(r, x.fill);
 };
-let type = (x) =>
-  isfunc(x) ? 3 + (x.m || 0) : x.sh ? 0 : x.ns ? 6 : 2 - isnum(x);
-let tofill = (x) =>
-  isfunc(x)
+let type = x =>
+  isFunc(x) ? 3 + (x.m || 0) : x.sh ? 0 : x.ns ? 6 : 2 - isNum(x);
+let tofill = x =>
+  isFunc(x)
     ? undefined
     : x.sh
     ? arr(x.map(tofill), x.sh, x.fill)
-    : isnum(x)
+    : isNum(x)
     ? 0
-    : " ";
+    : ' ';
 let fill = (x, w) => {
   if (has(w)) {
     return arr(x.slice(), x.sh, tofill(w));
   } else {
     let f = x.fill;
-    if (!has(f)) throw Error("Fill does not exist");
+    if (!has(f)) throw Error('Fill does not exist');
     return f;
   }
 };
 let fill_by = (f, g) => (x, w) => {
   let r = f(x, w);
-  let a2fill = (x) => (isfunc(x) ? x : isnum(x) ? 0 : " ");
+  let a2fill = x => (isFunc(x) ? x : isNum(x) ? 0 : ' ');
   let xf = x.sh ? x.fill : a2fill(x);
   if (r.sh && has(xf)) {
     r = arr(r.slice(), r.sh);
@@ -726,7 +730,7 @@ let provide = [
   log, // Log
   group_len, // GroupLen
   group_ord, // GroupOrd
-  assertFn(""), // !
+  assertFn(''), // !
   plus, // +
   minus, // -
   times, // ×
@@ -743,7 +747,7 @@ let provide = [
       Array(x)
         .fill()
         .map((_, i) => i),
-      0
+      0,
     ), // ↕
   table, // ⌜
   scan, // `
@@ -764,12 +768,12 @@ let select = (x, w) => {
   }
   let r = Array(w.length * c);
   let j = 0;
-  w.forEach((i) => {
+  w.forEach(i => {
     for (let k = 0; k < c; k++) r[j++] = x[i * c + k];
   });
   return arr(r, t, f);
 };
-let fold = (f) => (x, w) => {
+let fold = f => (x, w) => {
   let l = x.sh[0];
   let r = has(w) ? w : x[(l = l - 1)];
   for (let i = l; i--; ) r = call(f, r, x[i]);
@@ -790,14 +794,14 @@ let runtime_0 = [
   (x, w) => arr(x.slice(0, w), [w]), // ↑
   (x, w) => arr(x.slice(w), [x.sh[0] - w]), // ↓
   select, // ⊏
-  m1((f) => (x, w) => f), // ˙
-  m1((f) => (x, w) => call(f, has(w) ? w : x, x)), // ˜
+  m1(f => (x, w) => f), // ˙
+  m1(f => (x, w) => call(f, has(w) ? w : x, x)), // ˜
   m1(
-    (f) => (x, w) =>
+    f => (x, w) =>
       arr(
         x.map((e, i) => call(f, e, w[i])),
-        x.sh
-      )
+        x.sh,
+      ),
   ), // ¨
   m1(fold), // ´
   m2((f, g) => (x, w) => call(f, call(g, x, w))), // ∘
@@ -1979,174 +1983,174 @@ let [runtime, setPrims, setInv] = run(
     3,
     8,
     5,
-    "∾",
-    "⌜",
-    "˙",
-    "\0",
-    "+",
-    "-",
-    "×",
-    "÷",
-    "⋆",
-    "¬",
-    "⌊",
-    "⌈",
-    "∨",
-    "∧",
-    "≠",
-    "=",
-    ">",
-    "≥",
-    "◶",
-    "√",
-    "<",
-    "⊢",
-    "⊣",
-    "≍",
-    "⋈",
-    "↑",
-    "↓",
-    "↕",
-    "⌽",
-    "⍉",
-    "/",
-    "⊔",
-    "⁼",
-    "˜",
-    "¨",
-    "˘",
-    "`",
-    "∘",
-    "○",
-    "⌾",
-    "⍟",
-    "⊘",
-    "⊸",
-    "⟜",
-    str("+-×÷⋆√⌊⌈|¬∧∨<>≠=≤≥≡≢⊣⊢⥊∾≍⋈↑↓↕«»⌽⍉/⍋⍒⊏⊑⊐⊒∊⍷⊔!˙˜˘¨⌜⁼´˝`∘○⊸⟜⌾⊘◶⎉⚇⍟⎊%"),
-    str("´: Identity not found"),
-    str("´: 𝕩 must be a list"),
+    '∾',
+    '⌜',
+    '˙',
+    '\0',
+    '+',
+    '-',
+    '×',
+    '÷',
+    '⋆',
+    '¬',
+    '⌊',
+    '⌈',
+    '∨',
+    '∧',
+    '≠',
+    '=',
+    '>',
+    '≥',
+    '◶',
+    '√',
+    '<',
+    '⊢',
+    '⊣',
+    '≍',
+    '⋈',
+    '↑',
+    '↓',
+    '↕',
+    '⌽',
+    '⍉',
+    '/',
+    '⊔',
+    '⁼',
+    '˜',
+    '¨',
+    '˘',
+    '`',
+    '∘',
+    '○',
+    '⌾',
+    '⍟',
+    '⊘',
+    '⊸',
+    '⟜',
+    str('+-×÷⋆√⌊⌈|¬∧∨<>≠=≤≥≡≢⊣⊢⥊∾≍⋈↑↓↕«»⌽⍉/⍋⍒⊏⊑⊐⊒∊⍷⊔!˙˜˘¨⌜⁼´˝`∘○⊸⟜⌾⊘◶⎉⚇⍟⎊%'),
+    str('´: Identity not found'),
+    str('´: 𝕩 must be a list'),
     str("Mapping: Equal-rank argument shapes don't agree"),
     str("Mapping: Argument shape prefixes don't agree"),
-    str("⍋𝕩: 𝕩 must have rank at least 1"),
-    str("⍋ or ⍒: Rank of 𝕨 must be at least 1"),
-    str("⍋ or ⍒: Rank of 𝕩 must be at least cell rank of 𝕨"),
-    str("⍋ or ⍒: 𝕨 must be sorted"),
-    str("p⊐𝕩 or 𝕨∊p: p must have rank at least 1"),
-    str("p⊐n or n∊p: Rank of n must be at least cell rank of p"),
-    str("∊𝕩 or ⊐𝕩: 𝕩 must have rank at least 1"),
-    str("𝕨⍷𝕩: Rank of 𝕨 cannot exceed rank of 𝕩"),
-    str("/𝕩: 𝕩 must have rank 1"),
-    str("/𝕩: 𝕩 must consist of natural numbers"),
-    str("𝕨⍉𝕩: 𝕨 must have rank at most 1"),
-    str("𝕨⍉𝕩: Length of 𝕨 must not exceed rank of 𝕩"),
-    str("𝕨⍉𝕩: 𝕨 must consist of valid axis indices"),
-    str("𝕨⍉𝕩: Skipped result axis"),
-    str("↑𝕩: 𝕩 must have rank at least 1"),
-    str("↓𝕩: 𝕩 must have rank at least 1"),
-    str("𝕨⊑𝕩: Indices in 𝕨 must consist of integers"),
-    str("𝕨⊑𝕩: Index out of range"),
-    str("𝕨⊏𝕩: Indices in 𝕨 must be integers"),
-    str("𝕨⊏𝕩: Indices out of range"),
-    str("𝕨⊑𝕩: 𝕩 must be a list when 𝕨 is a number"),
-    str("𝕨⊑𝕩: Indices in compound 𝕨 must be lists"),
-    str("𝕨⊑𝕩: Index length in 𝕨 must match rank of 𝕩"),
-    str("𝕨"),
-    str("𝕩: "),
-    str("𝕩 must have rank at least 1 for simple 𝕨"),
-    str("Compound 𝕨 must have rank at most 1"),
-    str("Length of compound 𝕨 must be at most rank of 𝕩"),
-    str("𝕨 must be an array of numbers or list of such arrays"),
-    str("⊏𝕩: 𝕩 must have rank at least 1"),
-    str("⊏𝕩: 𝕩 cannot have length 0"),
-    str("⊏"),
+    str('⍋𝕩: 𝕩 must have rank at least 1'),
+    str('⍋ or ⍒: Rank of 𝕨 must be at least 1'),
+    str('⍋ or ⍒: Rank of 𝕩 must be at least cell rank of 𝕨'),
+    str('⍋ or ⍒: 𝕨 must be sorted'),
+    str('p⊐𝕩 or 𝕨∊p: p must have rank at least 1'),
+    str('p⊐n or n∊p: Rank of n must be at least cell rank of p'),
+    str('∊𝕩 or ⊐𝕩: 𝕩 must have rank at least 1'),
+    str('𝕨⍷𝕩: Rank of 𝕨 cannot exceed rank of 𝕩'),
+    str('/𝕩: 𝕩 must have rank 1'),
+    str('/𝕩: 𝕩 must consist of natural numbers'),
+    str('𝕨⍉𝕩: 𝕨 must have rank at most 1'),
+    str('𝕨⍉𝕩: Length of 𝕨 must not exceed rank of 𝕩'),
+    str('𝕨⍉𝕩: 𝕨 must consist of valid axis indices'),
+    str('𝕨⍉𝕩: Skipped result axis'),
+    str('↑𝕩: 𝕩 must have rank at least 1'),
+    str('↓𝕩: 𝕩 must have rank at least 1'),
+    str('𝕨⊑𝕩: Indices in 𝕨 must consist of integers'),
+    str('𝕨⊑𝕩: Index out of range'),
+    str('𝕨⊏𝕩: Indices in 𝕨 must be integers'),
+    str('𝕨⊏𝕩: Indices out of range'),
+    str('𝕨⊑𝕩: 𝕩 must be a list when 𝕨 is a number'),
+    str('𝕨⊑𝕩: Indices in compound 𝕨 must be lists'),
+    str('𝕨⊑𝕩: Index length in 𝕨 must match rank of 𝕩'),
+    str('𝕨'),
+    str('𝕩: '),
+    str('𝕩 must have rank at least 1 for simple 𝕨'),
+    str('Compound 𝕨 must have rank at most 1'),
+    str('Length of compound 𝕨 must be at most rank of 𝕩'),
+    str('𝕨 must be an array of numbers or list of such arrays'),
+    str('⊏𝕩: 𝕩 must have rank at least 1'),
+    str('⊏𝕩: 𝕩 cannot have length 0'),
+    str('⊏'),
     str("⊑𝕩: 𝕩 can't be empty"),
-    str("⌽𝕩: 𝕩 must have rank at least 1"),
-    str("𝕨⌽𝕩: 𝕨 must consist of integers"),
-    str("𝕨⌽𝕩: 𝕨 too large"),
-    str("⌽"),
-    str("𝕨/𝕩: 𝕨 must consist of natural numbers"),
-    str("𝕨/𝕩: Lengths of components of 𝕨 must match 𝕩"),
-    str("𝕨/𝕩: Components of 𝕨 must have rank 0 or 1"),
-    str("/"),
-    str("=≠≡≢"),
-    str("∾𝕩: 𝕩 must have an element with rank at least =𝕩"),
-    str("Under ⚇: depths must be less than 0, or ∞"),
-    str("⊢⊣˜∘○⊸⟜⊘◶"),
-    str("´˝"),
-    str("=≠≢"),
-    str("<"),
-    str("⋈"),
-    str("≍"),
-    str("↕/»«"),
-    str("⊔"),
-    str("⥊⌽⍉⊏"),
-    str("↑↓"),
-    str("⊑"),
-    str(">"),
-    str("∾"),
-    str("¨⌜"),
-    str("˘"),
-    str("⎉"),
-    str("⚇"),
-    str("Cannot modify fill with Structural Under"),
-    str("⌾: Incompatible result elements in structural Under"),
-    str(">𝕩: Elements of 𝕩 must have matching shapes"),
-    str("𝕨∾𝕩: Rank of 𝕨 and 𝕩 must differ by at most 1"),
-    str("𝕨∾𝕩: Cell shapes of 𝕨 and 𝕩 must match"),
-    str("∾𝕩: Incompatible element ranks"),
-    str("∾𝕩: 𝕩 element shapes must be compatible"),
-    str("∾𝕩: 𝕩 element trailing shapes must match"),
-    str("∾𝕩: empty 𝕩 fill rank must be at least argument rank"),
-    str("∾𝕩: 𝕩 must be an array"),
-    str("↑"),
-    str("↓"),
-    str("𝕩: 𝕨 must "),
-    str("have rank at most 1"),
-    str("consist of integers"),
-    str("« or »: 𝕩 must have rank at least 1"),
-    str("« or »: 𝕨 must not have higher rank than 𝕩"),
-    str("« or »: Rank of 𝕨 must be at least rank of 𝕩 minus 1"),
+    str('⌽𝕩: 𝕩 must have rank at least 1'),
+    str('𝕨⌽𝕩: 𝕨 must consist of integers'),
+    str('𝕨⌽𝕩: 𝕨 too large'),
+    str('⌽'),
+    str('𝕨/𝕩: 𝕨 must consist of natural numbers'),
+    str('𝕨/𝕩: Lengths of components of 𝕨 must match 𝕩'),
+    str('𝕨/𝕩: Components of 𝕨 must have rank 0 or 1'),
+    str('/'),
+    str('=≠≡≢'),
+    str('∾𝕩: 𝕩 must have an element with rank at least =𝕩'),
+    str('Under ⚇: depths must be less than 0, or ∞'),
+    str('⊢⊣˜∘○⊸⟜⊘◶'),
+    str('´˝'),
+    str('=≠≢'),
+    str('<'),
+    str('⋈'),
+    str('≍'),
+    str('↕/»«'),
+    str('⊔'),
+    str('⥊⌽⍉⊏'),
+    str('↑↓'),
+    str('⊑'),
+    str('>'),
+    str('∾'),
+    str('¨⌜'),
+    str('˘'),
+    str('⎉'),
+    str('⚇'),
+    str('Cannot modify fill with Structural Under'),
+    str('⌾: Incompatible result elements in structural Under'),
+    str('>𝕩: Elements of 𝕩 must have matching shapes'),
+    str('𝕨∾𝕩: Rank of 𝕨 and 𝕩 must differ by at most 1'),
+    str('𝕨∾𝕩: Cell shapes of 𝕨 and 𝕩 must match'),
+    str('∾𝕩: Incompatible element ranks'),
+    str('∾𝕩: 𝕩 element shapes must be compatible'),
+    str('∾𝕩: 𝕩 element trailing shapes must match'),
+    str('∾𝕩: empty 𝕩 fill rank must be at least argument rank'),
+    str('∾𝕩: 𝕩 must be an array'),
+    str('↑'),
+    str('↓'),
+    str('𝕩: 𝕨 must '),
+    str('have rank at most 1'),
+    str('consist of integers'),
+    str('« or »: 𝕩 must have rank at least 1'),
+    str('« or »: 𝕨 must not have higher rank than 𝕩'),
+    str('« or »: Rank of 𝕨 must be at least rank of 𝕩 minus 1'),
     str("« or »: 𝕨 must share 𝕩's major cell shape"),
-    str("↕𝕩: 𝕩 must consist of natural numbers"),
-    str("↕𝕩: 𝕩 must be a number or list"),
-    str("𝕨↕𝕩: 𝕨 must have rank at most 1"),
-    str("𝕨↕𝕩: Length of 𝕨 must be at most rank of 𝕩"),
-    str("𝕨↕𝕩: 𝕨 must consist of natural numbers"),
-    str("𝕨↕𝕩: Window length 𝕨 must be at most axis length plus one"),
+    str('↕𝕩: 𝕩 must consist of natural numbers'),
+    str('↕𝕩: 𝕩 must be a number or list'),
+    str('𝕨↕𝕩: 𝕨 must have rank at most 1'),
+    str('𝕨↕𝕩: Length of 𝕨 must be at most rank of 𝕩'),
+    str('𝕨↕𝕩: 𝕨 must consist of natural numbers'),
+    str('𝕨↕𝕩: Window length 𝕨 must be at most axis length plus one'),
     str("˘: Argument lengths don't agree"),
-    str("˝: 𝕩 must have rank at least 1"),
-    str("˝: Identity does not exist"),
-    str("∘⌊⌽↑"),
-    str("𝕨⥊𝕩: 𝕨 must have rank at most 1"),
-    str("𝕨⥊𝕩: 𝕨 must consist of natural numbers"),
+    str('˝: 𝕩 must have rank at least 1'),
+    str('˝: Identity does not exist'),
+    str('∘⌊⌽↑'),
+    str('𝕨⥊𝕩: 𝕨 must have rank at most 1'),
+    str('𝕨⥊𝕩: 𝕨 must consist of natural numbers'),
     str("𝕨⥊𝕩: Can't compute axis length when rest of shape is empty"),
-    str("𝕨⥊𝕩: 𝕨 must consist of natural numbers or ∘ ⌊ ⌽ ↑"),
-    str("𝕨⥊𝕩: Shape must be exact when reshaping with ∘"),
+    str('𝕨⥊𝕩: 𝕨 must consist of natural numbers or ∘ ⌊ ⌽ ↑'),
+    str('𝕨⥊𝕩: Shape must be exact when reshaping with ∘'),
     str("𝕨⥊𝕩: Can't produce non-empty array from empty 𝕩"),
-    str("⊔: Grouping argument must consist of integers"),
-    str("⊔: Grouping argument values cannot be less than ¯1"),
-    str("⊔𝕩: 𝕩 must be a list"),
-    str("𝕨⊔𝕩: Rank of simple 𝕨 must be at most rank of 𝕩"),
+    str('⊔: Grouping argument must consist of integers'),
+    str('⊔: Grouping argument values cannot be less than ¯1'),
+    str('⊔𝕩: 𝕩 must be a list'),
+    str('𝕨⊔𝕩: Rank of simple 𝕨 must be at most rank of 𝕩'),
     str(
-      "𝕨⊔𝕩: Lengths of 𝕨 must equal to 𝕩, or one more only in a rank-1 component"
+      '𝕨⊔𝕩: Lengths of 𝕨 must equal to 𝕩, or one more only in a rank-1 component',
     ),
-    str("𝕨⊔𝕩: Compound 𝕨 must be a list"),
-    str("𝕨⊔𝕩: Total rank of 𝕨 must be at most rank of 𝕩"),
-    str("𝕨⊔𝕩: 𝕩 must be an array"),
-    str("⎉ or ⚇: 𝔾 result must have rank at most 1"),
-    str("⎉ or ⚇: 𝔾 result must have 1 to 3 elements"),
-    str("⎉ or ⚇: 𝔾 result must consist of integers"),
-    str("⍟: 𝕨𝔾𝕩 must consist of integers"),
-    str("≥: Needs two arguments"),
-    str("≤: Needs two arguments"),
-    str("⊒: Rank of 𝕨 must be at least 1"),
-    str("⊒: Rank of 𝕩 must be at least cell rank of 𝕨"),
+    str('𝕨⊔𝕩: Compound 𝕨 must be a list'),
+    str('𝕨⊔𝕩: Total rank of 𝕨 must be at most rank of 𝕩'),
+    str('𝕨⊔𝕩: 𝕩 must be an array'),
+    str('⎉ or ⚇: 𝔾 result must have rank at most 1'),
+    str('⎉ or ⚇: 𝔾 result must have 1 to 3 elements'),
+    str('⎉ or ⚇: 𝔾 result must consist of integers'),
+    str('⍟: 𝕨𝔾𝕩 must consist of integers'),
+    str('≥: Needs two arguments'),
+    str('≤: Needs two arguments'),
+    str('⊒: Rank of 𝕨 must be at least 1'),
+    str('⊒: Rank of 𝕩 must be at least cell rank of 𝕨'),
     str("Can't invert blocks (add an undo header?)"),
-    str("Cannot invert modifier"),
-    str("⁼: Inverse failed"),
-    str("⁼: Inverse does not exist"),
-    str("⁼: Inverse not found"),
+    str('Cannot invert modifier'),
+    str('⁼: Inverse failed'),
+    str('⁼: Inverse does not exist'),
+    str('⁼: Inverse not found'),
   ],
   [
     [0, 1, 0],
@@ -2871,7 +2875,7 @@ let [runtime, setPrims, setInv] = run(
     [23657, 3],
     [23674, 3],
     [23691, 3],
-  ]
+  ],
 );
 
 // Use high-precision modulus (⚇0)
@@ -2880,33 +2884,33 @@ runtime[8] = runtime[61](abs_mod, 0);
 
 // Cache inverse calls and handle block inverses
 setInv(
-  (inv) => (f) => !isfunc(f) ? inv(f) : f.inverse || (f.inverse = inv(f)),
-  (snv) => (f) => !isfunc(f) ? snv(f) : f.sinverse || (f.sinverse = snv(f))
+  inv => f => !isFunc(f) ? inv(f) : f.inverse || (f.inverse = inv(f)),
+  snv => f => !isFunc(f) ? snv(f) : f.sinverse || (f.sinverse = snv(f)),
 );
 
-let rtAssert = (runtime[43] = assertFn("!"));
+let rtAssert = (runtime[43] = assertFn('!'));
 runtime.map((r, i) => {
   r.prim = i;
 });
-let decompose = (x) =>
+let decompose = x =>
   list(
-    !isfunc(x) ? [-1, x] : has(x.prim) ? [0, x] : x.repr ? x.repr() : [1, x]
+    !isFunc(x) ? [-1, x] : has(x.prim) ? [0, x] : x.repr ? x.repr() : [1, x],
   );
-setPrims(list([decompose, (x) => (has(x.prim) ? x.prim : runtime.length)]));
+setPrims(list([decompose, x => (has(x.prim) ? x.prim : runtime.length)]));
 let glyphs = [
-  "+-×÷⋆√⌊⌈|¬∧∨<>≠=≤≥≡≢⊣⊢⥊∾≍⋈↑↓↕«»⌽⍉/⍋⍒⊏⊑⊐⊒∊⍷⊔!",
-  "˙˜˘¨⌜⁼´˝`",
-  "∘○⊸⟜⌾⊘◶⎉⚇⍟⎊",
+  '+-×÷⋆√⌊⌈|¬∧∨<>≠=≤≥≡≢⊣⊢⥊∾≍⋈↑↓↕«»⌽⍉/⍋⍒⊏⊑⊐⊒∊⍷⊔!',
+  '˙˜˘¨⌜⁼´˝`',
+  '∘○⊸⟜⌾⊘◶⎉⚇⍟⎊',
 ];
-let gl = glyphs.join("");
-let glyph = (x) => {
+let gl = glyphs.join('');
+let glyph = x => {
   let g = gl[x.prim];
-  if (!has(g)) throw Error("•Glyph 𝕩: 𝕩 must be a primitive");
+  if (!has(g)) throw Error('•Glyph 𝕩: 𝕩 must be a primitive');
   return g;
 };
 
 // Compiler
-runtime[43] = assertFn("Compiler");
+runtime[43] = assertFn('Compiler');
 let compgen_raw = run(
   [
     1, 1, 7, 34, 0, 1, 33, 0, 3, 33, 0, 4, 33, 0, 5, 12, 3, 48, 6, 0, 63, 0, 27,
@@ -3671,92 +3675,92 @@ let compgen_raw = run(
     66,
     16,
     14,
-    "\0",
-    "0",
-    "#",
+    '\0',
+    '0',
+    '#',
     "'",
     '"',
-    "@",
-    str("aA"),
-    str("àÀ"),
-    str("⋄,"),
-    str(":;?"),
-    str("⇐←↩"),
-    str("(){}⟨⟩[]"),
-    str("‿"),
-    str("·"),
-    str("𝕊𝕏𝕎𝔽𝔾𝕤𝕩𝕨𝕣𝕗𝕘"),
-    str(".¯π∞"),
-    str("_"),
-    str("•"),
-    str("𝕨"),
-    str(" "),
-    str("#'\"@"),
-    str("s"),
-    str("Unknown character"),
-    str(": "),
-    str("Character set conflict: "),
-    str("˜⁼"),
-    str("Unclosed quote"),
+    '@',
+    str('aA'),
+    str('àÀ'),
+    str('⋄,'),
+    str(':;?'),
+    str('⇐←↩'),
+    str('(){}⟨⟩[]'),
+    str('‿'),
+    str('·'),
+    str('𝕊𝕏𝕎𝔽𝔾𝕤𝕩𝕨𝕣𝕗𝕘'),
+    str('.¯π∞'),
+    str('_'),
+    str('•'),
+    str('𝕨'),
+    str(' '),
+    str('#\'"@'),
+    str('s'),
+    str('Unknown character'),
+    str(': '),
+    str('Character set conflict: '),
+    str('˜⁼'),
+    str('Unclosed quote'),
     str("Words can't only have underscores"),
-    str("System dot with no name"),
+    str('System dot with no name'),
     str("𝕣 can't be used with other word characters"),
     str("Numbers can't start with underscores"),
-    str("Letter"),
+    str('Letter'),
     str(' "'),
     str('" not allowed in numbers'),
-    str("ea"),
-    str("Negative sign in the middle of a number"),
-    str("Portion of a number is empty"),
-    str("Ill-formed decimal or exponent use"),
-    str("π and ∞ must occur alone"),
-    str("Unmatched bracket"),
-    str("Empty program"),
-    str("Swapped open and closed brackets"),
+    str('ea'),
+    str('Negative sign in the middle of a number'),
+    str('Portion of a number is empty'),
+    str('Ill-formed decimal or exponent use'),
+    str('π and ∞ must occur alone'),
+    str('Unmatched bracket'),
+    str('Empty program'),
+    str('Swapped open and closed brackets'),
     str("Parentheses can't contain separators"),
-    str("Punctuation : ; ? outside block top level"),
-    str("Empty statement or expression"),
-    str("Invalid assignment or stranding use"),
+    str('Punctuation : ; ? outside block top level'),
+    str('Empty statement or expression'),
+    str('Invalid assignment or stranding use'),
     str("Can't use export statement as expression"),
     str("Can't use export statement as predicate"),
-    str("Dot must be followed by a name"),
-    str("Header-less bodies must come last"),
-    str("At most two header-less bodies allowed"),
-    str("Invalid Undo header syntax"),
-    str("Only one header per body allowed"),
-    str("Missing operand in header"),
-    str("Invalid header structure"),
-    str("Incorrect special name"),
-    str("Header left argument without right"),
-    str("Header operation must be a plain name"),
-    str("Header with ⁼ must take arguments"),
-    str("Header with ˜⁼ must have left argument"),
-    str("Block header type conflict"),
-    str("Special name outside of any block"),
-    str("Unreachable body"),
-    str("Dot must be preceded by a subject"),
-    str("Nothing (·) cannot be assigned"),
+    str('Dot must be followed by a name'),
+    str('Header-less bodies must come last'),
+    str('At most two header-less bodies allowed'),
+    str('Invalid Undo header syntax'),
+    str('Only one header per body allowed'),
+    str('Missing operand in header'),
+    str('Invalid header structure'),
+    str('Incorrect special name'),
+    str('Header left argument without right'),
+    str('Header operation must be a plain name'),
+    str('Header with ⁼ must take arguments'),
+    str('Header with ˜⁼ must have left argument'),
+    str('Block header type conflict'),
+    str('Special name outside of any block'),
+    str('Unreachable body'),
+    str('Dot must be preceded by a subject'),
+    str('Nothing (·) cannot be assigned'),
     str("Can't use Nothing (·) as predicate"),
-    str("Missing operand"),
-    str("Double subjects (missing ‿?)"),
-    str("No right-hand side in non-modified assignment"),
-    str("Assignment role mismatch or missing modified assignment target"),
-    str("Role of the two sides in assignment must match"),
+    str('Missing operand'),
+    str('Double subjects (missing ‿?)'),
+    str('No right-hand side in non-modified assignment'),
+    str('Assignment role mismatch or missing modified assignment target'),
+    str('Role of the two sides in assignment must match'),
     str("Can't use Nothing (·) in lists"),
     str("Can't modify Nothing (·)"),
     str("Square brackets can't be empty"),
     str("Can't return Nothing (·)"),
-    str("Invalid use of 𝕨 in monadic case"),
-    str("Assignment target must be a name or list of targets"),
+    str('Invalid use of 𝕨 in monadic case'),
+    str('Assignment target must be a name or list of targets'),
     str("Can't nest assignments (write aliases with ⇐)"),
     str("Can't use result of function/modifier assignment without parentheses"),
-    str("Alias must have a name on the right and appear within ⟨⟩"),
+    str('Alias must have a name on the right and appear within ⟨⟩'),
     str("Can't define special name"),
-    str("Redefinition"),
-    str("Undefined identifier"),
+    str('Redefinition'),
+    str('Undefined identifier'),
     str("Can't export from surrounding scope"),
-    str("Second-level parts of a train must be functions"),
-    str("System values not supported"),
+    str('Second-level parts of a train must be functions'),
+    str('System values not supported'),
   ],
   [
     [0, 1, 0],
@@ -3815,32 +3819,32 @@ let compgen_raw = run(
     [13752, 3],
     [13814, 3],
     [13835, 3],
-  ]
+  ],
 );
-let compgen = (sys) => {
+let compgen = sys => {
   let gl = sys.glyphs,
     rt = sys.runtime;
   let comp = compgen_raw(list(gl));
-  return (sys.comps = (sysargs) => {
+  return (sys.comps = sysargs => {
     let system = (x, w) => {
-      let r = table((s) => sysvals[unstr(s)])(x);
-      if (r.some((v) => !has(v))) {
+      let r = table(s => sysvals[unstr(s)])(x);
+      if (r.some(v => !has(v))) {
         let m = x
           .filter((_, i) => !has(r[i]))
-          .map((s) => "•" + unstr(s))
-          .join(" ");
-        throw Error("Unknown system values (see •listSys for available): " + m);
+          .map(s => '•' + unstr(s))
+          .join(' ');
+        throw Error('Unknown system values (see •listSys for available): ' + m);
       }
-      return table((v) => (v.dynamic ? v(sysargs) : v))(r);
+      return table(v => (v.dynamic ? v(sysargs) : v))(r);
     };
     let rts = list([rt, system].concat(sysargs.addrt || []));
-    return (src) => {
+    return src => {
       let s = str(src),
         c;
       try {
         c = comp(s, rts);
       } catch (e) {
-        if (typeof e.message !== "string") e.message.src = s;
+        if (typeof e.message !== 'string') e.message.src = s;
         throw e;
       }
       c.push(s);
@@ -3850,24 +3854,24 @@ let compgen = (sys) => {
 };
 let sysargs = { runtime, glyphs: glyphs.map(str) };
 let compile = compgen(sysargs)(sysargs);
-let bqn = (src) => run(...compile(src));
+let bqn = src => run(...compile(src));
 runtime[43] = rtAssert;
 
 // Formatter
-let fmtnum = (x) =>
+let fmtnum = x =>
   str(
     x == Infinity
-      ? "∞"
+      ? '∞'
       : x == -Infinity
-      ? "¯∞"
-      : ("" + x).replace(/-/g, "¯").replace(/\+/g, "")
+      ? '¯∞'
+      : ('' + x).replace(/-/g, '¯').replace(/\+/g, ''),
   );
-let placeholder = ["array", "function", "1-modifier", "2-modifier"].map((s) =>
-  str("*" + s + "*")
+let placeholder = ['array', 'function', '1-modifier', '2-modifier'].map(s =>
+  str('*' + s + '*'),
 );
-let repop = (x) =>
+let repop = x =>
   x.ns
-    ? str("{" + listkeys(x).join("‿") + "⇐}")
+    ? str('{' + listkeys(x).join('‿') + '⇐}')
     : gl[x.prim] || placeholder[type(x) - 2];
 let [fmt1, repr] = run(
   [
@@ -4065,38 +4069,38 @@ let [fmt1, repr] = run(
     3,
     7,
     10,
-    "\0",
-    " ",
-    "┐",
-    "↕",
-    "…",
-    "␡",
-    "␀",
-    "·",
-    "0",
+    '\0',
+    ' ',
+    '┐',
+    '↕',
+    '…',
+    '␡',
+    '␀',
+    '·',
+    '0',
     '"',
-    str("@"),
+    str('@'),
     str("'"),
-    str("⟨⟩"),
-    str("⟨"),
-    str("⟩"),
-    str("┌"),
-    str("·─"),
-    str("·╵╎┆┊"),
-    str("┘"),
-    str("┌┐"),
-    str("└┘"),
-    str("‿"),
-    str("'\""),
-    str("00321111"),
-    str("("),
-    str(")"),
-    str("{𝔽}"),
-    str("*array*"),
-    str("•Fmt: 𝕨 must be a list of up to two numbers (width, height)"),
-    str(","),
-    str("<"),
-    str("⥊"),
+    str('⟨⟩'),
+    str('⟨'),
+    str('⟩'),
+    str('┌'),
+    str('·─'),
+    str('·╵╎┆┊'),
+    str('┘'),
+    str('┌┐'),
+    str('└┘'),
+    str('‿'),
+    str('\'"'),
+    str('00321111'),
+    str('('),
+    str(')'),
+    str('{𝔽}'),
+    str('*array*'),
+    str('•Fmt: 𝕨 must be a list of up to two numbers (width, height)'),
+    str(','),
+    str('<'),
+    str('⥊'),
     str("Can't represent block"),
   ],
   [
@@ -4152,13 +4156,13 @@ let [fmt1, repr] = run(
     [2452, 7],
     [2655, 3],
     [2711, 5],
-  ]
+  ],
 )(list([type, decompose, repop, fmtnum]));
-let fmt = (x) => unstr(fmt1(x));
+let fmt = x => unstr(fmt1(x));
 
 let errHasSrc = (w, a) => (w && w.loc) || (!a && w.sh && w.sh[0] === 2);
-let fmtErr = (e) => {
-  let a = e.kind === "!",
+let fmtErr = e => {
+  let a = e.kind === '!',
     w = e.message,
     loc = [];
   while (errHasSrc(w, a)) {
@@ -4169,12 +4173,12 @@ let fmtErr = (e) => {
       i = n ? is[0] : is;
     let pair = n && is.sh.length > 1;
     if (pair) n *= 2;
-    let to = (i) =>
+    let to = i =>
       s
         .slice(0, i)
-        .join("")
-        .split("\n")
-        .map((l) => Array.from(l));
+        .join('')
+        .split('\n')
+        .map(l => Array.from(l));
     let ll = to(i),
       l = ll.length - 1,
       j = ll[l].length,
@@ -4195,44 +4199,44 @@ let fmtErr = (e) => {
     for (let h = 1; h < k; h++)
       c[(j = Math.max(j, is[h] - o + (pair ? h % 2 : 0)))] ^= 1;
     if (pair) for (let h = 1; h < cl; h++) c[h] ^= c[h - 1];
-    let add = ["", m.join(""), c.map((t) => (t ? "^" : " ")).join("")];
-    loc = add.concat(ol ? ["(and other lines)"] : [], loc);
+    let add = ['', m.join(''), c.map(t => (t ? '^' : ' ')).join('')];
+    loc = add.concat(ol ? ['(and other lines)'] : [], loc);
   }
-  if (a) w = w ? fmt(w).replace(/^/gm, "! ") : "! Error";
-  else w = w.sh ? w.join("") : w;
-  return [w].concat(loc).join("\n");
+  if (a) w = w ? fmt(w).replace(/^/gm, '! ') : '! Error';
+  else w = w.sh ? w.join('') : w;
+  return [w].concat(loc).join('\n');
 };
 let currenterror = (x, w) => {
   let e = save_error;
-  if (!has(e)) throw Error("No error is currently caught by ⎊");
-  let a = e.kind === "!";
+  if (!has(e)) throw Error('No error is currently caught by ⎊');
+  let a = e.kind === '!';
   w = e.message;
   while (errHasSrc(w, a)) w = w[1];
   return a || w.sh ? w : str(w);
 };
 
-let dynsys = (f) => {
+let dynsys = f => {
   f.dynamic = 1;
   return f;
 };
-let isstr = (x) =>
-  x.sh && x.sh.length == 1 && x.every((c) => typeof c === "string");
+let isstr = x =>
+  x.sh && x.sh.length == 1 && x.every(c => typeof c === 'string');
 let unixtime = (x, w) => Date.now() / 1000;
 let req1str = (e, x, w) => {
-  if (!isstr(x)) throw Error(e + ": 𝕩 must be a string");
-  if (has(w)) throw Error(e + ": 𝕨 not allowed");
+  if (!isstr(x)) throw Error(e + ': 𝕩 must be a string');
+  if (has(w)) throw Error(e + ': 𝕨 not allowed');
   return unstr(x);
 };
 let dojs = (x, w) => {
-  let s = req1str("•JS", x, w);
-  let r = Function("'use strict'; return (" + s + ")")();
-  let toBQN = (x) => {
-    if (isnum(x)) return x;
-    if (x === undefined) return "\0";
-    if (typeof x === "string") {
+  let s = req1str('•JS', x, w);
+  let r = Function("'use strict'; return (" + s + ')')();
+  let toBQN = x => {
+    if (isNum(x)) return x;
+    if (x === undefined) return '\0';
+    if (typeof x === 'string') {
       if (Array.from(x).length !== 1)
         throw Error(
-          "•JS: JS strings are one character; use Array.from for BQN strings"
+          '•JS: JS strings are one character; use Array.from for BQN strings',
         );
       return x;
     }
@@ -4240,64 +4244,64 @@ let dojs = (x, w) => {
       return arr(
         x.map(toBQN),
         x.sh || [x.length],
-        has(x.fill) ? tofill(toBQN(x.fill)) : x.fill
+        has(x.fill) ? tofill(toBQN(x.fill)) : x.fill,
       );
-    if (isfunc(x)) {
+    if (isFunc(x)) {
       let f = (a, b) => toBQN(x(a, b));
       f.m = x.m;
       return f;
     }
-    throw Error("•JS: Unrecognized JS result");
+    throw Error('•JS: Unrecognized JS result');
   };
   return toBQN(r);
 };
 
 let update_state = (st, w) => w; // Modified by Node version to handle •state
-let push_state = (st) => st;
-let copy_state = (st_old) => {
+let push_state = st => st;
+let copy_state = st_old => {
   let st = { ...st_old };
   st.addrt = [];
   push_state(st);
   return st;
 };
-let makebqn = (proc, fn) => (st) => (x, w) => {
+let makebqn = (proc, fn) => st => (x, w) => {
   let src = proc(x, w, update_state, st);
   return fn(st.comps(st)(src));
 };
 let makebqnfn = (e, fn) => makebqn((x, w, u, s) => req1str(e, x, u(s, w)), fn);
-let dynsys_copy = (fn) => dynsys((st) => (x, w) => fn(copy_state(st))(x, w));
+let dynsys_copy = fn => dynsys(st => (x, w) => fn(copy_state(st))(x, w));
 
-let rebqn = dynsys_copy((state) => (x, w) => {
+let rebqn = dynsys_copy(state => (x, w) => {
   let req = (r, s) => {
-    if (!r) throw Error("•ReBQN: " + s);
+    if (!r) throw Error('•ReBQN: ' + s);
   };
-  req(!has(w), "𝕨 not allowed");
-  req(x.ns, "𝕩 must be a namespace");
-  let [repl, primitives] = ["repl", "primitives"].map(nsget(x));
+  req(!has(w), '𝕨 not allowed');
+  req(x.ns, '𝕩 must be a namespace');
+  let [repl, primitives] = ['repl', 'primitives'].map(nsget(x));
 
   if (has(primitives)) {
     addprimitives(state, primitives);
   }
-  let cmp = makebqnfn("•ReBQN evaluation", (r) => r)(state);
+  let cmp = makebqnfn('•ReBQN evaluation', r => r)(state);
 
-  repl = has(repl) ? ["none", "loose", "strict"].indexOf(unstr(repl)) : 0;
-  req(repl >= 0, "invalid value for 𝕩.repl");
+  repl = has(repl) ? ['none', 'loose', 'strict'].indexOf(unstr(repl)) : 0;
+  req(repl >= 0, 'invalid value for 𝕩.repl');
   return repl ? rerepl(repl, cmp, state) : (x, w) => run(...cmp(x, w));
 });
 let addprimitives = (state, p) => {
   let req = (r, s) => {
-    if (!r) throw Error("•ReBQN 𝕩.primitives: " + s);
+    if (!r) throw Error('•ReBQN 𝕩.primitives: ' + s);
   };
-  req(p.sh && p.sh.length === 1, "Must be a list");
+  req(p.sh && p.sh.length === 1, 'Must be a list');
   req(
-    p.every((e) => e.sh && e.sh.length === 1 && e.sh[0] === 2),
-    "Must consist of glyph-primitive pairs"
+    p.every(e => e.sh && e.sh.length === 1 && e.sh[0] === 2),
+    'Must consist of glyph-primitive pairs',
   );
-  let pr = glyphs.map((_) => []),
-    rt = pr.map((_) => []);
+  let pr = glyphs.map(_ => []),
+    rt = pr.map(_ => []);
   p.forEach(([gl, val]) => {
-    req(typeof gl === "string", "Glyphs must be characters");
-    req(isfunc(val), "Primitives must be operations");
+    req(typeof gl === 'string', 'Glyphs must be characters');
+    req(isFunc(val), 'Primitives must be operations');
     let k = val.m || 0;
     pr[k].push(gl);
     rt[k].push(val);
@@ -4328,9 +4332,9 @@ let rerepl = (repl, cmp, state) => {
     let c = cmp(x, w);
     let pnames = c[5][2][0];
     let newv = c[3][0][2].slice(vars.length);
-    names.push(...newv.map((i) => pnames[i]));
-    redef.push(...newv.map((i) => rd));
-    vars.push(...newv.map((i) => null));
+    names.push(...newv.map(i => pnames[i]));
+    redef.push(...newv.map(i => rd));
+    vars.push(...newv.map(i => null));
     try {
       return run(...c, vars);
     } finally {
@@ -4351,26 +4355,26 @@ let rerepl = (repl, cmp, state) => {
   };
   return f;
 };
-let primitives = dynsys((state) => {
+let primitives = dynsys(state => {
   let gl = state.glyphs.flat(),
     rt = state.runtime;
   return list(gl.map((g, i) => list([g, rt[i]])));
 });
 
 let parsefloat = (x, w) => {
-  let n = req1str("•ParseFloat", x, w);
+  let n = req1str('•ParseFloat', x, w);
   if (!/^-?(\.[0-9]+|[0-9]+\.?[0-9]*)([eE][-+]?[0-9]+)?$/.test(n))
-    throw Error("•ParseFloat: invalid float format");
+    throw Error('•ParseFloat: invalid float format');
   return parseFloat(n);
 };
 
-let isint = (n) => isnum(n) && n === (n | 0);
-let isnat = (n) => isint(n) && n >= 0;
+let isint = n => isNum(n) && n === (n | 0);
+let isnat = n => isint(n) && n >= 0;
 let fact = (x, w) => {
-  if (has(w)) throw Error("•math.Fact: Left argument not allowed");
+  if (has(w)) throw Error('•math.Fact: Left argument not allowed');
   if (!isnat(x))
     throw Error(
-      "•math.Fact: Argument other than a natural number not yet supported"
+      '•math.Fact: Argument other than a natural number not yet supported',
     );
   let p = 1;
   while (x > 0 && p < Infinity) {
@@ -4380,9 +4384,9 @@ let fact = (x, w) => {
   return p;
 };
 let comb = (x, w) => {
-  if (!has(w)) throw Error("•math.Comb: Left argument required");
+  if (!has(w)) throw Error('•math.Comb: Left argument required');
   if (!(isint(w) && isint(x)))
-    throw Error("•math.Comb: Non-integer arguments not yet supported");
+    throw Error('•math.Comb: Non-integer arguments not yet supported');
   let n = w,
     k = Math.min(x, n - x);
   let sgn = 1;
@@ -4405,10 +4409,10 @@ let comb = (x, w) => {
   return sgn * Math.round(p);
 };
 let gcd = (x, w) => {
-  if (!has(w)) throw Error("•math.GCD: Left argument required");
+  if (!has(w)) throw Error('•math.GCD: Left argument required');
   if (!(isnat(w) && isnat(x)))
     throw Error(
-      "•math.GCD: Arguments other than natural numbers not yet supported"
+      '•math.GCD: Arguments other than natural numbers not yet supported',
     );
   while (w) {
     let t = w;
@@ -4418,32 +4422,30 @@ let gcd = (x, w) => {
   return x;
 };
 let lcm = (x, w) => (w === 0 ? 0 : (w / gcd(x, w)) * x);
-let pervfn = (f) => {
+let pervfn = f => {
   f.prim = null;
   return runtime[61](f, 0);
 }; // ⚇
-let mathfn = (f) => {
+let mathfn = f => {
   let p = pervfn(f);
   return f !== Math.atan2 && f !== Math.hypot
     ? (x, w) => {
-        if (has(w)) throw Error("Left argument not allowed");
+        if (has(w)) throw Error('Left argument not allowed');
         return p(x);
       }
     : (x, w) => {
-        if (!has(w)) throw Error("Left argument required");
+        if (!has(w)) throw Error('Left argument required');
         return p(x, w);
       };
 };
-let trig = "cos cosh sin sinh tan tanh".split(" ");
+let trig = 'cos cosh sin sinh tan tanh'.split(' ');
 let mathkeys = trig.concat(
-  trig.map((n) => "a" + n),
-  "cbrt expm1 hypot log10 log1p log2 round trunc atan2".split(" ")
+  trig.map(n => 'a' + n),
+  'cbrt expm1 hypot log10 log1p log2 round trunc atan2'.split(' '),
 );
 let mathns = makens(
-  mathkeys.concat(["fact", "comb", "gcd", "lcm"]),
-  mathkeys
-    .map((k) => mathfn(Math[k]))
-    .concat([fact, comb, gcd, lcm].map(pervfn))
+  mathkeys.concat(['fact', 'comb', 'gcd', 'lcm']),
+  mathkeys.map(k => mathfn(Math[k])).concat([fact, comb, gcd, lcm].map(pervfn)),
 );
 trig.map((_, i) => {
   let f = mathns[i],
@@ -4454,70 +4456,70 @@ trig.map((_, i) => {
 
 let nsns = (() => {
   let keys = (x, w) => {
-    if (has(w) || !x.ns) throw Error("•ns.Keys: Takes one namespace argument");
+    if (has(w) || !x.ns) throw Error('•ns.Keys: Takes one namespace argument');
     return list(listkeys(x).map(str));
   };
   let req1name = (e, x, w) =>
-    req1str(e, x, w).replaceAll("_", "").toLowerCase();
+    req1str(e, x, w).replaceAll('_', '').toLowerCase();
   let getq = (e, x, w) => {
-    if (!has(w) || !w.ns) throw Error(e + ": 𝕨 must be a namespace");
-    return nsget(w)(req1name("•ns." + e, x));
+    if (!has(w) || !w.ns) throw Error(e + ': 𝕨 must be a namespace');
+    return nsget(w)(req1name('•ns.' + e, x));
   };
-  let hasq = (x, w) => +has(getq("Has", x, w));
+  let hasq = (x, w) => +has(getq('Has', x, w));
   let get = (x, w) => {
-    let v = getq("Get", x, w);
-    if (!has(v)) throw Error("•ns.Get: key not found");
+    let v = getq('Get', x, w);
+    if (!has(v)) throw Error('•ns.Get: key not found');
     return v;
   };
   let map = (x, w) => {
-    if (has(w) || !x.ns) throw Error("•ns.Map: Takes one namespace argument");
+    if (has(w) || !x.ns) throw Error('•ns.Map: Takes one namespace argument');
     let g = nsget(x),
-      getq = (e, x, w) => g(req1name("Namespace map." + e, x, w));
-    let hasq = (x, w) => +has(getq("Has", x, w));
+      getq = (e, x, w) => g(req1name('Namespace map.' + e, x, w));
+    let hasq = (x, w) => +has(getq('Has', x, w));
     let get = (x, w) => {
-      let v = getq("Get", x);
+      let v = getq('Get', x);
       if (has(v)) return v;
       if (has(w)) return w;
-      throw Error("Namespace map.Has: key not found");
+      throw Error('Namespace map.Has: key not found');
     };
-    return makens(["has", "get"], [hasq, get]);
+    return makens(['has', 'get'], [hasq, get]);
   };
-  return makens(["keys", "has", "get", "map"], [keys, hasq, get, map]);
+  return makens(['keys', 'has', 'get', 'map'], [keys, hasq, get, map]);
 })();
 
 let rand = (() => {
   let reqnat = (e, x) => {
-    if (!isnum(x) || x < 0 || x != Math.floor(x))
-      throw Error("•rand." + e + " must be a natural number");
+    if (!isNum(x) || x < 0 || x != Math.floor(x))
+      throw Error('•rand.' + e + ' must be a natural number');
   };
-  let randnat = (n) => Math.floor(n * Math.random());
+  let randnat = n => Math.floor(n * Math.random());
   let range = (x, w) => {
-    reqnat("Range: 𝕩", x);
+    reqnat('Range: 𝕩', x);
     let r = x ? () => randnat(x) : Math.random;
     if (!has(w)) return r();
     let n = 1;
-    if (!w.sh) reqnat("Range: 𝕨", (n = w));
+    if (!w.sh) reqnat('Range: 𝕨', (n = w));
     else {
       if (w.sh.length > 1)
-        throw Error("Range: array 𝕨 must have rank at most 1");
-      w.map((m) => {
-        reqnat("Range: 𝕨 element", m);
+        throw Error('Range: array 𝕨 must have rank at most 1');
+      w.map(m => {
+        reqnat('Range: 𝕨 element', m);
         n *= m;
       });
     }
     return arr(Array(n).fill().map(r), w.sh ? w : [n], 0);
   };
-  let iota = (x) =>
+  let iota = x =>
     Array(x)
       .fill()
       .map((_, i) => i);
-  let deal_err = (e) => (x, w) => {
-    reqnat(e + ": 𝕩", x);
+  let deal_err = e => (x, w) => {
+    reqnat(e + ': 𝕩', x);
     if (!has(w)) w = x;
     else {
-      reqnat(e + ": 𝕨", w);
+      reqnat(e + ': 𝕨', w);
       if (w > x)
-        throw Error("•rand." + e + ": 𝕨 must be less than or equal to 𝕩");
+        throw Error('•rand.' + e + ': 𝕨 must be less than or equal to 𝕩');
     }
     let r = iota(x);
     for (let i = 0; i < w; i++) {
@@ -4529,21 +4531,21 @@ let rand = (() => {
     r.length = w;
     return list(r, 0);
   };
-  let deal = deal_err("Deal");
+  let deal = deal_err('Deal');
   let subset = (x, w) => {
-    reqnat("Subset: 𝕩", x);
+    reqnat('Subset: 𝕩', x);
     if (!has(w))
       return list(
-        iota(x).filter((_) => Math.random() < 0.5),
-        0
+        iota(x).filter(_ => Math.random() < 0.5),
+        0,
       );
-    return deal_err("Subset")(x, w).sort((a, b) => a - b);
+    return deal_err('Subset')(x, w).sort((a, b) => a - b);
   };
-  return makens(["range", "deal", "subset"], [range, deal, subset]);
+  return makens(['range', 'deal', 'subset'], [range, deal, subset]);
 })();
 
 let sysvals = {
-  bqn: dynsys_copy(makebqnfn("•BQN", (r) => run(...r))),
+  bqn: dynsys_copy(makebqnfn('•BQN', r => run(...r))),
   rebqn,
   primitives,
   type,
@@ -4558,14 +4560,14 @@ let sysvals = {
   math: mathns,
   ns: nsns,
   rand,
-  listsys: dynsys((_) => list(Object.keys(sysvals).sort().map(str))),
+  listsys: dynsys(_ => list(Object.keys(sysvals).sort().map(str))),
 };
 
-let make_timed = (tfn) => {
-  let timed = (f) => (x, w) => {
+let make_timed = tfn => {
+  let timed = f => (x, w) => {
     let n = has(w) ? w : 1;
-    if (!isnum(n) || n !== Math.floor(n) || n < 1)
-      throw Error("•_timed: 𝕨 must be an integer above 1");
+    if (!isNum(n) || n !== Math.floor(n) || n < 1)
+      throw Error('•_timed: 𝕨 must be an integer above 1');
     return (
       tfn(() => {
         for (let i = 0; i < n; i++) f(x);
@@ -4575,24 +4577,24 @@ let make_timed = (tfn) => {
   timed.m = 1;
   return timed;
 };
-if (typeof process !== "undefined") {
-  let sec = (t) => t[0] + t[1] / 1e9;
+if (typeof process !== 'undefined') {
+  let sec = t => t[0] + t[1] / 1e9;
   sysvals.monotime = (x, w) => sec(process.hrtime());
-  sysvals.timed = make_timed((f) => {
+  sysvals.timed = make_timed(f => {
     let t0 = process.hrtime();
     f();
     return sec(process.hrtime(t0));
   });
-} else if (typeof performance !== "undefined") {
+} else if (typeof performance !== 'undefined') {
   sysvals.monotime = (x, w) => performance.now() / 1000;
-  sysvals.timed = make_timed((f) => {
+  sysvals.timed = make_timed(f => {
     let t0 = performance.now();
     f();
     return (performance.now() - t0) / 1000;
   });
 }
 
-if (typeof module !== "undefined") {
+if (typeof module !== 'undefined') {
   // Node.js
   bqn.fmt = fmt;
   bqn.fmtErr = fmtErr;
@@ -4600,15 +4602,15 @@ if (typeof module !== "undefined") {
   bqn.run = run;
   bqn.sysargs = sysargs;
   bqn.sysvals = sysvals;
-  bqn.makebqn = (fn) => makebqn(fn, (r) => run(...r));
+  bqn.makebqn = fn => makebqn(fn, r => run(...r));
   bqn.makerepl = (st, repl) =>
     rerepl(
       repl,
       makebqn(
-        (x) => x,
-        (r) => r
+        x => x,
+        r => r,
       )(st),
-      st
+      st,
     );
   bqn.util = { has, list, str, unstr, dynsys, req1str, makens };
   bqn.setexec = (u, p) => {
