@@ -23,20 +23,6 @@ endif
 
 call expand_region#custom_text_objects({ 'a]': 1, 'ab': 1, 'aB': 1, 'a''': 1, 'a"': 1 })
 
-" ? Jumps
-nnoremap `j <CMD>call Jump()<CR>
-nnoremap mj <CMD>call CustomMark()<CR>
-function! CustomMark()
-    exec "call VSCodeNotify('copyFilePath')"
-    let g:jFile = getreg('*')
-    let g:jMark = getcurpos()
-endfunction
-
-function! Jump() 
-    exec "Edit " . g:jFile
-    call setpos('.', g:jMark)
-endfunction
-
 if !exists('g:vscode')
     " Alt-z
     set number
@@ -775,7 +761,7 @@ vnoremap ( ?[({[]<cr>
 nnoremap <leader>' viw<CMD>call VSCodeNotifyVisual("editor.action.addSelectionToNextFindMatch", 1)<CR><ESC>i
 vnoremap <leader>' <CMD>call VSCodeNotifyVisual("editor.action.addSelectionToNextFindMatch", 1)<CR><ESC>i
 
-nnoremap <leader>^ :call AddTwoSlashQuery()<cr>
+nnoremap <leader>^ <CMD>call AddTwoSlashQuery()<CR>
 function! AddTwoSlashQuery()
     let l:startPos = getcurpos()
     let l:col = l:startPos[2]
