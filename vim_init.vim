@@ -772,6 +772,9 @@ nnoremap ( ?[({[]<cr>
 vnoremap ) /[)}\]]<cr>
 vnoremap ( ?[({[]<cr>
 
+nnoremap <leader>' viw<CMD>call VSCodeNotifyVisual("editor.action.addSelectionToNextFindMatch", 1)<CR><ESC>i
+vnoremap <leader>' <CMD>call VSCodeNotifyVisual("editor.action.addSelectionToNextFindMatch", 1)<CR><ESC>i
+
 nnoremap <leader>^ :call AddTwoSlashQuery()<cr>
 function! AddTwoSlashQuery()
     let l:startPos = getcurpos()
