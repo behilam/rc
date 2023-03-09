@@ -722,9 +722,10 @@ nnoremap <leader>. mq$a.<ESC>`q
 
 nnoremap <expr> <leader>s GetChar() == "/" ? ":s/\\//" : ":s/<c-r>=GetChar()<CR>/"
 vnoremap <expr> <leader>s GetChar() == "/" ? ":s/\\//" : ":s/<c-r>=GetChar()<CR>/"
-nnoremap <leader>S :s/
-vnoremap <leader>S :s/
+nnoremap <leader>S :s/<c-r><c-w>/
+vnoremap <expr> <leader>S ":s/" . expand("<cword>") . "/"
 nnoremap <leader><leader>s :%s/
+nnoremap <leader><leader>S :%s/<c-r><c-w>/
 
 " Change inside parens/brackets shortcut [EXPERIMENTAL]
 "  onoremap p :<c-u>normal! t)vi(<cr>
