@@ -121,10 +121,6 @@ nnoremap ]P P
 vnoremap p P
 vnoremap P p
 
-nnoremap q i_<esc>r
-nnoremap Q q
-nnoremap g: Q
-
 nnoremap ß <BS>?_<CR><SPACE>
 nnoremap ŭ /_<CR><SPACE>
 nnoremap é <SPACE>/_<CR><BS>
