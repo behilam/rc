@@ -129,10 +129,8 @@ nnoremap É <BS>?_<CR><BS>
 nnoremap <expr> <leader>z (&hls && v:hlsearch ? ":noh \| let &hlsearch = 0" : ":set hls")."\n"
 
 nnoremap <leader>w :w<CR>
-nnoremap <leader>o mqo<ESC>k`q
-nnoremap <leader>O mqO<ESC>j`q
-nnoremap ó o<esc>cc
-nnoremap Ó O<esc>cc
+nnoremap <leader>o <CMD>call AddNewLine()<CR>
+nnoremap <leader>O <CMD>call AddNewLine(-1)<CR>
 
 nnoremap <bs> ge
 vnoremap <bs> ge
@@ -805,7 +803,16 @@ nnoremap <localleader><localleader>e :!code C:\Users\Moiso\rc\vim_init.vim<cr>
 
 " ====================== VSCode only begin ===================
 
-" VSCode needs double backlash (\\) for the OR operator for some unkown reason...
+" ================= FUNCTIONS ================= 
+
+function! AddNewLine(relativeLine = 0)
+    let l:startPos = getcurpos()
+    let l:currentLine = l:startPos[1]
+    let l:failed = append(l:currentLine + a:relativeLine, '')
+    if failed
+        echom "Unable to add new line"
+    endif
+endfunction
 nnoremap dix /,\\|)\\|}\\|]\\|\s}<cr>d?,<cr>
 nnoremap diX mq/,<cr>lv`q?(\\|\[\\|{<cr>wd
 nnoremap cix /,\\|)\\|}\\|]\\|\s}<cr>hv?,<cr>wvgvc
