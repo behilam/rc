@@ -752,7 +752,8 @@ vnoremap <leader>' <CMD>call VSCodeNotifyVisual("editor.action.addSelectionToNex
 
 nnoremap <leader>^ <CMD>call AddTwoSlashQuery()<CR>
 
-nnoremap <leader>en <CMD>.!node<CR>
+nnoremap <expr> <leader>en ":.!node ".getenv('HOME').'\rc\vimExecJs.js "'.substitute(getline('.'), '"', '\\"', 'g').'"<CR>'
+nnoremap <leader>eN <CMD>.!node<CR>
 vnoremap <leader>en :!node<CR>
 nnoremap <leader>ep <CMD>.!py<CR>
 vnoremap <leader>ep :!py<CR>
