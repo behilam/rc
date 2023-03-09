@@ -720,10 +720,6 @@ nnoremap <leader>; mq$a;<ESC>`q
 nnoremap <leader>, mq$a,<ESC>`q
 nnoremap <leader>. mq$a.<ESC>`q
 
-nnoremap <leader>l $
-nnoremap <leader>h ^
-nnoremap <leader>H 0
-
 nnoremap <expr> <leader>s GetChar() == "/" ? ":s/\\//" : ":s/<c-r>=GetChar()<CR>/"
 vnoremap <expr> <leader>s GetChar() == "/" ? ":s/\\//" : ":s/<c-r>=GetChar()<CR>/"
 nnoremap <leader>S :s/
