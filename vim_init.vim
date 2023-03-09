@@ -112,6 +112,7 @@ if exists('g:started_by_firenvim')
     au TextChangedI * ++nested call Delay_My_Write()
 endif
 
+nnoremap <expr> <leader>z (&hls && v:hlsearch ? ":noh \| let &hlsearch = 0" : ":set hls")."\n"
 nnoremap / :set hlsearch<CR>/
 
 nnoremap p ]p
@@ -126,9 +127,6 @@ nnoremap ŭ /_<CR><SPACE>
 nnoremap é <SPACE>/_<CR><BS>
 nnoremap É <BS>?_<CR><BS>
 
-nnoremap <expr> <leader>z (&hls && v:hlsearch ? ":noh \| let &hlsearch = 0" : ":set hls")."\n"
-
-nnoremap <leader>w :w<CR>
 nnoremap <leader>o <CMD>call AddNewLine()<CR>
 nnoremap <leader>O <CMD>call AddNewLine(-1)<CR>
 
