@@ -756,21 +756,6 @@ nnoremap <leader>' viw<CMD>call VSCodeNotifyVisual("editor.action.addSelectionTo
 vnoremap <leader>' <CMD>call VSCodeNotifyVisual("editor.action.addSelectionToNextFindMatch", 1)<CR><ESC>i
 
 nnoremap <leader>^ <CMD>call AddTwoSlashQuery()<CR>
-function! AddTwoSlashQuery()
-    let l:startPos = getcurpos()
-    let l:col = l:startPos[2]
-    let l:currentLine = l:startPos[1]
-    let l:indent = indent(l:currentLine)
-    let l:query = repeat(" ", l:indent) . "//" . repeat(" ", l:col - l:indent - 3) . "^?"
-    let l:failed = append(l:currentLine, l:query)
-    if failed
-        echom "Unable to add TwoSlashQuery after line: " . l:currentLine
-    endif
-endfunction
-
-function! GetChar()
-    return matchstr(getline('.'), '\%'.col('.').'c.')
-endfunction
 
 nnoremap <leader>en <CMD>.!node<CR>
 vnoremap <leader>en :!node<CR>
@@ -793,17 +778,18 @@ nnoremap <leader>~ mqviwo<esc>~`q
 " Calculate written operation (doesn't work in VSCode)
 vnoremap <localleader>c s<c-r>=<c-r>"<cr><esc>
 
-" Wrap with console print function
-
 " Source or edit config file
 "  nnoremap <localleader><localleader>s :source C:\Users\Moiso\rc\vim_init.lua<cr>
 nnoremap <localleader><localleader>s :source C:\Users\Moiso\rc\vim_init.vim<cr>
 nnoremap <localleader><localleader>w :source C:\Users\Moiso\rc\vim_init.lua<cr>
 nnoremap <localleader><localleader>e :!code C:\Users\Moiso\rc\vim_init.vim<cr>
 
-" ====================== VSCode only begin ===================
 
 " ================= FUNCTIONS ================= 
+
+function! GetChar()
+    return matchstr(getline('.'), '\%'.col('.').'c.')
+endfunction
 
 function! AddNewLine(relativeLine = 0)
     let l:startPos = getcurpos()
@@ -813,20 +799,24 @@ function! AddNewLine(relativeLine = 0)
         echom "Unable to add new line"
     endif
 endfunction
+
+function! AddTwoSlashQuery()
+    let l:startPos = getcurpos()
+    let l:col = l:startPos[2]
+    let l:currentLine = l:startPos[1]
+    let l:indent = indent(l:currentLine)
+    let l:query = repeat(" ", l:indent) . "//" . repeat(" ", l:col - l:indent - 3) . "^?"
+    let l:failed = append(l:currentLine, l:query)
+    if failed
+        echom "Unable to add TwoSlashQuery after line: " . l:currentLine
+    endif
+endfunction
 nnoremap dix /,\\|)\\|}\\|]\\|\s}<cr>d?,<cr>
 nnoremap diX mq/,<cr>lv`q?(\\|\[\\|{<cr>wd
 nnoremap cix /,\\|)\\|}\\|]\\|\s}<cr>hv?,<cr>wvgvc
 nnoremap ciX mq/,<cr>lv`q?(\\|\[\\|{<cr>vgvwc
 
-" ===================== VSCode only end =======================
-
-
-" ============================ TESTS =================================
-"augroup test_js
-"	au!
-"	au FileType javascript nnoremap <buffer> <localleader>c iasdfjkl;<ESC>
-"augroup END
-
+" ============================ EXPERIMENTAL =================================
 nnoremap <localleader><localleader>p :call InsertPrintFunction("w")<cr>
 function! InsertPrintFunction(x)
     let extension = expand('%:e')
@@ -865,4 +855,4 @@ function! EnumSubtitleLines()
     echo "Linioj nombritaj :)"
 endfunction
 
-echom 'init.vim config sourced!'
+echo 'init.vim config sourced!'
