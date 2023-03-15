@@ -721,8 +721,8 @@ nnoremap <leader>; mq$a;<ESC>`q
 nnoremap <leader>, mq$a,<ESC>`q
 nnoremap <leader>. mq$a.<ESC>`q
 
-nnoremap <expr> <leader>s GetChar() == "/" ? ":s/\\//" : ":s/<c-r>=GetChar()<CR>/"
-vnoremap <expr> <leader>s GetChar() == "/" ? ":s/\\//" : ":s/<c-r>=GetChar()<CR>/"
+nnoremap <expr> <leader>s count(["/", "\\"], GetChar()) > 0 ? ":s/\\".substitute(GetChar(), "\\", "\\\\", "")."/" : ":s/<c-r>=GetChar()<CR>/"
+vnoremap <expr> <leader>s count(["/", "\\"], GetChar()) > 0 ? ":s/\\".substitute(GetChar(), "\\", "\\\\", "")."/" : ":s/<c-r>=GetChar()<CR>/"
 nnoremap <leader>S :s/<c-r><c-w>/
 vnoremap <expr> <leader>S ":s/" . expand("<cword>") . "/"
 nnoremap <leader><leader>s :%s/
