@@ -1,9 +1,8 @@
 [user]
 	name = Behilam
 	email = praehil@gmail.com
-	signingkey = 3C0248E3B96E5478
+	signingkey = C7C183944F88A3F6
 [core]
-	# editor = \"C:\\Users\\Moiso\\AppData\\Local\\Programs\\Microsoft VS Code\\bin\\code\" --wait
 	editor = nvim
 	autocrlf = true
 [init]
@@ -72,3 +71,5 @@
 	autocorrect = 30
 [commit]
 	gpgsign = true
+[gpg]
+	program = C:/Program Files (x86)/GnuPG/bin/gpg.exe
