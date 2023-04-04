@@ -43,6 +43,7 @@
 <>+y::Send, % (Chr(165)) ; ¥
 
 ; ------------ Third Line -------------
+>+a::Send, % (Chr(768)) ; à (combining grave accent)
 >+g::Send, % (Chr(770)) ; ĝ (combining circumflex)
 >+;::Send, % (Chr(771)) ; ̃n (combining tilde)
 
