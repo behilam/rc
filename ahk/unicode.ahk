@@ -39,10 +39,12 @@
 >+w::Send, % (Chr(774)) ; ŭ (combining breve)
 >+e::Send, % (Chr(769)) ; é (combining acute)
 >+u::Send, % (Chr(776)) ; ̈u (combining diaeresis)
+>+o::Send, % (Chr(772)) ; ō (combining macron)
 
 <>+y::Send, % (Chr(165)) ; ¥
 
 ; ------------ Third Line -------------
+>+a::Send, % (Chr(768)) ; à (combining grave accent)
 >+g::Send, % (Chr(770)) ; ĝ (combining circumflex)
 >+;::Send, % (Chr(771)) ; ̃n (combining tilde)
 
