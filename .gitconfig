@@ -39,6 +39,7 @@
 	mnc = merge --no-commit --no-ff
 
 	f = fetch
+	fpa = fetch --prune --all
 	pnc = pull --no-commit --no-ff
 
 	rt= restore
