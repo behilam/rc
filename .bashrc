@@ -19,10 +19,10 @@ alias .....="cd ../../../.."
 alias cdw="cd $(echo '$1' | sed -e 's/\\/\//g' | sed -e 's/C:/c:/')"
 alias pwc="pwd | clip; echo 'copied to clipboard!'"
 alias pn="pnpm"
+alias y="yarn"
 alias g="git"
 alias c="cargo"
 alias v="nvim"
-
 
 # enable color support of ls and also add handy aliases
 alias ls='ls --color=auto'
@@ -65,6 +65,13 @@ wtd() {
     fi
 }
 
-# tabtab source for packages
-# uninstall by removing these lines
-[ -f ~\.config\tabtab\bash\__tabtab.bash ] && . ~\.config\tabtab\bash\__tabtab.bash || true
+killport() {
+	port=$(netstat -ano | rg ".*0\.0\.0\.0:$@.*\bLISTENING\b\D*(\d)" -m 1  -r '$1')
+	if [[ -z "$port" ]]; then
+		echo "Error: Port $1 is not in use"
+		return 1
+	fi
+	taskkill -pid $port -f
+	return 0
+}
+
