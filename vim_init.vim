@@ -748,8 +748,9 @@ nnoremap ( ?[({[]<cr>
 vnoremap ) /[)}\]]<cr>
 vnoremap ( ?[({[]<cr>
 
-nnoremap <leader>' viw<CMD>call VSCodeNotifyVisual("editor.action.addSelectionToNextFindMatch", 1)<CR><ESC>i
-vnoremap <leader>' <CMD>call VSCodeNotifyVisual("editor.action.addSelectionToNextFindMatch", 1)<CR><ESC>i
+" TODO: Broken since 0.4.0
+nnoremap <leader>' viw<CMD>call VSCodeNotify("editor.action.addSelectionToNextFindMatch")<CR><ESC>i
+vnoremap <leader>' <CMD>call VSCodeNotify("editor.action.addSelectionToNextFindMatch")<CR><ESC>i
 
 nnoremap <leader>^ <CMD>call AddTwoSlashQuery()<CR>
 
