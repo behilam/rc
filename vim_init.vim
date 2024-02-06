@@ -748,7 +748,7 @@ nnoremap ( ?[({[]<cr>
 vnoremap ) /[)}\]]<cr>
 vnoremap ( ?[({[]<cr>
 
-" TODO: Broken since 0.4.0
+" TODO: 0.4.0 broke deprecated VSCodeNotifyVisual. These two are broken
 nnoremap <leader>' viw<CMD>call VSCodeNotify("editor.action.addSelectionToNextFindMatch")<CR><ESC>i
 vnoremap <leader>' <CMD>call VSCodeNotify("editor.action.addSelectionToNextFindMatch")<CR><ESC>i
 
@@ -777,10 +777,10 @@ nnoremap <leader>~ mqviwo<esc>~`q
 vnoremap <localleader>c s<c-r>=<c-r>"<cr><esc>
 
 " Source or edit config file
-"  nnoremap <localleader><localleader>s :source C:\Users\Moiso\rc\vim_init.lua<cr>
-nnoremap <localleader><localleader>s :source C:\Users\Moiso\rc\vim_init.vim<cr>
-nnoremap <localleader><localleader>w :source C:\Users\Moiso\rc\vim_init.lua<cr>
-nnoremap <localleader><localleader>e :!code C:\Users\Moiso\rc\vim_init.vim<cr>
+"  nnoremap <localleader><localleader>s :source C:\Users\avata\rc\vim_init.lua<cr>
+nnoremap <localleader><localleader>s :source C:\Users\avata\rc\vim_init.vim<cr>
+nnoremap <localleader><localleader>w :source C:\Users\avata\rc\vim_init.lua<cr>
+nnoremap <localleader><localleader>e :!code C:\Users\avata\rc\vim_init.vim<cr>
 
 
 " ================= FUNCTIONS ================= 

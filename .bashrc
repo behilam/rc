@@ -11,7 +11,6 @@ esac
 alias so=". ~/.bashrc; echo 'bashrc ĝisdata!'"
 alias rc="code ~/rc"
 alias brc="code ~/.bashrc"
-alias cm="cmatrix -b -a -u 5 -s"
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
@@ -19,10 +18,25 @@ alias .....="cd ../../../.."
 alias cdw="cd $(echo '$1' | sed -e 's/\\/\//g' | sed -e 's/C:/c:/')"
 alias pwc="pwd | clip; echo 'copied to clipboard!'"
 alias pn="pnpm"
+alias pnd="pnpm dev"
+alias pnb="pnpm build"
+alias pnbs="pnpm build & pnpm start"
+alias pntn="pnpm tsc --noEmit"
+alias y="yarn"
+alias yd="yarn dev"
+alias yb="yarn build"
+alias ybs="yarn build & yarn start"
+alias ybse="yarn build & yarn serve"
+alias ytn="yarn tsc --noEmit"
 alias g="git"
 alias c="cargo"
+alias cc="cargo check"
+alias ccl="cargo clippy"
+alias cr="cargo run"
+alias cb="cargo build"
+alias cw="cargo watch -x run"
+alias cwc="cargo watch"
 alias v="nvim"
-
 
 # enable color support of ls and also add handy aliases
 alias ls='ls --color=auto'
@@ -65,6 +79,13 @@ wtd() {
     fi
 }
 
-# tabtab source for packages
-# uninstall by removing these lines
-[ -f ~\.config\tabtab\bash\__tabtab.bash ] && . ~\.config\tabtab\bash\__tabtab.bash || true
+killport() {
+	port=$(netstat -ano | rg ".*0\.0\.0\.0:$@.*\bLISTENING\b\D*(\d)" -m 1  -r '$1')
+	if [[ -z "$port" ]]; then
+		echo "Error: Port $1 is not in use"
+		return 1
+	fi
+	taskkill -pid $port -f
+	return 0
+}
+

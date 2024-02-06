@@ -1,14 +1,14 @@
 ; * Mouse 6
-XButton1 & LButton::Media_Next
-XButton1 & RButton::Media_Prev
-XButton1 & MButton::Media_Play_Pause
-XButton1 & WheelDown::Volume_Down
-XButton1 & WheelUp::Volume_Up
+F18 & LButton::Media_Next
+F18 & RButton::Media_Prev
+F18 & MButton::Media_Play_Pause
+F18 & WheelDown::Volume_Down
+F18 & WheelUp::Volume_Up
 ; XButton1 & F18::
-; ^XButton1::
-; !XButton1::
-; ^!XButton1::
-XButton1::
+; ^F18::
+; !F18::
+; ^!F18::
+F18::
   ; LButton & Mouse_6
   ; if (GetKeyState("LButton", "P")) {
   ;     Return
@@ -21,19 +21,19 @@ XButton1::
 
   Send, {Browser_Back}
 Return
-^XButton1::^-
+^F18::^-
 
 ; * Mouse 3
-; XButton2 & LButton::
-; XButton2 & RButton::
-XButton2 & MButton::Send, ^{F4}
-XButton2 & WheelDown::Send, ^{Tab}
-XButton2 & WheelUp::Send, ^+{Tab}
-; XButton2 & F18::
-; ^XButton2::
-; !XButton2::
-; ^!XButton2::
-XButton2::
+; F15 & LButton::
+; F15 & RButton::
+F15 & MButton::Send, ^{F4}
+F15 & WheelDown::Send, ^{Tab}
+F15 & WheelUp::Send, ^+{Tab}
+; F15 & F18::
+; ^F15::
+; !F15::
+; ^!F15::
+F15::
   ; LButton & Mouse_3
   ; if (GetKeyState("LButton", "P")) {
   ;     Return
@@ -46,19 +46,19 @@ XButton2::
 
   Send, {Browser_Forward}
 Return
-^XButton2::^+
+^F15::^+
 
 ; * Mouse 4
-F15 & LButton::^x
-F15 & RButton::Delete
-F15 & WheelDown::Right
-F15 & WheelUp::Left
-; F15 & MButton::
-; F15 & F18::
-; ^F15::
-; !F15::
-; ^!F15::
-; F15::
+F16 & LButton::^x
+F16 & RButton::Delete
+F16 & WheelDown::Right
+F16 & WheelUp::Left
+; F16 & MButton::
+; F16 & F18::
+; ^F16::
+; !F16::
+; ^!F16::
+; F16::
 ; LButton & Mouse_5
 ; if (GetKeyState("LButton", "P")) {
 ;     Return
@@ -73,16 +73,16 @@ F15 & WheelUp::Left
 ; Return
 
 ; * Mouse 5
-F14 & LButton::^c
-F14 & RButton::^v
-F14 & WheelDown::Down
-F14 & WheelUp::Up
-; F14 & MButton::
-; F14 & F18::
-; ^F14::
-; !F14::
-; ^!F14::
-; F14::
+F17 & LButton::^c
+F17 & RButton::^v
+F17 & WheelDown::Down
+F17 & WheelUp::Up
+; F17 & MButton::
+; F17 & F18::
+; ^F17::
+; !F17::
+; ^!F17::
+; F17::
 ; LButton & Mouse_4
 ; if (GetKeyState("LButton", "P")) {
 ;     Return
@@ -97,16 +97,16 @@ F14 & WheelUp::Up
 ; Return
 
 ; * Mouse 8
-F16 & LButton::^z
-F16 & RButton::^+z
-; F16 & WheelDown::
-; F16 & WheelUp::
-; F16 & MButton::
-; F16 & F18::
-; ^F16::
-; !F16::
-; ^!F16::
-F16::
+F20 & LButton::^z
+F20 & RButton::^+z
+; F20 & WheelDown::
+; F20 & WheelUp::
+; F20 & MButton::
+; F20 & F18::
+; ^F20::
+; !F20::
+; ^!F20::
+F20::
   ; LButton & Mouse_8
   if (GetKeyState("LButton", "P")) {
     Send, {Esc}
@@ -118,20 +118,20 @@ F16::
   ;     Return
   ; }
 
-  Send, F16
+  Send, F20
 Return
 
 ; * Mouse 9
-F17 & LButton::^a
-; F17 & RButton::
-; F17 & WheelDown::
-; F17 & WheelUp::
-; F17 & MButton::
-; F17 & F18::
-; ^F17::
-; !F17::
-; ^!F17::
-F17::
+F21 & LButton::^a
+; F21 & RButton::
+; F21 & WheelDown::
+; F21 & WheelUp::
+; F21 & MButton::
+; F21 & F18::
+; ^F21::
+; !F21::
+; ^!F21::
+F21::
   ; LButton & Mouse_9
   ; if (GetKeyState("LButton", "P")) {
   ;     Return
