@@ -113,8 +113,8 @@ if exists('g:started_by_firenvim')
 endif
 
 nnoremap <expr> <leader>z (&hls && v:hlsearch ? ":noh \| let &hlsearch = 0" : ":set hls")."\n"
-nnoremap / :set hlsearch<CR>/
-nnoremap ? :set hlsearch<CR>?
+" nnoremap / :set hlsearch<CR>/
+" nnoremap ? :set hlsearch<CR>?
 
 nnoremap p ]p
 nnoremap P ]P
