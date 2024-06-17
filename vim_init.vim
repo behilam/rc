@@ -393,8 +393,8 @@ nnoremap <Plug>QuoteWORDWrap mqviW<ESC>a'<ESC>Bi'<ESC>`q
 vnoremap <leader>i' <ESC>mq`>a'<ESC>`<<ESC>i'<ESC>`><ESC>`q
 
 nnoremap <leader>d' <Plug>QuoteUnwrap
-nnoremap <Plug>QuoteUnwrap mq/'<cr>x?'<cr>x`q
-    \:call repeat#set("\<Plug>QuoteUnwrap")<CR>
+nnoremap <Plug>QuoteUnwrap mq/'<cr>x?'<cr>x`q:<ESC>
+    \<CMD>call repeat#set("\<Plug>QuoteUnwrap")<CR>
 
 nnoremap <leader>d" <Plug>NextQuoteUnwrap
 nnoremap <Plug>NextQuoteUnwrap mq/'<cr>x/'<cr>x`q
@@ -414,8 +414,8 @@ nnoremap <Plug>DQuoteWORDWrap mqviW<ESC>a"<ESC>Bi"<ESC>`q
 vnoremap <leader>i; <ESC>mq`>a"<ESC>`<<ESC>i"<ESC>`><ESC>`q
 
 nnoremap <leader>d; <Plug>DQuoteUnwrap
-nnoremap <Plug>DQuoteUnwrap mq/"<cr>x?"<cr>x`q
-    \:call repeat#set("\<Plug>DQuoteUnwrap")<CR>
+nnoremap <Plug>DQuoteUnwrap mq/"<cr>x?"<cr>x`q:<ESC>
+    \<CMD>call repeat#set(\"\<Plug>DQuoteUnwrap\")<CR>
 
 nnoremap <leader>d: <Plug>NextDQuoteUnwrap
 nnoremap <Plug>NextDQuoteUnwrap mq/"<cr>x/"<cr>x`q
@@ -435,8 +435,8 @@ nnoremap <Plug>BTickWORDWrap mqviW<ESC>a`<ESC>Bi`<ESC>`q
 vnoremap <leader>i` <ESC>mq`>a`<ESC>`<<ESC>i`<ESC>`><ESC>`q
 
 nnoremap <leader>d` <Plug>BTickUnwrap
-nnoremap <Plug>BTickUnwrap mq/`<cr>x?`<cr>x`q
-    \:call repeat#set("\<Plug>BTickUnwrap")<CR>
+nnoremap <Plug>BTickUnwrap mq/`<cr>x?`<cr>x`q:<ESC>
+    \<CMD>call repeat#set("\<Plug>BTickUnwrap")<CR>
 
 nnoremap <leader>d~ <Plug>NextBTickUnwrap
 nnoremap <Plug>NextBTickUnwrap mq/`<cr>x/`<cr>x`q
